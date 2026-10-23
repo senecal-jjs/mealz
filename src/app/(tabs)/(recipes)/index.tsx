@@ -1,5 +1,5 @@
 import { FlashList } from '@shopify/flash-list';
-import { Stack } from 'expo-router';
+import { Link, Stack } from 'expo-router';
 import { useMemo, useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 
@@ -9,7 +9,9 @@ import { RecipeCard } from '@/components/recipe-card';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { BROWSE_FILTERS, browseRecipes, type BrowseFilter } from '@/domain/browse';
+import { fitsPreferences } from '@/domain/preferences';
 import { planActions, usePlannedServings } from '@/features/plan/hooks';
+import { usePreferences } from '@/features/preferences/hooks';
 import { useTheme } from '@/hooks/use-theme';
 
 export default function RecipesScreen() {
@@ -17,10 +19,14 @@ export default function RecipesScreen() {
   const [filter, setFilter] = useState<BrowseFilter>('all');
   const [query, setQuery] = useState('');
   const planned = usePlannedServings();
+  const { prefs } = usePreferences();
 
+  // Recipes that don't fit the user's diet, allergies or dislikes are never shown.
+  const allowed = useMemo(() => catalog.recipes.filter((r) => fitsPreferences(r, prefs)), [prefs]);
+  const hidden = catalog.recipes.length - allowed.length;
   const recipes = useMemo(
-    () => browseRecipes(catalog.recipes, catalog.ingredients, filter, query),
-    [filter, query],
+    () => browseRecipes(allowed, catalog.ingredients, filter, query),
+    [allowed, filter, query],
   );
 
   return (
@@ -41,20 +47,32 @@ export default function RecipesScreen() {
         contentContainerStyle={styles.content}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
         ListHeaderComponent={
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.chips}
-            style={styles.chipRow}>
-            {BROWSE_FILTERS.map((f) => (
-              <Chip
-                key={f.id}
-                label={f.label}
-                selected={filter === f.id}
-                onPress={() => setFilter(f.id)}
-              />
-            ))}
-          </ScrollView>
+          <View>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.chips}
+              style={styles.chipRow}>
+              {BROWSE_FILTERS.map((f) => (
+                <Chip
+                  key={f.id}
+                  label={f.label}
+                  selected={filter === f.id}
+                  onPress={() => setFilter(f.id)}
+                />
+              ))}
+            </ScrollView>
+            {hidden > 0 && (
+              <Link href="/profile" style={styles.note}>
+                <ThemedText type="small" themeColor="textSecondary">
+                  {hidden} {hidden === 1 ? 'recipe' : 'recipes'} hidden by your preferences ·{' '}
+                  <ThemedText type="small" style={{ color: theme.tint }}>
+                    Edit
+                  </ThemedText>
+                </ThemedText>
+              </Link>
+            )}
+          </View>
         }
         ListEmptyComponent={
           <ThemedText type="small" themeColor="textSecondary" style={styles.empty}>
@@ -67,7 +85,9 @@ export default function RecipesScreen() {
             recipe={item}
             planned={planned.has(item.id)}
             onTogglePlan={() =>
-              planned.has(item.id) ? planActions.remove(item.id) : planActions.add(item.id)
+              planned.has(item.id)
+                ? planActions.remove(item.id)
+                : planActions.add(item.id, prefs.defaultServings)
             }
           />
         )}
@@ -82,4 +102,5 @@ const styles = StyleSheet.create({
   chips: { paddingHorizontal: Spacing.three, gap: Spacing.two },
   separator: { height: Spacing.three },
   empty: { textAlign: 'center', marginTop: Spacing.five },
+  note: { marginTop: -Spacing.one, marginBottom: Spacing.three },
 });

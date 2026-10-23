@@ -13,7 +13,7 @@ import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { formatIngredient, scaleFactor } from '@/domain/quantity';
 import { planActions, usePlannedServings } from '@/features/plan/hooks';
-import { DEFAULT_SERVINGS } from '@/features/plan/plan';
+import { usePreferences } from '@/features/preferences/hooks';
 import { useTheme } from '@/hooks/use-theme';
 
 export default function RecipeScreen() {
@@ -22,7 +22,8 @@ export default function RecipeScreen() {
   const theme = useTheme();
   const insets = useSafeAreaInsets();
   const plannedServings = usePlannedServings().get(id);
-  const [draftServings, setDraftServings] = useState(DEFAULT_SERVINGS);
+  const { prefs } = usePreferences();
+  const [draftServings, setDraftServings] = useState(prefs.defaultServings);
 
   if (!recipe) {
     return (

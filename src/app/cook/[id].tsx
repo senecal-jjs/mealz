@@ -22,7 +22,7 @@ import { formatIngredient, scaleFactor } from '@/domain/quantity';
 import { formatCountdown, remainingMs } from '@/domain/timer';
 import { useNow, useTimers } from '@/features/cook/timers';
 import { planActions, usePlannedServings } from '@/features/plan/hooks';
-import { DEFAULT_SERVINGS } from '@/features/plan/plan';
+import { usePreferences } from '@/features/preferences/hooks';
 import { useTheme } from '@/hooks/use-theme';
 
 export default function CookScreen() {
@@ -30,6 +30,7 @@ export default function CookScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const recipe = getRecipe(id);
   const plannedServings = usePlannedServings().get(id);
+  const { defaultServings } = usePreferences().prefs;
   const theme = useTheme();
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
@@ -46,7 +47,7 @@ export default function CookScreen() {
     );
   }
 
-  const servings = plannedServings ?? DEFAULT_SERVINGS;
+  const servings = plannedServings ?? defaultServings;
   const factor = scaleFactor(recipe.baseServings, servings);
   // Page 0 is "Get ready", then one page per step, then "All done".
   const lastPage = recipe.steps.length + 1;

@@ -52,6 +52,18 @@ export const ALLERGENS = [
 ] as const;
 export type Allergen = (typeof ALLERGENS)[number];
 
+export const ALLERGEN_LABELS: Record<Allergen, string> = {
+  gluten: 'Gluten',
+  dairy: 'Dairy',
+  egg: 'Egg',
+  peanut: 'Peanuts',
+  'tree-nut': 'Tree nuts',
+  fish: 'Fish',
+  shellfish: 'Shellfish',
+  soy: 'Soy',
+  sesame: 'Sesame',
+};
+
 export const DIETS = ['vegetarian', 'vegan', 'pescatarian', 'low-carb'] as const;
 export type Diet = (typeof DIETS)[number];
 

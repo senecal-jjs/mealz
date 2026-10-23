@@ -7,17 +7,17 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { ThemedText } from '@/components/themed-text';
 import { db } from '@/db/client';
+import { usePreferences } from '@/features/preferences/hooks';
 import migrations from '../../drizzle/migrations';
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
   const { success, error } = useMigrations(db, migrations);
 
   useEffect(() => {
-    if (success || error) SplashScreen.hideAsync();
-  }, [success, error]);
+    if (error) SplashScreen.hideAsync();
+  }, [error]);
 
   if (error) {
     return (
@@ -26,25 +26,45 @@ export default function RootLayout() {
       </View>
     );
   }
+  // Nothing may query the database until its tables exist.
   if (!success) return null;
+  return <AppNavigator />;
+}
+
+function AppNavigator() {
+  const colorScheme = useColorScheme();
+  const { prefs, loaded } = usePreferences();
+  const onboarded = prefs.onboardedAt !== null;
+
+  // Keep the splash up until we know whether to show onboarding.
+  useEffect(() => {
+    if (loaded) SplashScreen.hideAsync();
+  }, [loaded]);
+  if (!loaded) return null;
 
   return (
     <GestureHandlerRootView style={styles.root}>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen
-            name="cook/[id]"
-            options={{ presentation: 'fullScreenModal', headerShown: false }}
-          />
-          <Stack.Screen
-            name="recipe/[id]"
-            options={{
-              headerTransparent: true,
-              headerTitle: '',
-              headerBackButtonDisplayMode: 'minimal',
-            }}
-          />
+          {/* Finishing onboarding (or resetting all data) flips these guards. */}
+          <Stack.Protected guard={onboarded}>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen
+              name="cook/[id]"
+              options={{ presentation: 'fullScreenModal', headerShown: false }}
+            />
+            <Stack.Screen
+              name="recipe/[id]"
+              options={{
+                headerTransparent: true,
+                headerTitle: '',
+                headerBackButtonDisplayMode: 'minimal',
+              }}
+            />
+          </Stack.Protected>
+          <Stack.Protected guard={!onboarded}>
+            <Stack.Screen name="onboarding" options={{ headerShown: false }} />
+          </Stack.Protected>
         </Stack>
       </ThemeProvider>
     </GestureHandlerRootView>

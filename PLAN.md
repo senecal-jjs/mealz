@@ -260,8 +260,9 @@ Built as: the list is recomputed from the plan on every render (`src/domain/groc
 The "Get ready" ingredient checklist, the step pager with ingredients for each step, timer chips with background notifications, keep-awake, and mark as cooked with a rating, which moves the recipe to history.
 Built as: a full-screen modal at `/cook/[id]`, opened from a Cook button on each My Plan row or Start Cooking on a planned recipe's page. Steps page by swipe or Back/Next. Timers come from each step's `timerMinutes`; they live in memory (Zustand) so they keep running across steps and outside cook mode, show in a strip at the top, and schedule a local notification (expo-notifications, asked for on first use). Finishing stops that recipe's timers. History is stored (`cookedAt`, `rating`) but not shown until the Profile work in M5/M6.
 
-**M5 — Onboarding and preferences (1–2 days)**
+**M5 — Onboarding and preferences (1–2 days)** ✅
 The diet, allergies, dislikes and household flow. Filtering wired into browse, and a Profile tab to edit preferences later.
+Built as: a welcome screen plus four steps under `/onboarding`, each saving as you answer. The root layout uses protected routes, so the tabs appear only once `onboardedAt` is set, and Reset all data sends you back to onboarding. Recipes that don't fit (diet, allergens, or a non-optional disliked ingredient) are hidden from browse, with a "N hidden · Edit" note. The household size sets new plan items' servings, and the units setting (US or metric) drives the grocery list; recipe pages still show recipes' own units. The Profile tab edits everything with the same pickers and has Reset all data.
 
 **M6 — Polish and catalog completion (3 days)**
 Search and filters (time, tags), favourites, history, empty states, haptics, dark mode, accessibility (Dynamic Type, VoiceOver labels) and the app icon and splash screen. Bring the catalog to about 60 recipes.

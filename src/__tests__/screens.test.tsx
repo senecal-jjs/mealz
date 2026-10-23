@@ -6,14 +6,22 @@ import { renderRouter } from 'expo-router/testing-library';
 import RecipesScreen from '@/app/(tabs)/(recipes)/index';
 import GroceriesScreen from '@/app/(tabs)/groceries/index';
 import CookScreen from '@/app/cook/[id]';
+import OnboardingAllergies from '@/app/onboarding/allergies';
+import OnboardingDiet from '@/app/onboarding/diet';
+import OnboardingDislikes from '@/app/onboarding/dislikes';
+import OnboardingHousehold from '@/app/onboarding/household';
+import OnboardingWelcome from '@/app/onboarding/index';
+import ProfileScreen from '@/app/(tabs)/profile/index';
 import PlanScreen from '@/app/(tabs)/plan/index';
 import RecipeScreen from '@/app/recipe/[id]';
 import { groceryActions } from '@/features/grocery/hooks';
 import { useTimers } from '@/features/cook/timers';
 import { planActions } from '@/features/plan/hooks';
+import { preferenceActions } from '@/features/preferences/hooks';
 
 jest.mock('@/features/plan/hooks');
 jest.mock('@/features/grocery/hooks');
+jest.mock('@/features/preferences/hooks');
 jest.mock('@/features/cook/notifications', () => ({
   scheduleTimerAlert: jest.fn(async () => 'alert-1'),
   cancelTimerAlert: jest.fn(async () => {}),
@@ -33,6 +41,11 @@ beforeEach(() => {
   jest
     .requireMock<typeof import('@/features/grocery/__mocks__/hooks')>('@/features/grocery/hooks')
     .resetMockGrocery();
+  jest
+    .requireMock<typeof import('@/features/preferences/__mocks__/hooks')>(
+      '@/features/preferences/hooks',
+    )
+    .resetMockPreferences({ onboardedAt: new Date() });
   jest.clearAllMocks();
 });
 
@@ -50,7 +63,7 @@ describe('Recipes tab', () => {
     await renderRouter({ index: RecipesScreen }, { initialUrl: '/' });
 
     await fireEvent.press(screen.getByLabelText('Add Shakshuka to plan'));
-    expect(planActions.add).toHaveBeenCalledWith('shakshuka');
+    expect(planActions.add).toHaveBeenCalledWith('shakshuka', 2);
 
     await fireEvent.press(screen.getByLabelText('Remove Shakshuka from plan'));
     expect(planActions.remove).toHaveBeenCalledWith('shakshuka');
@@ -224,5 +237,92 @@ describe('Cook mode', () => {
     await renderRouter({ 'recipe/[id]': RecipeScreen }, { initialUrl: '/recipe/shakshuka' });
     expect(screen.getByText('Start Cooking')).toBeTruthy();
     expect(screen.getByText('Remove')).toBeTruthy();
+  });
+});
+
+const setPrefs = (update: Parameters<typeof preferenceActions.save>[0]) =>
+  preferenceActions.save(update);
+
+describe('Onboarding', () => {
+  it('walks through diet, allergies, dislikes and household, saving each answer', async () => {
+    await renderRouter(
+      {
+        'onboarding/index': OnboardingWelcome,
+        'onboarding/diet': OnboardingDiet,
+        'onboarding/allergies': OnboardingAllergies,
+        'onboarding/dislikes': OnboardingDislikes,
+        'onboarding/household': OnboardingHousehold,
+      },
+      { initialUrl: '/onboarding' },
+    );
+
+    await fireEvent.press(screen.getByText('Get started'));
+    expect(screen.getByText('Do you follow a diet?')).toBeTruthy();
+    await fireEvent.press(screen.getByRole('radio', { name: 'Vegetarian' }));
+    expect(preferenceActions.save).toHaveBeenLastCalledWith({ diet: 'vegetarian' });
+    await fireEvent.press(screen.getByText('Next'));
+
+    expect(screen.getByText('Any allergies?')).toBeTruthy();
+    expect(screen.getByText('No allergies')).toBeTruthy();
+    await fireEvent.press(screen.getByRole('checkbox', { name: 'Peanuts' }));
+    expect(preferenceActions.save).toHaveBeenLastCalledWith({ allergies: ['peanut'] });
+    await fireEvent.press(screen.getByText('Next'));
+
+    expect(screen.getByText('Anything you don’t like?')).toBeTruthy();
+    await fireEvent.changeText(screen.getByPlaceholderText('Search ingredients'), 'cilan');
+    await fireEvent.press(screen.getByRole('checkbox', { name: 'cilantro' }));
+    expect(preferenceActions.save).toHaveBeenLastCalledWith({
+      dislikedIngredientIds: ['cilantro'],
+    });
+    await fireEvent.press(screen.getByText('Next'));
+
+    expect(screen.getByText('How many do you cook for?')).toBeTruthy();
+    await fireEvent.press(screen.getByLabelText('More servings'));
+    expect(screen.getByText('3 servings per meal')).toBeTruthy();
+    await fireEvent.press(screen.getByText('Start planning'));
+    expect(preferenceActions.finishOnboarding).toHaveBeenCalled();
+  });
+});
+
+describe('Preferences in the app', () => {
+  it('hides recipes that do not fit and says how many', async () => {
+    await setPrefs({ diet: 'vegan' });
+    await renderRouter({ index: RecipesScreen }, { initialUrl: '/' });
+    expect(screen.getByText('Chickpea Coconut Curry')).toBeTruthy();
+    expect(screen.queryByText('Shakshuka')).toBeNull();
+    expect(screen.getByText(/14 recipes hidden by your preferences/)).toBeTruthy();
+  });
+
+  it('adds recipes at the household size', async () => {
+    await setPrefs({ defaultServings: 4 });
+    await renderRouter({ index: RecipesScreen }, { initialUrl: '/' });
+    await fireEvent.press(screen.getByLabelText('Add Shakshuka to plan'));
+    expect(planActions.add).toHaveBeenCalledWith('shakshuka', 4);
+  });
+
+  it('uses metric units on the grocery list', async () => {
+    await setPrefs({ units: 'metric' });
+    await planActions.add('chickpea-coconut-curry', 4);
+    await renderRouter({ index: GroceriesScreen }, { initialUrl: '/' });
+    expect(screen.getByLabelText('360 ml jasmine rice')).toBeTruthy();
+  });
+
+  it('summarizes and edits preferences on the Profile tab', async () => {
+    await setPrefs({ diet: 'pescatarian', allergies: ['dairy', 'egg', 'soy'] });
+    await renderRouter({ index: ProfileScreen }, { initialUrl: '/' });
+    expect(screen.getByText('Pescatarian')).toBeTruthy();
+    expect(screen.getByText('Dairy, Egg +1')).toBeTruthy();
+
+    await fireEvent.press(screen.getByText('Metric'));
+    expect(preferenceActions.save).toHaveBeenLastCalledWith({ units: 'metric' });
+  });
+
+  it('resets all data after confirming', async () => {
+    jest.spyOn(Alert, 'alert').mockImplementation((_title, _message, buttons) => {
+      buttons?.find((b) => b.style === 'destructive')?.onPress?.();
+    });
+    await renderRouter({ index: ProfileScreen }, { initialUrl: '/' });
+    await fireEvent.press(screen.getByText('Reset all data'));
+    expect(preferenceActions.resetAll).toHaveBeenCalled();
   });
 });
