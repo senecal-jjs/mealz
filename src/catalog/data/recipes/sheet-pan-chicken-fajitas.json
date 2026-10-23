@@ -1,0 +1,116 @@
+{
+  "id": "sheet-pan-chicken-fajitas",
+  "title": "Sheet-Pan Chicken Fajitas",
+  "description": "Smoky spiced chicken and peppers roasted on one pan, then piled into warm tortillas.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["sheet-pan", "kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "chicken",
+      "ingredient": "chicken-breast",
+      "quantity": 1.5,
+      "unit": "lb",
+      "prep": "sliced into thin strips"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "bell-pepper",
+      "quantity": 3,
+      "unit": "whole",
+      "prep": "sliced"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "sliced"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "chili",
+      "ingredient": "chili-powder",
+      "quantity": 2,
+      "unit": "tsp"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "paprika",
+      "ingredient": "smoked-paprika",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "tortillas",
+      "ingredient": "flour-tortillas",
+      "quantity": 8,
+      "unit": "whole"
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "cut into wedges"
+    },
+    {
+      "id": "sour-cream",
+      "ingredient": "sour-cream",
+      "quantity": 0.5,
+      "unit": "cup",
+      "optional": true
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "chopped",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 425°F (220°C) and line a large sheet pan with parchment or foil.",
+      "uses": []
+    },
+    {
+      "text": "Pile the chicken, peppers and onion on the pan. Add the oil, chili powder, cumin, paprika and a big pinch of salt, toss with your hands and spread into a single layer.",
+      "uses": ["chicken", "pepper", "onion", "oil", "chili", "cumin", "paprika", "salt"]
+    },
+    {
+      "text": "Roast until the chicken is cooked through and the peppers are soft and charred at the edges, about 20 minutes.",
+      "uses": [],
+      "timerMinutes": 20
+    },
+    {
+      "text": "For the last 5 minutes, wrap the tortillas in foil and warm them on the lower rack.",
+      "uses": ["tortillas"]
+    },
+    {
+      "text": "Squeeze a couple of lime wedges over the pan. Fill the tortillas and top with sour cream and cilantro, with the rest of the lime on the side.",
+      "uses": ["lime", "sour-cream", "cilantro"]
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "id": "black-bean-tacos-lime-slaw",
+  "title": "Black Bean Tacos with Lime Slaw",
+  "description": "Smashed spiced black beans and a crunchy cilantro-lime slaw in charred corn tortillas.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 10,
+  "difficulty": "easy",
+  "tags": ["meatless", "budget"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 0.5,
+      "unit": "whole",
+      "prep": "finely diced"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 2,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "chili",
+      "ingredient": "chili-powder",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "beans",
+      "ingredient": "black-beans",
+      "quantity": 2,
+      "unit": "can",
+      "prep": "15 oz each, drained and rinsed"
+    },
+    {
+      "id": "cabbage",
+      "ingredient": "green-cabbage",
+      "quantity": 0.25,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "chopped"
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 2,
+      "unit": "whole"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "tortillas",
+      "ingredient": "corn-tortillas",
+      "quantity": 8,
+      "unit": "whole"
+    },
+    {
+      "id": "avocado",
+      "ingredient": "avocado",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "sliced"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oil in a skillet over medium heat and cook the onion until soft, about 5 minutes.",
+      "uses": ["oil", "onion"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Stir in the garlic, cumin and chili powder for 30 seconds. Add the beans and ¼ cup water, mash about half of them with a fork and simmer until thick, about 5 minutes.",
+      "uses": ["garlic", "cumin", "chili", "beans"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Meanwhile, toss the cabbage and cilantro with the juice of 1 lime and a pinch of salt. Cut the other lime into wedges.",
+      "uses": ["cabbage", "cilantro", "lime", "salt"]
+    },
+    {
+      "text": "Warm the tortillas in a dry skillet or directly over a gas flame until lightly charred, about 30 seconds per side.",
+      "uses": ["tortillas"]
+    },
+    {
+      "text": "Fill the tortillas with beans, slaw and avocado and serve with lime wedges.",
+      "uses": ["avocado"]
+    }
+  ]
+}

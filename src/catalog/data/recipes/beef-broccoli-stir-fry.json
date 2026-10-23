@@ -1,0 +1,103 @@
+{
+  "id": "beef-broccoli-stir-fry",
+  "title": "Beef and Broccoli Stir-Fry",
+  "description": "Tender seared beef and bright broccoli in a glossy garlic-ginger sauce.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["stir-fry", "kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "beef",
+      "ingredient": "flank-steak",
+      "quantity": 1,
+      "unit": "lb",
+      "prep": "thinly sliced against the grain"
+    },
+    {
+      "id": "cornstarch",
+      "ingredient": "cornstarch",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 0.25,
+      "unit": "cup"
+    },
+    {
+      "id": "sugar",
+      "ingredient": "brown-sugar",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 1,
+      "unit": "tbsp",
+      "prep": "grated"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "broccoli",
+      "ingredient": "broccoli",
+      "quantity": 1.5,
+      "unit": "lb",
+      "prep": "cut into florets"
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 3,
+      "unit": "whole",
+      "prep": "sliced"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Rinse the rice, then bring it to a boil with 2¼ cups water and a pinch of salt. Cover, turn the heat to low and cook until the water is absorbed, about 15 minutes. Let it stand off the heat, still covered, while you cook.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Toss the beef with the cornstarch. In a small bowl, whisk the soy sauce, brown sugar, garlic, ginger and ⅓ cup water.",
+      "uses": ["beef", "cornstarch", "soy", "sugar", "garlic", "ginger"]
+    },
+    {
+      "text": "Heat 1 tbsp oil in a large skillet or wok over high heat. Sear the beef in a single layer until browned, 2 to 3 minutes, then move it to a plate.",
+      "uses": ["oil"]
+    },
+    {
+      "text": "Add the rest of the oil, the broccoli and a splash of water. Cover and cook until bright green and just tender, 3 to 4 minutes.",
+      "uses": ["broccoli"],
+      "timerMinutes": 4
+    },
+    {
+      "text": "Return the beef, pour in the sauce and toss until glossy and thick, 1 to 2 minutes. Top with the green onions and serve over the rice.",
+      "uses": ["scallions"]
+    }
+  ]
+}

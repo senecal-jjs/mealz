@@ -1,0 +1,120 @@
+{
+  "id": "turkey-taco-lettuce-wraps",
+  "title": "Turkey Taco Lettuce Wraps",
+  "description": "Taco-spiced ground turkey spooned into crisp lettuce cups with tomato and avocado.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 0.5,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "bell-pepper",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "turkey",
+      "ingredient": "ground-turkey",
+      "quantity": 1,
+      "unit": "lb"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 2,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "chili",
+      "ingredient": "chili-powder",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "lettuce",
+      "ingredient": "butter-lettuce",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "leaves separated"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "quartered"
+    },
+    {
+      "id": "avocado",
+      "ingredient": "avocado",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "cheddar",
+      "ingredient": "cheddar",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "shredded",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oil in a large skillet over medium-high heat. Cook the onion and bell pepper until softened, about 4 minutes.",
+      "uses": ["oil", "onion", "pepper"],
+      "timerMinutes": 4
+    },
+    {
+      "text": "Add the turkey and cook, breaking it up, until no longer pink, 6 to 7 minutes.",
+      "uses": ["turkey"],
+      "timerMinutes": 7
+    },
+    {
+      "text": "Stir in the garlic, chili powder, cumin, 1 tsp salt and ¼ cup water. Simmer until saucy, about 2 minutes.",
+      "uses": ["garlic", "chili", "cumin", "salt"]
+    },
+    {
+      "text": "Squeeze in the juice of half the lime. Spoon the filling into lettuce cups and top with tomatoes, avocado and cheddar. Serve with the rest of the lime in wedges.",
+      "uses": ["lime", "lettuce", "tomatoes", "avocado", "cheddar"]
+    }
+  ]
+}

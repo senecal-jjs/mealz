@@ -1,0 +1,104 @@
+{
+  "id": "caprese-pasta",
+  "title": "Burst Tomato Caprese Pasta",
+  "description": "Cherry tomatoes cooked down into a quick garlicky sauce, tossed with pasta, mozzarella and basil.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["meatless", "kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "pasta",
+      "ingredient": "short-pasta",
+      "quantity": 12,
+      "unit": "oz"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 4,
+      "unit": "clove",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "flakes",
+      "ingredient": "red-pepper-flakes",
+      "quantity": 0.25,
+      "unit": "tsp",
+      "optional": true
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 20,
+      "unit": "oz"
+    },
+    {
+      "id": "mozzarella",
+      "ingredient": "fresh-mozzarella",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "torn into bite-size pieces"
+    },
+    {
+      "id": "basil",
+      "ingredient": "basil",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "leaves torn"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "parmesan",
+      "ingredient": "parmesan",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "grated",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Bring a large pot of salted water to a boil. Cook the pasta until al dente, 10 to 11 minutes. Save ½ cup of the pasta water, then drain.",
+      "uses": ["pasta", "salt"],
+      "timerMinutes": 11
+    },
+    {
+      "text": "Meanwhile, warm the oil in a large skillet over medium heat. Add the garlic and pepper flakes and cook until the garlic is just turning golden, 1 to 2 minutes.",
+      "uses": ["oil", "garlic", "flakes"]
+    },
+    {
+      "text": "Add the tomatoes and a pinch of salt. Cook, stirring, until most of them burst and turn saucy, 6 to 8 minutes. Press any stubborn ones with your spoon.",
+      "uses": ["tomatoes"],
+      "timerMinutes": 8
+    },
+    {
+      "text": "Add the pasta and a splash of the pasta water and toss. Take the pan off the heat and fold in the mozzarella and basil so the cheese softens but doesn’t fully melt.",
+      "uses": ["mozzarella", "basil"]
+    },
+    {
+      "text": "Season with black pepper and finish with parmesan.",
+      "uses": ["pepper", "parmesan"]
+    }
+  ]
+}

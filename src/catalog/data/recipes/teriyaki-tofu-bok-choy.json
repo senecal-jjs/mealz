@@ -1,0 +1,112 @@
+{
+  "id": "teriyaki-tofu-bok-choy",
+  "title": "Crispy Teriyaki Tofu with Bok Choy",
+  "description": "Golden pan-fried tofu glazed in a quick homemade teriyaki sauce, with seared baby bok choy.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 20,
+  "difficulty": "medium",
+  "tags": ["meatless"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "tofu",
+      "ingredient": "extra-firm-tofu",
+      "quantity": 14,
+      "unit": "oz"
+    },
+    {
+      "id": "cornstarch",
+      "ingredient": "cornstarch",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 0.25,
+      "unit": "cup"
+    },
+    {
+      "id": "maple",
+      "ingredient": "maple-syrup",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "vinegar",
+      "ingredient": "rice-vinegar",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 2,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 1,
+      "unit": "tbsp",
+      "prep": "grated"
+    },
+    {
+      "id": "bok-choy",
+      "ingredient": "baby-bok-choy",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "halved lengthwise"
+    },
+    {
+      "id": "sesame",
+      "ingredient": "sesame-seeds",
+      "quantity": 1,
+      "unit": "tbsp",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Rinse the rice, then bring it to a boil with 2¼ cups water and a pinch of salt. Cover, turn the heat to low and cook until the water is absorbed, about 15 minutes. Let it stand off the heat, still covered, while you cook.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Pat the tofu very dry, cut it into 1-inch cubes and toss with 1½ tbsp of the cornstarch.",
+      "uses": ["tofu", "cornstarch"]
+    },
+    {
+      "text": "Heat 2 tbsp oil in a large nonstick skillet over medium-high heat. Fry the tofu, turning occasionally, until golden and crisp on most sides, 8 to 10 minutes. Move to a plate.",
+      "uses": ["oil"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Whisk the soy sauce, maple syrup, vinegar, garlic, ginger, the remaining cornstarch and ¼ cup water.",
+      "uses": ["soy", "maple", "vinegar", "garlic", "ginger"]
+    },
+    {
+      "text": "Add the remaining oil and place the bok choy cut-side down. Sear until browned, about 2 minutes, then flip, add a splash of water, cover and steam for 2 minutes.",
+      "uses": ["bok-choy"]
+    },
+    {
+      "text": "Return the tofu, pour in the sauce and simmer until glossy, about 1 minute. Serve over the rice with sesame seeds.",
+      "uses": ["sesame"]
+    }
+  ]
+}

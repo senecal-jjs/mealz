@@ -1,0 +1,100 @@
+{
+  "id": "greek-lemon-chicken-potatoes",
+  "title": "Greek Lemon Chicken and Potatoes",
+  "description": "Oregano-and-lemon marinated chicken thighs roasted with crispy baby potatoes and red onion.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 35,
+  "difficulty": "easy",
+  "tags": ["sheet-pan"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 2,
+      "unit": "whole"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 4,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "oregano",
+      "ingredient": "dried-oregano",
+      "quantity": 2,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "potatoes",
+      "ingredient": "baby-potatoes",
+      "quantity": 1.5,
+      "unit": "lb",
+      "prep": "halved"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "cut into wedges"
+    },
+    {
+      "id": "chicken",
+      "ingredient": "chicken-thighs",
+      "quantity": 2,
+      "unit": "lb",
+      "prep": "boneless, skinless"
+    },
+    {
+      "id": "feta",
+      "ingredient": "feta",
+      "quantity": 2,
+      "unit": "oz",
+      "prep": "crumbled",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 425°F (220°C). Whisk the oil, the juice of 1 lemon, the garlic, oregano, 1½ tsp salt and plenty of pepper.",
+      "uses": ["oil", "lemon", "garlic", "oregano", "salt", "pepper"]
+    },
+    {
+      "text": "Toss the potatoes and onion with half of the marinade on a sheet pan and roast for 15 minutes.",
+      "uses": ["potatoes", "onion"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Toss the chicken in the remaining marinade. Nestle it among the potatoes with slices of the second lemon, and roast until the chicken reaches 165°F (74°C) and the potatoes are golden, about 20 minutes.",
+      "uses": ["chicken"],
+      "timerMinutes": 20
+    },
+    {
+      "text": "Crumble the feta over the top before serving.",
+      "uses": ["feta"]
+    }
+  ]
+}

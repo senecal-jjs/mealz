@@ -1,0 +1,126 @@
+{
+  "id": "thai-basil-chicken",
+  "title": "Thai Basil Chicken",
+  "description": "A fast, fiery stir-fry of ground chicken, green beans and basil, served over rice with a crispy egg.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 20,
+  "difficulty": "medium",
+  "tags": ["stir-fry", "spicy"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "oyster",
+      "ingredient": "oyster-sauce",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "fish",
+      "ingredient": "fish-sauce",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "sugar",
+      "ingredient": "brown-sugar",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 5,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "chili",
+      "ingredient": "red-chili",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "shallot",
+      "ingredient": "shallot",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "chicken",
+      "ingredient": "ground-chicken",
+      "quantity": 1,
+      "unit": "lb"
+    },
+    {
+      "id": "beans",
+      "ingredient": "green-beans",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "cut into 1-inch pieces"
+    },
+    {
+      "id": "basil",
+      "ingredient": "basil",
+      "quantity": 1,
+      "unit": "bunch",
+      "prep": "leaves picked"
+    },
+    {
+      "id": "eggs",
+      "ingredient": "egg",
+      "quantity": 4,
+      "unit": "whole",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Rinse the rice, then bring it to a boil with 2¼ cups water and a pinch of salt. Cover, turn the heat to low and cook until the water is absorbed, about 15 minutes. Let it stand off the heat, still covered, while you cook.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Stir together the oyster sauce, soy sauce, fish sauce, brown sugar and 2 tbsp water.",
+      "uses": ["oyster", "soy", "fish", "sugar"]
+    },
+    {
+      "text": "Heat the oil in a wok or large skillet over high heat. Stir-fry the garlic, chilies and shallots for 30 seconds.",
+      "uses": ["oil", "garlic", "chili", "shallot"]
+    },
+    {
+      "text": "Add the chicken and cook, breaking it up, until no longer pink, 4 to 5 minutes. Add the green beans and cook 2 minutes more.",
+      "uses": ["chicken", "beans"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Pour in the sauce and toss for 1 minute. Take the pan off the heat and fold in the basil until it wilts.",
+      "uses": ["basil"]
+    },
+    {
+      "text": "If you like, fry the eggs in a little oil until the edges are crisp. Serve the chicken over the rice, topped with an egg.",
+      "uses": ["eggs"]
+    }
+  ]
+}

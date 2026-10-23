@@ -1,0 +1,137 @@
+{
+  "id": "peanut-noodles",
+  "title": "Crunchy Peanut Noodles",
+  "description": "Cool rice noodles and crisp vegetables tossed in a creamy, tangy peanut sauce.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 20,
+  "cookMinutes": 10,
+  "difficulty": "easy",
+  "tags": ["meatless", "meal-prep"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "noodles",
+      "ingredient": "rice-noodles",
+      "quantity": 8,
+      "unit": "oz"
+    },
+    {
+      "id": "edamame",
+      "ingredient": "edamame",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "pb",
+      "ingredient": "peanut-butter",
+      "quantity": 0.33,
+      "unit": "cup"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "vinegar",
+      "ingredient": "rice-vinegar",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "maple",
+      "ingredient": "maple-syrup",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "sesame",
+      "ingredient": "sesame-oil",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 1,
+      "unit": "clove",
+      "prep": "grated"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 2,
+      "unit": "tsp",
+      "prep": "grated"
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "cucumber",
+      "ingredient": "cucumber",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "cut into matchsticks"
+    },
+    {
+      "id": "carrots",
+      "ingredient": "carrots",
+      "quantity": 0.25,
+      "unit": "lb",
+      "prep": "cut into matchsticks"
+    },
+    {
+      "id": "cabbage",
+      "ingredient": "green-cabbage",
+      "quantity": 0.25,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 3,
+      "unit": "whole",
+      "prep": "sliced"
+    },
+    {
+      "id": "peanuts",
+      "ingredient": "roasted-peanuts",
+      "quantity": 0.25,
+      "unit": "cup",
+      "prep": "chopped",
+      "optional": true
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "chopped"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Cook the noodles according to the package, adding the edamame for the last 3 minutes. Drain and rinse under cold water.",
+      "uses": ["noodles", "edamame"]
+    },
+    {
+      "text": "Whisk the peanut butter, soy sauce, vinegar, maple syrup, sesame oil, garlic, ginger and the juice of the lime with 3 to 4 tbsp warm water until smooth.",
+      "uses": ["pb", "soy", "vinegar", "maple", "sesame", "garlic", "ginger", "lime"]
+    },
+    {
+      "text": "Toss the noodles and edamame with the sauce, cucumber, carrots, cabbage and green onions.",
+      "uses": ["cucumber", "carrots", "cabbage", "scallions"]
+    },
+    {
+      "text": "Top with chopped peanuts and cilantro.",
+      "uses": ["peanuts", "cilantro"]
+    }
+  ]
+}

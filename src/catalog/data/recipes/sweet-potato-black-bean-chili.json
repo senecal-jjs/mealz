@@ -1,0 +1,138 @@
+{
+  "id": "sweet-potato-black-bean-chili",
+  "title": "Sweet Potato and Black Bean Chili",
+  "description": "A smoky, hearty vegan chili with tender sweet potatoes. Freezes beautifully.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 30,
+  "difficulty": "easy",
+  "tags": ["one-pot", "meatless", "meal-prep"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "bell-pepper",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "chili",
+      "ingredient": "chili-powder",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 2,
+      "unit": "tsp"
+    },
+    {
+      "id": "paprika",
+      "ingredient": "smoked-paprika",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "potatoes",
+      "ingredient": "sweet-potato",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "peeled and cut into ½-inch cubes"
+    },
+    {
+      "id": "beans",
+      "ingredient": "black-beans",
+      "quantity": 2,
+      "unit": "can",
+      "prep": "15 oz each, drained and rinsed"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "diced-tomatoes",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz"
+    },
+    {
+      "id": "broth",
+      "ingredient": "vegetable-broth",
+      "quantity": 2,
+      "unit": "cup"
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "avocado",
+      "ingredient": "avocado",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced",
+      "optional": true
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "chopped",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oil in a large pot over medium heat. Cook the onion and bell pepper with a pinch of salt until soft, about 5 minutes.",
+      "uses": ["oil", "onion", "pepper", "salt"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Stir in the garlic, chili powder, cumin and paprika for 1 minute.",
+      "uses": ["garlic", "chili", "cumin", "paprika"]
+    },
+    {
+      "text": "Add the sweet potatoes, beans, tomatoes and broth. Bring to a boil, then cover and simmer until the sweet potatoes are tender, about 20 minutes.",
+      "uses": ["potatoes", "beans", "tomatoes", "broth"],
+      "timerMinutes": 20
+    },
+    {
+      "text": "Mash a few pieces of sweet potato against the side of the pot to thicken the chili. Stir in the juice of the lime and season with salt.",
+      "uses": ["lime"]
+    },
+    {
+      "text": "Serve topped with avocado and cilantro.",
+      "uses": ["avocado", "cilantro"]
+    }
+  ]
+}

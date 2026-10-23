@@ -1,0 +1,107 @@
+{
+  "id": "steak-chimichurri-zucchini",
+  "title": "Steak with Chimichurri and Zucchini",
+  "description": "Seared sirloin with a punchy fresh-herb chimichurri and browned zucchini.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 15,
+  "difficulty": "medium",
+  "tags": [],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "parsley",
+      "ingredient": "parsley",
+      "quantity": 1,
+      "unit": "bunch",
+      "prep": "finely chopped"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "vinegar",
+      "ingredient": "red-wine-vinegar",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "oregano",
+      "ingredient": "dried-oregano",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "flakes",
+      "ingredient": "red-pepper-flakes",
+      "quantity": 0.5,
+      "unit": "tsp"
+    },
+    {
+      "id": "oil-sauce",
+      "ingredient": "olive-oil",
+      "quantity": 0.5,
+      "unit": "cup"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "steak",
+      "ingredient": "sirloin-steak",
+      "quantity": 1.5,
+      "unit": "lb"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil-cook",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "zucchini",
+      "ingredient": "zucchini",
+      "quantity": 3,
+      "unit": "whole",
+      "prep": "sliced into half-moons"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Make the chimichurri: stir together the parsley, garlic, vinegar, oregano, pepper flakes, ½ cup oil and ½ tsp salt. Set aside.",
+      "uses": ["parsley", "garlic", "vinegar", "oregano", "flakes", "oil-sauce", "salt"]
+    },
+    {
+      "text": "Pat the steak dry and season it generously with salt and pepper.",
+      "uses": ["steak", "pepper"]
+    },
+    {
+      "text": "Heat 1 tbsp oil in a large skillet over high heat until shimmering. Sear the steak 4 to 5 minutes per side for medium-rare, then let it rest for 5 minutes.",
+      "uses": ["oil-cook"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Lower the heat to medium-high, add the remaining oil and cook the zucchini with a pinch of salt until browned and just tender, about 5 minutes.",
+      "uses": ["zucchini"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Slice the steak against the grain and spoon the chimichurri over the steak and zucchini.",
+      "uses": []
+    }
+  ]
+}

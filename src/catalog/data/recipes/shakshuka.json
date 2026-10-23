@@ -1,0 +1,127 @@
+{
+  "id": "shakshuka",
+  "title": "Shakshuka",
+  "description": "Eggs gently poached in a spiced tomato and pepper sauce. Great for dinner or brunch.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["one-pot", "meatless"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "bell-pepper",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "paprika",
+      "ingredient": "smoked-paprika",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "crushed-tomatoes",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "28 oz"
+    },
+    {
+      "id": "black-pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "eggs",
+      "ingredient": "egg",
+      "quantity": 8,
+      "unit": "whole"
+    },
+    {
+      "id": "feta",
+      "ingredient": "feta",
+      "quantity": 2,
+      "unit": "oz",
+      "prep": "crumbled",
+      "optional": true
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "chopped",
+      "optional": true
+    },
+    {
+      "id": "bread",
+      "ingredient": "crusty-bread",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "for serving",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oil in a large, deep skillet over medium heat. Cook the onion and bell pepper with a pinch of salt until soft, about 6 minutes.",
+      "uses": ["oil", "onion", "pepper", "salt"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Stir in the garlic, cumin and paprika for 1 minute.",
+      "uses": ["garlic", "cumin", "paprika"]
+    },
+    {
+      "text": "Add the tomatoes and simmer until thickened, about 10 minutes. Season with salt and black pepper.",
+      "uses": ["tomatoes", "black-pepper"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Make 8 small wells in the sauce and crack an egg into each. Cover and cook on low until the whites are set but the yolks are still runny, 6 to 8 minutes.",
+      "uses": ["eggs"],
+      "timerMinutes": 7
+    },
+    {
+      "text": "Top with feta and cilantro, and serve with bread for dipping.",
+      "uses": ["feta", "cilantro", "bread"]
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "id": "chicken-pesto-pasta",
+  "title": "Chicken Pesto Pasta",
+  "description": "Golden chicken, blistered tomatoes and spinach tossed with pasta and basil pesto.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "pasta",
+      "ingredient": "short-pasta",
+      "quantity": 12,
+      "unit": "oz"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "chicken",
+      "ingredient": "chicken-breast",
+      "quantity": 1,
+      "unit": "lb",
+      "prep": "cut into 1-inch pieces"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 10,
+      "unit": "oz",
+      "prep": "halved"
+    },
+    {
+      "id": "spinach",
+      "ingredient": "baby-spinach",
+      "quantity": 3,
+      "unit": "oz"
+    },
+    {
+      "id": "pesto",
+      "ingredient": "basil-pesto",
+      "quantity": 0.5,
+      "unit": "cup"
+    },
+    {
+      "id": "parmesan",
+      "ingredient": "parmesan",
+      "quantity": 0.25,
+      "unit": "cup",
+      "prep": "grated"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Cook the pasta in a large pot of salted boiling water until al dente, 10 to 11 minutes. Save ½ cup of the pasta water, then drain.",
+      "uses": ["pasta", "salt"],
+      "timerMinutes": 11
+    },
+    {
+      "text": "Meanwhile, season the chicken with salt and pepper. Heat the oil in a large skillet over medium-high heat and cook the chicken until golden and cooked through, 6 to 8 minutes.",
+      "uses": ["chicken", "pepper", "oil"],
+      "timerMinutes": 8
+    },
+    {
+      "text": "Add the tomatoes and cook until just softening, about 2 minutes. Add the spinach and stir until wilted.",
+      "uses": ["tomatoes", "spinach"]
+    },
+    {
+      "text": "Add the pasta, pesto and a splash of the pasta water and toss until glossy. Top with parmesan.",
+      "uses": ["pesto", "parmesan"]
+    }
+  ]
+}

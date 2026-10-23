@@ -1,0 +1,7 @@
+node_modules
+drizzle
+ios
+android
+.expo
+package-lock.json
+src/catalog/data/ingredients.json

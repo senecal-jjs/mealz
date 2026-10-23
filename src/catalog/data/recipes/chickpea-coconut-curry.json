@@ -1,0 +1,117 @@
+{
+  "id": "chickpea-coconut-curry",
+  "title": "Chickpea Coconut Curry",
+  "description": "A cozy one-pot curry of chickpeas, tomatoes and spinach in coconut milk, served over rice.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["one-pot", "meatless"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 1,
+      "unit": "tbsp",
+      "prep": "grated"
+    },
+    {
+      "id": "curry",
+      "ingredient": "curry-powder",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "chickpeas",
+      "ingredient": "chickpeas",
+      "quantity": 2,
+      "unit": "can",
+      "prep": "15 oz each, drained and rinsed"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "diced-tomatoes",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz"
+    },
+    {
+      "id": "coconut",
+      "ingredient": "coconut-milk",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "13.5 oz"
+    },
+    {
+      "id": "spinach",
+      "ingredient": "baby-spinach",
+      "quantity": 5,
+      "unit": "oz"
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 1,
+      "unit": "whole"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Rinse the rice, then bring it to a boil with 2¼ cups water and a pinch of salt. Cover, turn the heat to low and cook until the water is absorbed, about 15 minutes. Let it stand off the heat, still covered, while you cook.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Heat the oil in a large pot over medium heat. Cook the onion with a pinch of salt until soft and golden, about 5 minutes.",
+      "uses": ["oil", "onion", "salt"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Add the garlic, ginger and curry powder and stir until fragrant, about 1 minute.",
+      "uses": ["garlic", "ginger", "curry"]
+    },
+    {
+      "text": "Add the chickpeas, tomatoes and coconut milk. Simmer, stirring now and then, until slightly thickened, about 10 minutes.",
+      "uses": ["chickpeas", "tomatoes", "coconut"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Stir in the spinach until it wilts. Season with salt and a squeeze of lime, and serve over the rice.",
+      "uses": ["spinach", "lime"]
+    }
+  ]
+}

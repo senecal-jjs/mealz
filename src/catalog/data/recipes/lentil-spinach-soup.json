@@ -1,0 +1,136 @@
+{
+  "id": "lentil-spinach-soup",
+  "title": "Lemony Lentil and Spinach Soup",
+  "description": "A hearty, warmly spiced lentil soup brightened with lemon. Even better the next day.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 35,
+  "difficulty": "easy",
+  "tags": ["one-pot", "meatless", "meal-prep"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "carrots",
+      "ingredient": "carrots",
+      "quantity": 0.5,
+      "unit": "lb",
+      "prep": "diced"
+    },
+    {
+      "id": "celery",
+      "ingredient": "celery",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "paprika",
+      "ingredient": "smoked-paprika",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "lentils",
+      "ingredient": "brown-lentils",
+      "quantity": 1.5,
+      "unit": "cup",
+      "prep": "rinsed"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "diced-tomatoes",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz"
+    },
+    {
+      "id": "broth",
+      "ingredient": "vegetable-broth",
+      "quantity": 6,
+      "unit": "cup"
+    },
+    {
+      "id": "spinach",
+      "ingredient": "baby-spinach",
+      "quantity": 5,
+      "unit": "oz"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "bread",
+      "ingredient": "crusty-bread",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "for serving",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oil in a large pot over medium heat. Add the onion, carrots, celery and a pinch of salt and cook until softened, about 8 minutes.",
+      "uses": ["oil", "onion", "carrots", "celery", "salt"],
+      "timerMinutes": 8
+    },
+    {
+      "text": "Stir in the garlic, cumin and paprika for 1 minute.",
+      "uses": ["garlic", "cumin", "paprika"]
+    },
+    {
+      "text": "Add the lentils, tomatoes and broth. Bring to a boil, then lower the heat and simmer, partly covered, until the lentils are tender, about 25 minutes.",
+      "uses": ["lentils", "tomatoes", "broth"],
+      "timerMinutes": 25
+    },
+    {
+      "text": "Stir in the spinach until wilted. Add the juice of the lemon and season well with salt and pepper.",
+      "uses": ["spinach", "lemon", "pepper"]
+    },
+    {
+      "text": "Ladle into bowls and serve with crusty bread.",
+      "uses": ["bread"]
+    }
+  ]
+}

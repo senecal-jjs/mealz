@@ -1,0 +1,96 @@
+{
+  "id": "lemon-garlic-salmon-green-beans",
+  "title": "Lemon Garlic Salmon with Green Beans",
+  "description": "Buttery garlic salmon and crisp-tender green beans roasted together in under 30 minutes.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["sheet-pan"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "salmon",
+      "ingredient": "salmon-fillet",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "about 6 oz each"
+    },
+    {
+      "id": "beans",
+      "ingredient": "green-beans",
+      "quantity": 1,
+      "unit": "lb",
+      "prep": "trimmed"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "butter",
+      "ingredient": "butter",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "parsley",
+      "ingredient": "parsley",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "chopped",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 425°F (220°C). Toss the green beans with the oil and a pinch each of salt and pepper on a sheet pan, then push them to one side.",
+      "uses": ["beans", "oil", "salt", "pepper"]
+    },
+    {
+      "text": "Pat the salmon dry, season both sides with salt and pepper and lay it skin-side down on the empty side of the pan.",
+      "uses": ["salmon"]
+    },
+    {
+      "text": "Melt the butter in a small bowl in the microwave. Stir in the garlic and the juice of half the lemon. Spoon it over the salmon and top each fillet with a thin slice from the other half.",
+      "uses": ["butter", "garlic", "lemon"]
+    },
+    {
+      "text": "Roast until the salmon flakes easily with a fork, 12 to 15 minutes.",
+      "uses": [],
+      "timerMinutes": 12
+    },
+    {
+      "text": "Scatter parsley over the top and spoon the pan juices over everything.",
+      "uses": ["parsley"]
+    }
+  ]
+}

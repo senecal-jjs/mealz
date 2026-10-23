@@ -1,0 +1,111 @@
+{
+  "id": "creamy-mushroom-gnocchi",
+  "title": "Creamy Mushroom and Spinach Gnocchi",
+  "description": "Pan-crisped gnocchi in a garlicky parmesan cream sauce with browned mushrooms and spinach.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "medium",
+  "tags": ["meatless"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "butter",
+      "ingredient": "butter",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "gnocchi",
+      "ingredient": "gnocchi",
+      "quantity": 2,
+      "unit": "lb",
+      "prep": "shelf-stable"
+    },
+    {
+      "id": "mushrooms",
+      "ingredient": "cremini-mushrooms",
+      "quantity": 12,
+      "unit": "oz",
+      "prep": "sliced"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "thyme",
+      "ingredient": "dried-thyme",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "broth",
+      "ingredient": "vegetable-broth",
+      "quantity": 0.5,
+      "unit": "cup"
+    },
+    {
+      "id": "cream",
+      "ingredient": "heavy-cream",
+      "quantity": 0.75,
+      "unit": "cup"
+    },
+    {
+      "id": "spinach",
+      "ingredient": "baby-spinach",
+      "quantity": 5,
+      "unit": "oz"
+    },
+    {
+      "id": "parmesan",
+      "ingredient": "parmesan",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "grated"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oil and 1 tbsp butter in a large skillet over medium-high heat. Add the gnocchi in a single layer and cook undisturbed until golden, about 3 minutes. Toss and cook 3 minutes more, then move to a plate.",
+      "uses": ["oil", "butter", "gnocchi"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Melt the remaining butter. Cook the mushrooms with a pinch of salt until browned and their liquid has cooked off, 6 to 8 minutes.",
+      "uses": ["mushrooms", "salt"],
+      "timerMinutes": 8
+    },
+    {
+      "text": "Stir in the garlic and thyme for 1 minute. Pour in the broth and cream and simmer until slightly thickened, about 3 minutes.",
+      "uses": ["garlic", "thyme", "broth", "cream"],
+      "timerMinutes": 3
+    },
+    {
+      "text": "Stir in the spinach until wilted, then the gnocchi and parmesan. Season with black pepper.",
+      "uses": ["spinach", "parmesan", "pepper"]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "id": "shrimp-fried-rice",
+  "title": "Shrimp Fried Rice",
+  "description": "Better-than-takeout fried rice with juicy shrimp, egg and vegetables. Leftover rice works best.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "difficulty": "medium",
+  "tags": ["stir-fry"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "shrimp",
+      "ingredient": "shrimp",
+      "quantity": 1,
+      "unit": "lb",
+      "prep": "peeled and deveined"
+    },
+    {
+      "id": "eggs",
+      "ingredient": "egg",
+      "quantity": 3,
+      "unit": "whole",
+      "prep": "beaten"
+    },
+    {
+      "id": "veg",
+      "ingredient": "peas-and-carrots",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "sliced, white and green parts separated"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "sesame",
+      "ingredient": "sesame-oil",
+      "quantity": 1,
+      "unit": "tsp"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Cook the rice as usual (or use about 4 cups of leftover rice). Spread it on a sheet pan to cool and dry out while you prep.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Heat 1 tbsp oil in a large skillet or wok over high heat. Cook the shrimp until pink, about 2 minutes per side, then move to a plate.",
+      "uses": ["oil", "shrimp"]
+    },
+    {
+      "text": "Add another 1 tbsp oil and scramble the eggs until just set. Break them into pieces and add to the shrimp.",
+      "uses": ["eggs"]
+    },
+    {
+      "text": "Add the remaining oil, the peas and carrots, the white parts of the green onions and the garlic. Stir-fry for 2 minutes.",
+      "uses": ["veg", "scallions", "garlic"]
+    },
+    {
+      "text": "Add the rice and press it into the pan. Let it crisp for a minute before tossing, and repeat a few times. Stir in the soy sauce, sesame oil, shrimp and eggs, and top with the green onion tops.",
+      "uses": ["soy", "sesame"]
+    }
+  ]
+}

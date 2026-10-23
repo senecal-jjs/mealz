@@ -1,0 +1,92 @@
+{
+  "id": "honey-mustard-pork-chops",
+  "title": "Honey Mustard Pork Chops with Roasted Carrots",
+  "description": "Juicy pork chops brushed with a sweet-sharp honey mustard glaze, roasted with carrots on one pan.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["sheet-pan", "kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "carrots",
+      "ingredient": "carrots",
+      "quantity": 1,
+      "unit": "lb",
+      "prep": "cut into sticks"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "mustard",
+      "ingredient": "dijon-mustard",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "honey",
+      "ingredient": "honey",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 2,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "thyme",
+      "ingredient": "dried-thyme",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "pork",
+      "ingredient": "pork-chop",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "boneless, about 1 inch thick"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 425°F (220°C). Toss the carrots with 1 tbsp oil and a pinch of salt and pepper on a sheet pan and roast for 10 minutes.",
+      "uses": ["carrots", "oil", "salt", "pepper"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Stir together the mustard, honey, garlic and thyme.",
+      "uses": ["mustard", "honey", "garlic", "thyme"]
+    },
+    {
+      "text": "Rub the pork chops with the remaining oil and season with salt and pepper. Push the carrots to the edges, add the chops to the pan and brush the tops with half the glaze. Roast until the pork reaches 145°F (63°C), 12 to 15 minutes.",
+      "uses": ["pork"],
+      "timerMinutes": 13
+    },
+    {
+      "text": "Brush the chops with the rest of the glaze and let them rest for 5 minutes before serving.",
+      "uses": [],
+      "timerMinutes": 5
+    }
+  ]
+}

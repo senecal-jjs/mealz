@@ -1,0 +1,131 @@
+{
+  "id": "mediterranean-quinoa-bowls",
+  "title": "Mediterranean Quinoa Bowls",
+  "description": "Fluffy quinoa topped with crispy chickpeas, a chopped cucumber-tomato salad, olives and feta.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["meatless", "meal-prep"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "quinoa",
+      "ingredient": "quinoa",
+      "quantity": 1.5,
+      "unit": "cup",
+      "prep": "rinsed"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "chickpeas",
+      "ingredient": "chickpeas",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz, drained and rinsed"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 0.25,
+      "unit": "cup"
+    },
+    {
+      "id": "oregano",
+      "ingredient": "dried-oregano",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 2,
+      "unit": "whole"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 1,
+      "unit": "clove",
+      "prep": "grated"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "cucumber",
+      "ingredient": "cucumber",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 10,
+      "unit": "oz",
+      "prep": "halved"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 0.25,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "olives",
+      "ingredient": "kalamata-olives",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "halved"
+    },
+    {
+      "id": "parsley",
+      "ingredient": "parsley",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "chopped"
+    },
+    {
+      "id": "feta",
+      "ingredient": "feta",
+      "quantity": 4,
+      "unit": "oz",
+      "prep": "crumbled"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Bring the quinoa, 3 cups water and a pinch of salt to a boil. Cover and simmer on low until the water is absorbed, about 15 minutes. Rest 5 minutes, then fluff.",
+      "uses": ["quinoa", "salt"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Pat the chickpeas dry. Fry them in a skillet with 1 tbsp of the oil and the oregano over medium-high heat until crisp in spots, 6 to 8 minutes.",
+      "uses": ["chickpeas", "oregano", "oil"],
+      "timerMinutes": 8
+    },
+    {
+      "text": "Whisk the rest of the oil with the juice of both lemons, the garlic and a good pinch of salt and pepper.",
+      "uses": ["lemon", "garlic", "pepper"]
+    },
+    {
+      "text": "Toss the cucumber, tomatoes, onion, olives and parsley with about a third of the dressing.",
+      "uses": ["cucumber", "tomatoes", "onion", "olives", "parsley"]
+    },
+    {
+      "text": "Divide the quinoa between bowls, top with the salad, chickpeas and feta, and drizzle with the remaining dressing.",
+      "uses": ["feta"]
+    }
+  ]
+}
