@@ -1,0 +1,105 @@
+{
+  "id": "loaded-sweet-potatoes",
+  "title": "Loaded Black Bean Sweet Potatoes",
+  "description": "Fluffy sweet potatoes piled high with spiced black beans, avocado and lime.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["meatless", "budget"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "potatoes",
+      "ingredient": "sweet-potato",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "scrubbed"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 0.5,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "beans",
+      "ingredient": "black-beans",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz, drained and rinsed"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "chili",
+      "ingredient": "chili-powder",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "avocado",
+      "ingredient": "avocado",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "salsa",
+      "ingredient": "salsa",
+      "quantity": 0.5,
+      "unit": "cup"
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "chopped",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Prick the sweet potatoes all over with a fork and microwave on high until tender, 12 to 15 minutes, turning halfway.",
+      "uses": ["potatoes"],
+      "timerMinutes": 14
+    },
+    {
+      "text": "Meanwhile, heat the oil in a skillet over medium heat. Cook the onion until soft, 4 minutes, then add the beans, cumin, chili powder, a pinch of salt and a splash of water. Warm through.",
+      "uses": ["oil", "onion", "beans", "cumin", "chili", "salt"]
+    },
+    {
+      "text": "Toss the avocado with the juice of half the lime and a pinch of salt.",
+      "uses": ["avocado", "lime"]
+    },
+    {
+      "text": "Split the potatoes, fluff the insides with a fork and fill with the beans, avocado, salsa and cilantro. Serve with lime wedges.",
+      "uses": ["salsa", "cilantro"]
+    }
+  ]
+}

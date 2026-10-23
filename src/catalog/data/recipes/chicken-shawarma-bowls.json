@@ -1,0 +1,138 @@
+{
+  "id": "chicken-shawarma-bowls",
+  "title": "Chicken Shawarma Bowls",
+  "description": "Warmly spiced roasted chicken over rice with cucumber-tomato salad and garlicky yogurt.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 20,
+  "difficulty": "medium",
+  "tags": ["meal-prep"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "chicken",
+      "ingredient": "chicken-thighs",
+      "quantity": 1.5,
+      "unit": "lb",
+      "prep": "boneless, skinless"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 2,
+      "unit": "tsp"
+    },
+    {
+      "id": "coriander",
+      "ingredient": "ground-coriander",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "paprika",
+      "ingredient": "smoked-paprika",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "turmeric",
+      "ingredient": "ground-turmeric",
+      "quantity": 0.5,
+      "unit": "tsp"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 2,
+      "unit": "whole"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "yogurt",
+      "ingredient": "greek-yogurt",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 1,
+      "unit": "clove",
+      "prep": "grated"
+    },
+    {
+      "id": "cucumber",
+      "ingredient": "cucumber",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 10,
+      "unit": "oz",
+      "prep": "quartered"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 0.25,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "parsley",
+      "ingredient": "parsley",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "chopped"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 450°F (230°C). Toss the chicken with 2 tbsp oil, the cumin, coriander, paprika, turmeric, the juice of 1 lemon and 1 tsp salt. Spread on a sheet pan.",
+      "uses": ["chicken", "oil", "cumin", "coriander", "paprika", "turmeric", "lemon", "salt"]
+    },
+    {
+      "text": "Roast until charred at the edges and cooked through, about 20 minutes.",
+      "uses": [],
+      "timerMinutes": 20
+    },
+    {
+      "text": "Rinse the rice, then bring it to a boil with 2¼ cups water and a pinch of salt. Cover, turn the heat to low and cook until the water is absorbed, about 15 minutes. Let it stand off the heat, still covered, while you cook.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Stir the yogurt with the garlic, a squeeze of lemon and a pinch of salt.",
+      "uses": ["yogurt", "garlic"]
+    },
+    {
+      "text": "Toss the cucumber, tomatoes, onion and parsley with the remaining oil and lemon juice.",
+      "uses": ["cucumber", "tomatoes", "onion", "parsley"]
+    },
+    {
+      "text": "Slice the chicken and serve over rice with the salad and a spoonful of garlic yogurt.",
+      "uses": []
+    }
+  ]
+}

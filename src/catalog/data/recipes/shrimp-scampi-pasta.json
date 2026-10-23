@@ -1,0 +1,102 @@
+{
+  "id": "shrimp-scampi-pasta",
+  "title": "Shrimp Scampi Pasta",
+  "description": "Spaghetti and shrimp tossed in a buttery garlic and lemon sauce.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "pasta",
+      "ingredient": "spaghetti",
+      "quantity": 12,
+      "unit": "oz"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "shrimp",
+      "ingredient": "shrimp",
+      "quantity": 1,
+      "unit": "lb",
+      "prep": "peeled and deveined"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "butter",
+      "ingredient": "butter",
+      "quantity": 4,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 5,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "flakes",
+      "ingredient": "red-pepper-flakes",
+      "quantity": 0.25,
+      "unit": "tsp"
+    },
+    {
+      "id": "broth",
+      "ingredient": "vegetable-broth",
+      "quantity": 0.5,
+      "unit": "cup"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "parsley",
+      "ingredient": "parsley",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "chopped"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Cook the spaghetti in salted boiling water until al dente, about 10 minutes. Save ½ cup of the pasta water, then drain.",
+      "uses": ["pasta", "salt"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Season the shrimp with salt and pepper. Heat the oil in a large skillet over medium-high heat and cook the shrimp until pink, about 2 minutes per side. Move to a plate.",
+      "uses": ["shrimp", "pepper", "oil"]
+    },
+    {
+      "text": "Melt the butter in the pan over medium heat, add the garlic and pepper flakes and cook for 1 minute. Add the broth and the juice of the lemon and simmer for 2 minutes.",
+      "uses": ["butter", "garlic", "flakes", "broth", "lemon"]
+    },
+    {
+      "text": "Toss in the pasta, shrimp and parsley with a splash of pasta water until glossy.",
+      "uses": ["parsley"]
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "id": "shrimp-tacos-mango-salsa",
+  "title": "Shrimp Tacos with Mango Salsa",
+  "description": "Chili-lime shrimp in warm tortillas with a juicy mango, red onion and cilantro salsa.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 8,
+  "difficulty": "easy",
+  "tags": ["quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "mango",
+      "ingredient": "mango",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 0.25,
+      "unit": "whole",
+      "prep": "finely diced"
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "chopped"
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 2,
+      "unit": "whole"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "shrimp",
+      "ingredient": "shrimp",
+      "quantity": 1,
+      "unit": "lb",
+      "prep": "peeled and deveined"
+    },
+    {
+      "id": "chili",
+      "ingredient": "chili-powder",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 0.5,
+      "unit": "tsp"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "tortillas",
+      "ingredient": "corn-tortillas",
+      "quantity": 8,
+      "unit": "whole"
+    },
+    {
+      "id": "cabbage",
+      "ingredient": "green-cabbage",
+      "quantity": 0.25,
+      "unit": "whole",
+      "prep": "shredded"
+    },
+    {
+      "id": "sour-cream",
+      "ingredient": "sour-cream",
+      "quantity": 0.33,
+      "unit": "cup",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Make the salsa: toss the mango, onion and half the cilantro with the juice of 1 lime and a pinch of salt.",
+      "uses": ["mango", "onion", "cilantro", "lime", "salt"]
+    },
+    {
+      "text": "Pat the shrimp dry and toss with the chili powder, cumin and a pinch of salt.",
+      "uses": ["shrimp", "chili", "cumin"]
+    },
+    {
+      "text": "Heat the oil in a large skillet over high heat. Cook the shrimp until pink and just cooked through, about 2 minutes per side.",
+      "uses": ["oil"]
+    },
+    {
+      "text": "Warm the tortillas in a dry skillet.",
+      "uses": ["tortillas"]
+    },
+    {
+      "text": "Fill the tortillas with cabbage, shrimp and salsa. Add a spoonful of sour cream and serve with the other lime in wedges.",
+      "uses": ["cabbage", "sour-cream"]
+    }
+  ]
+}

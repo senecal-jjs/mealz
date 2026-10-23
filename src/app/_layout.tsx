@@ -6,8 +6,9 @@ import { StyleSheet, useColorScheme, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { ThemedText } from '@/components/themed-text';
+import { headerBlur } from '@/constants/navigation';
 import { db } from '@/db/client';
-import { usePreferences } from '@/features/preferences/hooks';
+import { PreferencesProvider, usePreferences } from '@/features/preferences/hooks';
 import migrations from '../../drizzle/migrations';
 
 SplashScreen.preventAutoHideAsync();
@@ -28,7 +29,11 @@ export default function RootLayout() {
   }
   // Nothing may query the database until its tables exist.
   if (!success) return null;
-  return <AppNavigator />;
+  return (
+    <PreferencesProvider>
+      <AppNavigator />
+    </PreferencesProvider>
+  );
 }
 
 function AppNavigator() {
@@ -59,6 +64,7 @@ function AppNavigator() {
                 headerTransparent: true,
                 headerTitle: '',
                 headerBackButtonDisplayMode: 'minimal',
+                ...headerBlur,
               }}
             />
           </Stack.Protected>

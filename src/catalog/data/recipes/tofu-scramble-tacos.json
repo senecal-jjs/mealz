@@ -1,0 +1,105 @@
+{
+  "id": "tofu-scramble-tacos",
+  "title": "Tofu Scramble Breakfast Tacos",
+  "description": "Golden turmeric tofu scramble with peppers and black beans, tucked into warm tortillas.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 12,
+  "difficulty": "easy",
+  "tags": ["meatless", "quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 0.5,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "bell-pepper",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "tofu",
+      "ingredient": "extra-firm-tofu",
+      "quantity": 14,
+      "unit": "oz",
+      "prep": "drained"
+    },
+    {
+      "id": "turmeric",
+      "ingredient": "ground-turmeric",
+      "quantity": 0.5,
+      "unit": "tsp"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "beans",
+      "ingredient": "black-beans",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz, drained and rinsed"
+    },
+    {
+      "id": "tortillas",
+      "ingredient": "corn-tortillas",
+      "quantity": 8,
+      "unit": "whole"
+    },
+    {
+      "id": "avocado",
+      "ingredient": "avocado",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "sliced"
+    },
+    {
+      "id": "salsa",
+      "ingredient": "salsa",
+      "quantity": 0.5,
+      "unit": "cup"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oil in a large skillet over medium heat. Cook the onion and bell pepper until soft, about 5 minutes.",
+      "uses": ["oil", "onion", "pepper"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Crumble the tofu into the pan with your hands. Add the turmeric, cumin and a big pinch of salt and cook, stirring, until heated through and lightly golden, about 5 minutes.",
+      "uses": ["tofu", "turmeric", "cumin", "salt"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Stir in the beans and cook until warm.",
+      "uses": ["beans"]
+    },
+    {
+      "text": "Warm the tortillas in a dry skillet. Fill with the scramble and top with avocado and salsa.",
+      "uses": ["tortillas", "avocado", "salsa"]
+    }
+  ]
+}

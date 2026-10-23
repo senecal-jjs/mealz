@@ -1,0 +1,98 @@
+{
+  "id": "cheesy-broccoli-orzo",
+  "title": "Cheesy Broccoli Orzo",
+  "description": "Creamy one-pan orzo with tender broccoli and sharp cheddar. Comfort food in 25 minutes.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 5,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["one-pot", "meatless", "kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "butter",
+      "ingredient": "butter",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 2,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "orzo",
+      "ingredient": "orzo",
+      "quantity": 12,
+      "unit": "oz"
+    },
+    {
+      "id": "broth",
+      "ingredient": "vegetable-broth",
+      "quantity": 4,
+      "unit": "cup"
+    },
+    {
+      "id": "broccoli",
+      "ingredient": "broccoli",
+      "quantity": 0.75,
+      "unit": "lb",
+      "prep": "cut into small florets"
+    },
+    {
+      "id": "cheddar",
+      "ingredient": "cheddar",
+      "quantity": 1.5,
+      "unit": "cup",
+      "prep": "shredded"
+    },
+    {
+      "id": "parmesan",
+      "ingredient": "parmesan",
+      "quantity": 0.25,
+      "unit": "cup",
+      "prep": "grated"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 0.5,
+      "unit": "whole"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    }
+  ],
+  "steps": [
+    {
+      "text": "Melt the butter in a deep skillet over medium heat. Add the garlic and orzo and stir until the orzo smells toasty, about 2 minutes.",
+      "uses": ["butter", "garlic", "orzo"]
+    },
+    {
+      "text": "Pour in the broth and bring to a simmer. Cook, stirring often, for 6 minutes.",
+      "uses": ["broth"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Add the broccoli, cover and cook until the orzo and broccoli are tender and most of the liquid is absorbed, about 6 minutes more.",
+      "uses": ["broccoli"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Off the heat, stir in the cheddar, parmesan and a squeeze of lemon. Season with salt and pepper.",
+      "uses": ["cheddar", "parmesan", "lemon", "salt", "pepper"]
+    }
+  ]
+}

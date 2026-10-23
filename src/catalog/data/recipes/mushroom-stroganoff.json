@@ -1,0 +1,121 @@
+{
+  "id": "mushroom-stroganoff",
+  "title": "Creamy Mushroom Stroganoff",
+  "description": "Browned mushrooms in a tangy sour cream and Dijon sauce, spooned over pasta.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["meatless"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "pasta",
+      "ingredient": "short-pasta",
+      "quantity": 12,
+      "unit": "oz"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "butter",
+      "ingredient": "butter",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "mushrooms",
+      "ingredient": "cremini-mushrooms",
+      "quantity": 20,
+      "unit": "oz",
+      "prep": "sliced"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 2,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "paprika",
+      "ingredient": "smoked-paprika",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "broth",
+      "ingredient": "vegetable-broth",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "mustard",
+      "ingredient": "dijon-mustard",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "sour-cream",
+      "ingredient": "sour-cream",
+      "quantity": 0.75,
+      "unit": "cup"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "parsley",
+      "ingredient": "parsley",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "chopped"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Cook the pasta in salted boiling water until al dente, about 10 minutes, then drain.",
+      "uses": ["pasta", "salt"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Meanwhile, heat the butter and oil in a large skillet over medium-high heat. Cook the mushrooms without stirring for 3 minutes, then stir and cook until well browned, about 5 minutes more.",
+      "uses": ["butter", "oil", "mushrooms"],
+      "timerMinutes": 8
+    },
+    {
+      "text": "Add the onion and cook until soft, 4 minutes. Stir in the garlic and paprika for 30 seconds.",
+      "uses": ["onion", "garlic", "paprika"],
+      "timerMinutes": 4
+    },
+    {
+      "text": "Add the broth and mustard and simmer for 3 minutes. Take the pan off the heat and stir in the sour cream. Season with salt and pepper.",
+      "uses": ["broth", "mustard", "sour-cream", "pepper"]
+    },
+    {
+      "text": "Serve over the pasta, topped with parsley.",
+      "uses": ["parsley"]
+    }
+  ]
+}

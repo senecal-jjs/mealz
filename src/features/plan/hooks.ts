@@ -6,6 +6,7 @@ import {
   activePlanQuery,
   addToPlan,
   clearPlan,
+  historyQuery,
   markCooked,
   removeFromPlan,
   setPlanServings,
@@ -15,6 +16,11 @@ import {
 /** The active plan, re-rendering whenever it changes. */
 export function usePlan(): PlanItem[] {
   return useLiveQuery(activePlanQuery(db)).data;
+}
+
+/** Cooked recipes, most recent first. */
+export function useHistory(): PlanItem[] {
+  return useLiveQuery(historyQuery(db)).data;
 }
 
 /** Servings per planned recipe id, for "is this in my plan?" checks. */

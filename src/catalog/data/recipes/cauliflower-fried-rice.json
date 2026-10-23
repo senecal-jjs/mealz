@@ -1,0 +1,92 @@
+{
+  "id": "cauliflower-fried-rice",
+  "title": "Cauliflower Fried Rice with Tofu",
+  "description": "All the flavor of fried rice with riced cauliflower and crispy tofu. Light and quick.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["meatless", "stir-fry"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "tofu",
+      "ingredient": "extra-firm-tofu",
+      "quantity": 14,
+      "unit": "oz",
+      "prep": "patted dry and cubed"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 1,
+      "unit": "tbsp",
+      "prep": "grated"
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "sliced"
+    },
+    {
+      "id": "veg",
+      "ingredient": "peas-and-carrots",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "cauli",
+      "ingredient": "cauliflower-rice",
+      "quantity": 24,
+      "unit": "oz"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "sesame",
+      "ingredient": "sesame-oil",
+      "quantity": 2,
+      "unit": "tsp"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat 2 tbsp oil in a large nonstick skillet over medium-high heat. Fry the tofu until golden on most sides, 8 to 10 minutes, then move to a plate.",
+      "uses": ["tofu", "oil"],
+      "timerMinutes": 9
+    },
+    {
+      "text": "Add the remaining oil, the garlic, ginger and white parts of the green onions, and stir for 30 seconds.",
+      "uses": ["garlic", "ginger", "scallions"]
+    },
+    {
+      "text": "Add the peas and carrots and the cauliflower rice. Cook, stirring, until hot and any liquid has cooked off, about 5 minutes.",
+      "uses": ["veg", "cauli"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Stir in the soy sauce, sesame oil and tofu, and top with the green onion tops.",
+      "uses": ["soy", "sesame"]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "id": "margherita-pita-pizzas",
+  "title": "Margherita Pita Pizzas",
+  "description": "Crisp pita crusts with a quick garlic tomato sauce, mozzarella and fresh basil.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 12,
+  "difficulty": "easy",
+  "tags": ["meatless", "kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "pita",
+      "ingredient": "pita-bread",
+      "quantity": 4,
+      "unit": "whole"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "crushed-tomatoes",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "14 oz"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 1,
+      "unit": "clove",
+      "prep": "grated"
+    },
+    {
+      "id": "oregano",
+      "ingredient": "dried-oregano",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "mozzarella",
+      "ingredient": "fresh-mozzarella",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "torn"
+    },
+    {
+      "id": "basil",
+      "ingredient": "basil",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "leaves picked"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 450°F (230°C) and brush the pitas with half the oil.",
+      "uses": ["pita", "oil"]
+    },
+    {
+      "text": "Stir together the tomatoes, garlic, oregano and a pinch of salt. Spread a few spoonfuls on each pita, leaving a border.",
+      "uses": ["tomatoes", "garlic", "oregano", "salt"]
+    },
+    {
+      "text": "Top with the mozzarella and bake on a sheet pan until bubbling and crisp, 10 to 12 minutes.",
+      "uses": ["mozzarella"],
+      "timerMinutes": 11
+    },
+    {
+      "text": "Scatter with basil and drizzle with the rest of the oil before slicing.",
+      "uses": ["basil"]
+    }
+  ]
+}

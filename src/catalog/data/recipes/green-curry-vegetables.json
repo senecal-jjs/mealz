@@ -1,0 +1,105 @@
+{
+  "id": "green-curry-vegetables",
+  "title": "Thai Green Curry with Vegetables",
+  "description": "A fragrant coconut green curry with tofu, bell pepper and green beans over rice.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["meatless", "spicy"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "paste",
+      "ingredient": "green-curry-paste",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "coconut",
+      "ingredient": "coconut-milk",
+      "quantity": 2,
+      "unit": "can",
+      "prep": "13.5 oz each"
+    },
+    {
+      "id": "tofu",
+      "ingredient": "extra-firm-tofu",
+      "quantity": 14,
+      "unit": "oz",
+      "prep": "cubed"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "bell-pepper",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "sliced"
+    },
+    {
+      "id": "beans",
+      "ingredient": "green-beans",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "trimmed and halved"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "sugar",
+      "ingredient": "brown-sugar",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "basil",
+      "ingredient": "basil",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "leaves picked"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Rinse the rice, then bring it to a boil with 2¼ cups water and a pinch of salt. Cover, turn the heat to low and cook until the water is absorbed, about 15 minutes. Let it stand off the heat, still covered, while you cook.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Heat the oil in a large pot over medium heat. Fry the curry paste, stirring, until fragrant, about 1 minute.",
+      "uses": ["oil", "paste"]
+    },
+    {
+      "text": "Stir in the coconut milk and bring to a simmer. Add the tofu, bell pepper and green beans and simmer until the vegetables are tender-crisp, about 6 minutes.",
+      "uses": ["coconut", "tofu", "pepper", "beans"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Season with the soy sauce, brown sugar and juice of the lime. Stir in the basil and serve over rice.",
+      "uses": ["soy", "sugar", "lime", "basil"]
+    }
+  ]
+}

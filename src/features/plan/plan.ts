@@ -5,7 +5,7 @@
  * The plan holds at most one active (not yet cooked) item per recipe, like
  * Mealime: adding a recipe that's already planned does nothing.
  */
-import { and, asc, eq, isNull } from 'drizzle-orm';
+import { and, asc, desc, eq, isNotNull, isNull } from 'drizzle-orm';
 
 import { newId } from '@/db/ids';
 import { planItems } from '@/db/schema';
@@ -24,6 +24,15 @@ const isActive = isNull(planItems.cookedAt);
 
 function clampServings(servings: number): number {
   return Math.min(MAX_SERVINGS, Math.max(MIN_SERVINGS, Math.round(servings)));
+}
+
+/** Cooked plan items, most recent first. */
+export function historyQuery(db: Db) {
+  return db
+    .select()
+    .from(planItems)
+    .where(isNotNull(planItems.cookedAt))
+    .orderBy(desc(planItems.cookedAt));
 }
 
 /** Active plan items, oldest first. */

@@ -264,8 +264,9 @@ Built as: a full-screen modal at `/cook/[id]`, opened from a Cook button on each
 The diet, allergies, dislikes and household flow. Filtering wired into browse, and a Profile tab to edit preferences later.
 Built as: a welcome screen plus four steps under `/onboarding`, each saving as you answer. The root layout uses protected routes, so the tabs appear only once `onboardedAt` is set, and Reset all data sends you back to onboarding. Recipes that don't fit (diet, allergens, or a non-optional disliked ingredient) are hidden from browse, with a "N hidden · Edit" note. The household size sets new plan items' servings, and the units setting (US or metric) drives the grocery list; recipe pages still show recipes' own units. The Profile tab edits everything with the same pickers and has Reset all data.
 
-**M6 — Polish and catalog completion (3 days)**
+**M6 — Polish and catalog completion (3 days)** ✅
 Search and filters (time, tags), favourites, history, empty states, haptics, dark mode, accessibility (Dynamic Type, VoiceOver labels) and the app icon and splash screen. Bring the catalog to about 60 recipes.
+Built as: a heart on the recipe page and a ♥ Favourites chip, plus One pan and Kid-friendly chips; Favourites and Cooking history (with ratings and "Again" to re-plan) under Profile. The catalog is 60 draft recipes over 121 ingredients: 38 take 30 minutes or less; 29 vegetarian (16 vegan), 38 pescatarian-friendly, 13 low-carb. New icon (Icon Composer file `assets/mealz.icon`, white fork and knife on green) and a matching splash. Checked in dark mode and at accessibility text sizes: headings and buttons cap their growth at 1.4–1.5×, recipe amounts move inline above 1.3× text scale, and headers blur scrolled content on iOS < 26. Recipe photos are still placeholders, and every recipe is still `reviewed: false`, so a release build would show none until they're reviewed (§9).
 
 **M7 — iOS launch (1–2 days, plus review time)**
 TestFlight beta, App Store screenshots and listing, the "Data Not Collected" privacy label and a privacy policy page. Submit for review.

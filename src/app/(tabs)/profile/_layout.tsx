@@ -12,6 +12,14 @@ export default function Layout() {
         options={{ title: 'Allergies', headerLargeTitleEnabled: false }}
       />
       <Stack.Screen
+        name="favourites"
+        options={{ title: 'Favourites', headerLargeTitleEnabled: false }}
+      />
+      <Stack.Screen
+        name="history"
+        options={{ title: 'Cooking history', headerLargeTitleEnabled: false }}
+      />
+      <Stack.Screen
         name="dislikes"
         options={{ title: 'Dislikes', headerLargeTitleEnabled: false }}
       />

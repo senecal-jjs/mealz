@@ -1,0 +1,99 @@
+{
+  "id": "sausage-peppers-sheet-pan",
+  "title": "Sheet-Pan Sausage and Peppers",
+  "description": "Italian sausages roasted with sweet peppers, onions and zucchini until caramelized.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["sheet-pan"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "sausage",
+      "ingredient": "italian-sausage",
+      "quantity": 1.25,
+      "unit": "lb",
+      "prep": "links"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "bell-pepper",
+      "quantity": 3,
+      "unit": "whole",
+      "prep": "cut into strips"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "cut into wedges"
+    },
+    {
+      "id": "zucchini",
+      "ingredient": "zucchini",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "cut into half-moons"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "oregano",
+      "ingredient": "dried-oregano",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "flakes",
+      "ingredient": "red-pepper-flakes",
+      "quantity": 0.25,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "vinegar",
+      "ingredient": "red-wine-vinegar",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "parsley",
+      "ingredient": "parsley",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "chopped",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 425°F (220°C).",
+      "uses": []
+    },
+    {
+      "text": "Toss the peppers, onion and zucchini with the oil, oregano, pepper flakes and a pinch of salt on a large sheet pan. Nestle the sausages in among the vegetables.",
+      "uses": ["sausage", "pepper", "onion", "zucchini", "oil", "oregano", "flakes", "salt"]
+    },
+    {
+      "text": "Roast until the sausages are cooked through and the vegetables are caramelized, about 25 minutes, turning everything halfway.",
+      "uses": [],
+      "timerMinutes": 25
+    },
+    {
+      "text": "Drizzle with the vinegar and scatter with parsley before serving.",
+      "uses": ["vinegar", "parsley"]
+    }
+  ]
+}

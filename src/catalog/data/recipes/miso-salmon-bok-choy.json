@@ -1,0 +1,92 @@
+{
+  "id": "miso-salmon-bok-choy",
+  "title": "Miso Salmon with Bok Choy",
+  "description": "Salmon broiled under a savory-sweet miso glaze with garlicky seared bok choy.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 12,
+  "difficulty": "easy",
+  "tags": ["quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "miso",
+      "ingredient": "miso-paste",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "vinegar",
+      "ingredient": "rice-vinegar",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 1,
+      "unit": "tsp",
+      "prep": "grated"
+    },
+    {
+      "id": "salmon",
+      "ingredient": "salmon-fillet",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "about 6 oz each"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 2,
+      "unit": "clove",
+      "prep": "sliced"
+    },
+    {
+      "id": "bok-choy",
+      "ingredient": "baby-bok-choy",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "halved lengthwise"
+    },
+    {
+      "id": "sesame",
+      "ingredient": "sesame-seeds",
+      "quantity": 1,
+      "unit": "tsp",
+      "prep": "opt"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the broiler with a rack about 6 inches from the heat. Stir the miso, soy sauce, vinegar and ginger into a paste.",
+      "uses": ["miso", "soy", "vinegar", "ginger"]
+    },
+    {
+      "text": "Set the salmon on a foil-lined sheet pan and spread the miso glaze over the tops. Broil until caramelized and just cooked through, 8 to 10 minutes.",
+      "uses": ["salmon"],
+      "timerMinutes": 9
+    },
+    {
+      "text": "Meanwhile, heat the oil in a large skillet over medium-high heat. Add the garlic and bok choy cut-side down and sear for 2 minutes. Flip, add a splash of water, cover and steam for 2 minutes.",
+      "uses": ["oil", "garlic", "bok-choy"]
+    },
+    {
+      "text": "Serve the salmon with the bok choy, sprinkled with sesame seeds.",
+      "uses": ["sesame"]
+    }
+  ]
+}

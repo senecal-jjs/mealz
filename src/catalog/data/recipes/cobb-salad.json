@@ -1,0 +1,121 @@
+{
+  "id": "cobb-salad",
+  "title": "Cobb Salad",
+  "description": "A big, satisfying salad with chicken, bacon, egg, avocado, tomatoes and a tangy dressing.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["meal-prep"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "chicken",
+      "ingredient": "chicken-breast",
+      "quantity": 1,
+      "unit": "lb"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil-cook",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "bacon",
+      "ingredient": "bacon",
+      "quantity": 6,
+      "unit": "slice"
+    },
+    {
+      "id": "eggs",
+      "ingredient": "egg",
+      "quantity": 4,
+      "unit": "whole"
+    },
+    {
+      "id": "oil-dressing",
+      "ingredient": "olive-oil",
+      "quantity": 0.25,
+      "unit": "cup"
+    },
+    {
+      "id": "vinegar",
+      "ingredient": "red-wine-vinegar",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "mustard",
+      "ingredient": "dijon-mustard",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "romaine",
+      "ingredient": "romaine-lettuce",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 10,
+      "unit": "oz",
+      "prep": "halved"
+    },
+    {
+      "id": "avocado",
+      "ingredient": "avocado",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "cheddar",
+      "ingredient": "cheddar",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "shredded",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Season the chicken with salt and pepper. Heat 1 tbsp oil in a skillet over medium-high heat and cook until cooked through, 5 to 6 minutes per side. Rest, then dice.",
+      "uses": ["chicken", "salt", "pepper", "oil-cook"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Cook the bacon in the same skillet until crisp, then drain on paper towels and crumble.",
+      "uses": ["bacon"]
+    },
+    {
+      "text": "Meanwhile, simmer the eggs for 9 minutes, cool in cold water, then peel and chop.",
+      "uses": ["eggs"],
+      "timerMinutes": 9
+    },
+    {
+      "text": "Whisk ¼ cup oil with the vinegar, mustard and a pinch of salt and pepper.",
+      "uses": ["oil-dressing", "vinegar", "mustard"]
+    },
+    {
+      "text": "Arrange the romaine in a big bowl with rows of chicken, bacon, egg, tomatoes, avocado and cheddar. Drizzle with the dressing at the table.",
+      "uses": ["romaine", "tomatoes", "avocado", "cheddar"]
+    }
+  ]
+}

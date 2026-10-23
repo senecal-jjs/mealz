@@ -8,7 +8,7 @@
     "scheme": "mealz",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon",
+      "icon": "./assets/mealz.icon",
       "bundleIdentifier": "com.mealz.app",
       "supportsTablet": false,
       "config": {
@@ -34,7 +34,7 @@
         {
           "backgroundColor": "#2F9E6E",
           "image": "./assets/images/splash-icon.png",
-          "imageWidth": 76
+          "imageWidth": 120
         }
       ],
       "expo-sqlite"

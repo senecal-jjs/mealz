@@ -1,0 +1,104 @@
+{
+  "id": "lemon-herb-chicken-asparagus",
+  "title": "Lemon Herb Chicken with Asparagus",
+  "description": "Golden pan-seared chicken and asparagus with a bright lemon-garlic butter sauce.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": [],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "chicken",
+      "ingredient": "chicken-breast",
+      "quantity": 1.5,
+      "unit": "lb",
+      "prep": "pounded to an even thickness"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "thyme",
+      "ingredient": "dried-thyme",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "asparagus",
+      "ingredient": "asparagus",
+      "quantity": 1,
+      "unit": "lb",
+      "prep": "trimmed"
+    },
+    {
+      "id": "butter",
+      "ingredient": "butter",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "broth",
+      "ingredient": "vegetable-broth",
+      "quantity": 0.5,
+      "unit": "cup"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "parsley",
+      "ingredient": "parsley",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "chopped"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Season the chicken with salt, pepper and thyme. Heat 1 tbsp oil in a large skillet over medium-high heat and cook until golden and cooked through, 5 to 6 minutes per side. Move to a plate.",
+      "uses": ["chicken", "salt", "pepper", "thyme", "oil"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Add the remaining oil and the asparagus with a pinch of salt. Cook, turning, until bright green and tender-crisp, 4 to 5 minutes. Move to the plate.",
+      "uses": ["asparagus"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Lower the heat, melt the butter and cook the garlic for 30 seconds. Add the broth and the juice of the lemon and simmer until slightly reduced, about 2 minutes.",
+      "uses": ["butter", "garlic", "broth", "lemon"]
+    },
+    {
+      "text": "Spoon the sauce over the chicken and asparagus and top with parsley.",
+      "uses": ["parsley"]
+    }
+  ]
+}

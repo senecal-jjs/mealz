@@ -1,0 +1,127 @@
+{
+  "id": "coconut-red-lentil-dal",
+  "title": "Coconut Red Lentil Dal",
+  "description": "Creamy, gently spiced red lentils simmered with coconut milk and finished with lime.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["one-pot", "meatless", "budget"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 1,
+      "unit": "tbsp",
+      "prep": "grated"
+    },
+    {
+      "id": "garam",
+      "ingredient": "garam-masala",
+      "quantity": 2,
+      "unit": "tsp"
+    },
+    {
+      "id": "turmeric",
+      "ingredient": "ground-turmeric",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "lentils",
+      "ingredient": "red-lentils",
+      "quantity": 1,
+      "unit": "cup",
+      "prep": "rinsed"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "diced-tomatoes",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz"
+    },
+    {
+      "id": "coconut",
+      "ingredient": "coconut-milk",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "13.5 oz"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "spinach",
+      "ingredient": "baby-spinach",
+      "quantity": 3,
+      "unit": "oz"
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "chopped",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Rinse the rice, then bring it to a boil with 2¼ cups water and a pinch of salt. Cover, turn the heat to low and cook until the water is absorbed, about 15 minutes. Let it stand off the heat, still covered, while you cook.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Heat the oil in a pot over medium heat and cook the onion until soft, about 5 minutes. Add the garlic, ginger, garam masala and turmeric and stir for 1 minute.",
+      "uses": ["oil", "onion", "garlic", "ginger", "garam", "turmeric"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Add the lentils, tomatoes, coconut milk, 2 cups water and a big pinch of salt. Simmer, stirring often, until the lentils break down and the dal is thick, about 18 minutes.",
+      "uses": ["lentils", "tomatoes", "coconut", "salt"],
+      "timerMinutes": 18
+    },
+    {
+      "text": "Stir in the spinach until wilted and add the juice of the lime. Serve over rice with cilantro.",
+      "uses": ["spinach", "lime", "cilantro"]
+    }
+  ]
+}

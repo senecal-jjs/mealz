@@ -8,6 +8,8 @@ import { SettingsGroup, SettingsRow } from '@/components/settings-row';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { fitsPreferences } from '@/domain/preferences';
+import { useFavourites } from '@/features/favourites/hooks';
+import { useHistory } from '@/features/plan/hooks';
 import { preferenceActions, usePreferences } from '@/features/preferences/hooks';
 import { useTheme } from '@/hooks/use-theme';
 
@@ -34,6 +36,8 @@ function summarize(items: string[], max = 2): string {
 export default function ProfileScreen() {
   const theme = useTheme();
   const { prefs } = usePreferences();
+  const favouriteCount = useFavourites().length;
+  const cookedCount = useHistory().length;
   const matching = catalog.recipes.filter((r) => fitsPreferences(r, prefs)).length;
   const separator = <View style={[styles.separator, { backgroundColor: theme.border }]} />;
 
@@ -42,6 +46,16 @@ export default function ProfileScreen() {
       contentInsetAdjustmentBehavior="automatic"
       style={{ backgroundColor: theme.background }}
       contentContainerStyle={styles.content}>
+      <SettingsGroup title="Your kitchen">
+        <SettingsRow label="Favourites" value={String(favouriteCount)} href="/profile/favourites" />
+        {separator}
+        <SettingsRow
+          label="Cooking history"
+          value={cookedCount === 1 ? '1 meal' : `${cookedCount} meals`}
+          href="/profile/history"
+        />
+      </SettingsGroup>
+
       <SettingsGroup
         title="Your preferences"
         footer={`${matching} of ${catalog.recipes.length} recipes fit your preferences.`}>

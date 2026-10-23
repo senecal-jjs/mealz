@@ -1,0 +1,84 @@
+{
+  "id": "spaghetti-aglio-olio-spinach",
+  "title": "Garlicky Spaghetti with Spinach",
+  "description": "Spaghetti tossed in golden garlic olive oil with chili flakes, lemon and wilted spinach.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 5,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["meatless", "budget"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "pasta",
+      "ingredient": "spaghetti",
+      "quantity": 12,
+      "unit": "oz"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 0.33,
+      "unit": "cup"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 6,
+      "unit": "clove",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "flakes",
+      "ingredient": "red-pepper-flakes",
+      "quantity": 0.5,
+      "unit": "tsp"
+    },
+    {
+      "id": "spinach",
+      "ingredient": "baby-spinach",
+      "quantity": 5,
+      "unit": "oz"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "parmesan",
+      "ingredient": "parmesan",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "grated",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Cook the spaghetti in a large pot of well-salted boiling water until al dente, about 10 minutes. Save 1 cup of the pasta water, then drain.",
+      "uses": ["pasta", "salt"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "While it cooks, warm the oil and garlic together in a large skillet over medium-low heat. Cook gently until the garlic is pale gold, 3 to 4 minutes, then add the pepper flakes.",
+      "uses": ["oil", "garlic", "flakes"]
+    },
+    {
+      "text": "Add the spaghetti, the spinach and about ½ cup of the pasta water. Toss over the heat until the spinach wilts and the sauce turns glossy, adding more water if it looks dry.",
+      "uses": ["spinach"]
+    },
+    {
+      "text": "Finish with the zest and juice of the lemon and a pinch of salt. Serve topped with parmesan.",
+      "uses": ["lemon", "parmesan"]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "id": "pesto-veggie-flatbreads",
+  "title": "Pesto Veggie Flatbreads",
+  "description": "Pita flatbreads spread with pesto and topped with zucchini, tomatoes and bubbling mozzarella.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 12,
+  "difficulty": "easy",
+  "tags": ["meatless", "kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "pita",
+      "ingredient": "pita-bread",
+      "quantity": 4,
+      "unit": "whole"
+    },
+    {
+      "id": "pesto",
+      "ingredient": "basil-pesto",
+      "quantity": 0.5,
+      "unit": "cup"
+    },
+    {
+      "id": "zucchini",
+      "ingredient": "zucchini",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "very thinly sliced"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "halved"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 0.25,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "mozzarella",
+      "ingredient": "shredded-mozzarella",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "flakes",
+      "ingredient": "red-pepper-flakes",
+      "quantity": 0.25,
+      "unit": "tsp",
+      "optional": true
+    },
+    {
+      "id": "basil",
+      "ingredient": "basil",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "leaves torn",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 450°F (230°C).",
+      "uses": []
+    },
+    {
+      "text": "Set the pitas on a large sheet pan and spread each with pesto. Top with zucchini, tomatoes, onion and mozzarella, then drizzle with the oil.",
+      "uses": ["pita", "pesto", "zucchini", "tomatoes", "onion", "mozzarella", "oil"]
+    },
+    {
+      "text": "Bake until the cheese is bubbling and the edges are crisp, 10 to 12 minutes.",
+      "uses": [],
+      "timerMinutes": 11
+    },
+    {
+      "text": "Finish with pepper flakes and basil, then slice and serve.",
+      "uses": ["flakes", "basil"]
+    }
+  ]
+}

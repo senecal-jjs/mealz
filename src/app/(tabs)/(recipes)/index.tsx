@@ -10,6 +10,7 @@ import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { BROWSE_FILTERS, browseRecipes, type BrowseFilter } from '@/domain/browse';
 import { fitsPreferences } from '@/domain/preferences';
+import { useFavourites } from '@/features/favourites/hooks';
 import { planActions, usePlannedServings } from '@/features/plan/hooks';
 import { usePreferences } from '@/features/preferences/hooks';
 import { useTheme } from '@/hooks/use-theme';
@@ -20,13 +21,14 @@ export default function RecipesScreen() {
   const [query, setQuery] = useState('');
   const planned = usePlannedServings();
   const { prefs } = usePreferences();
+  const favouriteIds = useFavourites();
 
   // Recipes that don't fit the user's diet, allergies or dislikes are never shown.
   const allowed = useMemo(() => catalog.recipes.filter((r) => fitsPreferences(r, prefs)), [prefs]);
   const hidden = catalog.recipes.length - allowed.length;
   const recipes = useMemo(
-    () => browseRecipes(allowed, catalog.ingredients, filter, query),
-    [allowed, filter, query],
+    () => browseRecipes(allowed, catalog.ingredients, filter, query, new Set(favouriteIds)),
+    [allowed, filter, query, favouriteIds],
   );
 
   return (
@@ -76,7 +78,9 @@ export default function RecipesScreen() {
         }
         ListEmptyComponent={
           <ThemedText type="small" themeColor="textSecondary" style={styles.empty}>
-            No recipes match. Try another filter or search.
+            {filter === 'favourites' && !query
+              ? 'No favourites yet. Tap the heart on a recipe to save it here.'
+              : 'No recipes match. Try another filter or search.'}
           </ThemedText>
         }
         extraData={planned}

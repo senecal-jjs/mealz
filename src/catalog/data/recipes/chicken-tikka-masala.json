@@ -1,0 +1,127 @@
+{
+  "id": "chicken-tikka-masala",
+  "title": "Weeknight Chicken Tikka Masala",
+  "description": "Spiced yogurt-marinated chicken in a creamy tomato sauce. Serve with rice.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 25,
+  "difficulty": "medium",
+  "tags": [],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "chicken",
+      "ingredient": "chicken-thighs",
+      "quantity": 1.5,
+      "unit": "lb",
+      "prep": "cut into bite-size pieces"
+    },
+    {
+      "id": "yogurt",
+      "ingredient": "greek-yogurt",
+      "quantity": 0.5,
+      "unit": "cup"
+    },
+    {
+      "id": "garam",
+      "ingredient": "garam-masala",
+      "quantity": 3,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 4,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 1,
+      "unit": "tbsp",
+      "prep": "grated"
+    },
+    {
+      "id": "turmeric",
+      "ingredient": "ground-turmeric",
+      "quantity": 0.5,
+      "unit": "tsp"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "crushed-tomatoes",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "28 oz"
+    },
+    {
+      "id": "cream",
+      "ingredient": "heavy-cream",
+      "quantity": 0.5,
+      "unit": "cup"
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "chopped"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Toss the chicken with the yogurt, 1 tsp garam masala and 1 tsp salt. Let it sit while you start the rice.",
+      "uses": ["chicken", "yogurt", "garam", "salt"]
+    },
+    {
+      "text": "Rinse the rice, then bring it to a boil with 2¼ cups water and a pinch of salt. Cover, turn the heat to low and cook until the water is absorbed, about 15 minutes. Let it stand off the heat, still covered, while you cook.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Heat 1 tbsp oil in a large skillet over medium-high heat. Brown the chicken in batches, about 3 minutes per batch (it will finish in the sauce). Move to a plate.",
+      "uses": ["oil"]
+    },
+    {
+      "text": "Add the rest of the oil and the onion and cook until soft, 5 minutes. Stir in the garlic, ginger, turmeric and remaining garam masala for 1 minute.",
+      "uses": ["onion", "garlic", "ginger", "turmeric"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Add the tomatoes and simmer for 5 minutes. Return the chicken and simmer until cooked through, 8 to 10 minutes. Stir in the cream and season with salt.",
+      "uses": ["tomatoes", "cream"],
+      "timerMinutes": 9
+    },
+    {
+      "text": "Top with cilantro and serve over the rice.",
+      "uses": ["cilantro"]
+    }
+  ]
+}

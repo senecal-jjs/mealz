@@ -1,0 +1,114 @@
+{
+  "id": "salmon-teriyaki-bowls",
+  "title": "Salmon Teriyaki Rice Bowls",
+  "description": "Glazed salmon over rice with crisp cucumber, edamame and sesame.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": [],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "salmon",
+      "ingredient": "salmon-fillet",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "skinless, about 5 oz each"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 0.25,
+      "unit": "cup"
+    },
+    {
+      "id": "honey",
+      "ingredient": "honey",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "vinegar",
+      "ingredient": "rice-vinegar",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 2,
+      "unit": "tsp",
+      "prep": "grated"
+    },
+    {
+      "id": "edamame",
+      "ingredient": "edamame",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "cucumber",
+      "ingredient": "cucumber",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 3,
+      "unit": "whole",
+      "prep": "sliced"
+    },
+    {
+      "id": "sesame",
+      "ingredient": "sesame-seeds",
+      "quantity": 1,
+      "unit": "tbsp"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Rinse the rice, then bring it to a boil with 2¼ cups water and a pinch of salt. Cover, turn the heat to low and cook until the water is absorbed, about 15 minutes. Let it stand off the heat, still covered, while you cook.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Whisk the soy sauce, honey, vinegar and ginger. Cook the edamame in boiling water or the microwave until hot.",
+      "uses": ["soy", "honey", "vinegar", "ginger", "edamame"]
+    },
+    {
+      "text": "Season the salmon lightly with salt. Heat the oil in a nonstick skillet over medium-high heat and sear the salmon until golden, about 4 minutes. Flip and cook 2 minutes more.",
+      "uses": ["salmon", "salt", "oil"],
+      "timerMinutes": 4
+    },
+    {
+      "text": "Pour in the sauce and let it bubble, spooning it over the fish, until syrupy, about 1 minute.",
+      "uses": []
+    },
+    {
+      "text": "Serve the salmon over rice with the edamame and cucumber, topped with green onions and sesame seeds.",
+      "uses": ["cucumber", "scallions", "sesame"]
+    }
+  ]
+}

@@ -1,12 +1,13 @@
 import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { SymbolView } from 'expo-symbols';
 import { useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, useWindowDimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { getIngredient, getRecipe } from '@/catalog';
 import { DIET_LABELS, type Recipe } from '@/catalog/types';
 import { Button } from '@/components/button';
+import { FavouriteButton } from '@/components/favourite-button';
 import { RecipeImage } from '@/components/recipe-image';
 import { ServingsStepper } from '@/components/servings-stepper';
 import { ThemedText } from '@/components/themed-text';
@@ -44,7 +45,12 @@ export default function RecipeScreen() {
       <ScrollView
         contentContainerStyle={{ paddingBottom: FOOTER_HEIGHT + insets.bottom + Spacing.four }}
         contentInsetAdjustmentBehavior="never">
-        <Stack.Screen options={{ title: recipe.title }} />
+        <Stack.Screen
+          options={{
+            title: recipe.title,
+            headerRight: () => <FavouriteButton recipeId={recipe.id} title={recipe.title} />,
+          }}
+        />
         <RecipeImage recipe={recipe} style={styles.hero} iconSize={64} />
         <View style={styles.body}>
           <Overview recipe={recipe} />
@@ -151,6 +157,9 @@ type IngredientsProps = {
 function Ingredients({ recipe, servings, onServingsChange }: IngredientsProps) {
   const theme = useTheme();
   const factor = scaleFactor(recipe.baseServings, servings);
+  // With large Dynamic Type the amount column gets too narrow and breaks words,
+  // so amounts move inline: "1 ½ cloves garlic".
+  const inline = useWindowDimensions().fontScale > 1.3;
 
   return (
     <View style={styles.section}>
@@ -170,9 +179,10 @@ function Ingredients({ recipe, servings, onServingsChange }: IngredientsProps) {
         const { amount, name } = formatIngredient(item, getIngredient(item.ingredient), factor);
         return (
           <View key={item.id} style={[styles.ingredient, { borderColor: theme.border }]}>
-            <ThemedText style={styles.amount}>{amount || '—'}</ThemedText>
+            {!inline && <ThemedText style={styles.amount}>{amount || '—'}</ThemedText>}
             <View style={styles.ingredientText}>
               <ThemedText>
+                {inline && amount ? <ThemedText style={styles.bold}>{amount} </ThemedText> : null}
                 {name}
                 {item.quantity === null ? ', to taste' : ''}
               </ThemedText>
@@ -245,8 +255,10 @@ const styles = StyleSheet.create({
   badgeText: { fontSize: 12, lineHeight: 16, fontWeight: 600 },
   sectionHeader: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'space-between',
+    rowGap: Spacing.two,
     marginBottom: Spacing.one,
   },
   heading: { fontSize: 20, lineHeight: 26 },
@@ -258,6 +270,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   amount: { width: 84, fontWeight: 700 },
+  bold: { fontWeight: 700 },
   ingredientText: { flex: 1 },
   step: { flexDirection: 'row', gap: Spacing.three, marginTop: Spacing.two },
   stepNumber: {

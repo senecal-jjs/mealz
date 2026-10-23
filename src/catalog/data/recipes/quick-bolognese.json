@@ -1,0 +1,120 @@
+{
+  "id": "quick-bolognese",
+  "title": "Quick Spaghetti Bolognese",
+  "description": "A rich, meaty tomato sauce that tastes like it simmered all afternoon.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "finely diced"
+    },
+    {
+      "id": "carrots",
+      "ingredient": "carrots",
+      "quantity": 0.25,
+      "unit": "lb",
+      "prep": "finely diced"
+    },
+    {
+      "id": "celery",
+      "ingredient": "celery",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "finely diced"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "beef",
+      "ingredient": "ground-beef",
+      "quantity": 1,
+      "unit": "lb"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "paste",
+      "ingredient": "tomato-paste",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "crushed-tomatoes",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "28 oz"
+    },
+    {
+      "id": "oregano",
+      "ingredient": "dried-oregano",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "cream",
+      "ingredient": "heavy-cream",
+      "quantity": 0.25,
+      "unit": "cup",
+      "optional": true
+    },
+    {
+      "id": "pasta",
+      "ingredient": "spaghetti",
+      "quantity": 12,
+      "unit": "oz"
+    },
+    {
+      "id": "parmesan",
+      "ingredient": "parmesan",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "grated"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oil in a large pot over medium heat. Cook the onion, carrots and celery until soft, about 6 minutes. Add the garlic for 1 minute.",
+      "uses": ["oil", "onion", "carrots", "celery", "garlic"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Add the beef and a good pinch of salt and cook, breaking it up, until browned, about 6 minutes. Stir in the tomato paste for 1 minute.",
+      "uses": ["beef", "salt", "paste"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Add the tomatoes and oregano and simmer, stirring now and then, for 15 minutes. Stir in the cream if using.",
+      "uses": ["tomatoes", "oregano", "cream"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Meanwhile, cook the spaghetti in salted boiling water until al dente, then drain. Toss with the sauce and serve with parmesan.",
+      "uses": ["pasta", "parmesan"]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "id": "chicken-broccoli-alfredo",
+  "title": "Chicken and Broccoli Alfredo",
+  "description": "Pasta in a silky parmesan cream sauce with seared chicken and broccoli.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "pasta",
+      "ingredient": "short-pasta",
+      "quantity": 12,
+      "unit": "oz"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "broccoli",
+      "ingredient": "broccoli",
+      "quantity": 0.75,
+      "unit": "lb",
+      "prep": "small florets"
+    },
+    {
+      "id": "chicken",
+      "ingredient": "chicken-breast",
+      "quantity": 1,
+      "unit": "lb",
+      "prep": "cut into bite-size pieces"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "butter",
+      "ingredient": "butter",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "cream",
+      "ingredient": "heavy-cream",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "parmesan",
+      "ingredient": "parmesan",
+      "quantity": 1,
+      "unit": "cup",
+      "prep": "grated"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Cook the pasta in salted boiling water, adding the broccoli for the last 3 minutes. Save 1 cup of pasta water, then drain.",
+      "uses": ["pasta", "salt", "broccoli"],
+      "timerMinutes": 11
+    },
+    {
+      "text": "Season the chicken with salt and pepper. Heat the oil in a large skillet over medium-high heat and cook the chicken until golden and cooked through, 6 to 7 minutes. Move to a plate.",
+      "uses": ["chicken", "pepper", "oil"],
+      "timerMinutes": 7
+    },
+    {
+      "text": "Lower the heat, melt the butter and cook the garlic for 30 seconds. Add the cream and simmer for 2 minutes, then whisk in the parmesan until smooth.",
+      "uses": ["butter", "garlic", "cream", "parmesan"]
+    },
+    {
+      "text": "Add the pasta, broccoli and chicken and toss, loosening with pasta water until creamy. Season with pepper.",
+      "uses": []
+    }
+  ]
+}

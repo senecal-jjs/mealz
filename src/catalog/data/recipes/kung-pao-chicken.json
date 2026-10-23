@@ -1,0 +1,121 @@
+{
+  "id": "kung-pao-chicken",
+  "title": "Kung Pao Chicken",
+  "description": "Tender chicken, peppers and peanuts in a glossy, tingly-sweet sauce.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 12,
+  "difficulty": "medium",
+  "tags": ["stir-fry", "spicy"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "chicken",
+      "ingredient": "chicken-thighs",
+      "quantity": 1.25,
+      "unit": "lb",
+      "prep": "cut into bite-size pieces"
+    },
+    {
+      "id": "cornstarch",
+      "ingredient": "cornstarch",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "vinegar",
+      "ingredient": "rice-vinegar",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "sugar",
+      "ingredient": "brown-sugar",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "flakes",
+      "ingredient": "red-pepper-flakes",
+      "quantity": 0.5,
+      "unit": "tsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 1,
+      "unit": "tbsp",
+      "prep": "grated"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "bell-pepper",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "cut into 1-inch pieces"
+    },
+    {
+      "id": "peanuts",
+      "ingredient": "roasted-peanuts",
+      "quantity": 0.5,
+      "unit": "cup"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Rinse the rice, then bring it to a boil with 2¼ cups water and a pinch of salt. Cover, turn the heat to low and cook until the water is absorbed, about 15 minutes. Let it stand off the heat, still covered, while you cook.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Toss the chicken with the cornstarch and 1 tbsp soy sauce. Whisk the rest of the soy sauce with the vinegar, brown sugar and 2 tbsp water.",
+      "uses": ["chicken", "cornstarch", "soy", "vinegar", "sugar"]
+    },
+    {
+      "text": "Heat the oil in a wok or large skillet over high heat. Stir-fry the chicken until browned and cooked through, 5 to 6 minutes.",
+      "uses": ["oil"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Add the pepper flakes, garlic, ginger and bell peppers and stir-fry for 2 minutes.",
+      "uses": ["flakes", "garlic", "ginger", "pepper"]
+    },
+    {
+      "text": "Pour in the sauce, add the green onions and peanuts and toss until glossy. Serve over rice.",
+      "uses": ["scallions", "peanuts"]
+    }
+  ]
+}

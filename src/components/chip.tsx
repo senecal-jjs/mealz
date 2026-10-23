@@ -18,7 +18,10 @@ export function Chip({ label, selected, onPress }: Props) {
         onPress();
       }}
       style={[styles.chip, { backgroundColor: selected ? theme.tint : theme.backgroundElement }]}>
-      <ThemedText type="smallBold" style={{ color: selected ? theme.onTint : theme.text }}>
+      <ThemedText
+        type="smallBold"
+        maxFontSizeMultiplier={1.5}
+        style={{ color: selected ? theme.onTint : theme.text }}>
         {label}
       </ThemedText>
     </Pressable>

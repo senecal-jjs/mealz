@@ -1,0 +1,115 @@
+{
+  "id": "black-bean-burgers",
+  "title": "Crispy Black Bean Burgers",
+  "description": "Smoky black bean patties with crisp edges, served on buns with avocado.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 15,
+  "difficulty": "medium",
+  "tags": ["meatless", "kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "beans",
+      "ingredient": "black-beans",
+      "quantity": 2,
+      "unit": "can",
+      "prep": "15 oz each, drained, rinsed and patted dry"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 0.5,
+      "unit": "whole",
+      "prep": "very finely chopped"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 1,
+      "unit": "clove",
+      "prep": "grated"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "paprika",
+      "ingredient": "smoked-paprika",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "egg",
+      "ingredient": "egg",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "panko",
+      "ingredient": "panko",
+      "quantity": 0.75,
+      "unit": "cup"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "buns",
+      "ingredient": "hamburger-buns",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "toasted"
+    },
+    {
+      "id": "avocado",
+      "ingredient": "avocado",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "sliced"
+    },
+    {
+      "id": "lettuce",
+      "ingredient": "butter-lettuce",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "leaves separated"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "sliced",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Mash the beans in a bowl, leaving some chunks. Mix in the onion, garlic, cumin, paprika, ½ tsp salt, the egg and panko. Shape into 4 patties.",
+      "uses": ["beans", "onion", "garlic", "cumin", "paprika", "salt", "egg", "panko"]
+    },
+    {
+      "text": "Heat the oil in a large skillet over medium heat. Cook the patties until crisp and heated through, about 5 minutes per side.",
+      "uses": ["oil"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Serve on toasted buns with lettuce, avocado and tomatoes.",
+      "uses": ["buns", "avocado", "lettuce", "tomatoes"]
+    }
+  ]
+}

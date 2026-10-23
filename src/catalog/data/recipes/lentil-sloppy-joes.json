@@ -1,0 +1,127 @@
+{
+  "id": "lentil-sloppy-joes",
+  "title": "Lentil Sloppy Joes",
+  "description": "A messy, tangy-sweet lentil filling on toasted buns that everyone at the table will love.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["meatless", "kid-friendly", "budget"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "finely diced"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "bell-pepper",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "finely diced"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 2,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "lentils",
+      "ingredient": "brown-lentils",
+      "quantity": 1,
+      "unit": "cup",
+      "prep": "rinsed"
+    },
+    {
+      "id": "paste",
+      "ingredient": "tomato-paste",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "crushed-tomatoes",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "14 oz"
+    },
+    {
+      "id": "sugar",
+      "ingredient": "brown-sugar",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "mustard",
+      "ingredient": "dijon-mustard",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "chili",
+      "ingredient": "chili-powder",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "vinegar",
+      "ingredient": "red-wine-vinegar",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "buns",
+      "ingredient": "hamburger-buns",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "toasted"
+    },
+    {
+      "id": "cabbage",
+      "ingredient": "green-cabbage",
+      "quantity": 0.25,
+      "unit": "whole",
+      "prep": "shredded",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Simmer the lentils in 3 cups water until tender but not mushy, about 20 minutes, then drain.",
+      "uses": ["lentils"],
+      "timerMinutes": 20
+    },
+    {
+      "text": "Meanwhile, heat the oil in a skillet over medium heat. Cook the onion and bell pepper until soft, about 6 minutes. Add the garlic and tomato paste and stir for 1 minute.",
+      "uses": ["oil", "onion", "pepper", "garlic", "paste"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Add the tomatoes, brown sugar, mustard, chili powder, vinegar and a pinch of salt and simmer until thick, about 5 minutes. Stir in the lentils.",
+      "uses": ["tomatoes", "sugar", "mustard", "chili", "vinegar", "salt"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Pile onto toasted buns and top with shredded cabbage.",
+      "uses": ["buns", "cabbage"]
+    }
+  ]
+}

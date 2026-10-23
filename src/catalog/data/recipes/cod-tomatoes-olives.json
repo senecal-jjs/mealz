@@ -1,0 +1,106 @@
+{
+  "id": "cod-tomatoes-olives",
+  "title": "Cod with Tomatoes and Olives",
+  "description": "Flaky cod baked on a bed of blistered cherry tomatoes, olives and garlic.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["sheet-pan"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 20,
+      "unit": "oz"
+    },
+    {
+      "id": "olives",
+      "ingredient": "kalamata-olives",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "halved"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "sliced"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "oregano",
+      "ingredient": "dried-oregano",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "cod",
+      "ingredient": "cod-fillet",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "about 6 oz each"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "parsley",
+      "ingredient": "parsley",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "chopped"
+    },
+    {
+      "id": "bread",
+      "ingredient": "crusty-bread",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "for serving",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 425°F (220°C). In a baking dish, toss the tomatoes, olives and garlic with 2 tbsp oil, the oregano and a pinch of salt. Roast for 10 minutes, until the tomatoes start to burst.",
+      "uses": ["tomatoes", "olives", "garlic", "oil", "oregano", "salt"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Pat the cod dry, season with salt and pepper and nestle it into the tomatoes. Drizzle with the rest of the oil and add a few lemon slices.",
+      "uses": ["cod", "pepper", "lemon"]
+    },
+    {
+      "text": "Roast until the fish flakes easily, 10 to 12 minutes.",
+      "uses": [],
+      "timerMinutes": 11
+    },
+    {
+      "text": "Scatter with parsley and serve with bread to soak up the juices.",
+      "uses": ["parsley", "bread"]
+    }
+  ]
+}

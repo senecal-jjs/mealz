@@ -1,0 +1,115 @@
+{
+  "id": "tomato-soup-grilled-cheese",
+  "title": "Tomato Soup with Grilled Cheese",
+  "description": "A quick, velvety tomato soup with crisp, melty cheddar sandwiches for dunking.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["meatless", "kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "butter-soup",
+      "ingredient": "butter",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 2,
+      "unit": "clove",
+      "prep": "chopped"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "crushed-tomatoes",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "28 oz"
+    },
+    {
+      "id": "broth",
+      "ingredient": "vegetable-broth",
+      "quantity": 2,
+      "unit": "cup"
+    },
+    {
+      "id": "sugar",
+      "ingredient": "brown-sugar",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "cream",
+      "ingredient": "heavy-cream",
+      "quantity": 0.33,
+      "unit": "cup"
+    },
+    {
+      "id": "bread",
+      "ingredient": "sliced-bread",
+      "quantity": 8,
+      "unit": "slice"
+    },
+    {
+      "id": "cheddar",
+      "ingredient": "cheddar",
+      "quantity": 2,
+      "unit": "cup",
+      "prep": "shredded"
+    },
+    {
+      "id": "butter-bread",
+      "ingredient": "butter",
+      "quantity": 3,
+      "unit": "tbsp",
+      "prep": "softened"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Melt 2 tbsp butter in a pot over medium heat. Cook the onion until soft, about 6 minutes, then add the garlic for 1 minute.",
+      "uses": ["butter-soup", "onion", "garlic"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Add the tomatoes, broth, sugar and a good pinch of salt and pepper. Simmer for 15 minutes.",
+      "uses": ["tomatoes", "broth", "sugar", "salt", "pepper"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Meanwhile, butter one side of each bread slice. Make 4 sandwiches with the cheddar inside and the buttered sides out.",
+      "uses": ["bread", "cheddar", "butter-bread"]
+    },
+    {
+      "text": "Cook the sandwiches in a skillet over medium-low heat until deep golden and melted, 3 to 4 minutes per side.",
+      "uses": []
+    },
+    {
+      "text": "Blend the soup until smooth (an immersion blender is easiest), stir in the cream and season to taste. Serve with the sandwiches cut into strips.",
+      "uses": ["cream"]
+    }
+  ]
+}

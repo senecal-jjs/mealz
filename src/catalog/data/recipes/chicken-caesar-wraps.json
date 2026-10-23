@@ -1,0 +1,86 @@
+{
+  "id": "chicken-caesar-wraps",
+  "title": "Chicken Caesar Wraps",
+  "description": "Crisp romaine, juicy chicken and parmesan rolled up with creamy Caesar dressing.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 12,
+  "difficulty": "easy",
+  "tags": ["quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "chicken",
+      "ingredient": "chicken-breast",
+      "quantity": 1,
+      "unit": "lb"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "romaine",
+      "ingredient": "romaine-lettuce",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "dressing",
+      "ingredient": "caesar-dressing",
+      "quantity": 0.5,
+      "unit": "cup"
+    },
+    {
+      "id": "parmesan",
+      "ingredient": "parmesan",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "grated"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 0.5,
+      "unit": "whole"
+    },
+    {
+      "id": "tortillas",
+      "ingredient": "flour-tortillas",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "large"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Season the chicken with salt and pepper. Heat the oil in a skillet over medium-high heat and cook until cooked through, 5 to 6 minutes per side. Rest 5 minutes, then slice.",
+      "uses": ["chicken", "salt", "pepper", "oil"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Toss the romaine with the dressing, parmesan and a squeeze of lemon.",
+      "uses": ["romaine", "dressing", "parmesan", "lemon"]
+    },
+    {
+      "text": "Fill each tortilla with salad and chicken, fold in the sides and roll up. Cut in half to serve.",
+      "uses": ["tortillas"]
+    }
+  ]
+}

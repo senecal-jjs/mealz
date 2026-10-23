@@ -3,6 +3,8 @@ import { Platform, StyleSheet, Text, type TextProps } from 'react-native';
 import { Fonts, ThemeColor } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
+const HEADING_MAX_SCALE = 1.4;
+
 export type ThemedTextProps = TextProps & {
   type?: 'default' | 'title' | 'small' | 'smallBold' | 'subtitle' | 'link' | 'linkPrimary' | 'code';
   themeColor?: ThemeColor;
@@ -11,7 +13,17 @@ export type ThemedTextProps = TextProps & {
 export function ThemedText({ style, type = 'default', themeColor, ...rest }: ThemedTextProps) {
   const theme = useTheme();
 
-  return <Text style={[{ color: theme[themeColor ?? 'text'] }, styles[type], style]} {...rest} />;
+  // Headings are already large; cap how far Dynamic Type grows them so long
+  // titles don't push everything else off screen. Body text scales fully.
+  const maxScale = type === 'title' || type === 'subtitle' ? HEADING_MAX_SCALE : undefined;
+
+  return (
+    <Text
+      maxFontSizeMultiplier={maxScale}
+      style={[{ color: theme[themeColor ?? 'text'] }, styles[type], style]}
+      {...rest}
+    />
+  );
 }
 
 const styles = StyleSheet.create({

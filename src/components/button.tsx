@@ -28,7 +28,7 @@ export function Button({ label, onPress, variant = 'primary', icon, style }: Pro
         style,
       ]}>
       {icon && <SymbolView name={icon} size={16} weight="semibold" tintColor={color} />}
-      <ThemedText type="smallBold" style={[styles.label, { color }]}>
+      <ThemedText type="smallBold" maxFontSizeMultiplier={1.5} style={[styles.label, { color }]}>
         {label}
       </ThemedText>
     </Pressable>

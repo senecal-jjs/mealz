@@ -1,0 +1,131 @@
+{
+  "id": "chana-masala",
+  "title": "Chana Masala",
+  "description": "Chickpeas simmered in a fragrant tomato, ginger and garam masala sauce.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["one-pot", "meatless", "budget"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "finely chopped"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 4,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 1,
+      "unit": "tbsp",
+      "prep": "grated"
+    },
+    {
+      "id": "chili",
+      "ingredient": "red-chili",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "minced",
+      "optional": true
+    },
+    {
+      "id": "garam",
+      "ingredient": "garam-masala",
+      "quantity": 2,
+      "unit": "tsp"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "turmeric",
+      "ingredient": "ground-turmeric",
+      "quantity": 0.5,
+      "unit": "tsp"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "crushed-tomatoes",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "28 oz"
+    },
+    {
+      "id": "chickpeas",
+      "ingredient": "chickpeas",
+      "quantity": 2,
+      "unit": "can",
+      "prep": "15 oz each, drained and rinsed"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "chopped"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Rinse the rice, then bring it to a boil with 2¼ cups water and a pinch of salt. Cover, turn the heat to low and cook until the water is absorbed, about 15 minutes. Let it stand off the heat, still covered, while you cook.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Heat the oil in a large pot over medium heat. Cook the onion until golden, about 7 minutes.",
+      "uses": ["oil", "onion"],
+      "timerMinutes": 7
+    },
+    {
+      "text": "Stir in the garlic, ginger, chili, garam masala, cumin and turmeric for 1 minute.",
+      "uses": ["garlic", "ginger", "chili", "garam", "cumin", "turmeric"]
+    },
+    {
+      "text": "Add the tomatoes, chickpeas, ½ cup water and a good pinch of salt. Simmer, partly covered, until thick, about 15 minutes. Mash a few chickpeas to thicken the sauce.",
+      "uses": ["tomatoes", "chickpeas", "salt"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Finish with the juice of the lemon and the cilantro. Serve over rice.",
+      "uses": ["lemon", "cilantro"]
+    }
+  ]
+}

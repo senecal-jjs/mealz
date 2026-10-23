@@ -23,6 +23,10 @@ export function resetMockPreferences(initial: PreferencesUpdate = {}) {
   set({ ...DEFAULT_PREFERENCES, ...initial });
 }
 
+export function PreferencesProvider({ children }: { children: React.ReactNode }) {
+  return children;
+}
+
 export function usePreferences() {
   const current = useSyncExternalStore(
     (l) => {

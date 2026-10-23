@@ -1,0 +1,98 @@
+{
+  "id": "pork-green-bean-stir-fry",
+  "title": "Ginger Pork and Green Bean Stir-Fry",
+  "description": "Thin slices of pork and snappy green beans in a gingery soy glaze. Lovely over rice or on its own.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 10,
+  "difficulty": "easy",
+  "tags": ["stir-fry", "quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "pork",
+      "ingredient": "pork-chop",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "boneless, very thinly sliced"
+    },
+    {
+      "id": "cornstarch",
+      "ingredient": "cornstarch",
+      "quantity": 2,
+      "unit": "tsp"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "beans",
+      "ingredient": "green-beans",
+      "quantity": 12,
+      "unit": "oz",
+      "prep": "trimmed and halved"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 1,
+      "unit": "tbsp",
+      "prep": "grated"
+    },
+    {
+      "id": "vinegar",
+      "ingredient": "rice-vinegar",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "sesame",
+      "ingredient": "sesame-oil",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 3,
+      "unit": "whole",
+      "prep": "sliced"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Toss the pork with the cornstarch and 1 tbsp soy sauce.",
+      "uses": ["pork", "cornstarch", "soy"]
+    },
+    {
+      "text": "Heat 1 tbsp oil in a wok or large skillet over high heat. Stir-fry the pork until browned, 2 to 3 minutes, then move to a plate.",
+      "uses": ["oil"]
+    },
+    {
+      "text": "Add the remaining oil and the green beans and stir-fry until blistered and tender-crisp, 4 to 5 minutes. Add the garlic and ginger for 30 seconds.",
+      "uses": ["beans", "garlic", "ginger"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Return the pork with the rest of the soy sauce, the vinegar and sesame oil and toss for 1 minute. Top with green onions.",
+      "uses": ["vinegar", "sesame", "scallions"]
+    }
+  ]
+}

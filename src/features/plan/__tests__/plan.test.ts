@@ -9,6 +9,7 @@ import {
   addToPlan,
   clearPlan,
   DEFAULT_SERVINGS,
+  historyQuery,
   markCooked,
   removeFromPlan,
   setPlanServings,
@@ -97,5 +98,21 @@ describe('plan', () => {
       shakshuka: null,
       'peanut-noodles': 5,
     });
+  });
+
+  it('lists cooked recipes as history, most recent first', async () => {
+    jest.useFakeTimers({ now: new Date('2026-10-01T18:00:00Z') });
+    await addToPlan(db, 'shakshuka');
+    await markCooked(db, 'shakshuka', 5);
+    jest.setSystemTime(new Date('2026-10-03T18:00:00Z'));
+    await addToPlan(db, 'peanut-noodles');
+    await markCooked(db, 'peanut-noodles');
+    await addToPlan(db, 'caprese-pasta'); // still planned, not history
+    jest.useRealTimers();
+
+    expect((await historyQuery(db)).map((i) => [i.recipeId, i.rating])).toEqual([
+      ['peanut-noodles', null],
+      ['shakshuka', 5],
+    ]);
   });
 });

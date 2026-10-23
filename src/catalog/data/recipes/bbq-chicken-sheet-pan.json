@@ -1,0 +1,99 @@
+{
+  "id": "bbq-chicken-sheet-pan",
+  "title": "BBQ Chicken with Corn and Potatoes",
+  "description": "Sticky barbecue chicken thighs roasted with crispy potatoes and sweet corn.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 30,
+  "difficulty": "easy",
+  "tags": ["sheet-pan", "kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "potatoes",
+      "ingredient": "baby-potatoes",
+      "quantity": 1.5,
+      "unit": "lb",
+      "prep": "halved"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "paprika",
+      "ingredient": "smoked-paprika",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "chicken",
+      "ingredient": "chicken-thighs",
+      "quantity": 1.5,
+      "unit": "lb",
+      "prep": "boneless, skinless"
+    },
+    {
+      "id": "bbq",
+      "ingredient": "bbq-sauce",
+      "quantity": 0.75,
+      "unit": "cup"
+    },
+    {
+      "id": "corn",
+      "ingredient": "frozen-corn",
+      "quantity": 2,
+      "unit": "cup"
+    },
+    {
+      "id": "butter",
+      "ingredient": "butter",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "sliced",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 425°F (220°C). Toss the potatoes with the oil, paprika and a pinch of salt and pepper on a sheet pan and roast for 10 minutes.",
+      "uses": ["potatoes", "oil", "paprika", "salt", "pepper"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Toss the chicken with half the barbecue sauce and add it to the pan. Roast for 15 minutes.",
+      "uses": ["chicken", "bbq"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Brush the chicken with the rest of the sauce, scatter the corn around and dot it with butter. Roast until the chicken is cooked through, about 5 minutes more.",
+      "uses": ["corn", "butter"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Top with green onions and serve.",
+      "uses": ["scallions"]
+    }
+  ]
+}

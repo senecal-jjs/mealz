@@ -1,0 +1,111 @@
+{
+  "id": "tuna-nicoise-salad",
+  "title": "Tuna Niçoise Salad",
+  "description": "A hearty French salad of tuna, little potatoes, green beans, eggs and olives with a mustardy dressing.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["meal-prep"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "potatoes",
+      "ingredient": "baby-potatoes",
+      "quantity": 1,
+      "unit": "lb",
+      "prep": "halved"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "beans",
+      "ingredient": "green-beans",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "trimmed"
+    },
+    {
+      "id": "eggs",
+      "ingredient": "egg",
+      "quantity": 4,
+      "unit": "whole"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 0.25,
+      "unit": "cup"
+    },
+    {
+      "id": "vinegar",
+      "ingredient": "red-wine-vinegar",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "mustard",
+      "ingredient": "dijon-mustard",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "lettuce",
+      "ingredient": "butter-lettuce",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "leaves torn"
+    },
+    {
+      "id": "tuna",
+      "ingredient": "canned-tuna",
+      "quantity": 2,
+      "unit": "can",
+      "prep": "5 oz each, drained"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "halved"
+    },
+    {
+      "id": "olives",
+      "ingredient": "kalamata-olives",
+      "quantity": 0.33,
+      "unit": "cup"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Cover the potatoes with salted water, bring to a boil and cook until tender, about 12 minutes. Add the green beans for the last 3 minutes, then drain.",
+      "uses": ["potatoes", "salt", "beans"],
+      "timerMinutes": 12
+    },
+    {
+      "text": "Meanwhile, simmer the eggs for 8 minutes, then cool in cold water, peel and quarter.",
+      "uses": ["eggs"],
+      "timerMinutes": 8
+    },
+    {
+      "text": "Whisk the oil, vinegar, mustard and a pinch of salt and pepper.",
+      "uses": ["oil", "vinegar", "mustard", "pepper"]
+    },
+    {
+      "text": "Arrange the lettuce, potatoes, green beans, tuna, tomatoes, olives and eggs on plates and spoon the dressing over.",
+      "uses": ["lettuce", "tuna", "tomatoes", "olives"]
+    }
+  ]
+}

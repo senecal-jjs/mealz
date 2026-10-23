@@ -1,0 +1,94 @@
+{
+  "id": "greek-hummus-wraps",
+  "title": "Greek Hummus Wraps",
+  "description": "No-cook wraps packed with hummus, crunchy cucumber, tomatoes, olives and feta.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 0,
+  "difficulty": "easy",
+  "tags": ["meatless", "no-cook"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "tortillas",
+      "ingredient": "flour-tortillas",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "large"
+    },
+    {
+      "id": "hummus",
+      "ingredient": "hummus",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "cucumber",
+      "ingredient": "cucumber",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 10,
+      "unit": "oz",
+      "prep": "quartered"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 0.25,
+      "unit": "whole",
+      "prep": "finely diced"
+    },
+    {
+      "id": "olives",
+      "ingredient": "kalamata-olives",
+      "quantity": 0.33,
+      "unit": "cup",
+      "prep": "chopped"
+    },
+    {
+      "id": "feta",
+      "ingredient": "feta",
+      "quantity": 4,
+      "unit": "oz",
+      "prep": "crumbled"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 0.5,
+      "unit": "whole"
+    },
+    {
+      "id": "oregano",
+      "ingredient": "dried-oregano",
+      "quantity": 0.5,
+      "unit": "tsp"
+    },
+    {
+      "id": "spinach",
+      "ingredient": "baby-spinach",
+      "quantity": 3,
+      "unit": "oz"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Toss the cucumber, tomatoes, onion, olives and feta with the juice of the half lemon and the oregano.",
+      "uses": ["cucumber", "tomatoes", "onion", "olives", "feta", "lemon", "oregano"]
+    },
+    {
+      "text": "Spread each tortilla with a quarter of the hummus.",
+      "uses": ["tortillas", "hummus"]
+    },
+    {
+      "text": "Layer on spinach and the salad, fold in the sides and roll up tightly. Cut in half to serve.",
+      "uses": ["spinach"]
+    }
+  ]
+}

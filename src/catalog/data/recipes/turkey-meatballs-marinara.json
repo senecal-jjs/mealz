@@ -1,0 +1,105 @@
+{
+  "id": "turkey-meatballs-marinara",
+  "title": "Turkey Meatballs in Marinara",
+  "description": "Tender baked turkey meatballs simmered in marinara and served over spaghetti.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 20,
+  "difficulty": "medium",
+  "tags": ["kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "turkey",
+      "ingredient": "ground-turkey",
+      "quantity": 1,
+      "unit": "lb"
+    },
+    {
+      "id": "panko",
+      "ingredient": "panko",
+      "quantity": 0.5,
+      "unit": "cup"
+    },
+    {
+      "id": "egg",
+      "ingredient": "egg",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "parmesan",
+      "ingredient": "parmesan",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "grated"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 2,
+      "unit": "clove",
+      "prep": "grated"
+    },
+    {
+      "id": "oregano",
+      "ingredient": "dried-oregano",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "marinara",
+      "ingredient": "marinara-sauce",
+      "quantity": 3,
+      "unit": "cup"
+    },
+    {
+      "id": "pasta",
+      "ingredient": "spaghetti",
+      "quantity": 12,
+      "unit": "oz"
+    },
+    {
+      "id": "basil",
+      "ingredient": "basil",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "leaves torn",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 425°F (220°C). Mix the turkey, panko, egg, half the parmesan, the garlic, oregano, ¾ tsp salt and some pepper. Roll into 16 meatballs and set on an oiled sheet pan.",
+      "uses": ["turkey", "panko", "egg", "parmesan", "garlic", "oregano", "salt", "pepper"]
+    },
+    {
+      "text": "Bake until browned, about 15 minutes.",
+      "uses": [],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Meanwhile, cook the spaghetti in salted boiling water until al dente, about 10 minutes, then drain.",
+      "uses": ["pasta"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Warm the marinara in a large skillet, add the meatballs and simmer for 5 minutes. Serve over the spaghetti with the rest of the parmesan and the basil.",
+      "uses": ["marinara", "basil"],
+      "timerMinutes": 5
+    }
+  ]
+}

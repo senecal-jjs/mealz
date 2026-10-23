@@ -1,0 +1,111 @@
+{
+  "id": "mushroom-black-bean-quesadillas",
+  "title": "Mushroom and Black Bean Quesadillas",
+  "description": "Crisp tortillas stuffed with smoky mushrooms, black beans and melted cheddar.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["meatless", "kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "mushrooms",
+      "ingredient": "cremini-mushrooms",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "chopped"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 0.5,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "paprika",
+      "ingredient": "smoked-paprika",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "beans",
+      "ingredient": "black-beans",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz, drained and rinsed"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "tortillas",
+      "ingredient": "flour-tortillas",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "large"
+    },
+    {
+      "id": "cheddar",
+      "ingredient": "cheddar",
+      "quantity": 1.5,
+      "unit": "cup",
+      "prep": "shredded"
+    },
+    {
+      "id": "salsa",
+      "ingredient": "salsa",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "for serving"
+    },
+    {
+      "id": "sour-cream",
+      "ingredient": "sour-cream",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "for serving",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat 1 tbsp oil in a large skillet over medium-high heat. Cook the mushrooms and onion until browned, 6 to 8 minutes.",
+      "uses": ["oil", "mushrooms", "onion"],
+      "timerMinutes": 7
+    },
+    {
+      "text": "Stir in the cumin, paprika and beans with a pinch of salt. Mash about half the beans with a fork and move the filling to a bowl. Wipe out the pan.",
+      "uses": ["cumin", "paprika", "beans", "salt"]
+    },
+    {
+      "text": "Sprinkle cheddar over half of each tortilla, top with filling and more cheese, then fold.",
+      "uses": ["tortillas", "cheddar"]
+    },
+    {
+      "text": "Brush the pan with a little of the remaining oil and cook the quesadillas over medium heat until golden and the cheese melts, 2 to 3 minutes per side.",
+      "uses": []
+    },
+    {
+      "text": "Cut into wedges and serve with salsa and sour cream.",
+      "uses": ["salsa", "sour-cream"]
+    }
+  ]
+}

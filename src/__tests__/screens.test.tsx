@@ -11,17 +11,21 @@ import OnboardingDiet from '@/app/onboarding/diet';
 import OnboardingDislikes from '@/app/onboarding/dislikes';
 import OnboardingHousehold from '@/app/onboarding/household';
 import OnboardingWelcome from '@/app/onboarding/index';
+import FavouritesScreen from '@/app/(tabs)/profile/favourites';
+import HistoryScreen from '@/app/(tabs)/profile/history';
 import ProfileScreen from '@/app/(tabs)/profile/index';
 import PlanScreen from '@/app/(tabs)/plan/index';
 import RecipeScreen from '@/app/recipe/[id]';
 import { groceryActions } from '@/features/grocery/hooks';
 import { useTimers } from '@/features/cook/timers';
+import { favouriteActions } from '@/features/favourites/hooks';
 import { planActions } from '@/features/plan/hooks';
 import { preferenceActions } from '@/features/preferences/hooks';
 
 jest.mock('@/features/plan/hooks');
 jest.mock('@/features/grocery/hooks');
 jest.mock('@/features/preferences/hooks');
+jest.mock('@/features/favourites/hooks');
 jest.mock('@/features/cook/notifications', () => ({
   scheduleTimerAlert: jest.fn(async () => 'alert-1'),
   cancelTimerAlert: jest.fn(async () => {}),
@@ -41,6 +45,11 @@ beforeEach(() => {
   jest
     .requireMock<typeof import('@/features/grocery/__mocks__/hooks')>('@/features/grocery/hooks')
     .resetMockGrocery();
+  jest
+    .requireMock<typeof import('@/features/favourites/__mocks__/hooks')>(
+      '@/features/favourites/hooks',
+    )
+    .resetMockFavourites();
   jest
     .requireMock<typeof import('@/features/preferences/__mocks__/hooks')>(
       '@/features/preferences/hooks',
@@ -290,7 +299,7 @@ describe('Preferences in the app', () => {
     await renderRouter({ index: RecipesScreen }, { initialUrl: '/' });
     expect(screen.getByText('Chickpea Coconut Curry')).toBeTruthy();
     expect(screen.queryByText('Shakshuka')).toBeNull();
-    expect(screen.getByText(/14 recipes hidden by your preferences/)).toBeTruthy();
+    expect(screen.getByText(/44 recipes hidden by your preferences/)).toBeTruthy();
   });
 
   it('adds recipes at the household size', async () => {
@@ -324,5 +333,49 @@ describe('Preferences in the app', () => {
     await renderRouter({ index: ProfileScreen }, { initialUrl: '/' });
     await fireEvent.press(screen.getByText('Reset all data'));
     expect(preferenceActions.resetAll).toHaveBeenCalled();
+  });
+});
+
+describe('Favourites and history', () => {
+  it('saves a favourite from the recipe page and filters to it on browse', async () => {
+    await renderRouter(
+      { _layout: () => <Stack />, 'recipe/[id]': RecipeScreen },
+      { initialUrl: '/recipe/shakshuka' },
+    );
+    await fireEvent.press(screen.getByLabelText('Save Shakshuka to favourites'));
+    expect(favouriteActions.set).toHaveBeenCalledWith('shakshuka', true);
+    expect(screen.getByLabelText('Remove Shakshuka from favourites')).toBeTruthy();
+
+    await renderRouter({ index: RecipesScreen }, { initialUrl: '/' });
+    await fireEvent.press(screen.getByRole('button', { name: '♥ Favourites' }));
+    expect(screen.getByText('Shakshuka')).toBeTruthy();
+    expect(screen.queryByText('Shrimp Fried Rice')).toBeNull();
+  });
+
+  it('shows an empty favourites list with a way back', async () => {
+    await renderRouter({ index: FavouritesScreen }, { initialUrl: '/' });
+    expect(screen.getByText('No favourites yet')).toBeTruthy();
+  });
+
+  it('lists cooked meals with ratings and plans one again', async () => {
+    jest
+      .requireMock<typeof import('@/features/plan/__mocks__/hooks')>('@/features/plan/hooks')
+      .setMockHistory([
+        {
+          id: 'h1',
+          recipeId: 'shakshuka',
+          servings: 3,
+          addedAt: new Date(2026, 9, 20),
+          cookedAt: new Date(2026, 9, 22),
+          rating: 4,
+        },
+      ]);
+    await renderRouter({ index: HistoryScreen }, { initialUrl: '/' });
+    expect(screen.getByText('Shakshuka')).toBeTruthy();
+    expect(screen.getByText('Cooked Oct 22 · ★★★★☆')).toBeTruthy();
+
+    await fireEvent.press(screen.getByText('Again'));
+    expect(planActions.add).toHaveBeenCalledWith('shakshuka', 3);
+    expect(screen.getByText('Planned')).toBeTruthy();
   });
 });

@@ -1,0 +1,83 @@
+{
+  "id": "spinach-feta-omelette",
+  "title": "Spinach and Feta Omelettes",
+  "description": "Fluffy omelettes folded around garlicky spinach and salty feta. Breakfast for dinner.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 5,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["meatless", "quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "eggs",
+      "ingredient": "egg",
+      "quantity": 8,
+      "unit": "whole"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "butter",
+      "ingredient": "butter",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 1,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "spinach",
+      "ingredient": "baby-spinach",
+      "quantity": 5,
+      "unit": "oz"
+    },
+    {
+      "id": "feta",
+      "ingredient": "feta",
+      "quantity": 4,
+      "unit": "oz",
+      "prep": "crumbled"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "halved, for serving"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Beat the eggs with a pinch of salt and pepper.",
+      "uses": ["eggs", "salt", "pepper"]
+    },
+    {
+      "text": "Melt a little butter in a nonstick skillet over medium heat. Cook the garlic and spinach until wilted, about 1 minute, then move to a plate.",
+      "uses": ["butter", "garlic", "spinach"]
+    },
+    {
+      "text": "For each omelette, melt a little more butter, pour in a quarter of the eggs and cook, pulling the edges in, until just set, about 2 minutes. Scatter a quarter of the spinach and feta over one half and fold.",
+      "uses": ["feta"]
+    },
+    {
+      "text": "Serve with the tomatoes on the side.",
+      "uses": ["tomatoes"]
+    }
+  ]
+}

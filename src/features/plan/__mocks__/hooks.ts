@@ -17,6 +17,7 @@ function set(next: PlanItem[]) {
 }
 
 export function resetMockPlan() {
+  history = [];
   set([]);
 }
 
@@ -28,6 +29,16 @@ export function usePlan(): PlanItem[] {
     },
     () => items,
   );
+}
+
+let history: PlanItem[] = [];
+
+export function setMockHistory(next: PlanItem[]) {
+  history = next;
+}
+
+export function useHistory(): PlanItem[] {
+  return history;
 }
 
 export function usePlannedServings(): Map<string, number> {

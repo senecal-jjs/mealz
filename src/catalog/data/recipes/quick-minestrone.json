@@ -1,0 +1,129 @@
+{
+  "id": "quick-minestrone",
+  "title": "Weeknight Minestrone",
+  "description": "A hearty vegetable and bean soup with small pasta, ready in about half an hour.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["one-pot", "meatless", "meal-prep"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "carrots",
+      "ingredient": "carrots",
+      "quantity": 0.5,
+      "unit": "lb",
+      "prep": "diced"
+    },
+    {
+      "id": "celery",
+      "ingredient": "celery",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "oregano",
+      "ingredient": "dried-oregano",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "diced-tomatoes",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz"
+    },
+    {
+      "id": "broth",
+      "ingredient": "vegetable-broth",
+      "quantity": 6,
+      "unit": "cup"
+    },
+    {
+      "id": "beans",
+      "ingredient": "cannellini-beans",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz, drained and rinsed"
+    },
+    {
+      "id": "pasta",
+      "ingredient": "short-pasta",
+      "quantity": 4,
+      "unit": "oz"
+    },
+    {
+      "id": "zucchini",
+      "ingredient": "zucchini",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "spinach",
+      "ingredient": "baby-spinach",
+      "quantity": 3,
+      "unit": "oz"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "parmesan",
+      "ingredient": "parmesan",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "grated",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oil in a large pot over medium heat. Cook the onion, carrots and celery with a pinch of salt until softened, about 7 minutes. Add the garlic and oregano for 1 minute.",
+      "uses": ["oil", "onion", "carrots", "celery", "garlic", "oregano", "salt"],
+      "timerMinutes": 7
+    },
+    {
+      "text": "Add the tomatoes and broth and bring to a boil. Add the beans, pasta and zucchini and simmer until the pasta is tender, about 12 minutes.",
+      "uses": ["tomatoes", "broth", "beans", "pasta", "zucchini"],
+      "timerMinutes": 12
+    },
+    {
+      "text": "Stir in the spinach and season well with salt and pepper. Serve with parmesan.",
+      "uses": ["spinach", "pepper", "parmesan"]
+    }
+  ]
+}

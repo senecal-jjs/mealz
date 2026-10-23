@@ -1,0 +1,104 @@
+{
+  "id": "korean-beef-bowls",
+  "title": "Korean-Style Beef Bowls",
+  "description": "Savory-sweet ground beef with garlic and ginger over rice. Ready in 20 minutes.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 5,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["quick", "kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "oil",
+      "ingredient": "sesame-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "beef",
+      "ingredient": "ground-beef",
+      "quantity": 1,
+      "unit": "lb"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 4,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 1,
+      "unit": "tbsp",
+      "prep": "grated"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 0.25,
+      "unit": "cup"
+    },
+    {
+      "id": "sugar",
+      "ingredient": "brown-sugar",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "flakes",
+      "ingredient": "red-pepper-flakes",
+      "quantity": 0.25,
+      "unit": "tsp"
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "sliced"
+    },
+    {
+      "id": "cucumber",
+      "ingredient": "cucumber",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "sesame",
+      "ingredient": "sesame-seeds",
+      "quantity": 1,
+      "unit": "tbsp"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Rinse the rice, then bring it to a boil with 2¼ cups water and a pinch of salt. Cover, turn the heat to low and cook until the water is absorbed, about 15 minutes. Let it stand off the heat, still covered, while you cook.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Heat the sesame oil in a large skillet over medium-high heat. Cook the beef, breaking it up, until browned, 6 to 7 minutes. Spoon off excess fat.",
+      "uses": ["oil", "beef"],
+      "timerMinutes": 7
+    },
+    {
+      "text": "Add the garlic and ginger for 1 minute, then stir in the soy sauce, brown sugar and pepper flakes and simmer for 2 minutes.",
+      "uses": ["garlic", "ginger", "soy", "sugar", "flakes"]
+    },
+    {
+      "text": "Serve over rice topped with green onions, cucumber and sesame seeds.",
+      "uses": ["scallions", "cucumber", "sesame"]
+    }
+  ]
+}

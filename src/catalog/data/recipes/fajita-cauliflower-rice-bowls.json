@@ -1,0 +1,100 @@
+{
+  "id": "fajita-cauliflower-rice-bowls",
+  "title": "Fajita Bowls with Cauliflower Rice",
+  "description": "Charred peppers and onions over cilantro-lime cauliflower rice with avocado and salsa.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["meatless"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "bell-pepper",
+      "quantity": 3,
+      "unit": "whole",
+      "prep": "sliced"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "sliced"
+    },
+    {
+      "id": "chili",
+      "ingredient": "chili-powder",
+      "quantity": 2,
+      "unit": "tsp"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "cauli",
+      "ingredient": "cauliflower-rice",
+      "quantity": 24,
+      "unit": "oz"
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 2,
+      "unit": "whole"
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "chopped"
+    },
+    {
+      "id": "avocado",
+      "ingredient": "avocado",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "sliced"
+    },
+    {
+      "id": "salsa",
+      "ingredient": "salsa",
+      "quantity": 0.5,
+      "unit": "cup"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat 2 tbsp oil in a large skillet over high heat. Cook the peppers and onion with the chili powder, cumin and a pinch of salt, stirring now and then, until charred and soft, 8 to 10 minutes. Move to a plate.",
+      "uses": ["oil", "pepper", "onion", "chili", "cumin", "salt"],
+      "timerMinutes": 9
+    },
+    {
+      "text": "Add the rest of the oil and the cauliflower rice to the pan. Cook until tender and any liquid has evaporated, about 5 minutes. Stir in the juice of 1 lime, the cilantro and a pinch of salt.",
+      "uses": ["cauli", "lime", "cilantro"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Divide the cauliflower rice between bowls and top with the fajita vegetables, avocado and salsa. Serve with lime wedges.",
+      "uses": ["avocado", "salsa"]
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "id": "classic-beef-tacos",
+  "title": "Classic Beef Tacos",
+  "description": "Seasoned ground beef in crunchy or soft tortillas with all the fixings.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 12,
+  "difficulty": "easy",
+  "tags": ["quick", "kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 0.5,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "beef",
+      "ingredient": "ground-beef",
+      "quantity": 1,
+      "unit": "lb"
+    },
+    {
+      "id": "chili",
+      "ingredient": "chili-powder",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "paprika",
+      "ingredient": "smoked-paprika",
+      "quantity": 0.5,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "paste",
+      "ingredient": "tomato-paste",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "tortillas",
+      "ingredient": "corn-tortillas",
+      "quantity": 8,
+      "unit": "whole"
+    },
+    {
+      "id": "lettuce",
+      "ingredient": "romaine-lettuce",
+      "quantity": 0.5,
+      "unit": "whole",
+      "prep": "shredded"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "chopped"
+    },
+    {
+      "id": "cheddar",
+      "ingredient": "cheddar",
+      "quantity": 1,
+      "unit": "cup",
+      "prep": "shredded"
+    },
+    {
+      "id": "salsa",
+      "ingredient": "salsa",
+      "quantity": 0.5,
+      "unit": "cup"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oil in a skillet over medium-high heat. Cook the onion for 3 minutes, then add the beef and cook, breaking it up, until browned, about 6 minutes.",
+      "uses": ["oil", "onion", "beef"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Stir in the chili powder, cumin, paprika, 1 tsp salt, the tomato paste and ⅓ cup water. Simmer until saucy, 2 to 3 minutes.",
+      "uses": ["chili", "cumin", "paprika", "salt", "paste"]
+    },
+    {
+      "text": "Warm the tortillas in a dry skillet.",
+      "uses": ["tortillas"]
+    },
+    {
+      "text": "Fill with the beef and top with lettuce, tomatoes, cheddar and salsa.",
+      "uses": ["lettuce", "tomatoes", "cheddar", "salsa"]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "id": "garlic-butter-shrimp-zucchini",
+  "title": "Garlic Butter Shrimp with Zucchini Noodles",
+  "description": "Juicy shrimp in lemony garlic butter tossed with tender zucchini ribbons.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 10,
+  "difficulty": "easy",
+  "tags": ["quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "zucchini",
+      "ingredient": "zucchini",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "spiralized or cut into ribbons"
+    },
+    {
+      "id": "shrimp",
+      "ingredient": "shrimp",
+      "quantity": 1.25,
+      "unit": "lb",
+      "prep": "peeled and deveined"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "butter",
+      "ingredient": "butter",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 5,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "flakes",
+      "ingredient": "red-pepper-flakes",
+      "quantity": 0.25,
+      "unit": "tsp"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "parsley",
+      "ingredient": "parsley",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "chopped"
+    },
+    {
+      "id": "parmesan",
+      "ingredient": "parmesan",
+      "quantity": 0.25,
+      "unit": "cup",
+      "prep": "grated",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Pat the shrimp dry and season with salt and pepper.",
+      "uses": ["shrimp", "salt", "pepper"]
+    },
+    {
+      "text": "Heat the oil in a large skillet over medium-high heat. Cook the shrimp until pink, about 2 minutes per side, then move to a plate.",
+      "uses": ["oil"]
+    },
+    {
+      "text": "Lower the heat to medium and melt the butter. Add the garlic and pepper flakes and cook for 1 minute.",
+      "uses": ["butter", "garlic", "flakes"]
+    },
+    {
+      "text": "Add the zucchini and toss until just tender, 2 to 3 minutes. Return the shrimp, add the juice of the lemon and the parsley, and toss. Top with parmesan.",
+      "uses": ["zucchini", "lemon", "parsley", "parmesan"]
+    }
+  ]
+}
