@@ -1,7 +1,15 @@
 import { router, Stack } from 'expo-router';
 import { SymbolView, type SFSymbol } from 'expo-symbols';
-import { useMemo, useState } from 'react';
-import { Alert, Pressable, SectionList, Share, StyleSheet, View } from 'react-native';
+import { useMemo } from 'react';
+import {
+  Alert,
+  LayoutAnimation,
+  Pressable,
+  SectionList,
+  Share,
+  StyleSheet,
+  View,
+} from 'react-native';
 import Swipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
 
 import { EmptyState } from '@/components/empty-state';
@@ -28,6 +36,16 @@ function promptForItem() {
   ]);
 }
 
+/**
+ * Checked items stay on the list, struck through, in an "In cart" section at
+ * the bottom, so an accidental tap is easy to spot and undo. Animate the move
+ * so it's clear where the item went.
+ */
+function toggleWithAnimation(toggle: () => void) {
+  LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+  toggle();
+}
+
 function HeaderButton({
   icon,
   label,
@@ -48,7 +66,6 @@ function HeaderButton({
 export default function GroceriesScreen() {
   const theme = useTheme();
   const { lines, checkedKeys, customItems } = useGroceryList();
-  const [showInCart, setShowInCart] = useState(false);
 
   const sections = useMemo(
     () => buildGrocerySections(lines, checkedKeys, customItems),
@@ -90,9 +107,6 @@ export default function GroceriesScreen() {
     );
   }
 
-  // "In cart" collapses so the list stays focused on what's left to buy.
-  const visible = sections.map((s) => (s.key === IN_CART && !showInCart ? { ...s, data: [] } : s));
-
   const renderRow = (row: Row) => {
     if (row.kind === 'line') {
       return (
@@ -101,7 +115,9 @@ export default function GroceriesScreen() {
           name={row.line.optional ? `${row.line.name} (optional)` : row.line.name}
           detail={row.line.recipeTitles.join(', ')}
           checked={row.checked}
-          onToggle={() => groceryActions.setLineChecked(row.line.key, !row.checked)}
+          onToggle={() =>
+            toggleWithAnimation(() => groceryActions.setLineChecked(row.line.key, !row.checked))
+          }
         />
       );
     }
@@ -123,52 +139,32 @@ export default function GroceriesScreen() {
         <GroceryRow
           name={item.customName ?? ''}
           checked={item.checked}
-          onToggle={() => groceryActions.setCustomChecked(item.id, !item.checked)}
+          onToggle={() =>
+            toggleWithAnimation(() => groceryActions.setCustomChecked(item.id, !item.checked))
+          }
         />
       </Swipeable>
     );
   };
 
-  const renderSectionHeader = ({ section }: { section: GrocerySection }) => {
-    const isCart = section.key === IN_CART;
-    const title = (
-      <View style={[styles.sectionHeader, { backgroundColor: theme.background }]}>
-        <View style={styles.sectionTitleRow}>
-          <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionTitle}>
-            {isCart ? `${section.title} (${inCart})` : section.title}
-          </ThemedText>
-          {isCart && (
-            <SymbolView
-              name={showInCart ? 'chevron.down' : 'chevron.right'}
-              size={12}
-              weight="semibold"
-              tintColor={theme.textSecondary}
-            />
-          )}
-        </View>
-        {section.hint && (
-          <ThemedText type="small" themeColor="textSecondary">
-            {section.hint}
-          </ThemedText>
-        )}
-      </View>
-    );
-    if (!isCart) return title;
-    return (
-      <Pressable
-        accessibilityRole="button"
-        accessibilityState={{ expanded: showInCart }}
-        onPress={() => setShowInCart((v) => !v)}>
-        {title}
-      </Pressable>
-    );
-  };
+  const renderSectionHeader = ({ section }: { section: GrocerySection }) => (
+    <View style={[styles.sectionHeader, { backgroundColor: theme.background }]}>
+      <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionTitle}>
+        {section.key === IN_CART ? `${section.title} (${inCart})` : section.title}
+      </ThemedText>
+      {section.hint && (
+        <ThemedText type="small" themeColor="textSecondary">
+          {section.hint}
+        </ThemedText>
+      )}
+    </View>
+  );
 
   return (
     <>
       {header}
       <SectionList
-        sections={visible}
+        sections={sections}
         keyExtractor={(row) => `${row.kind}:${row.key}`}
         contentInsetAdjustmentBehavior="automatic"
         style={{ backgroundColor: theme.background }}
@@ -210,7 +206,6 @@ const styles = StyleSheet.create({
     paddingTop: Spacing.four,
     paddingBottom: Spacing.one,
   },
-  sectionTitleRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two },
   sectionTitle: { textTransform: 'uppercase', letterSpacing: 0.5, fontSize: 13 },
   separator: { height: StyleSheet.hairlineWidth, marginLeft: Spacing.three + 24 + Spacing.three },
   addRow: {

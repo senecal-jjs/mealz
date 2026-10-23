@@ -95,7 +95,7 @@ Search is the native iOS search bar in the Recipes header, so there is no separa
 
 - Grouped by aisle: Produce, Meat & Seafood, Dairy & Eggs, Bakery, Pantry, Spices, Frozen, Other.
 - Each row shows the merged quantity, the ingredient name and, when expanded, which recipes need it.
-- Tap to check off. Checked items drop to a collapsed "In cart" section.
+- Tap to check off. Checked items stay visible (filled check, struck through) and move to an "In cart" section at the bottom, so a mistap is easy to undo.
 - A "Pantry staples" toggle hides items like salt, pepper and oil, or moves them to a "You probably have" group.
 - Add custom items (e.g. "paper towels"), which are kept when the list rebuilds.
 - Share or export as text through the iOS share sheet. With no accounts, this is how a household shares the list (Messages, Notes, Reminders).

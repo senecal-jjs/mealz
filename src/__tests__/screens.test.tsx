@@ -157,17 +157,25 @@ describe('Groceries tab', () => {
     expect(screen.getByText('You probably have')).toBeTruthy(); // olive oil, salt
   });
 
-  it('checks items off into a collapsible "In cart" section', async () => {
+  it('keeps checked items visible at the bottom so a mistap is easy to undo', async () => {
     await planActions.add('black-bean-tacos-lime-slaw', 4);
     await renderRouter({ index: GroceriesScreen }, { initialUrl: '/' });
 
     await fireEvent.press(screen.getByLabelText('2 limes'));
     expect(groceryActions.setLineChecked).toHaveBeenCalledWith('lime', true);
     expect(screen.getByText('In cart (1)')).toBeTruthy();
-    expect(screen.queryByLabelText('2 limes')).toBeNull(); // collapsed
 
-    await fireEvent.press(screen.getByText('In cart (1)'));
-    expect(screen.getByLabelText('2 limes')).toBeTruthy();
+    // Still on screen, checked, and listed after every unchecked item.
+    const limes = screen.getByLabelText('2 limes');
+    expect(limes.props.accessibilityState.checked).toBe(true);
+    const order = screen.getAllByRole('checkbox').map((el) => el.props.accessibilityLabel);
+    expect(order.at(-1)).toBe('2 limes');
+
+    // Tapping again puts it back.
+    await fireEvent.press(limes);
+    expect(groceryActions.setLineChecked).toHaveBeenLastCalledWith('lime', false);
+    expect(screen.queryByText(/In cart/)).toBeNull();
+    expect(screen.getByLabelText('2 limes').props.accessibilityState.checked).toBe(false);
   });
 
   it('adds custom items and shares what is left to buy', async () => {
