@@ -6,14 +6,14 @@
  * Mealime: adding a recipe that's already planned does nothing.
  */
 import { and, asc, eq, isNull } from 'drizzle-orm';
-import type { BaseSQLiteDatabase } from 'drizzle-orm/sqlite-core';
 
-import * as schema from '@/db/schema';
+import { newId } from '@/db/ids';
 import { planItems } from '@/db/schema';
+import type { Db } from '@/db/types';
 import { MAX_SERVINGS, MIN_SERVINGS } from '@/domain/quantity';
+import { clearCheckedLines } from '@/features/grocery/grocery';
 
-// Accepts both the app's sync expo-sqlite database and the async one tests use.
-export type Db = BaseSQLiteDatabase<'sync' | 'async', unknown, typeof schema>;
+export type { Db };
 
 export type PlanItem = typeof planItems.$inferSelect;
 
@@ -24,10 +24,6 @@ const isActive = isNull(planItems.cookedAt);
 
 function clampServings(servings: number): number {
   return Math.min(MAX_SERVINGS, Math.max(MIN_SERVINGS, Math.round(servings)));
-}
-
-function newId(): string {
-  return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
 }
 
 /** Active plan items, oldest first. */
@@ -61,6 +57,8 @@ export async function setPlanServings(db: Db, recipeId: string, servings: number
     .where(and(eq(planItems.recipeId, recipeId), isActive));
 }
 
+/** Starts a fresh plan, which also unchecks the grocery list it produced. */
 export async function clearPlan(db: Db) {
   await db.delete(planItems).where(isActive);
+  await clearCheckedLines(db);
 }

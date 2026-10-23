@@ -252,8 +252,9 @@ The canonical ingredient list, catalog JSON format and validation script, with t
 **M2 — Plan (1–2 days)** ✅
 Add and remove from plan on cards and on detail. The My Plan tab with a servings stepper for each item, swipe to remove, Clear, and a View Grocery List button. Plan saved in SQLite. A count badge on the My Plan tab stands in for the floating "My Plan (3)" pill. One active plan item per recipe; new items default to 2 servings until onboarding (M5) sets a household size.
 
-**M3 — Grocery list (3 days)** ⭐ the core feature
+**M3 — Grocery list (3 days)** ⭐ the core feature ✅
 The domain compile function with full unit tests. Aisle-grouped UI, check-off with an "In cart" section, custom items, pantry staples, rebuild that keeps checked state, and sharing as text.
+Built as: the list is recomputed from the plan on every render (`src/domain/grocery.ts`); only checks (per ingredient id) and custom items are stored. Staples go in a "You probably have" section rather than behind a toggle. Clearing the plan also clears checks. Amounts round up to what you can buy (whole onions, next ¼ cup / ¼ lb). An ingredient used in units that can't be converted shows both amounts ("4 oz + 1"); `unitConversions` will handle that when a recipe needs it.
 
 **M4 — Cook mode (2–3 days)**
 The "Get ready" ingredient checklist, the step pager with ingredients for each step, timer chips with background notifications, keep-awake, and mark as cooked with a rating, which moves the recipe to history.

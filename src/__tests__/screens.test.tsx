@@ -1,13 +1,17 @@
 import { fireEvent, screen } from '@testing-library/react-native';
+import { Alert, Share } from 'react-native';
+import { Stack } from 'expo-router';
 import { renderRouter } from 'expo-router/testing-library';
 
 import RecipesScreen from '@/app/(tabs)/(recipes)/index';
+import GroceriesScreen from '@/app/(tabs)/groceries/index';
 import PlanScreen from '@/app/(tabs)/plan/index';
 import RecipeScreen from '@/app/recipe/[id]';
-import { resetMockPlan } from '@/features/plan/__mocks__/hooks';
+import { groceryActions } from '@/features/grocery/hooks';
 import { planActions } from '@/features/plan/hooks';
 
 jest.mock('@/features/plan/hooks');
+jest.mock('@/features/grocery/hooks');
 // Swipe-to-remove needs Reanimated's native runtime; render rows without it.
 jest.mock('react-native-gesture-handler/ReanimatedSwipeable', () => ({
   __esModule: true,
@@ -15,7 +19,14 @@ jest.mock('react-native-gesture-handler/ReanimatedSwipeable', () => ({
 }));
 
 beforeEach(() => {
-  resetMockPlan();
+  // Reset through requireMock: importing the __mocks__ files directly would load
+  // separate copies from the ones the screens use.
+  jest
+    .requireMock<typeof import('@/features/plan/__mocks__/hooks')>('@/features/plan/hooks')
+    .resetMockPlan();
+  jest
+    .requireMock<typeof import('@/features/grocery/__mocks__/hooks')>('@/features/grocery/hooks')
+    .resetMockGrocery();
   jest.clearAllMocks();
 });
 
@@ -98,5 +109,58 @@ describe('My Plan tab', () => {
     await fireEvent.press(screen.getAllByLabelText('Fewer servings')[1]);
     expect(planActions.setServings).toHaveBeenCalledWith('peanut-noodles', 3);
     expect(screen.getByText(/2 recipes · 5 servings/)).toBeTruthy();
+  });
+});
+
+describe('Groceries tab', () => {
+  it('shows an empty state with no plan', async () => {
+    await renderRouter({ index: GroceriesScreen }, { initialUrl: '/' });
+    expect(screen.getByText('No groceries yet')).toBeTruthy();
+  });
+
+  it('merges planned recipes into one list grouped by aisle', async () => {
+    await planActions.add('black-bean-tacos-lime-slaw', 4);
+    await planActions.add('sweet-potato-black-bean-chili', 4);
+    await renderRouter({ index: GroceriesScreen }, { initialUrl: '/' });
+
+    expect(screen.getByText('Produce')).toBeTruthy();
+    expect(screen.getByLabelText('4 cans black beans')).toBeTruthy();
+    expect(screen.getByLabelText('3 limes')).toBeTruthy();
+    expect(screen.getByText('You probably have')).toBeTruthy(); // olive oil, salt
+  });
+
+  it('checks items off into a collapsible "In cart" section', async () => {
+    await planActions.add('black-bean-tacos-lime-slaw', 4);
+    await renderRouter({ index: GroceriesScreen }, { initialUrl: '/' });
+
+    await fireEvent.press(screen.getByLabelText('2 limes'));
+    expect(groceryActions.setLineChecked).toHaveBeenCalledWith('lime', true);
+    expect(screen.getByText('In cart (1)')).toBeTruthy();
+    expect(screen.queryByLabelText('2 limes')).toBeNull(); // collapsed
+
+    await fireEvent.press(screen.getByText('In cart (1)'));
+    expect(screen.getByLabelText('2 limes')).toBeTruthy();
+  });
+
+  it('adds custom items and shares what is left to buy', async () => {
+    jest.spyOn(Alert, 'prompt').mockImplementation((_title, _message, buttons) => {
+      const add = (buttons as { text: string; onPress: (t: string) => void }[])[1];
+      add.onPress('paper towels');
+    });
+    const share = jest
+      .spyOn(Share, 'share')
+      .mockResolvedValue({ action: 'sharedAction', activityType: undefined });
+    await planActions.add('shakshuka', 2);
+    // A Stack layout so the screen gets its header (with the share button).
+    await renderRouter({ _layout: () => <Stack />, index: GroceriesScreen }, { initialUrl: '/' });
+
+    await fireEvent.press(screen.getByLabelText('Add an item to the list'));
+    expect(screen.getByText('Your items')).toBeTruthy();
+    expect(screen.getByLabelText('paper towels')).toBeTruthy();
+
+    await fireEvent.press(screen.getByLabelText('Share list'));
+    const message = share.mock.calls[0][0].message!;
+    expect(message).toContain('• 4 eggs');
+    expect(message).toContain('YOUR ITEMS\n• paper towels');
   });
 });
