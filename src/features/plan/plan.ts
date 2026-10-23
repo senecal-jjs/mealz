@@ -57,6 +57,18 @@ export async function setPlanServings(db: Db, recipeId: string, servings: number
     .where(and(eq(planItems.recipeId, recipeId), isActive));
 }
 
+/**
+ * Finishes a planned recipe: it leaves the plan and stays in the table as
+ * history, with an optional 1–5 rating.
+ */
+export async function markCooked(db: Db, recipeId: string, rating?: number) {
+  const stars = rating === undefined ? null : Math.min(5, Math.max(1, Math.round(rating)));
+  await db
+    .update(planItems)
+    .set({ cookedAt: new Date(), rating: stars })
+    .where(and(eq(planItems.recipeId, recipeId), isActive));
+}
+
 /** Starts a fresh plan, which also unchecks the grocery list it produced. */
 export async function clearPlan(db: Db) {
   await db.delete(planItems).where(isActive);

@@ -29,12 +29,16 @@ export default function PlanScreen() {
 
   if (items.length === 0) {
     return (
-      <EmptyState
-        icon="fork.knife"
-        title="Your plan is empty"
-        message="Add recipes from the Recipes tab and they’ll show up here, ready to shop and cook."
-        action={{ label: 'Browse recipes', onPress: () => router.navigate('/') }}
-      />
+      <>
+        {/* Header options persist once set, so clear the Clear button explicitly. */}
+        <Stack.Screen options={{ headerRight: undefined }} />
+        <EmptyState
+          icon="fork.knife"
+          title="Your plan is empty"
+          message="Add recipes from the Recipes tab and they’ll show up here, ready to shop and cook."
+          action={{ label: 'Browse recipes', onPress: () => router.navigate('/') }}
+        />
+      </>
     );
   }
 

@@ -5,13 +5,19 @@ import { renderRouter } from 'expo-router/testing-library';
 
 import RecipesScreen from '@/app/(tabs)/(recipes)/index';
 import GroceriesScreen from '@/app/(tabs)/groceries/index';
+import CookScreen from '@/app/cook/[id]';
 import PlanScreen from '@/app/(tabs)/plan/index';
 import RecipeScreen from '@/app/recipe/[id]';
 import { groceryActions } from '@/features/grocery/hooks';
+import { useTimers } from '@/features/cook/timers';
 import { planActions } from '@/features/plan/hooks';
 
 jest.mock('@/features/plan/hooks');
 jest.mock('@/features/grocery/hooks');
+jest.mock('@/features/cook/notifications', () => ({
+  scheduleTimerAlert: jest.fn(async () => 'alert-1'),
+  cancelTimerAlert: jest.fn(async () => {}),
+}));
 // Swipe-to-remove needs Reanimated's native runtime; render rows without it.
 jest.mock('react-native-gesture-handler/ReanimatedSwipeable', () => ({
   __esModule: true,
@@ -80,7 +86,7 @@ describe('Recipe detail', () => {
     expect(planActions.setServings).toHaveBeenCalledWith('shakshuka', 4);
     expect(screen.getByText('In your plan · 4 servings')).toBeTruthy();
 
-    await fireEvent.press(screen.getByText('Remove from Plan'));
+    await fireEvent.press(screen.getByText('Remove'));
     expect(screen.getByText('Add to Plan')).toBeTruthy();
   });
 
@@ -162,5 +168,61 @@ describe('Groceries tab', () => {
     const message = share.mock.calls[0][0].message!;
     expect(message).toContain('• 4 eggs');
     expect(message).toContain('YOUR ITEMS\n• paper towels');
+  });
+});
+
+describe('Cook mode', () => {
+  beforeEach(() => useTimers.setState({ timers: {} }));
+
+  const renderCook = (id: string) =>
+    renderRouter({ 'cook/[id]': CookScreen }, { initialUrl: `/cook/${id}` });
+
+  it('starts with a checklist of ingredients scaled to the plan', async () => {
+    await planActions.add('chickpea-coconut-curry', 2);
+    await renderCook('chickpea-coconut-curry');
+
+    expect(screen.getAllByText('Get ready')).toHaveLength(2); // progress label and heading
+    expect(screen.getByText(/2 servings · about 35 min/)).toBeTruthy();
+    const rice = screen.getByRole('checkbox', { name: /¾ cup jasmine rice/ });
+    await fireEvent.press(rice);
+    expect(rice.props.accessibilityState.checked).toBe(true);
+  });
+
+  it('walks through steps showing what each one needs, with timers', async () => {
+    await planActions.add('chickpea-coconut-curry', 4);
+    await renderCook('chickpea-coconut-curry');
+
+    await fireEvent.press(screen.getByText('Start cooking'));
+    expect(screen.getByText('Step 1 of 5')).toBeTruthy();
+
+    await fireEvent.press(screen.getByText('Next'));
+    expect(screen.getByText('Step 2 of 5')).toBeTruthy();
+
+    // Step 2 cooks the onion for 5 minutes.
+    await fireEvent.press(screen.getByText('Start 5 min timer'));
+    expect(useTimers.getState().timers['chickpea-coconut-curry:1']).toBeTruthy();
+    expect(screen.getByText(/5:00 left · Stop/)).toBeTruthy();
+
+    await fireEvent.press(screen.getByText(/5:00 left · Stop/));
+    expect(useTimers.getState().timers).toEqual({});
+  });
+
+  it('finishes with a rating and marks the planned recipe cooked', async () => {
+    await planActions.add('shakshuka', 2);
+    await renderCook('shakshuka');
+
+    for (let i = 0; i < 6; i++) await fireEvent.press(screen.getByText(/Start cooking|Next/));
+    expect(screen.getByText('All done')).toBeTruthy();
+
+    await fireEvent.press(screen.getByLabelText('4 stars'));
+    await fireEvent.press(screen.getByText('Mark as cooked'));
+    expect(planActions.markCooked).toHaveBeenCalledWith('shakshuka', 4);
+  });
+
+  it('offers Start Cooking on a planned recipe page', async () => {
+    await planActions.add('shakshuka', 2);
+    await renderRouter({ 'recipe/[id]': RecipeScreen }, { initialUrl: '/recipe/shakshuka' });
+    expect(screen.getByText('Start Cooking')).toBeTruthy();
+    expect(screen.getByText('Remove')).toBeTruthy();
   });
 });

@@ -6,6 +6,7 @@ import {
   activePlanQuery,
   addToPlan,
   clearPlan,
+  markCooked,
   removeFromPlan,
   setPlanServings,
   type PlanItem,
@@ -27,4 +28,5 @@ export const planActions = {
   remove: (recipeId: string) => removeFromPlan(db, recipeId),
   setServings: (recipeId: string, servings: number) => setPlanServings(db, recipeId, servings),
   clear: () => clearPlan(db),
+  markCooked: (recipeId: string, rating?: number) => markCooked(db, recipeId, rating),
 };

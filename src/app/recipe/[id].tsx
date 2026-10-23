@@ -1,4 +1,4 @@
-import { Stack, useLocalSearchParams } from 'expo-router';
+import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { SymbolView } from 'expo-symbols';
 import { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
@@ -64,12 +64,19 @@ export default function RecipeScreen() {
           </ThemedText>
         )}
         {planned ? (
-          <Button
-            variant="secondary"
-            label="Remove from Plan"
-            onPress={() => planActions.remove(recipe.id)}
-            style={styles.footerButton}
-          />
+          <View style={styles.footerRow}>
+            <Button
+              variant="secondary"
+              label="Remove"
+              onPress={() => planActions.remove(recipe.id)}
+            />
+            <Button
+              icon="flame.fill"
+              label="Start Cooking"
+              onPress={() => router.push({ pathname: '/cook/[id]', params: { id: recipe.id } })}
+              style={styles.footerPrimary}
+            />
+          </View>
         ) : (
           <Button
             icon="plus"
@@ -281,5 +288,7 @@ const styles = StyleSheet.create({
     gap: Spacing.one,
   },
   footerButton: { alignSelf: 'stretch' },
+  footerRow: { flexDirection: 'row', gap: Spacing.two },
+  footerPrimary: { flex: 1 },
   footerHint: { textAlign: 'center', fontSize: 12, lineHeight: 16 },
 });

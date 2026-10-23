@@ -1,12 +1,15 @@
 /**
  * @jest-environment node
  */
+import { eq } from 'drizzle-orm';
+
 import { planItems } from '@/db/schema';
 import {
   activePlanQuery,
   addToPlan,
   clearPlan,
   DEFAULT_SERVINGS,
+  markCooked,
   removeFromPlan,
   setPlanServings,
 } from '@/features/plan/plan';
@@ -69,5 +72,30 @@ describe('plan', () => {
     await addToPlan(db, 'peanut-noodles');
     await clearPlan(db);
     expect(await plan()).toEqual([]);
+  });
+
+  it('marks a recipe cooked with a rating, moving it to history', async () => {
+    await addToPlan(db, 'shakshuka', 3);
+    await addToPlan(db, 'peanut-noodles');
+    await markCooked(db, 'shakshuka', 4);
+
+    expect((await plan()).map((i) => i.recipeId)).toEqual(['peanut-noodles']);
+    const [cooked] = await db.select().from(planItems).where(eq(planItems.recipeId, 'shakshuka'));
+    expect(cooked.cookedAt).toBeInstanceOf(Date);
+    expect(cooked.rating).toBe(4);
+    expect(cooked.servings).toBe(3);
+  });
+
+  it('allows cooking without a rating and clamps out-of-range ratings', async () => {
+    await addToPlan(db, 'shakshuka');
+    await markCooked(db, 'shakshuka');
+    await addToPlan(db, 'peanut-noodles');
+    await markCooked(db, 'peanut-noodles', 9);
+
+    const rows = await db.select().from(planItems);
+    expect(Object.fromEntries(rows.map((r) => [r.recipeId, r.rating]))).toEqual({
+      shakshuka: null,
+      'peanut-noodles': 5,
+    });
   });
 });

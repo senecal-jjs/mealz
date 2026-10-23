@@ -256,8 +256,9 @@ Add and remove from plan on cards and on detail. The My Plan tab with a servings
 The domain compile function with full unit tests. Aisle-grouped UI, check-off with an "In cart" section, custom items, pantry staples, rebuild that keeps checked state, and sharing as text.
 Built as: the list is recomputed from the plan on every render (`src/domain/grocery.ts`); only checks (per ingredient id) and custom items are stored. Staples go in a "You probably have" section rather than behind a toggle. Clearing the plan also clears checks. Amounts round up to what you can buy (whole onions, next ¼ cup / ¼ lb). An ingredient used in units that can't be converted shows both amounts ("4 oz + 1"); `unitConversions` will handle that when a recipe needs it.
 
-**M4 — Cook mode (2–3 days)**
+**M4 — Cook mode (2–3 days)** ✅
 The "Get ready" ingredient checklist, the step pager with ingredients for each step, timer chips with background notifications, keep-awake, and mark as cooked with a rating, which moves the recipe to history.
+Built as: a full-screen modal at `/cook/[id]`, opened from a Cook button on each My Plan row or Start Cooking on a planned recipe's page. Steps page by swipe or Back/Next. Timers come from each step's `timerMinutes`; they live in memory (Zustand) so they keep running across steps and outside cook mode, show in a strip at the top, and schedule a local notification (expo-notifications, asked for on first use). Finishing stops that recipe's timers. History is stored (`cookedAt`, `rating`) but not shown until the Profile work in M5/M6.
 
 **M5 — Onboarding and preferences (1–2 days)**
 The diet, allergies, dislikes and household flow. Filtering wired into browse, and a Profile tab to edit preferences later.

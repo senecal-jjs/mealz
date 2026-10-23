@@ -48,4 +48,7 @@ export const planActions = {
     set(items.map((i) => (i.recipeId === recipeId ? { ...i, servings } : i))),
   ),
   clear: jest.fn(async () => set([])),
+  markCooked: jest.fn(async (recipeId: string, _rating?: number) =>
+    set(items.filter((i) => i.recipeId !== recipeId)),
+  ),
 };
