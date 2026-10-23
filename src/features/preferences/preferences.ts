@@ -4,7 +4,14 @@
  */
 import { eq } from 'drizzle-orm';
 
-import { favourites, groceryItems, planItems, preferences } from '@/db/schema';
+import {
+  customIngredients,
+  favourites,
+  groceryItems,
+  planItems,
+  preferences,
+  userRecipes,
+} from '@/db/schema';
 import type { Db } from '@/db/types';
 
 export type Preferences = typeof preferences.$inferSelect;
@@ -44,4 +51,6 @@ export async function resetAllData(db: Db) {
   await db.delete(groceryItems);
   await db.delete(favourites);
   await db.delete(preferences);
+  await db.delete(userRecipes);
+  await db.delete(customIngredients);
 }

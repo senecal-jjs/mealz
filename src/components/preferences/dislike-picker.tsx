@@ -2,29 +2,33 @@ import { SymbolView } from 'expo-symbols';
 import { useMemo, useState } from 'react';
 import { Pressable, StyleSheet, TextInput, View } from 'react-native';
 
-import { catalog } from '@/catalog';
+import { useCatalog } from '@/catalog/live';
 import { OptionRow } from '@/components/preferences/option-row';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
-// Staples like salt and oil are in nearly everything, so they aren't offered.
-const CHOICES = [...catalog.ingredients.values()]
-  .filter((i) => !i.staple)
-  .sort((a, b) => a.name.localeCompare(b.name));
-
 type Props = { value: string[]; onChange: (ids: string[]) => void };
 
 export function DislikePicker({ value, onChange }: Props) {
   const theme = useTheme();
+  const catalog = useCatalog();
+  // Staples like salt and oil are in nearly everything, so they aren't offered.
+  const choices = useMemo(
+    () =>
+      [...catalog.ingredients.values()]
+        .filter((i) => !i.staple)
+        .sort((a, b) => a.name.localeCompare(b.name)),
+    [catalog],
+  );
   const [query, setQuery] = useState('');
   const toggle = (id: string) =>
     onChange(value.includes(id) ? value.filter((x) => x !== id) : [...value, id]);
 
   const shown = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return q ? CHOICES.filter((i) => i.name.toLowerCase().includes(q)) : CHOICES;
-  }, [query]);
+    return q ? choices.filter((i) => i.name.toLowerCase().includes(q)) : choices;
+  }, [choices, query]);
 
   return (
     <View style={styles.container}>

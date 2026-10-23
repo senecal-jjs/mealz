@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { FlatList, StyleSheet, View } from 'react-native';
 
-import { getRecipe } from '@/catalog';
+import { useCatalog } from '@/catalog/live';
 import { EmptyState } from '@/components/empty-state';
 import { RecipeRow } from '@/components/recipe-row';
 import { useFavourites } from '@/features/favourites/hooks';
@@ -9,6 +9,7 @@ import { useTheme } from '@/hooks/use-theme';
 
 export default function FavouritesScreen() {
   const theme = useTheme();
+  const { getRecipe } = useCatalog();
   const recipes = useFavourites().flatMap((id) => getRecipe(id) ?? []);
 
   if (recipes.length === 0) {

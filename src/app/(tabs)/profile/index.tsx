@@ -1,6 +1,6 @@
 import { Alert, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
-import { catalog } from '@/catalog';
+import { useCatalog } from '@/catalog/live';
 import { ALLERGEN_LABELS, DIET_LABELS } from '@/catalog/types';
 import { Chip } from '@/components/chip';
 import { ServingsStepper } from '@/components/servings-stepper';
@@ -35,6 +35,7 @@ function summarize(items: string[], max = 2): string {
 
 export default function ProfileScreen() {
   const theme = useTheme();
+  const catalog = useCatalog();
   const { prefs } = usePreferences();
   const favouriteCount = useFavourites().length;
   const cookedCount = useHistory().length;

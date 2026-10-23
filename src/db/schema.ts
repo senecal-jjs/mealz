@@ -1,13 +1,13 @@
 /**
- * User data. The recipe catalog is not stored here: it ships with the app as
- * JSON and is read in memory (see `src/catalog`). Tables refer to catalog
- * recipes and ingredients by id.
+ * User data. The bundled recipe catalog is not stored here: it ships with the
+ * app as JSON and is read in memory (see `src/catalog`). Tables refer to
+ * recipes and ingredients by id, whether bundled or the user's own.
  *
  * After changing this file run `npm run db:generate` to add a migration.
  */
 import { integer, real, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
-import type { Allergen, Diet, Unit } from '@/catalog/types';
+import type { Allergen, Diet, Ingredient, RecipeSource, Unit } from '@/catalog/types';
 
 /** A single row (id = 1) holding the user's onboarding choices. */
 export const preferences = sqliteTable('preferences', {
@@ -47,4 +47,18 @@ export const groceryItems = sqliteTable('grocery_items', {
 export const favourites = sqliteTable('favourites', {
   recipeId: text('recipe_id').primaryKey(),
   savedAt: integer('saved_at', { mode: 'timestamp' }).notNull(),
+});
+
+/** Recipes the user typed in or scanned. Stored as the same shape as catalog recipes. */
+export const userRecipes = sqliteTable('user_recipes', {
+  id: text('id').primaryKey(),
+  data: text('data', { mode: 'json' }).$type<RecipeSource>().notNull(),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull(),
+});
+
+/** Ingredients from the user's recipes that aren't in the bundled list. */
+export const customIngredients = sqliteTable('custom_ingredients', {
+  id: text('id').primaryKey(),
+  data: text('data', { mode: 'json' }).$type<Ingredient>().notNull(),
 });

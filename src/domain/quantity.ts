@@ -59,6 +59,17 @@ const UNIT_LABELS: Record<Unit, [singular: string, plural: string]> = {
   slice: ['slice', 'slices'],
 };
 
+/**
+ * The name for a count of one. Names stored in the plural ("carrots") lose the
+ * "s"; names with an explicit plural, or ending in "ss"/"us", are left alone.
+ */
+export function singularName(ingredient: Ingredient): string {
+  const { name } = ingredient;
+  if (ingredient.plural || !name.endsWith('s') || /(ss|us)$/.test(name)) return name;
+  if (name.endsWith('oes')) return name.slice(0, -2);
+  return name.slice(0, -1);
+}
+
 export function pluralName(ingredient: Ingredient): string {
   if (ingredient.plural) return ingredient.plural;
   return ingredient.name.endsWith('s') ? ingredient.name : `${ingredient.name}s`;
@@ -86,7 +97,7 @@ export function formatIngredient(
   const many = value > 1 && number !== '1';
 
   if (item.unit === 'whole') {
-    return { amount: number, name: many ? pluralName(ingredient) : ingredient.name };
+    return { amount: number, name: many ? pluralName(ingredient) : singularName(ingredient) };
   }
   const label = UNIT_LABELS[item.unit][many ? 1 : 0];
   return { amount: `${number} ${label}`, name: ingredient.name };

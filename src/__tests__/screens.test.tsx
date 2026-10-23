@@ -1,4 +1,4 @@
-import { fireEvent, screen } from '@testing-library/react-native';
+import { act, fireEvent, screen } from '@testing-library/react-native';
 import { Alert, Share } from 'react-native';
 import { Stack } from 'expo-router';
 import { renderRouter } from 'expo-router/testing-library';
@@ -16,9 +16,11 @@ import HistoryScreen from '@/app/(tabs)/profile/history';
 import ProfileScreen from '@/app/(tabs)/profile/index';
 import PlanScreen from '@/app/(tabs)/plan/index';
 import RecipeScreen from '@/app/recipe/[id]';
+import RecipeEditorScreen from '@/app/recipe-editor';
 import { groceryActions } from '@/features/grocery/hooks';
 import { useTimers } from '@/features/cook/timers';
 import { favouriteActions } from '@/features/favourites/hooks';
+import { myRecipeActions } from '@/features/my-recipes/hooks';
 import { planActions } from '@/features/plan/hooks';
 import { preferenceActions } from '@/features/preferences/hooks';
 
@@ -26,6 +28,13 @@ jest.mock('@/features/plan/hooks');
 jest.mock('@/features/grocery/hooks');
 jest.mock('@/features/preferences/hooks');
 jest.mock('@/features/favourites/hooks');
+jest.mock('@/catalog/live');
+jest.mock('@/features/my-recipes/hooks');
+jest.mock('@/features/my-recipes/photos', () => ({
+  savePhoto: jest.fn(async () => 'recipe-photos/test.jpg'),
+  photoUri: (image: string) => image,
+  deletePhoto: jest.fn(),
+}));
 jest.mock('@/features/cook/notifications', () => ({
   scheduleTimerAlert: jest.fn(async () => 'alert-1'),
   cancelTimerAlert: jest.fn(async () => {}),
@@ -37,6 +46,12 @@ jest.mock('react-native-gesture-handler/ReanimatedSwipeable', () => ({
 }));
 
 beforeEach(() => {
+  jest.requireMock<typeof import('@/catalog/__mocks__/live')>('@/catalog/live').resetMockCatalog();
+  jest
+    .requireMock<typeof import('@/features/my-recipes/__mocks__/hooks')>(
+      '@/features/my-recipes/hooks',
+    )
+    .resetMockMyRecipes();
   // Reset through requireMock: importing the __mocks__ files directly would load
   // separate copies from the ones the screens use.
   jest
@@ -385,5 +400,115 @@ describe('Favourites and history', () => {
     await fireEvent.press(screen.getByText('Again'));
     expect(planActions.add).toHaveBeenCalledWith('shakshuka', 3);
     expect(screen.getByText('Planned')).toBeTruthy();
+  });
+});
+
+describe('My recipes', () => {
+  const editorRoutes = {
+    _layout: () => <Stack />,
+    index: RecipesScreen,
+    'recipe/[id]': RecipeScreen,
+    'recipe-editor': RecipeEditorScreen,
+  };
+
+  it('types in a recipe, asks about a new ingredient, saves it and lists it', async () => {
+    const alert = jest.spyOn(Alert, 'alert').mockImplementation(() => {});
+    await renderRouter(editorRoutes, { initialUrl: '/recipe-editor' });
+
+    await fireEvent.changeText(screen.getByLabelText('Recipe name'), 'Harissa Chickpeas');
+    await fireEvent.changeText(
+      screen.getByLabelText('Ingredient 1'),
+      '2 cans chickpeas, drained\n2 tbsp harissa paste\n1 lemon',
+    );
+    // Pasting several lines splits them into rows, each matched or flagged.
+    expect(screen.getByLabelText(/Matched to chickpeas/)).toBeTruthy();
+    expect(screen.getByLabelText(/Matched to lemon/)).toBeTruthy();
+    expect(screen.getByText('“harissa paste” is new to Mealz. What is it?')).toBeTruthy();
+    await fireEvent.changeText(
+      screen.getByLabelText('Step 1'),
+      'Toss the chickpeas with harissa and roast for 20 minutes. Finish with lemon.',
+    );
+
+    await fireEvent.press(screen.getByText('Save'));
+    expect(alert).toHaveBeenCalledWith(
+      'Almost there',
+      'Say what “harissa paste” is, so diet filters stay accurate.',
+    );
+    expect(myRecipeActions.save).not.toHaveBeenCalled();
+
+    await fireEvent.press(screen.getByText('Plant-based'));
+    await fireEvent.press(screen.getByText('Save'));
+    const [recipe, newIngredients] = jest.mocked(myRecipeActions.save).mock.calls[0];
+    expect(recipe.title).toBe('Harissa Chickpeas');
+    expect(recipe.ingredients.map((i) => i.ingredient)).toEqual([
+      'chickpeas',
+      newIngredients[0].id,
+      'lemon',
+    ]);
+    expect(recipe.steps[0]).toMatchObject({ uses: ['i1', 'i2', 'i3'], timerMinutes: 20 });
+    expect(newIngredients[0]).toMatchObject({ name: 'harissa paste', kind: 'plant' });
+
+    // Saving opens the new recipe, marked as the user's own and editable.
+    expect(screen.getByText('Your recipe · only on this phone')).toBeTruthy();
+    expect(screen.getByLabelText('Edit Harissa Chickpeas')).toBeTruthy();
+  });
+
+  it('shows a My recipes chip only once there are user recipes', async () => {
+    await renderRouter({ index: RecipesScreen }, { initialUrl: '/' });
+    expect(screen.queryByRole('button', { name: 'My recipes' })).toBeNull();
+
+    await act(() =>
+      myRecipeActions.save(
+        {
+          id: 'my-1',
+          title: 'Family Chili',
+          description: '',
+          image: null,
+          baseServings: 4,
+          prepMinutes: 5,
+          cookMinutes: 30,
+          difficulty: 'easy',
+          tags: [],
+          reviewed: true,
+          ingredients: [{ id: 'i1', ingredient: 'black-beans', quantity: 2, unit: 'can' }],
+          steps: [{ text: 'Simmer.', uses: ['i1'] }],
+        },
+        [],
+      ),
+    );
+    await fireEvent.press(screen.getByRole('button', { name: 'My recipes' }));
+    expect(screen.getByText('Family Chili')).toBeTruthy();
+    expect(screen.queryByText('Shakshuka')).toBeNull();
+  });
+
+  it('edits an existing recipe in place', async () => {
+    await myRecipeActions.save(
+      {
+        id: 'my-2',
+        title: 'Toast',
+        description: '',
+        image: null,
+        baseServings: 2,
+        prepMinutes: 2,
+        cookMinutes: 3,
+        difficulty: 'easy',
+        tags: [],
+        reviewed: true,
+        ingredients: [{ id: 'i1', ingredient: 'sliced-bread', quantity: 2, unit: 'slice' }],
+        steps: [{ text: 'Toast the bread.', uses: ['i1'] }],
+      },
+      [],
+    );
+    jest.mocked(myRecipeActions.save).mockClear();
+    await renderRouter(editorRoutes, { initialUrl: '/recipe-editor?id=my-2' });
+
+    expect(screen.getByDisplayValue('Toast')).toBeTruthy();
+    expect(screen.getByDisplayValue('2 slices sandwich bread')).toBeTruthy();
+    await fireEvent.changeText(screen.getByLabelText('Recipe name'), 'Buttered Toast');
+    await fireEvent.press(screen.getByText('Save'));
+    expect(jest.mocked(myRecipeActions.save).mock.calls[0][0]).toMatchObject({
+      id: 'my-2',
+      title: 'Buttered Toast',
+    });
   });
 });

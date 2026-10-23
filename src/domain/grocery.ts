@@ -5,7 +5,7 @@
  */
 import type { Aisle, Ingredient, Recipe, Unit } from '@/catalog/types';
 import { AISLES } from '@/catalog/types';
-import { formatFraction, pluralName, scaleFactor } from '@/domain/quantity';
+import { formatFraction, pluralName, scaleFactor, singularName } from '@/domain/quantity';
 
 export type UnitSystem = 'us' | 'metric';
 
@@ -104,7 +104,9 @@ function formatLine(totals: Totals, system: UnitSystem): { amount: string; name:
     const whole = ceilTo(count, 1);
     if (unit === 'whole') {
       parts.push(`${whole}`);
-      if (whole > 1 && parts.length === 1) name = pluralName(totals.ingredient);
+      if (parts.length === 1) {
+        name = whole > 1 ? pluralName(totals.ingredient) : singularName(totals.ingredient);
+      }
     } else {
       const [one, many] = COUNT_LABELS[unit]!;
       parts.push(`${whole} ${whole > 1 ? many : one}`);

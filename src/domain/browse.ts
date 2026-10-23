@@ -4,10 +4,12 @@ import { DIET_LABELS } from '@/catalog/types';
 export const QUICK_MINUTES = 30;
 const ONE_PAN_TAGS = ['one-pot', 'sheet-pan'];
 
-export type BrowseFilter = 'all' | 'favourites' | 'quick' | 'one-pan' | 'kid-friendly' | Diet;
+export type BrowseFilter =
+  'all' | 'mine' | 'favourites' | 'quick' | 'one-pan' | 'kid-friendly' | Diet;
 
 export const BROWSE_FILTERS: { id: BrowseFilter; label: string }[] = [
   { id: 'all', label: 'All' },
+  { id: 'mine', label: 'My recipes' },
   { id: 'favourites', label: '♥ Favourites' },
   { id: 'quick', label: `Under ${QUICK_MINUTES} min` },
   { id: 'one-pan', label: 'One pan' },
@@ -17,6 +19,7 @@ export const BROWSE_FILTERS: { id: BrowseFilter; label: string }[] = [
 
 function matchesFilter(recipe: Recipe, filter: BrowseFilter, favourites: Set<string>): boolean {
   if (filter === 'all') return true;
+  if (filter === 'mine') return recipe.mine;
   if (filter === 'favourites') return favourites.has(recipe.id);
   if (filter === 'quick') return recipe.totalMinutes <= QUICK_MINUTES;
   if (filter === 'one-pan') return ONE_PAN_TAGS.some((t) => recipe.tags.includes(t));

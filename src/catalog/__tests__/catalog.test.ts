@@ -115,3 +115,40 @@ describe('buildCatalog', () => {
     }
   });
 });
+
+describe('buildCatalog with user recipes', () => {
+  const pork: Ingredient = {
+    id: 'my-pork-belly-x1',
+    name: 'pork belly',
+    aisle: 'meat',
+    kind: 'meat',
+  };
+
+  it('adds user recipes, marked as mine, using their custom ingredients', () => {
+    const mine = recipe([['spinach'], [pork.id]], { id: 'my-1', title: 'Pork and Greens' });
+    const built = buildCatalog(ingredients, [recipe([['spinach']])], true, {
+      recipes: [mine],
+      ingredients: [pork],
+    });
+    expect(built.recipes.map((r) => [r.id, r.mine])).toEqual([
+      ['my-1', true],
+      ['test', false],
+    ]);
+    expect(built.recipesById.get('my-1')?.diets).toEqual(['low-carb']);
+    expect(built.ingredients.get(pork.id)?.name).toBe('pork belly');
+  });
+
+  it('always includes user recipes, even when drafts are hidden', () => {
+    const mine = recipe([['spinach']], { id: 'my-1', reviewed: false });
+    expect(
+      buildCatalog(ingredients, [], false, { recipes: [mine], ingredients: [] }).recipes,
+    ).toHaveLength(1);
+  });
+
+  it('skips a user recipe whose ingredient is missing instead of failing', () => {
+    const broken = recipe([['my-gone']], { id: 'my-1' });
+    expect(
+      buildCatalog(ingredients, [], true, { recipes: [broken], ingredients: [] }).recipes,
+    ).toEqual([]);
+  });
+});

@@ -48,6 +48,16 @@ describe('formatIngredient', () => {
     expect(formatIngredient({ quantity: 2, unit: 'tbsp' }, salt).amount).toBe('2 tbsp');
   });
 
+  it('uses the singular for one of a plural-named ingredient', () => {
+    const carrots: Ingredient = { id: 'carrots', name: 'carrots', aisle: 'produce', kind: 'plant' };
+    const tomatoes: Ingredient = { ...carrots, id: 't', name: 'cherry tomatoes' };
+    expect(formatIngredient({ quantity: 1, unit: 'whole' }, carrots).name).toBe('carrot');
+    expect(formatIngredient({ quantity: 2, unit: 'whole' }, carrots).name).toBe('carrots');
+    expect(formatIngredient({ quantity: 1, unit: 'whole' }, tomatoes).name).toBe('cherry tomato');
+    expect(formatIngredient({ quantity: 1, unit: 'whole' }, garlic).name).toBe('garlic');
+    expect(formatIngredient({ quantity: 1, unit: 'lb' }, carrots).name).toBe('carrots');
+  });
+
   it('scales by the given factor', () => {
     const factor = scaleFactor(4, 2);
     expect(formatIngredient({ quantity: 1.5, unit: 'lb' }, salt, factor).amount).toBe('¾ lb');

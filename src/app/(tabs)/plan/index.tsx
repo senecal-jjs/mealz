@@ -3,7 +3,7 @@ import * as Haptics from 'expo-haptics';
 import { router, Stack } from 'expo-router';
 import { Alert, Pressable, StyleSheet, View } from 'react-native';
 
-import { getRecipe } from '@/catalog';
+import { useCatalog } from '@/catalog/live';
 import { Button } from '@/components/button';
 import { EmptyState } from '@/components/empty-state';
 import { PlanRow } from '@/components/plan-row';
@@ -21,6 +21,7 @@ function confirmClear() {
 
 export default function PlanScreen() {
   const theme = useTheme();
+  const { getRecipe } = useCatalog();
   // A recipe can disappear from the catalog in an update; skip those rows.
   const items = usePlan().flatMap((item) => {
     const recipe = getRecipe(item.recipeId);

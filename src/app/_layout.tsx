@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { StyleSheet, useColorScheme, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
+import { CatalogProvider } from '@/catalog/live';
 import { ThemedText } from '@/components/themed-text';
 import { headerBlur } from '@/constants/navigation';
 import { db } from '@/db/client';
@@ -31,7 +32,9 @@ export default function RootLayout() {
   if (!success) return null;
   return (
     <PreferencesProvider>
-      <AppNavigator />
+      <CatalogProvider>
+        <AppNavigator />
+      </CatalogProvider>
     </PreferencesProvider>
   );
 }
@@ -54,6 +57,8 @@ function AppNavigator() {
           {/* Finishing onboarding (or resetting all data) flips these guards. */}
           <Stack.Protected guard={onboarded}>
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="recipe-editor" options={{ presentation: 'modal' }} />
+            <Stack.Screen name="scan-recipe" options={{ presentation: 'modal' }} />
             <Stack.Screen
               name="cook/[id]"
               options={{ presentation: 'fullScreenModal', headerShown: false }}

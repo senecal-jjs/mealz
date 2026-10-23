@@ -3,6 +3,7 @@ import { SymbolView } from 'expo-symbols';
 import { StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 
 import type { Recipe } from '@/catalog/types';
+import { photoUri } from '@/features/my-recipes/photos';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
 // Soft placeholder colors until real photos exist (PLAN.md §9).
@@ -29,7 +30,7 @@ export function RecipeImage({ recipe, style, iconSize = 40 }: Props) {
   if (recipe.image) {
     return (
       <View style={[styles.fill, style]}>
-        <Image source={recipe.image} style={StyleSheet.absoluteFill} contentFit="cover" />
+        <Image source={photoUri(recipe.image)} style={StyleSheet.absoluteFill} contentFit="cover" />
       </View>
     );
   }

@@ -1,9 +1,10 @@
 import { FlashList } from '@shopify/flash-list';
-import { Link, Stack } from 'expo-router';
+import { Link, router, Stack } from 'expo-router';
+import { SymbolView } from 'expo-symbols';
 import { useMemo, useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
-import { catalog } from '@/catalog';
+import { useCatalog } from '@/catalog/live';
 import { Chip } from '@/components/chip';
 import { RecipeCard } from '@/components/recipe-card';
 import { ThemedText } from '@/components/themed-text';
@@ -15,26 +16,50 @@ import { planActions, usePlannedServings } from '@/features/plan/hooks';
 import { usePreferences } from '@/features/preferences/hooks';
 import { useTheme } from '@/hooks/use-theme';
 
+function addRecipe() {
+  Alert.alert('Add a recipe', undefined, [
+    { text: 'Scan a Photo', onPress: () => router.push('/scan-recipe') },
+    { text: 'Type It In', onPress: () => router.push('/recipe-editor') },
+    { text: 'Cancel', style: 'cancel' },
+  ]);
+}
+
 export default function RecipesScreen() {
   const theme = useTheme();
+  const catalog = useCatalog();
   const [filter, setFilter] = useState<BrowseFilter>('all');
   const [query, setQuery] = useState('');
   const planned = usePlannedServings();
   const { prefs } = usePreferences();
   const favouriteIds = useFavourites();
 
-  // Recipes that don't fit the user's diet, allergies or dislikes are never shown.
-  const allowed = useMemo(() => catalog.recipes.filter((r) => fitsPreferences(r, prefs)), [prefs]);
+  // Recipes that don't fit the user's diet, allergies or dislikes aren't shown,
+  // except the user's own: they added those on purpose.
+  const allowed = useMemo(
+    () => catalog.recipes.filter((r) => r.mine || fitsPreferences(r, prefs)),
+    [catalog, prefs],
+  );
+  const hasMine = catalog.recipes.some((r) => r.mine);
+  const filters = BROWSE_FILTERS.filter((f) => f.id !== 'mine' || hasMine);
   const hidden = catalog.recipes.length - allowed.length;
   const recipes = useMemo(
     () => browseRecipes(allowed, catalog.ingredients, filter, query, new Set(favouriteIds)),
-    [allowed, filter, query, favouriteIds],
+    [allowed, catalog.ingredients, filter, query, favouriteIds],
   );
 
   return (
     <>
       <Stack.Screen
         options={{
+          headerRight: () => (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Add a recipe"
+              hitSlop={8}
+              onPress={addRecipe}>
+              <SymbolView name="plus" size={22} tintColor={theme.tint} />
+            </Pressable>
+          ),
           headerSearchBarOptions: {
             placeholder: 'Search recipes or ingredients',
             onChangeText: (e) => setQuery(e.nativeEvent.text),
@@ -55,7 +80,7 @@ export default function RecipesScreen() {
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={styles.chips}
               style={styles.chipRow}>
-              {BROWSE_FILTERS.map((f) => (
+              {filters.map((f) => (
                 <Chip
                   key={f.id}
                   label={f.label}

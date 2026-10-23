@@ -2,7 +2,7 @@ import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
 import { FlatList, StyleSheet, View } from 'react-native';
 
-import { getRecipe } from '@/catalog';
+import { useCatalog } from '@/catalog/live';
 import { Button } from '@/components/button';
 import { EmptyState } from '@/components/empty-state';
 import { RecipeRow } from '@/components/recipe-row';
@@ -14,6 +14,7 @@ import { useTheme } from '@/hooks/use-theme';
 
 export default function HistoryScreen() {
   const theme = useTheme();
+  const { getRecipe } = useCatalog();
   const planned = usePlannedServings();
   const { defaultServings } = usePreferences().prefs;
   const items = useHistory().flatMap((item) => {

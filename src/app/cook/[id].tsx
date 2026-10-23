@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { getIngredient, getRecipe } from '@/catalog';
+import { useCatalog } from '@/catalog/live';
 import type { Recipe, RecipeIngredient, Step } from '@/catalog/types';
 import { Button } from '@/components/button';
 import { ThemedText } from '@/components/themed-text';
@@ -28,6 +28,7 @@ import { useTheme } from '@/hooks/use-theme';
 export default function CookScreen() {
   useKeepAwake();
   const { id } = useLocalSearchParams<{ id: string }>();
+  const { getRecipe } = useCatalog();
   const recipe = getRecipe(id);
   const plannedServings = usePlannedServings().get(id);
   const { defaultServings } = usePreferences().prefs;
@@ -163,6 +164,7 @@ function IngredientLine({
   onToggle?: () => void;
 }) {
   const theme = useTheme();
+  const { getIngredient } = useCatalog();
   const { amount, name } = formatIngredient(item, getIngredient(item.ingredient), factor);
   const text = (
     <View style={styles.ingredientText}>

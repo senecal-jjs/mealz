@@ -39,7 +39,15 @@
           "imageWidth": 120
         }
       ],
-      "expo-sqlite"
+      "expo-sqlite",
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "Mealz uses the camera to photograph recipes and dishes. The text is read on your iPhone and photos are never uploaded.",
+          "photosPermission": "Mealz uses your photos to add recipe pages and dish photos. They stay on your iPhone.",
+          "microphonePermission": false
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,

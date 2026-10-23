@@ -1,10 +1,10 @@
 import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { SymbolView } from 'expo-symbols';
 import { useState } from 'react';
-import { ScrollView, StyleSheet, useWindowDimensions, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, useWindowDimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { getIngredient, getRecipe } from '@/catalog';
+import { useCatalog } from '@/catalog/live';
 import { DIET_LABELS, type Recipe } from '@/catalog/types';
 import { Button } from '@/components/button';
 import { FavouriteButton } from '@/components/favourite-button';
@@ -19,6 +19,7 @@ import { useTheme } from '@/hooks/use-theme';
 
 export default function RecipeScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const { getRecipe } = useCatalog();
   const recipe = getRecipe(id);
   const theme = useTheme();
   const insets = useSafeAreaInsets();
@@ -48,7 +49,25 @@ export default function RecipeScreen() {
         <Stack.Screen
           options={{
             title: recipe.title,
-            headerRight: () => <FavouriteButton recipeId={recipe.id} title={recipe.title} />,
+            headerRight: () => (
+              <View style={styles.headerButtons}>
+                {recipe.mine && (
+                  <Pressable
+                    accessibilityRole="button"
+                    accessibilityLabel={`Edit ${recipe.title}`}
+                    hitSlop={8}
+                    onPress={() =>
+                      router.push({ pathname: '/recipe-editor', params: { id: recipe.id } })
+                    }
+                    style={[styles.editButton, { backgroundColor: theme.background }]}>
+                    <ThemedText type="smallBold" style={{ color: theme.tint }}>
+                      Edit
+                    </ThemedText>
+                  </Pressable>
+                )}
+                <FavouriteButton recipeId={recipe.id} title={recipe.title} />
+              </View>
+            ),
           }}
         />
         <RecipeImage recipe={recipe} style={styles.hero} iconSize={64} />
@@ -133,6 +152,11 @@ function Overview({ recipe }: { recipe: Recipe }) {
           Contains: {allergens}
         </ThemedText>
       )}
+      {recipe.mine && (
+        <ThemedText type="small" themeColor="textSecondary">
+          Your recipe · only on this phone
+        </ThemedText>
+      )}
     </View>
   );
 }
@@ -156,6 +180,7 @@ type IngredientsProps = {
 
 function Ingredients({ recipe, servings, onServingsChange }: IngredientsProps) {
   const theme = useTheme();
+  const { getIngredient } = useCatalog();
   const factor = scaleFactor(recipe.baseServings, servings);
   // With large Dynamic Type the amount column gets too narrow and breaks words,
   // so amounts move inline: "1 ½ cloves garlic".
@@ -237,6 +262,13 @@ function Steps({ recipe }: { recipe: Recipe }) {
 }
 
 const styles = StyleSheet.create({
+  headerButtons: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two },
+  editButton: {
+    height: 36,
+    paddingHorizontal: Spacing.three,
+    borderRadius: 18,
+    justifyContent: 'center',
+  },
   missing: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   screen: { flex: 1 },
   hero: { height: 280 },

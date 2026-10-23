@@ -43,7 +43,11 @@ export function allergensOf(ingredient: Ingredient): Allergen[] {
  * Adds the facts the app derives from ingredients. Optional ingredients don't
  * count against a diet or add allergens, since the cook can leave them out.
  */
-export function deriveRecipe(source: RecipeSource, ingredients: Map<string, Ingredient>): Recipe {
+export function deriveRecipe(
+  source: RecipeSource,
+  ingredients: Map<string, Ingredient>,
+  mine = false,
+): Recipe {
   const broken = new Set<Diet>();
   const allergens = new Set<Allergen>();
 
@@ -60,5 +64,6 @@ export function deriveRecipe(source: RecipeSource, ingredients: Map<string, Ingr
     totalMinutes: source.prepMinutes + source.cookMinutes,
     diets: DIETS.filter((d) => !broken.has(d)),
     allergens: [...allergens].sort(),
+    mine,
   };
 }

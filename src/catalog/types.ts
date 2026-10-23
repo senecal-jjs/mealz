@@ -145,4 +145,6 @@ export type Recipe = RecipeSource & {
   totalMinutes: number;
   diets: Diet[];
   allergens: Allergen[];
+  /** Added by the user (typed in or scanned) rather than bundled with the app. */
+  mine: boolean;
 };

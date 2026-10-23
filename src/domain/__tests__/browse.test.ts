@@ -64,4 +64,9 @@ describe('browseRecipes', () => {
     expect(kids.length).toBeGreaterThan(5);
     expect(kids.every((r) => r.tags.includes('kid-friendly'))).toBe(true);
   });
+
+  it('filters to the user’s own recipes', () => {
+    const mine = { ...recipes[0], id: 'my-1', title: 'Mine', mine: true };
+    expect(ids(browseRecipes([...recipes, mine], ingredients, 'mine', ''))).toEqual(['my-1']);
+  });
 });

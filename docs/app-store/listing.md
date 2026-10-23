@@ -33,6 +33,7 @@ MADE FOR YOU
 • Allergy and dislike filters
 • Recipes scale to your household size
 • US or metric grocery amounts
+• Add your own recipes: type them in or snap a photo of a cookbook page
 • Favourites and cooking history with ratings
 • Dark mode and large text support
 
