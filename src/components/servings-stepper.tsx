@@ -4,10 +4,8 @@ import { Pressable, StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
+import { MAX_SERVINGS, MIN_SERVINGS } from '@/domain/quantity';
 import { useTheme } from '@/hooks/use-theme';
-
-export const MIN_SERVINGS = 1;
-export const MAX_SERVINGS = 12;
 
 type Props = { value: number; onChange: (value: number) => void };
 

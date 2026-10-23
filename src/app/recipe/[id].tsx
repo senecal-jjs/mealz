@@ -2,20 +2,27 @@ import { Stack, useLocalSearchParams } from 'expo-router';
 import { SymbolView } from 'expo-symbols';
 import { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { getIngredient, getRecipe } from '@/catalog';
 import { DIET_LABELS, type Recipe } from '@/catalog/types';
+import { Button } from '@/components/button';
 import { RecipeImage } from '@/components/recipe-image';
 import { ServingsStepper } from '@/components/servings-stepper';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { formatIngredient, scaleFactor } from '@/domain/quantity';
+import { planActions, usePlannedServings } from '@/features/plan/hooks';
+import { DEFAULT_SERVINGS } from '@/features/plan/plan';
 import { useTheme } from '@/hooks/use-theme';
 
 export default function RecipeScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const recipe = getRecipe(id);
   const theme = useTheme();
+  const insets = useSafeAreaInsets();
+  const plannedServings = usePlannedServings().get(id);
+  const [draftServings, setDraftServings] = useState(DEFAULT_SERVINGS);
 
   if (!recipe) {
     return (
@@ -25,21 +32,58 @@ export default function RecipeScreen() {
     );
   }
 
+  // Once planned, the stepper edits the plan; before that it picks how many to add.
+  const planned = plannedServings !== undefined;
+  const servings = plannedServings ?? draftServings;
+  const setServings = (value: number) =>
+    planned ? planActions.setServings(recipe.id, value) : setDraftServings(value);
+
   return (
-    <ScrollView
-      style={{ backgroundColor: theme.background }}
-      contentContainerStyle={styles.content}
-      contentInsetAdjustmentBehavior="never">
-      <Stack.Screen options={{ title: recipe.title }} />
-      <RecipeImage recipe={recipe} style={styles.hero} iconSize={64} />
-      <View style={styles.body}>
-        <Overview recipe={recipe} />
-        <Ingredients recipe={recipe} />
-        <Steps recipe={recipe} />
+    <View style={[styles.screen, { backgroundColor: theme.background }]}>
+      <ScrollView
+        contentContainerStyle={{ paddingBottom: FOOTER_HEIGHT + insets.bottom + Spacing.four }}
+        contentInsetAdjustmentBehavior="never">
+        <Stack.Screen options={{ title: recipe.title }} />
+        <RecipeImage recipe={recipe} style={styles.hero} iconSize={64} />
+        <View style={styles.body}>
+          <Overview recipe={recipe} />
+          <Ingredients recipe={recipe} servings={servings} onServingsChange={setServings} />
+          <Steps recipe={recipe} />
+        </View>
+      </ScrollView>
+
+      <View
+        style={[
+          styles.footer,
+          { paddingBottom: insets.bottom + Spacing.two, backgroundColor: theme.background },
+          { borderColor: theme.border },
+        ]}>
+        {planned && (
+          <ThemedText type="small" themeColor="textSecondary" style={styles.footerHint}>
+            In your plan · {servings} servings
+          </ThemedText>
+        )}
+        {planned ? (
+          <Button
+            variant="secondary"
+            label="Remove from Plan"
+            onPress={() => planActions.remove(recipe.id)}
+            style={styles.footerButton}
+          />
+        ) : (
+          <Button
+            icon="plus"
+            label="Add to Plan"
+            onPress={() => planActions.add(recipe.id, servings)}
+            style={styles.footerButton}
+          />
+        )}
       </View>
-    </ScrollView>
+    </View>
   );
 }
+
+const FOOTER_HEIGHT = 90;
 
 function Overview({ recipe }: { recipe: Recipe }) {
   const theme = useTheme();
@@ -90,9 +134,14 @@ function Fact({ label, value }: { label: string; value: string }) {
   );
 }
 
-function Ingredients({ recipe }: { recipe: Recipe }) {
+type IngredientsProps = {
+  recipe: Recipe;
+  servings: number;
+  onServingsChange: (servings: number) => void;
+};
+
+function Ingredients({ recipe, servings, onServingsChange }: IngredientsProps) {
   const theme = useTheme();
-  const [servings, setServings] = useState(recipe.baseServings);
   const factor = scaleFactor(recipe.baseServings, servings);
 
   return (
@@ -105,7 +154,7 @@ function Ingredients({ recipe }: { recipe: Recipe }) {
           <ThemedText type="small" themeColor="textSecondary">
             Servings
           </ThemedText>
-          <ServingsStepper value={servings} onChange={setServings} />
+          <ServingsStepper value={servings} onChange={onServingsChange} />
         </View>
       </View>
 
@@ -171,7 +220,7 @@ function Steps({ recipe }: { recipe: Recipe }) {
 
 const styles = StyleSheet.create({
   missing: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-  content: { paddingBottom: Spacing.six },
+  screen: { flex: 1 },
   hero: { height: 280 },
   body: { padding: Spacing.three, gap: Spacing.five },
   section: { gap: Spacing.two },
@@ -221,4 +270,16 @@ const styles = StyleSheet.create({
     borderRadius: 999,
   },
   footnote: { marginTop: Spacing.four, textAlign: 'center' },
+  footer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    paddingTop: Spacing.three,
+    paddingHorizontal: Spacing.three,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    gap: Spacing.one,
+  },
+  footerButton: { alignSelf: 'stretch' },
+  footerHint: { textAlign: 'center', fontSize: 12, lineHeight: 16 },
 });

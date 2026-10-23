@@ -1,13 +1,19 @@
 import { SymbolView, type SFSymbol } from 'expo-symbols';
 import { ScrollView, StyleSheet } from 'react-native';
 
+import { Button } from '@/components/button';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
-type Props = { icon: SFSymbol; title: string; message: string };
+type Props = {
+  icon: SFSymbol;
+  title: string;
+  message: string;
+  action?: { label: string; onPress: () => void };
+};
 
-export function EmptyState({ icon, title, message }: Props) {
+export function EmptyState({ icon, title, message, action }: Props) {
   const theme = useTheme();
   return (
     <ScrollView
@@ -21,6 +27,7 @@ export function EmptyState({ icon, title, message }: Props) {
       <ThemedText type="small" themeColor="textSecondary" style={styles.message}>
         {message}
       </ThemedText>
+      {action && <Button label={action.label} onPress={action.onPress} style={styles.action} />}
     </ScrollView>
   );
 }
@@ -34,4 +41,5 @@ const styles = StyleSheet.create({
   },
   title: { fontSize: 18, marginTop: Spacing.two },
   message: { textAlign: 'center' },
+  action: { marginTop: Spacing.three },
 });

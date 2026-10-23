@@ -9,12 +9,14 @@ import { RecipeCard } from '@/components/recipe-card';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { BROWSE_FILTERS, browseRecipes, type BrowseFilter } from '@/domain/browse';
+import { planActions, usePlannedServings } from '@/features/plan/hooks';
 import { useTheme } from '@/hooks/use-theme';
 
 export default function RecipesScreen() {
   const theme = useTheme();
   const [filter, setFilter] = useState<BrowseFilter>('all');
   const [query, setQuery] = useState('');
+  const planned = usePlannedServings();
 
   const recipes = useMemo(
     () => browseRecipes(catalog.recipes, catalog.ingredients, filter, query),
@@ -59,7 +61,16 @@ export default function RecipesScreen() {
             No recipes match. Try another filter or search.
           </ThemedText>
         }
-        renderItem={({ item }) => <RecipeCard recipe={item} />}
+        extraData={planned}
+        renderItem={({ item }) => (
+          <RecipeCard
+            recipe={item}
+            planned={planned.has(item.id)}
+            onTogglePlan={() =>
+              planned.has(item.id) ? planActions.remove(item.id) : planActions.add(item.id)
+            }
+          />
+        )}
       />
     </>
   );

@@ -1,5 +1,8 @@
 import type { Ingredient, RecipeIngredient, Unit } from '@/catalog/types';
 
+export const MIN_SERVINGS = 1;
+export const MAX_SERVINGS = 12;
+
 /** Multiplier to turn a recipe's base servings into `servings`. */
 export function scaleFactor(baseServings: number, servings: number): number {
   return servings / baseServings;

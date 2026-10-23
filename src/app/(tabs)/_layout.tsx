@@ -1,9 +1,11 @@
 import { NativeTabs } from 'expo-router/native-tabs';
 
+import { usePlan } from '@/features/plan/hooks';
 import { useTheme } from '@/hooks/use-theme';
 
 export default function TabLayout() {
   const theme = useTheme();
+  const planCount = usePlan().length;
 
   return (
     <NativeTabs tintColor={theme.tint}>
@@ -14,6 +16,7 @@ export default function TabLayout() {
       <NativeTabs.Trigger name="plan">
         <NativeTabs.Trigger.Label>My Plan</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon sf={{ default: 'fork.knife', selected: 'fork.knife' }} />
+        {planCount > 0 && <NativeTabs.Trigger.Badge>{String(planCount)}</NativeTabs.Trigger.Badge>}
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="groceries">
         <NativeTabs.Trigger.Label>Groceries</NativeTabs.Trigger.Label>

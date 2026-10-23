@@ -249,8 +249,8 @@ Expo SDK 58 + TS + Expo Router native tabs, ESLint/Prettier, Jest, the Drizzle/S
 **M1 — Catalog and browse (2–3 days)** ✅
 The canonical ingredient list, catalog JSON format and validation script, with the first 20 recipes written (drafts, placeholder images). The browse feed with search and filter chips, recipe detail and servings scaling.
 
-**M2 — Plan (1–2 days)**
-Add and remove from plan on cards and on detail. The My Plan tab with a servings stepper for each item. Plan saved in SQLite.
+**M2 — Plan (1–2 days)** ✅
+Add and remove from plan on cards and on detail. The My Plan tab with a servings stepper for each item, swipe to remove, Clear, and a View Grocery List button. Plan saved in SQLite. A count badge on the My Plan tab stands in for the floating "My Plan (3)" pill. One active plan item per recipe; new items default to 2 servings until onboarding (M5) sets a household size.
 
 **M3 — Grocery list (3 days)** ⭐ the core feature
 The domain compile function with full unit tests. Aisle-grouped UI, check-off with an "In cart" section, custom items, pantry staples, rebuild that keeps checked state, and sharing as text.
