@@ -9,8 +9,9 @@ export type Catalog = {
 };
 
 /**
- * Builds the in-memory catalog. Only reviewed recipes ship in release builds;
- * development builds show drafts too so they can be checked in the app.
+ * Builds the in-memory catalog. Only reviewed recipes ship in App Store builds;
+ * development and TestFlight builds (EXPO_PUBLIC_INCLUDE_DRAFTS, set in eas.json)
+ * show drafts too so they can be checked in the app.
  */
 export function buildCatalog(
   ingredients: Ingredient[],
@@ -29,7 +30,9 @@ export function buildCatalog(
   };
 }
 
-export const catalog = buildCatalog(ingredientSources, recipeSources, __DEV__);
+const INCLUDE_DRAFTS = __DEV__ || process.env.EXPO_PUBLIC_INCLUDE_DRAFTS === 'true';
+
+export const catalog = buildCatalog(ingredientSources, recipeSources, INCLUDE_DRAFTS);
 
 export function getRecipe(id: string): Recipe | undefined {
   return catalog.recipesById.get(id);

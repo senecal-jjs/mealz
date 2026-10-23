@@ -270,6 +270,7 @@ Built as: a heart on the recipe page and a ♥ Favourites chip, plus One pan and
 
 **M7 — iOS launch (1–2 days, plus review time)**
 TestFlight beta, App Store screenshots and listing, the "Data Not Collected" privacy label and a privacy policy page. Submit for review.
+Prepared (submission itself needs your accounts, see `LAUNCH.md`): EAS profiles where `preview` (TestFlight) includes drafts and `production` only reviewed recipes, with a pre-build check that at least 20 recipes are reviewed; privacy manifest declaring no tracking or collected data; listing copy, review notes and a privacy policy under `docs/`; six 6.9" screenshots from a Release build. Fixed an iOS 26 bug where the tab labels rendered oversized and truncated ("Rec…") when the plan badge appeared just after the tab bar's first layout: the tabs now wait for the plan count before mounting.
 
 **After launch:** an Android build and QA pass; new recipes shipped regularly through EAS Update; nutrition totals for the whole plan; "use up leftovers" suggestions that favour recipes sharing ingredients already in the plan (a key Mealime idea that cuts waste); a grocery-list widget; iCloud backup of user data (it would sync without accounts).
 

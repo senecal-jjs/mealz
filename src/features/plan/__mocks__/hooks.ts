@@ -31,6 +31,10 @@ export function usePlan(): PlanItem[] {
   );
 }
 
+export function usePlanCount(): number {
+  return usePlan().length;
+}
+
 let history: PlanItem[] = [];
 
 export function setMockHistory(next: PlanItem[]) {

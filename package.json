@@ -8,7 +8,6 @@
     "drizzle-orm": "^0.45.4",
     "expo": "~58.0.17",
     "expo-constants": "~58.0.13",
-    "expo-device": "~58.0.5",
     "expo-font": "~58.0.9",
     "expo-glass-effect": "~58.0.4",
     "expo-haptics": "~58.0.7",
@@ -22,7 +21,6 @@
     "expo-status-bar": "~58.0.4",
     "expo-symbols": "~58.0.4",
     "expo-system-ui": "~58.0.6",
-    "expo-web-browser": "~58.0.6",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-native": "0.88.0",
@@ -60,7 +58,9 @@
     "test:watch": "jest --watch",
     "format": "prettier --write .",
     "catalog:validate": "tsx scripts/validate-catalog.ts",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "catalog:release-check": "tsx scripts/validate-catalog.ts --release",
+    "eas-build-pre-install": "if [ \"$EAS_BUILD_PROFILE\" = production ]; then npm run catalog:release-check; fi"
   },
   "private": true,
   "jest": {

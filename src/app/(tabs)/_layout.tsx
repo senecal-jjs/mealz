@@ -1,11 +1,16 @@
 import { NativeTabs } from 'expo-router/native-tabs';
 
-import { usePlan } from '@/features/plan/hooks';
+import { usePlanCount } from '@/features/plan/hooks';
 import { useTheme } from '@/hooks/use-theme';
 
 export default function TabLayout() {
   const theme = useTheme();
-  const planCount = usePlan().length;
+  const planCount = usePlanCount();
+
+  // Wait for the plan before mounting the tab bar. On iOS 26, a badge that
+  // appears just after the tab bar's first layout leaves the labels oversized
+  // and truncated ("Rec…") until something else re-lays it out.
+  if (planCount === undefined) return null;
 
   return (
     <NativeTabs tintColor={theme.tint}>

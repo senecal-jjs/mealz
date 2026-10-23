@@ -18,6 +18,12 @@ export function usePlan(): PlanItem[] {
   return useLiveQuery(activePlanQuery(db)).data;
 }
 
+/** How many recipes are planned, or undefined until the plan has loaded. */
+export function usePlanCount(): number | undefined {
+  const { data, updatedAt } = useLiveQuery(activePlanQuery(db));
+  return updatedAt === undefined ? undefined : data.length;
+}
+
 /** Cooked recipes, most recent first. */
 export function useHistory(): PlanItem[] {
   return useLiveQuery(historyQuery(db)).data;

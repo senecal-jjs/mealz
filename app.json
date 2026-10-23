@@ -13,7 +13,12 @@
       "supportsTablet": false,
       "config": {
         "usesNonExemptEncryption": false
-      }
+      },
+      "privacyManifests": {
+        "NSPrivacyTracking": false,
+        "NSPrivacyCollectedDataTypes": []
+      },
+      "buildNumber": "1"
     },
     "android": {
       "adaptiveIcon": {
@@ -23,9 +28,6 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false
-    },
-    "web": {
-      "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
       "expo-router",
