@@ -64,6 +64,26 @@ describe('parseRecipeText', () => {
     expect(parsed.steps).toEqual(['Boil the pasta for 10 minutes.', 'Melt the butter and toss.']);
   });
 
+  it('drops section headings inside the ingredient list', () => {
+    const parsed = parseRecipeText([
+      'Baked Mac and Cheese',
+      'Ingredients',
+      'MACARONI:',
+      '250g / 8 oz macaroni (elbow pasta)',
+      'TOPPING',
+      '2/3 cup panko breadcrumbs',
+      'SEASONINGS (OPTIONAL):',
+      '1 tsp garlic powder',
+      'Instructions',
+      'Cook the pasta for 8 minutes.',
+    ]);
+    expect(parsed.ingredients).toEqual([
+      '250g / 8 oz macaroni (elbow pasta)',
+      '2/3 cup panko breadcrumbs',
+      '1 tsp garlic powder',
+    ]);
+  });
+
   it('finds the ingredients without any headings', () => {
     const parsed = parseRecipeText([
       'Simple Shakshuka',

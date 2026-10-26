@@ -13,7 +13,7 @@ To try the main flow:
 3. Open the Groceries tab to see one merged list grouped by aisle. Tap items to check them off.
 4. On My Plan, tap "Cook" on a recipe. Swipe through the steps; steps with a time have a timer button.
 
-Adding your own recipe: Recipes tab → + → "Scan a Photo" reads a photographed recipe page on the device (Apple Vision text recognition, no network), then opens it in an editor for review. Camera and photo access are requested only then. "Type It In" opens the same editor empty.
+Adding your own recipe: Recipes tab → + → "Scan a Photo" reads a photographed recipe page on the device (Apple Vision text recognition, no network), organizes it with Apple's on-device Foundation Models where available (falling back to built-in rules), then opens it in an editor for review. Camera and photo access are requested only then. "Type It In" opens the same editor empty.
 
 Notifications: the app asks for notification permission only when the user starts a cooking timer, so it can alert them when the timer ends. Notifications are local and scheduled on the device.
 

@@ -40,6 +40,10 @@ const COOK =
   /\b(?:cook(?:ing)?|bake|baking)(?:\s*time)?\s*:?\s*(\d+)\s*(h|hr|hrs|hours?|m|min|mins|minutes?)\b/i;
 const TOTAL = /\btotal(?:\s*time)?\s*:?\s*\d+/i;
 
+/** A short line that is only metadata ("Serves 4 · Prep 10 min") isn't content. */
+const isMetaLine = (text: string) =>
+  [SERVINGS, PREP, COOK, TOTAL].some((re) => re.test(text)) && text.length < 60;
+
 function minutes(value: string, unit: string): number {
   return /^h/i.test(unit) ? Number(value) * 60 : Number(value);
 }
@@ -90,10 +94,21 @@ function collectIngredients(lines: string[]): string[] {
   });
 }
 
+/**
+ * A section heading inside an ingredient list: "For the sauce:", "TOPPING",
+ * "SEASONINGS (OPTIONAL):". No amount, and either in capitals or ending in a colon.
+ */
+function isIngredientHeading(line: string): boolean {
+  if (SUBHEADER.test(line)) return true;
+  if (/\d|[¼½¾⅓⅔⅛]/.test(line)) return false;
+  const letters = line.replace(/[^a-z]/gi, '');
+  return /:\s*$/.test(line) || (letters.length >= 3 && letters === letters.toUpperCase());
+}
+
 function joinIngredientLines(lines: string[]): string[] {
   const out: string[] = [];
   for (const line of lines) {
-    if (SUBHEADER.test(line)) continue;
+    if (isIngredientHeading(line)) continue;
     const startsNew = LEADING_AMOUNT.test(line) || BULLET.test(line) || /^[A-Z]/.test(line);
     const previous = out[out.length - 1];
     if (previous && !startsNew && !/[.)]$/.test(previous))
@@ -168,9 +183,7 @@ export function parseRecipeText(
     if (s) servings ??= Number(s[1]);
     if (p) prepMinutes ??= minutes(p[1], p[2]);
     if (c) cookMinutes ??= minutes(c[1], c[2]);
-    // A short line that is only metadata ("Serves 4 · Prep 10 min") isn't content.
-    const isMeta = (s || p || c || TOTAL.test(line.text)) && line.text.length < 60;
-    if (!isMeta) content.push(line);
+    if (!isMetaLine(line.text)) content.push(line);
   }
 
   const ingIndex = content.findIndex((l) => INGREDIENTS_HEADER.test(l.text));
@@ -229,6 +242,55 @@ export function parseRecipeText(
     cookMinutes,
     ingredients: collectIngredients(ingredientLines.map((l) => l.text)),
     steps: collectSteps(stepLines),
+  };
+}
+
+/** What the on-device model returns. Servings and times are left to the rule-based reader. */
+export type ModelRecipe = {
+  title: string;
+  description: string;
+  ingredients: string[];
+  steps: string[];
+};
+
+/** Trims bullets (and, for steps, step numbers) the model sometimes copies from the page. */
+const clean = (items: string[], ...prefixes: RegExp[]) =>
+  items
+    .map((t) => prefixes.reduce((text, re) => text.replace(re, ''), t))
+    .map((t) => t.replace(/\s+/g, ' ').trim())
+    .filter(Boolean);
+
+/**
+ * Combines the on-device model's reading with the rule-based one: the model's
+ * title, description, ingredients and steps win, with the rules filling any
+ * gaps. Servings and times always come from the rules, which only read them
+ * from labelled lines; the model guesses plausible numbers the page never
+ * states. Returns null when the model's output isn't usable, so the caller
+ * keeps the rule-based result.
+ */
+export function mergeModelRecipe(
+  model: ModelRecipe,
+  rules: ParsedRecipeText,
+): ParsedRecipeText | null {
+  const ingredients = clean(model.ingredients, BULLET).flatMap((line) => {
+    const m = line.match(SALT_AND_PEPPER);
+    return m ? [`Salt${m[1]}`, `Black pepper${m[1]}`] : [line];
+  });
+  const steps = clean(model.steps, BULLET, STEP_NUMBER);
+  if (ingredients.length === 0 || steps.length === 0) return null;
+  // A model that found far less than the rules did probably lost part of the page.
+  if (ingredients.length < rules.ingredients.length / 2) return null;
+
+  const description = model.description.trim();
+  return {
+    title: model.title.trim() || rules.title,
+    // The model sometimes offers the "Serves 6 · Prep 15 min" line as the description.
+    description: description && !isMetaLine(description) ? description : rules.description,
+    servings: rules.servings,
+    prepMinutes: rules.prepMinutes,
+    cookMinutes: rules.cookMinutes,
+    ingredients,
+    steps,
   };
 }
 

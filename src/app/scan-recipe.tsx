@@ -7,12 +7,29 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button } from '@/components/button';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
-import { parsedToDraft, parseRecipeText, type TextLine } from '@/domain/recipe-text';
+import { parsedToDraft, type TextLine } from '@/domain/recipe-text';
 import { usePendingDraft } from '@/features/my-recipes/draft-store';
 import { pickPhoto, type PhotoSource } from '@/features/my-recipes/pick-photo';
 import { isTextRecognitionAvailable, readPage } from '@/features/my-recipes/scan';
+import { structureScannedText } from '@/features/my-recipes/structure';
 import { usePreferences } from '@/features/preferences/hooks';
 import { useTheme } from '@/hooks/use-theme';
+
+import { getModelAvailability, type ModelAvailability } from '../../modules/recipe-model';
+
+/** A line about how the recipe will be organized, or null when there's nothing worth saying. */
+function modelNote(availability: ModelAvailability): string | null {
+  switch (availability) {
+    case 'available':
+      return 'Apple Intelligence will organize the recipe, on your iPhone.';
+    case 'appleIntelligenceNotEnabled':
+      return 'Turn on Apple Intelligence in Settings for better results with tricky layouts.';
+    case 'modelNotReady':
+      return 'Apple Intelligence is still downloading, so the recipe is organized with simpler rules for now.';
+    default:
+      return null;
+  }
+}
 
 /**
  * Photograph a recipe (one or more pages), read its text on the device, and
@@ -24,6 +41,9 @@ export default function ScanRecipeScreen() {
   const { defaultServings } = usePreferences().prefs;
   const [pages, setPages] = useState<TextLine[][]>([]);
   const [reading, setReading] = useState(false);
+  const [organizing, setOrganizing] = useState(false);
+  const [availability] = useState(getModelAvailability);
+  const note = modelNote(availability);
 
   const addPage = async (source: PhotoSource) => {
     const uri = await pickPhoto(source);
@@ -46,9 +66,10 @@ export default function ScanRecipeScreen() {
     }
   };
 
-  const review = () => {
-    const parsed = parseRecipeText(pages.flat(), { ordered: true });
-    usePendingDraft.getState().set(parsedToDraft(parsed, defaultServings));
+  const review = async () => {
+    setOrganizing(true);
+    const { recipe } = await structureScannedText(pages.flat());
+    usePendingDraft.getState().set(parsedToDraft(recipe, defaultServings));
     router.replace({ pathname: '/recipe-editor', params: { source: 'scan' } });
   };
 
@@ -77,10 +98,12 @@ export default function ScanRecipeScreen() {
             size={64}
             tintColor={theme.tint}
           />
-          {reading ? (
+          {reading || organizing ? (
             <>
               <ActivityIndicator />
-              <ThemedText themeColor="textSecondary">Reading the recipe…</ThemedText>
+              <ThemedText themeColor="textSecondary">
+                {organizing ? 'Organizing the recipe…' : 'Reading the recipe…'}
+              </ThemedText>
             </>
           ) : pages.length ? (
             <>
@@ -112,6 +135,12 @@ export default function ScanRecipeScreen() {
           </ThemedText>
         </View>
 
+        {note && isTextRecognitionAvailable() && (
+          <ThemedText type="small" themeColor="textSecondary" style={styles.note}>
+            {note}
+          </ThemedText>
+        )}
+
         {!isTextRecognitionAvailable() && (
           <ThemedText type="small" style={styles.warning}>
             Scanning isn’t available in this build. You can still type a recipe in.
@@ -119,7 +148,7 @@ export default function ScanRecipeScreen() {
         )}
 
         <View style={styles.actions}>
-          {pages.length > 0 && !reading && (
+          {pages.length > 0 && !reading && !organizing && (
             <Button icon="checkmark" label="Review Recipe" onPress={review} />
           )}
           <Button
@@ -153,6 +182,7 @@ const styles = StyleSheet.create({
     marginBottom: Spacing.three,
   },
   privacyText: { textAlign: 'center' },
+  note: { textAlign: 'center', marginBottom: Spacing.three },
   warning: { color: '#E5484D', textAlign: 'center', marginBottom: Spacing.three },
   actions: { gap: Spacing.two },
 });
