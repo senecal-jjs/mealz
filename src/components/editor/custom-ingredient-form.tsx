@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import {
   AISLE_LABELS,
@@ -53,10 +53,7 @@ export function CustomIngredientForm({ name, value, onChange }: Props) {
       <ThemedText type="small" themeColor="textSecondary">
         Grocery aisle
       </ThemedText>
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.row}>
+      <View style={styles.wrap}>
         {AISLES.map((a) => (
           <Chip
             key={a}
@@ -65,7 +62,7 @@ export function CustomIngredientForm({ name, value, onChange }: Props) {
             onPress={() => onChange({ ...value, aisle: a })}
           />
         ))}
-      </ScrollView>
+      </View>
       <ThemedText type="small" themeColor="textSecondary">
         Contains (optional)
       </ThemedText>
@@ -86,5 +83,4 @@ export function CustomIngredientForm({ name, value, onChange }: Props) {
 const styles = StyleSheet.create({
   form: { gap: Spacing.two, paddingTop: Spacing.two },
   wrap: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.two },
-  row: { gap: Spacing.two },
 });

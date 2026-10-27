@@ -34,14 +34,19 @@ export async function structureScannedText(
   model: Model = onDeviceModel,
 ): Promise<StructuredRecipe> {
   const rules = parseRecipeText(lines, { ordered: true });
-  if (!model.available()) return { recipe: rules, source: 'rules' };
+  if (!model.available()) {
+    if (__DEV__) console.log('[scan] model unavailable; using rules');
+    return { recipe: rules, source: 'rules' };
+  }
   try {
     const merged = mergeModelRecipe(
       await model.structure(lines.map((l) => l.text).join('\n')),
       rules,
     );
+    if (!merged && __DEV__) console.log('[scan] model answer rejected (lost too many ingredients); using rules');
     return merged ? { recipe: merged, source: 'model' } : { recipe: rules, source: 'rules' };
-  } catch {
+  } catch (e) {
+    if (__DEV__) console.log('[scan] model failed; using rules:', e);
     // The model can report "available" and still fail (it does on the
     // simulator); the rules are always a safe answer.
     return { recipe: rules, source: 'rules' };

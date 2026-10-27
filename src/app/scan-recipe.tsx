@@ -68,9 +68,10 @@ export default function ScanRecipeScreen() {
 
   const review = async () => {
     setOrganizing(true);
-    const { recipe } = await structureScannedText(pages.flat());
+    const { recipe, source } = await structureScannedText(pages.flat());
+    if (__DEV__) console.log(`[scan] organized with: ${source} (model availability: ${availability})`);
     usePendingDraft.getState().set(parsedToDraft(recipe, defaultServings));
-    router.replace({ pathname: '/recipe-editor', params: { source: 'scan' } });
+    router.replace({ pathname: '/recipe-editor', params: { source: 'scan', reader: source } });
   };
 
   const lineCount = pages.reduce((n, p) => n + p.length, 0);

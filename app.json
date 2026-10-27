@@ -9,7 +9,7 @@
     "userInterfaceStyle": "automatic",
     "ios": {
       "icon": "./assets/mealz.icon",
-      "bundleIdentifier": "com.mealz.app",
+      "bundleIdentifier": "com.bitcli.mealz",
       "supportsTablet": false,
       "config": {
         "usesNonExemptEncryption": false

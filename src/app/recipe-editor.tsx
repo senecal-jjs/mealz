@@ -31,7 +31,7 @@ import { useTheme } from '@/hooks/use-theme';
 const isUnsavedPhoto = (image: string | null) => !!image && /^[a-z]+:/i.test(image);
 
 export default function RecipeEditorScreen() {
-  const { id, source } = useLocalSearchParams<{ id?: string; source?: string }>();
+  const { id, source, reader } = useLocalSearchParams<{ id?: string; source?: string; reader?: string }>();
   const theme = useTheme();
   const catalog = useCatalog();
   const { defaultServings } = usePreferences().prefs;
@@ -167,6 +167,11 @@ export default function RecipeEditorScreen() {
         contentContainerStyle={styles.content}
         keyboardShouldPersistTaps="handled"
         automaticallyAdjustKeyboardInsets>
+        {__DEV__ && source === 'scan' && reader && (
+          <ThemedText type="small" themeColor="textSecondary">
+            Dev: organized with {reader === 'model' ? 'Apple Intelligence' : 'rule-based parser'}
+          </ThemedText>
+        )}
         <Pressable
           accessibilityRole="button"
           accessibilityLabel={draft.image ? 'Change photo' : 'Add a photo'}
