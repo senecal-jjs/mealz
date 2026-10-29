@@ -11,6 +11,14 @@
         "simulator": true
       }
     },
+    "internal": {
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_INCLUDE_DRAFTS": "true",
+        "EXPO_PUBLIC_SCAN_SERVER_URL": "https://mealz-scan.fly.dev"
+      },
+      "autoIncrement": true
+    },
     "preview": {
       "distribution": "store",
       "env": {

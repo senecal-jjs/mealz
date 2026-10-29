@@ -64,11 +64,23 @@
           "photosPermission": "Mealz uses your photos to add recipe pages and dish photos. They stay on your iPhone.",
           "microphonePermission": false
         }
-      ]
+      ],
+      "expo-image"
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "projectId": "b348e8fb-aa34-4b64-8608-9ab0d76d5eb4"
+      }
+    },
+    "owner": "bitcli"
   }
 }
