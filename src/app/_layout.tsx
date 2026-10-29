@@ -59,6 +59,7 @@ function AppNavigator() {
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen name="recipe-editor" options={{ presentation: 'modal' }} />
             <Stack.Screen name="scan-recipe" options={{ presentation: 'modal' }} />
+            <Stack.Screen name="import-recipe" options={{ presentation: 'modal' }} />
             <Stack.Screen
               name="cook/[id]"
               options={{ presentation: 'fullScreenModal', headerShown: false }}

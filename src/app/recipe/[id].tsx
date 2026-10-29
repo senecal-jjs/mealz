@@ -10,6 +10,7 @@ import { Button } from '@/components/button';
 import { FavouriteButton } from '@/components/favourite-button';
 import { RecipeImage } from '@/components/recipe-image';
 import { ServingsStepper } from '@/components/servings-stepper';
+import { ShareRecipeButton } from '@/components/share-recipe-button';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { formatIngredient, scaleFactor } from '@/domain/quantity';
@@ -65,6 +66,7 @@ export default function RecipeScreen() {
                     </ThemedText>
                   </Pressable>
                 )}
+                <ShareRecipeButton recipe={recipe} />
                 <FavouriteButton recipeId={recipe.id} title={recipe.title} />
               </View>
             ),

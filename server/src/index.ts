@@ -46,6 +46,7 @@ const app = createApp({
   },
   enabled: () => env.SCAN_ENABLED !== 'false',
   attest,
+  share: { appId, appStoreUrl: env.APP_STORE_URL },
 });
 
 const port = number(env.PORT, 8080);

@@ -1,7 +1,8 @@
 /**
  * The HTTP API. `POST /v1/scan` takes the photographed pages of a recipe and
  * returns it structured; any error tells the app to use its on-device reader.
- * Photos and recipe text are never stored or logged.
+ * Photos and recipe text are never stored or logged. It also serves the page
+ * behind recipe share links (see share.ts).
  */
 import { Hono } from 'hono';
 import { bodyLimit } from 'hono/body-limit';
@@ -10,6 +11,7 @@ import { z } from 'zod';
 import { AttestError, verifyAssertion, verifyAttestation, type AttestStore } from './attest.ts';
 import type { Limits, ScanCounter } from './limits.ts';
 import { UnreadableError, type ReadResult, type ScanInput } from './recipe.ts';
+import { shareRoutes, type ShareOptions } from './share.ts';
 
 export const MAX_PAGES = 4;
 /** Each page arrives as base64 JPEG, about 1.33 times its file size. */
@@ -58,6 +60,8 @@ export type Deps = {
     required: boolean;
     roots?: string[];
   } | null;
+  /** Recipe share links: the web page and Apple's app-site association. */
+  share?: ShareOptions;
   log?: (entry: Record<string, unknown>) => void;
 };
 
@@ -68,6 +72,7 @@ export function createApp(deps: Deps) {
   const app = new Hono();
 
   app.get('/health', (c) => c.json({ ok: true }));
+  app.route('/', shareRoutes(deps.share ?? {}));
 
   const attest = deps.attest ?? null;
   if (attest) {

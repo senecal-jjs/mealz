@@ -8,6 +8,8 @@ failure, kill switch) makes the app fall back to its on-device reader.
 Photos and recipe text are only held in memory for the request: never stored,
 never logged. Logs carry status, timing, page count and token counts.
 
+It also serves the page behind recipe share links (see "Share links" below).
+
 ## Run locally
 
 ```bash
@@ -41,6 +43,7 @@ simulator reaches the Mac at localhost).
 | `DB_PATH`                      | `./scans.db`                | SQLite file for the daily counts, challenges and attested keys           |
 | `APPLE_APP_ID`                 | –                           | `<Team ID>.com.bitcli.mealz`; turns on App Attest                        |
 | `ATTEST_REQUIRED`              | `true`                      | With App Attest on, `false` still serves unsigned scans (the simulator)  |
+| `APP_STORE_URL`                | –                           | Linked from the share page once Mealz is on the App Store                |
 
 ## Credentials: workload identity federation
 
@@ -119,3 +122,18 @@ phone (run a local server without `APPLE_APP_ID` for simulator work).
 
 Someone with a real iPhone can still script the genuine app; the per-key
 daily limit and the workspace spend limit cover that.
+
+## Share links
+
+A shared recipe is a link like `https://mealz-scan.fly.dev/r#<data>`: the whole
+recipe, deflated and base64url-encoded, after the `#` (the format is in the
+app's `src/features/sharing/share-link.ts`). Browsers never send the part after
+`#`, so this server never sees shared recipes.
+
+- `GET /r` is a static page whose script reads the recipe from the link and
+  shows it, with a link to the app (`APP_STORE_URL`, once there is one). It
+  only sets text, never markup, and its content policy allows no other scripts.
+- `GET /.well-known/apple-app-site-association` (when `APPLE_APP_ID` is set)
+  tells iOS that `/r` links open Mealz. The app lists this host in
+  `ios.associatedDomains` in `app.json`. iOS fetches this file when the app is
+  installed, so moving share links to another domain needs an app update.

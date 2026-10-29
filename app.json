@@ -11,6 +11,10 @@
       "icon": "./assets/mealz.icon",
       "bundleIdentifier": "com.bitcli.mealz",
       "supportsTablet": false,
+      "associatedDomains": [
+        "applinks:mealz-scan.fly.dev",
+        "applinks:mealz-scan.fly.dev?mode=developer"
+      ],
       "entitlements": {
         "com.apple.developer.devicecheck.appattest-environment": "production"
       },
