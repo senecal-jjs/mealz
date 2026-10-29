@@ -59,9 +59,13 @@ Answer **None** to every content question. The result is **4+**.
 
 ## App privacy ("nutrition label")
 
-- Data collection: **No, we do not collect data from this app.**
-- The resulting label is **Data Not Collected**.
-- This matches the privacy manifest (`NSPrivacyTracking: false`, no collected data types).
+- Data collection: **Yes, we collect data from this app** (only cloud scanning, which is optional and asks first; scans are processed by Anthropic, which may retain API data for a limited time).
+- Data types: **Photos or Videos** and **Other User Content** (the scanned recipe text).
+  - Use: **App Functionality** only.
+  - Linked to the user's identity: **No.**
+  - Used for tracking: **No.**
+- The resulting label is **Data Not Linked to You: Photos or Videos, Other User Content**.
+- This matches the privacy manifest in `app.json` (`NSPrivacyTracking: false`, the same two data types, not linked, app functionality).
 
 ## URLs (needed before submitting)
 

@@ -1,0 +1,41 @@
+# Deploy with `fly deploy` from this folder. See README.md for first-time setup.
+app = "mealz-scan"
+primary_region = "iad"
+
+[env]
+  PORT = "8080"
+  DB_PATH = "/data/scans.db"
+  MODEL = "claude-opus-5-5"
+  EFFORT = "low"
+  DAILY_LIMIT_PER_INSTALL = "30"
+  DAILY_LIMIT_TOTAL = "2000"
+  # Claude API credentials come from workload identity federation; the IDs are
+  # Fly secrets (see README.md). FLY_OIDC_AUDIENCE defaults to https://api.anthropic.com.
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [http_service.concurrency]
+    type = "requests"
+    soft_limit = 20
+    hard_limit = 40
+
+  [[http_service.checks]]
+    grace_period = "10s"
+    interval = "30s"
+    method = "GET"
+    path = "/health"
+    timeout = "5s"
+
+# The daily scan counts live in SQLite on this volume, so run a single machine.
+[mounts]
+  source = "scan_data"
+  destination = "/data"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"

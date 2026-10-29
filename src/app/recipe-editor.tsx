@@ -27,21 +27,34 @@ import { choosePhotoSource, pickPhoto } from '@/features/my-recipes/pick-photo';
 import { usePreferences } from '@/features/preferences/hooks';
 import { useTheme } from '@/hooks/use-theme';
 
+const READER_LABELS: Record<string, string> = {
+  cloud: 'Claude (scan server)',
+  model: 'Apple Intelligence',
+  rules: 'rule-based parser',
+};
+
 /** True for a photo that was just picked and isn't saved into app storage yet. */
 const isUnsavedPhoto = (image: string | null) => !!image && /^[a-z]+:/i.test(image);
 
 export default function RecipeEditorScreen() {
-  const { id, source, reader } = useLocalSearchParams<{ id?: string; source?: string; reader?: string }>();
+  const { id, source, reader } = useLocalSearchParams<{
+    id?: string;
+    source?: string;
+    reader?: string;
+  }>();
   const theme = useTheme();
   const catalog = useCatalog();
   const { defaultServings } = usePreferences().prefs;
   const existing = id ? catalog.getRecipe(id) : undefined;
 
+  const [pending] = useState(() =>
+    source === 'scan' && !existing ? usePendingDraft.getState().take() : null,
+  );
   const [draft, setDraft] = useState<RecipeDraft>(() => {
     if (existing) return recipeToDraft(existing, catalog.ingredients);
-    if (source === 'scan') return usePendingDraft.getState().take() ?? emptyDraft(defaultServings);
-    return emptyDraft(defaultServings);
+    return pending?.draft ?? emptyDraft(defaultServings);
   });
+  const scanNotes = pending?.notes ?? [];
   const [initial] = useState(() => JSON.stringify(draft));
   const [saving, setSaving] = useState(false);
   const dirty = JSON.stringify(draft) !== initial;
@@ -169,8 +182,25 @@ export default function RecipeEditorScreen() {
         automaticallyAdjustKeyboardInsets>
         {__DEV__ && source === 'scan' && reader && (
           <ThemedText type="small" themeColor="textSecondary">
-            Dev: organized with {reader === 'model' ? 'Apple Intelligence' : 'rule-based parser'}
+            Dev: organized with {READER_LABELS[reader] ?? reader}
           </ThemedText>
+        )}
+        {scanNotes.length > 0 && (
+          <View style={[styles.notes, { backgroundColor: theme.backgroundElement }]}>
+            <View style={styles.notesTitle}>
+              <SymbolView
+                name="exclamationmark.triangle"
+                size={16}
+                tintColor={theme.textSecondary}
+              />
+              <ThemedText type="smallBold">Check against the original</ThemedText>
+            </View>
+            {scanNotes.map((note) => (
+              <ThemedText key={note} type="small" themeColor="textSecondary">
+                {note}
+              </ThemedText>
+            ))}
+          </View>
         )}
         <Pressable
           accessibilityRole="button"
@@ -297,6 +327,8 @@ const styles = StyleSheet.create({
   save: { fontSize: 17 },
   photo: { height: 180, borderRadius: 16, overflow: 'hidden', borderCurve: 'continuous' },
   photoImage: { height: 180 },
+  notes: { borderRadius: 12, borderCurve: 'continuous', padding: Spacing.three, gap: Spacing.one },
+  notesTitle: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two },
   photoEmpty: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: Spacing.two },
   title: { fontSize: 26, fontWeight: 700, marginTop: Spacing.three },
   description: { fontSize: 17 },

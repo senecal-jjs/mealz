@@ -15,6 +15,13 @@
       "when": 1792767030445,
       "tag": "0001_user_recipes",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1793232427130,
+      "tag": "0002_cloud_scan",
+      "breakpoints": true
     }
   ]
 }

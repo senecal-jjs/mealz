@@ -1,5 +1,6 @@
 import type { ModelRecipe, TextLine } from '@/domain/recipe-text';
-import { structureScannedText } from '@/features/my-recipes/structure';
+import type { ScannedPage } from '@/features/my-recipes/cloud';
+import { structureScan, structureScannedText } from '@/features/my-recipes/structure';
 
 const page: TextLine[] = [
   'PANCAKES',
@@ -44,6 +45,7 @@ describe('structureScannedText', () => {
     expect(model.structure).toHaveBeenCalledWith(page.map((l) => l.text).join('\n'));
     expect(result).toEqual({
       source: 'model',
+      notes: [],
       recipe: {
         title: 'Fluffy Pancakes',
         // The model offered the servings line as the description; the
@@ -74,5 +76,38 @@ describe('structureScannedText', () => {
     expect((await structureScannedText(page, modelReturning(empty))).source).toBe('rules');
     const partial = { ...good, ingredients: ['1 egg'] };
     expect((await structureScannedText(page, modelReturning(partial))).source).toBe('rules');
+  });
+});
+
+describe('structureScan', () => {
+  const pages: ScannedPage[] = [{ uri: 'file:///p.jpg', lines: page }];
+  const unavailable = modelReturning(good, false);
+  const cloudRecipe = {
+    recipe: {
+      title: 'Pancakes',
+      description: '',
+      servings: 8,
+      prepMinutes: null,
+      cookMinutes: null,
+      ingredients: ['1 cup flour'],
+      steps: ['Whisk and fry.'],
+    },
+    notes: ['The last step is cut off.'],
+  };
+
+  it('uses the cloud reader when allowed', async () => {
+    const cloud = jest.fn(async () => cloudRecipe);
+    const result = await structureScan(pages, cloud, unavailable);
+    expect(cloud).toHaveBeenCalledWith(pages);
+    expect(result).toEqual({ ...cloudRecipe, source: 'cloud' });
+  });
+
+  it('reads on the device when the cloud fails or is not allowed', async () => {
+    const offline = jest.fn(async () => Promise.reject(new Error('offline')));
+    const failed = await structureScan(pages, offline, unavailable);
+    expect(failed).toMatchObject({ source: 'rules', notes: [] });
+    expect(failed.recipe.title).toBe('PANCAKES');
+
+    expect((await structureScan(pages, null, unavailable)).source).toBe('rules');
   });
 });

@@ -14,14 +14,16 @@
     "preview": {
       "distribution": "store",
       "env": {
-        "EXPO_PUBLIC_INCLUDE_DRAFTS": "true"
+        "EXPO_PUBLIC_INCLUDE_DRAFTS": "true",
+        "EXPO_PUBLIC_SCAN_SERVER_URL": "https://mealz-scan.fly.dev"
       },
       "autoIncrement": true
     },
     "production": {
       "autoIncrement": true,
       "env": {
-        "EXPO_PUBLIC_INCLUDE_DRAFTS": "false"
+        "EXPO_PUBLIC_INCLUDE_DRAFTS": "false",
+        "EXPO_PUBLIC_SCAN_SERVER_URL": "https://mealz-scan.fly.dev"
       }
     }
   },

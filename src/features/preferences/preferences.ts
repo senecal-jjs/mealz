@@ -27,6 +27,8 @@ export const DEFAULT_PREFERENCES: Preferences = {
   defaultServings: 2,
   units: 'us',
   onboardedAt: null,
+  cloudScan: null,
+  installId: null,
 };
 
 export function preferencesQuery(db: Db) {

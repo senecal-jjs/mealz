@@ -3,7 +3,8 @@ import UIKit
 import Vision
 
 /// Reads printed or handwritten text from a photo, entirely on the device,
-/// using Apple's Vision framework. Nothing is uploaded anywhere.
+/// using Apple's Vision framework, and prepares photos for upload when the
+/// user allows cloud scanning.
 public class TextRecognitionModule: Module {
   public func definition() -> ModuleDefinition {
     Name("TextRecognition")
@@ -40,6 +41,26 @@ public class TextRecognitionModule: Module {
         ]
       }
       return lines.sorted { ($0["y"] as! CGFloat) < ($1["y"] as! CGFloat) }
+    }
+
+    /// Shrinks a photo so its longest edge is at most `maxEdge` pixels, upright,
+    /// and returns it as base64 JPEG. Used to upload pages for cloud scanning.
+    AsyncFunction("encodeJpeg") { (uri: String, maxEdge: Double, quality: Double) -> String in
+      guard let image = Self.loadImage(uri) else {
+        throw Exception(name: "ImageUnreadable", description: "Couldn't open the photo at \(uri)")
+      }
+      let scale = min(1, maxEdge / max(image.size.width, image.size.height))
+      let size = CGSize(width: image.size.width * scale, height: image.size.height * scale)
+      let format = UIGraphicsImageRendererFormat.default()
+      format.scale = 1
+      // Drawing applies the photo's orientation, so the result is always upright.
+      let resized = UIGraphicsImageRenderer(size: size, format: format).image { _ in
+        image.draw(in: CGRect(origin: .zero, size: size))
+      }
+      guard let data = resized.jpegData(compressionQuality: quality) else {
+        throw Exception(name: "ImageUnreadable", description: "Couldn't encode the photo.")
+      }
+      return data.base64EncodedString()
     }
   }
 

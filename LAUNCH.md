@@ -6,7 +6,7 @@ What's ready in the repo, what only you can do, and the commands to ship.
 
 - [x] App icon (`assets/mealz.icon`) and splash
 - [x] `ITSAppUsesNonExemptEncryption: false` (no export compliance questions)
-- [x] Privacy manifest: no tracking, no collected data (matches the "Data Not Collected" label)
+- [x] Privacy manifest: no tracking; declares Photos and Other User Content for cloud scanning, not linked to the user (matches the label in `docs/app-store/listing.md`)
 - [x] iPhone only (`supportsTablet: false`), portrait
 - [x] EAS profiles (`eas.json`): `preview` for TestFlight (includes draft recipes), `production` for the App Store (reviewed recipes only)
 - [x] A production build stops early unless at least 20 recipes are reviewed (`npm run catalog:release-check`, run automatically by `eas-build-pre-install`)
@@ -23,6 +23,7 @@ What's ready in the repo, what only you can do, and the commands to ship.
 4. **Review recipes and add photos.** Only recipes with `"reviewed": true` (and an `image`) appear in App Store builds. For each one: sanity-check or test-cook it, add a photo you have rights to, set `reviewed: true`, and fill in its row in `src/catalog/SOURCES.md`. At least 20 are needed to build for production.
 5. **Host the privacy policy and a support page.** Replace `CONTACT_EMAIL` in `docs/privacy-policy.html`, then host it anywhere public (GitHub Pages on this repo works once it has a remote). Put both URLs in App Store Connect.
 6. **Copyright line** for App Store Connect, e.g. "2026 Your Name".
+7. **Deploy the scan server.** Set up workload identity federation in the Claude Console (a workspace with a monthly spend limit, a service account, a Fly issuer and a rule; no API key), then follow `server/README.md` to deploy to Fly.io. Put the server URL in `eas.json` as `EXPO_PUBLIC_SCAN_SERVER_URL` for the `preview` and `production` profiles. Without it, builds simply read scans on the phone.
 
 ## Ship it
 
@@ -62,7 +63,7 @@ npx eas-cli@latest build --platform ios --profile production
 npx eas-cli@latest submit --platform ios --latest
 ```
 
-Then in App Store Connect: pick that build, fill in the listing from `docs/app-store/listing.md`, upload the screenshots, answer the privacy questions (Data Not Collected), paste the review notes, and submit for review.
+Then in App Store Connect: pick that build, fill in the listing from `docs/app-store/listing.md`, upload the screenshots, answer the privacy questions (see `docs/app-store/listing.md`), paste the review notes, and submit for review.
 
 ### Shipping new recipes later
 

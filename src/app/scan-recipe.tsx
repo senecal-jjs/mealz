@@ -7,12 +7,19 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button } from '@/components/button';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
-import { parsedToDraft, type TextLine } from '@/domain/recipe-text';
+import { parsedToDraft } from '@/domain/recipe-text';
+import {
+  isCloudScanConfigured,
+  newInstallId,
+  readWithCloud,
+  type ScannedPage,
+} from '@/features/my-recipes/cloud';
 import { usePendingDraft } from '@/features/my-recipes/draft-store';
 import { pickPhoto, type PhotoSource } from '@/features/my-recipes/pick-photo';
 import { isTextRecognitionAvailable, readPage } from '@/features/my-recipes/scan';
-import { structureScannedText } from '@/features/my-recipes/structure';
-import { usePreferences } from '@/features/preferences/hooks';
+import { structureScan, type CloudReader } from '@/features/my-recipes/structure';
+import { preferenceActions, usePreferences } from '@/features/preferences/hooks';
+import type { Preferences } from '@/features/preferences/preferences';
 import { useTheme } from '@/hooks/use-theme';
 
 import { getModelAvailability, type ModelAvailability } from '../../modules/recipe-model';
@@ -31,19 +38,63 @@ function modelNote(availability: ModelAvailability): string | null {
   }
 }
 
+/** Where the photos go, in one line. */
+function privacyNote(prefs: Preferences): string {
+  if (!isCloudScanConfigured() || prefs.cloudScan === 'declined') {
+    return 'The text is read on your iPhone. Photos are never uploaded.';
+  }
+  return prefs.cloudScan === 'allowed'
+    ? 'Photos are read by Claude on the Mealz server and aren’t stored.'
+    : 'You’ll be asked before any photo leaves your iPhone.';
+}
+
+/** Asks once whether scans may be read on the Mealz server. Resolves with the answer. */
+function askCloudConsent(): Promise<'allowed' | 'declined'> {
+  return new Promise((resolve) =>
+    Alert.alert(
+      'Read recipes with Claude?',
+      'For the best results, Mealz can send the photos of this recipe to its server, where Anthropic’s Claude reads them. Photos and recipes aren’t stored. You can change this in Profile.',
+      [
+        { text: 'Keep on My Phone', style: 'cancel', onPress: () => resolve('declined') },
+        { text: 'Allow', onPress: () => resolve('allowed') },
+      ],
+      { cancelable: false },
+    ),
+  );
+}
+
+/** The cloud reader to use, asking for consent the first time. Null keeps the scan on the phone. */
+async function cloudReaderFor(prefs: Preferences): Promise<CloudReader> {
+  if (!isCloudScanConfigured()) return null;
+  let { cloudScan, installId } = prefs;
+  if (!cloudScan) {
+    cloudScan = await askCloudConsent();
+    installId ??= newInstallId();
+    await preferenceActions.save({ cloudScan, installId });
+  }
+  if (cloudScan !== 'allowed') return null;
+  const id = installId ?? newInstallId();
+  if (!installId) await preferenceActions.save({ installId: id });
+  return (pages) => readWithCloud(pages, id);
+}
+
 /**
  * Photograph a recipe (one or more pages), read its text on the device, and
- * open the result in the editor for review. Photos never leave the phone.
+ * open the result in the editor for review. With the user's permission the
+ * photos are read by Claude on the Mealz server; otherwise, or when that
+ * fails, everything happens on the phone.
  */
 export default function ScanRecipeScreen() {
   const theme = useTheme();
   const insets = useSafeAreaInsets();
-  const { defaultServings } = usePreferences().prefs;
-  const [pages, setPages] = useState<TextLine[][]>([]);
+  const { prefs } = usePreferences();
+  const { defaultServings } = prefs;
+  const cloudAllowed = isCloudScanConfigured() && prefs.cloudScan === 'allowed';
+  const [pages, setPages] = useState<ScannedPage[]>([]);
   const [reading, setReading] = useState(false);
   const [organizing, setOrganizing] = useState(false);
   const [availability] = useState(getModelAvailability);
-  const note = modelNote(availability);
+  const note = cloudAllowed ? null : modelNote(availability);
 
   const addPage = async (source: PhotoSource) => {
     const uri = await pickPhoto(source);
@@ -57,7 +108,7 @@ export default function ScanRecipeScreen() {
           'Try again in good light, with the whole recipe in frame and the page flat.',
         );
       } else {
-        setPages((p) => [...p, lines]);
+        setPages((p) => [...p, { uri, lines }]);
       }
     } catch (e) {
       Alert.alert('Couldn’t read the photo', String(e));
@@ -67,14 +118,16 @@ export default function ScanRecipeScreen() {
   };
 
   const review = async () => {
+    const cloud = await cloudReaderFor(prefs);
     setOrganizing(true);
-    const { recipe, source } = await structureScannedText(pages.flat());
-    if (__DEV__) console.log(`[scan] organized with: ${source} (model availability: ${availability})`);
-    usePendingDraft.getState().set(parsedToDraft(recipe, defaultServings));
+    const { recipe, source, notes } = await structureScan(pages, cloud);
+    if (__DEV__)
+      console.log(`[scan] organized with: ${source} (model availability: ${availability})`);
+    usePendingDraft.getState().set(parsedToDraft(recipe, defaultServings), notes);
     router.replace({ pathname: '/recipe-editor', params: { source: 'scan', reader: source } });
   };
 
-  const lineCount = pages.reduce((n, p) => n + p.length, 0);
+  const lineCount = pages.reduce((n, p) => n + p.lines.length, 0);
 
   return (
     <>
@@ -103,7 +156,11 @@ export default function ScanRecipeScreen() {
             <>
               <ActivityIndicator />
               <ThemedText themeColor="textSecondary">
-                {organizing ? 'Organizing the recipe…' : 'Reading the recipe…'}
+                {!organizing
+                  ? 'Reading the recipe…'
+                  : cloudAllowed
+                    ? 'Claude is reading the recipe…'
+                    : 'Organizing the recipe…'}
               </ThemedText>
             </>
           ) : pages.length ? (
@@ -132,7 +189,7 @@ export default function ScanRecipeScreen() {
         <View style={styles.privacy}>
           <SymbolView name="lock.fill" size={14} tintColor={theme.textSecondary} />
           <ThemedText type="small" themeColor="textSecondary" style={styles.privacyText}>
-            The text is read on your iPhone. Photos are never uploaded.
+            {privacyNote(prefs)}
           </ThemedText>
         </View>
 

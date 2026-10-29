@@ -55,17 +55,22 @@
   <body>
     <main>
       <h1>Mealz Privacy Policy</h1>
-      <p class="muted">Last updated: October 22, 2026</p>
+      <p class="muted">Last updated: October 28, 2026</p>
 
       <p>
         Mealz is a meal-planning app. This policy explains what happens to your information when you
-        use it. The short version: <strong>Mealz does not collect any data.</strong>
+        use it. The short version:
+        <strong
+          >Mealz has no accounts, analytics, ads or tracking. The only thing that ever leaves your
+          phone is a recipe you scan, and only if you allow it.</strong
+        >
       </p>
 
       <h2>What we collect</h2>
       <p>
-        Nothing. Mealz has no accounts, no analytics, no advertising and no tracking, and it does
-        not send your information to us or to anyone else.
+        Mealz has no accounts, no analytics, no advertising and no tracking. The only information it
+        sends anywhere is the photos of a recipe you scan, if you allow cloud scanning (see below).
+        Nothing else leaves your phone.
       </p>
 
       <h2>What stays on your phone</h2>
@@ -81,10 +86,30 @@
       <h2>Camera and photos</h2>
       <p>
         If you add your own recipe, you can photograph a recipe page or choose a photo from your
-        library. Mealz reads the text in the photo on your phone, using Apple's built-in text
-        recognition, and (on iPhones with Apple Intelligence) Apple's on-device language model to
-        organize it into a recipe. It keeps any dish photo you add in the app's own storage. Photos
-        are never uploaded, and Mealz only sees the photos you pick.
+        library. Mealz only sees the photos you pick. It first reads the text in the photo on your
+        phone, using Apple's built-in text recognition. It keeps any dish photo you add in the app's
+        own storage, on your phone; dish photos are never uploaded.
+      </p>
+
+      <h2>Cloud scanning</h2>
+      <p>
+        The first time you scan a recipe, Mealz asks whether it may read the recipe in the cloud. If
+        you allow it, the photos of that recipe's pages and the text read from them are sent over an
+        encrypted connection to the Mealz scan server, which passes them to Anthropic's Claude to
+        turn them into a recipe. The result comes straight back to your phone.
+      </p>
+      <p>
+        The Mealz server does not store the photos or the recipe and does not log their contents. It
+        keeps a count of scans per day against a random ID created on your phone, to limit misuse;
+        the ID is not linked to you, and counts are deleted after a week. Anthropic processes the
+        photos under its commercial terms, which do not allow it to train its models on them; see
+        <a href="https://www.anthropic.com/legal/privacy">Anthropic's privacy policy</a> for how
+        long it may retain API data.
+      </p>
+      <p>
+        If you choose "Keep on My Phone", or turn off "Read scans with Claude" in Profile, recipes
+        are read entirely on your phone, with Apple's on-device language model on iPhones with Apple
+        Intelligence. Scans are also read on your phone when you're offline.
       </p>
 
       <h2>Notifications</h2>

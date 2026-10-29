@@ -21,6 +21,10 @@ export const preferences = sqliteTable('preferences', {
   defaultServings: integer('default_servings').notNull().default(2),
   units: text('units').$type<'us' | 'metric'>().notNull().default('us'),
   onboardedAt: integer('onboarded_at', { mode: 'timestamp' }),
+  /** Whether scans may be read by the Mealz server. null until the user is asked. */
+  cloudScan: text('cloud_scan').$type<'allowed' | 'declined'>(),
+  /** A random ID for this install, sent with cloud scans for the daily limit. */
+  installId: text('install_id'),
 });
 
 export const planItems = sqliteTable('plan_items', {

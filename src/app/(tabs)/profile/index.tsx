@@ -1,4 +1,4 @@
-import { Alert, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, Pressable, ScrollView, StyleSheet, Switch, View } from 'react-native';
 
 import { useCatalog } from '@/catalog/live';
 import { ALLERGEN_LABELS, DIET_LABELS } from '@/catalog/types';
@@ -9,6 +9,7 @@ import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { fitsPreferences } from '@/domain/preferences';
 import { useFavourites } from '@/features/favourites/hooks';
+import { isCloudScanConfigured, newInstallId } from '@/features/my-recipes/cloud';
 import { useHistory } from '@/features/plan/hooks';
 import { preferenceActions, usePreferences } from '@/features/preferences/hooks';
 import { useTheme } from '@/hooks/use-theme';
@@ -112,6 +113,25 @@ export default function ProfileScreen() {
           }
         />
       </SettingsGroup>
+
+      {isCloudScanConfigured() && (
+        <SettingsGroup footer="When on, photos of recipes you scan are sent to the Mealz server and read by Anthropic’s Claude, for better results. Nothing is stored. When off, scans are read on this phone.">
+          <SettingsRow
+            label="Read scans with Claude"
+            accessory={
+              <Switch
+                value={prefs.cloudScan === 'allowed'}
+                onValueChange={(on) =>
+                  preferenceActions.save({
+                    cloudScan: on ? 'allowed' : 'declined',
+                    installId: prefs.installId ?? newInstallId(),
+                  })
+                }
+              />
+            }
+          />
+        </SettingsGroup>
+      )}
 
       <SettingsGroup footer="Mealz has no accounts. Everything lives only on this phone.">
         <Pressable accessibilityRole="button" onPress={confirmReset} style={styles.reset}>
