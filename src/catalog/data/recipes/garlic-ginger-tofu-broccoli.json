@@ -1,0 +1,103 @@
+{
+  "id": "garlic-ginger-tofu-broccoli",
+  "title": "Garlic Ginger Tofu and Broccoli",
+  "description": "Pan-crisped tofu and broccoli in a savory garlic-ginger sauce over rice.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["stir-fry", "meatless", "meal-prep"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "tofu",
+      "ingredient": "extra-firm-tofu",
+      "quantity": 14,
+      "unit": "oz",
+      "prep": "patted dry and cubed"
+    },
+    {
+      "id": "cornstarch",
+      "ingredient": "cornstarch",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "broccoli",
+      "ingredient": "broccoli",
+      "quantity": 1,
+      "unit": "lb",
+      "prep": "cut into florets"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 4,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 1,
+      "unit": "tbsp",
+      "prep": "grated"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 0.25,
+      "unit": "cup"
+    },
+    {
+      "id": "maple",
+      "ingredient": "maple-syrup",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "seeds",
+      "ingredient": "sesame-seeds",
+      "quantity": 1,
+      "unit": "tsp"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Rinse the rice, then bring it to a boil with 2¼ cups water and a pinch of salt. Cover, turn the heat to low and cook until the water is absorbed, about 15 minutes. Let it stand off the heat, still covered, while you cook.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Toss the tofu with the cornstarch and fry in the oil in a large nonstick skillet over medium-high heat, turning, until crisp, about 8 minutes.",
+      "uses": ["tofu", "cornstarch", "oil"],
+      "timerMinutes": 8
+    },
+    {
+      "text": "Add the broccoli and 2 tablespoons water, cover and cook until bright green, about 4 minutes.",
+      "uses": ["broccoli"],
+      "timerMinutes": 4
+    },
+    {
+      "text": "Add the garlic and ginger for 30 seconds, then the soy sauce, maple syrup and ¼ cup water. Toss until glossy, about 1 minute.",
+      "uses": ["garlic", "ginger", "soy", "maple"]
+    },
+    {
+      "text": "Serve over rice with sesame seeds.",
+      "uses": ["seeds"]
+    }
+  ]
+}

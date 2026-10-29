@@ -1,0 +1,97 @@
+{
+  "id": "pork-chops-apples",
+  "title": "Pork Chops with Apples and Onions",
+  "description": "Golden pork chops with sweet sautéed apples, onion and thyme.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["one-pot"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "chops",
+      "ingredient": "pork-chop",
+      "quantity": 4,
+      "unit": "whole"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "butter",
+      "ingredient": "butter",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "apples",
+      "ingredient": "apple",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "cored and sliced"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "sliced"
+    },
+    {
+      "id": "thyme",
+      "ingredient": "dried-thyme",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "broth",
+      "ingredient": "chicken-broth",
+      "quantity": 0.5,
+      "unit": "cup"
+    },
+    {
+      "id": "mustard",
+      "ingredient": "dijon-mustard",
+      "quantity": 1,
+      "unit": "tsp"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Season the chops with salt and pepper. Sear in the oil in a large skillet over medium-high heat until golden and just cooked through, about 4 minutes per side. Set aside to rest.",
+      "uses": ["chops", "salt", "pepper", "oil"],
+      "timerMinutes": 8
+    },
+    {
+      "text": "Lower the heat, melt the butter and cook the apples, onion and thyme until soft and golden, about 6 minutes.",
+      "uses": ["butter", "apples", "onion", "thyme"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Stir in the broth and mustard and simmer for 2 minutes.",
+      "uses": ["broth", "mustard"],
+      "timerMinutes": 2
+    },
+    {
+      "text": "Return the chops and any juices and spoon the apples over them.",
+      "uses": []
+    }
+  ]
+}

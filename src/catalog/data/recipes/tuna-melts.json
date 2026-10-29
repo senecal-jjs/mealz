@@ -1,0 +1,88 @@
+{
+  "id": "tuna-melts",
+  "title": "Tuna Melts",
+  "description": "Open-faced tuna melts with a tangy, crunchy tuna salad and bubbling cheddar.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 5,
+  "difficulty": "easy",
+  "tags": ["quick", "kid-friendly", "budget"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "tuna",
+      "ingredient": "canned-tuna",
+      "quantity": 2,
+      "unit": "can",
+      "prep": "5 oz each, drained"
+    },
+    {
+      "id": "yogurt",
+      "ingredient": "greek-yogurt",
+      "quantity": 0.33,
+      "unit": "cup"
+    },
+    {
+      "id": "mustard",
+      "ingredient": "dijon-mustard",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "celery",
+      "ingredient": "celery",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "finely chopped"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 0.25,
+      "unit": "whole",
+      "prep": "finely chopped"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 0.5,
+      "unit": "whole"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "bread",
+      "ingredient": "sliced-bread",
+      "quantity": 8,
+      "unit": "slice"
+    },
+    {
+      "id": "cheddar",
+      "ingredient": "cheddar",
+      "quantity": 1.5,
+      "unit": "cup",
+      "prep": "shredded"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Mix the tuna with the yogurt, mustard, celery, onion, the juice of the lemon and pepper.",
+      "uses": ["tuna", "yogurt", "mustard", "celery", "onion", "lemon", "pepper"]
+    },
+    {
+      "text": "Heat the broiler. Toast the bread on a sheet pan under the broiler until golden on one side, about 1 minute.",
+      "uses": ["bread"],
+      "timerMinutes": 1
+    },
+    {
+      "text": "Turn the bread over, spread with the tuna, top with cheddar and broil until bubbling, about 3 minutes.",
+      "uses": ["cheddar"],
+      "timerMinutes": 3
+    }
+  ]
+}

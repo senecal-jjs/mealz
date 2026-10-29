@@ -1,0 +1,86 @@
+{
+  "id": "banana-oat-pancakes",
+  "title": "Banana Oat Pancakes",
+  "description": "Blender pancakes made from oats, banana and milk: fluffy, naturally sweet and good fuel before a long ride or run.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 5,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["meatless", "kid-friendly", "quick", "high-carb"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oats",
+      "ingredient": "rolled-oats",
+      "quantity": 2,
+      "unit": "cup"
+    },
+    {
+      "id": "bananas",
+      "ingredient": "banana",
+      "quantity": 3,
+      "unit": "whole",
+      "prep": "ripe; 1 for serving"
+    },
+    {
+      "id": "milk",
+      "ingredient": "milk",
+      "quantity": 1.25,
+      "unit": "cup"
+    },
+    {
+      "id": "eggs",
+      "ingredient": "egg",
+      "quantity": 2,
+      "unit": "whole"
+    },
+    {
+      "id": "powder",
+      "ingredient": "baking-powder",
+      "quantity": 2,
+      "unit": "tsp"
+    },
+    {
+      "id": "cinnamon",
+      "ingredient": "ground-cinnamon",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "butter",
+      "ingredient": "butter",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "maple",
+      "ingredient": "maple-syrup",
+      "quantity": 0.25,
+      "unit": "cup",
+      "prep": "for serving"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Blend the oats until they look like flour. Add 2 of the bananas, the milk, eggs, baking powder, cinnamon and a pinch of salt and blend until smooth. Let the batter rest for 5 minutes to thicken.",
+      "uses": ["oats", "bananas", "milk", "eggs", "powder", "cinnamon", "salt"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Heat a nonstick skillet over medium heat and melt a little butter. Pour in ¼-cup portions and cook until bubbles form on top, 2 to 3 minutes, then flip and cook 1 to 2 minutes more. Repeat with the rest of the batter.",
+      "uses": ["butter"],
+      "timerMinutes": 3
+    },
+    {
+      "text": "Serve topped with the last banana, sliced, and the maple syrup.",
+      "uses": ["maple"]
+    }
+  ]
+}

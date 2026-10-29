@@ -1,0 +1,112 @@
+{
+  "id": "pineapple-tofu-fried-rice",
+  "title": "Pineapple Tofu Fried Rice",
+  "description": "Sweet and savoury fried rice with crispy tofu, pineapple and peas.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["stir-fry", "meatless", "high-carb"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "tofu",
+      "ingredient": "extra-firm-tofu",
+      "quantity": 14,
+      "unit": "oz",
+      "prep": "patted dry and cubed"
+    },
+    {
+      "id": "cornstarch",
+      "ingredient": "cornstarch",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "peas",
+      "ingredient": "peas-and-carrots",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "pineapple",
+      "ingredient": "pineapple-chunks",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "20 oz, drained"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "sesame",
+      "ingredient": "sesame-oil",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "sliced"
+    },
+    {
+      "id": "peanuts",
+      "ingredient": "roasted-peanuts",
+      "quantity": 0.33,
+      "unit": "cup",
+      "prep": "chopped",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Cook the rice in 2 cups water as for steamed rice, about 15 minutes, then spread it on a tray to cool and dry while you cook.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Toss the tofu with the cornstarch. Fry in 2 tablespoons of the oil in a large nonstick skillet, turning, until golden, about 8 minutes. Set aside.",
+      "uses": ["tofu", "cornstarch", "oil"],
+      "timerMinutes": 8
+    },
+    {
+      "text": "Add the remaining oil, the garlic and the peas and carrots and stir-fry for 2 minutes.",
+      "uses": ["garlic", "peas"],
+      "timerMinutes": 2
+    },
+    {
+      "text": "Add the rice, pineapple and soy sauce. Stir-fry, pressing the rice against the pan, until hot and a little crisp, about 4 minutes.",
+      "uses": ["pineapple", "soy"],
+      "timerMinutes": 4
+    },
+    {
+      "text": "Return the tofu, drizzle with the sesame oil and top with green onions and peanuts.",
+      "uses": ["sesame", "scallions", "peanuts"]
+    }
+  ]
+}

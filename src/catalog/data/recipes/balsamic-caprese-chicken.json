@@ -1,0 +1,92 @@
+{
+  "id": "balsamic-caprese-chicken",
+  "title": "Balsamic Caprese Chicken",
+  "description": "Seared chicken topped with melted mozzarella, tomatoes, basil and a balsamic glaze.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 18,
+  "difficulty": "easy",
+  "tags": ["quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "balsamic",
+      "ingredient": "balsamic-vinegar",
+      "quantity": 0.33,
+      "unit": "cup"
+    },
+    {
+      "id": "chicken",
+      "ingredient": "chicken-breast",
+      "quantity": 1.5,
+      "unit": "lb",
+      "prep": "4 small breasts"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oregano",
+      "ingredient": "dried-oregano",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "mozzarella",
+      "ingredient": "fresh-mozzarella",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "sliced"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 10,
+      "unit": "oz",
+      "prep": "halved"
+    },
+    {
+      "id": "basil",
+      "ingredient": "basil",
+      "quantity": 0.5,
+      "unit": "bunch"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Simmer the balsamic in a small pan until reduced by half and syrupy, about 6 minutes.",
+      "uses": ["balsamic"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Season the chicken with salt, pepper and oregano. Sear in the oil in a skillet over medium heat until cooked through, about 5 minutes per side.",
+      "uses": ["chicken", "salt", "pepper", "oregano", "oil"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Top each piece with mozzarella, cover and cook until melted, about 2 minutes.",
+      "uses": ["mozzarella"],
+      "timerMinutes": 2
+    },
+    {
+      "text": "Spoon the tomatoes and basil over the chicken and drizzle with the balsamic glaze.",
+      "uses": ["tomatoes", "basil"]
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "id": "greek-chicken-salad",
+  "title": "Greek Chicken Salad",
+  "description": "Crunchy romaine with lemon-oregano chicken, cucumber, tomatoes, olives and feta.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 12,
+  "difficulty": "easy",
+  "tags": ["quick", "meal-prep"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "chicken",
+      "ingredient": "chicken-breast",
+      "quantity": 1.25,
+      "unit": "lb"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 5,
+      "unit": "tbsp"
+    },
+    {
+      "id": "oregano",
+      "ingredient": "dried-oregano",
+      "quantity": 2,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "vinegar",
+      "ingredient": "red-wine-vinegar",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "romaine",
+      "ingredient": "romaine-lettuce",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "cucumber",
+      "ingredient": "cucumber",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 10,
+      "unit": "oz",
+      "prep": "halved"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 0.5,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "olives",
+      "ingredient": "kalamata-olives",
+      "quantity": 0.5,
+      "unit": "cup"
+    },
+    {
+      "id": "feta",
+      "ingredient": "feta",
+      "quantity": 4,
+      "unit": "oz",
+      "prep": "crumbled"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Rub the chicken with 1 tablespoon of the oil, half the oregano, salt and pepper. Cook in a skillet over medium heat until cooked through, about 6 minutes per side. Rest, then slice.",
+      "uses": ["chicken", "salt", "pepper"],
+      "timerMinutes": 12
+    },
+    {
+      "text": "Whisk the remaining oil and oregano with the vinegar and the juice of the lemon.",
+      "uses": ["oil", "oregano", "vinegar", "lemon"]
+    },
+    {
+      "text": "Toss the romaine, cucumber, tomatoes, onion and olives with the dressing.",
+      "uses": ["romaine", "cucumber", "tomatoes", "onion", "olives"]
+    },
+    {
+      "text": "Top with the chicken and feta.",
+      "uses": ["feta"]
+    }
+  ]
+}

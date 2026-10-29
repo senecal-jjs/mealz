@@ -17,6 +17,7 @@ import ProfileScreen from '@/app/(tabs)/profile/index';
 import PlanScreen from '@/app/(tabs)/plan/index';
 import RecipeScreen from '@/app/recipe/[id]';
 import RecipeEditorScreen from '@/app/recipe-editor';
+import { catalog } from '@/catalog';
 import { groceryActions } from '@/features/grocery/hooks';
 import { useTimers } from '@/features/cook/timers';
 import { favouriteActions } from '@/features/favourites/hooks';
@@ -322,7 +323,10 @@ describe('Preferences in the app', () => {
     await renderRouter({ index: RecipesScreen }, { initialUrl: '/' });
     expect(screen.getByText('Chickpea Coconut Curry')).toBeTruthy();
     expect(screen.queryByText('Shakshuka')).toBeNull();
-    expect(screen.getByText(/44 recipes hidden by your preferences/)).toBeTruthy();
+    const hidden = catalog.recipes.filter((r) => !r.diets.includes('vegan')).length;
+    expect(
+      screen.getByText(new RegExp(`${hidden} recipes hidden by your preferences`)),
+    ).toBeTruthy();
   });
 
   it('adds recipes at the household size', async () => {

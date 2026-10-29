@@ -1,0 +1,107 @@
+{
+  "id": "crispy-fish-tacos",
+  "title": "Crispy Fish Tacos with Lime Slaw",
+  "description": "Panko-crusted cod in warm tortillas with crunchy lime slaw and a creamy sauce.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "cabbage",
+      "ingredient": "green-cabbage",
+      "quantity": 0.25,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "chopped"
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 2,
+      "unit": "whole"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "sour",
+      "ingredient": "sour-cream",
+      "quantity": 0.5,
+      "unit": "cup"
+    },
+    {
+      "id": "cod",
+      "ingredient": "cod-fillet",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "cut into strips"
+    },
+    {
+      "id": "egg",
+      "ingredient": "egg",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "beaten"
+    },
+    {
+      "id": "panko",
+      "ingredient": "panko",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "chili",
+      "ingredient": "chili-powder",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "tortillas",
+      "ingredient": "corn-tortillas",
+      "quantity": 8,
+      "unit": "whole"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Toss the cabbage with half the cilantro, the juice of 1 lime and a pinch of salt.",
+      "uses": ["cabbage", "cilantro", "lime", "salt"]
+    },
+    {
+      "text": "Stir the sour cream with the juice of half the other lime.",
+      "uses": ["sour"]
+    },
+    {
+      "text": "Dip the cod strips in the egg, then coat in panko mixed with the chili powder and salt.",
+      "uses": ["cod", "egg", "panko", "chili"]
+    },
+    {
+      "text": "Fry in the oil in a large skillet over medium-high heat until golden and cooked through, 2 to 3 minutes per side.",
+      "uses": ["oil"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Warm the tortillas and fill with fish, slaw, a spoonful of sauce and the rest of the cilantro. Serve with lime wedges.",
+      "uses": ["tortillas"]
+    }
+  ]
+}

@@ -37,7 +37,7 @@ Everything else in this plan supports that loop.
 | Styling         | **StyleSheet + theme tokens** (`src/constants/theme.ts`)     | No extra dependency; NativeWind support for SDK 58 / Reanimated 4 is unproven |
 | Testing         | **Jest + React Native Testing Library**, **Maestro** for E2E | The grocery merge logic needs heavy unit tests                                |
 
-**Data strategy:** fully on-device. The recipe catalog ships with the app as JSON (`src/catalog/data/`, about 60 recipes at launch) and is read straight into memory. At this size, filtering and search in memory are instant, so the catalog is not copied into SQLite. New recipes reach users through EAS Update.
+**Data strategy:** fully on-device. The recipe catalog ships with the app as JSON (`src/catalog/data/`, about 120 recipes at launch) and is read straight into memory. At this size, filtering and search in memory are instant, so the catalog is not copied into SQLite. New recipes reach users through EAS Update.
 
 User data (preferences, plan, grocery list, favourites, history) lives only in SQLite on the device. There are no accounts and no sync. The one exception is cloud scanning (below): with the user's consent, a scanned recipe's photos go to the scan server and Anthropic, so the App Store label declares Photos and Other User Content, not linked and for app functionality only.
 
@@ -267,6 +267,8 @@ Built as: a welcome screen plus four steps under `/onboarding`, each saving as y
 **M6 — Polish and catalog completion (3 days)** ✅
 Search and filters (time, tags), favourites, history, empty states, haptics, dark mode, accessibility (Dynamic Type, VoiceOver labels) and the app icon and splash screen. Bring the catalog to about 60 recipes.
 Built as: a heart on the recipe page and a ♥ Favourites chip, plus One pan and Kid-friendly chips; Favourites and Cooking history (with ratings and "Again" to re-plan) under Profile. The catalog is 60 draft recipes over 121 ingredients: 38 take 30 minutes or less; 29 vegetarian (16 vegan), 38 pescatarian-friendly, 13 low-carb. New icon (Icon Composer file `assets/mealz.icon`, white fork and knife on green) and a matching splash. Checked in dark mode and at accessibility text sizes: headings and buttons cap their growth at 1.4–1.5×, recipe amounts move inline above 1.3× text scale, and headers blur scrolled content on iOS < 26. Recipe photos are still placeholders, and every recipe is still `reviewed: false`, so a release build would show none until they're reviewed (§9).
+
+A second batch of 60 drafts brought the catalog to 120 recipes over 147 ingredients: 83 take 30 minutes or less; 58 vegetarian (31 vegan), 78 pescatarian-friendly, 25 low-carb. Twenty are tagged `high-carb` for endurance training (pasta, rice, noodles, potatoes, couscous, oat pancakes) and have their own High-carb chip; unlike the low-carb diet, which is worked out from ingredients, this is a hand-applied tag. Every recipe has a drawn illustration.
 
 **M7 — iOS launch (1–2 days, plus review time)**
 TestFlight beta, App Store screenshots and listing, the "Data Not Collected" privacy label and a privacy policy page. Submit for review.

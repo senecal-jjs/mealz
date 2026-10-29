@@ -25,18 +25,17 @@ describe('browseRecipes', () => {
     expect(ids(browseRecipes(recipes, ingredients, 'all', 'TACO'))).toEqual(
       expect.arrayContaining(['black-bean-tacos-lime-slaw', 'turkey-taco-lettuce-wraps']),
     );
-    expect(ids(browseRecipes(recipes, ingredients, 'all', 'salmon')).sort()).toEqual([
-      'lemon-garlic-salmon-green-beans',
-      'miso-salmon-bok-choy',
-      'salmon-teriyaki-bowls',
-    ]);
-    // "shrimp" isn't in every title, but it's an ingredient in each of these.
-    expect(ids(browseRecipes(recipes, ingredients, 'all', 'shrimp')).sort()).toEqual([
-      'garlic-butter-shrimp-zucchini',
-      'shrimp-fried-rice',
-      'shrimp-scampi-pasta',
-      'shrimp-tacos-mango-salsa',
-    ]);
+    // Every match uses the ingredient; some ("Kung Pao", "Jambalaya") only say so in it.
+    const uses = (id: string) => (r: (typeof recipes)[0]) =>
+      r.ingredients.some((i) => i.ingredient === id);
+    const salmon = browseRecipes(recipes, ingredients, 'all', 'salmon');
+    expect(ids(salmon)).toEqual(
+      expect.arrayContaining(['lemon-garlic-salmon-green-beans', 'miso-salmon-bok-choy']),
+    );
+    expect(salmon.every(uses('salmon-fillet'))).toBe(true);
+    const shrimp = browseRecipes(recipes, ingredients, 'all', 'shrimp');
+    expect(ids(shrimp)).toEqual(expect.arrayContaining(['shrimp-sausage-jambalaya']));
+    expect(shrimp).toHaveLength(recipes.filter(uses('shrimp')).length);
   });
 
   it('combines filter and query', () => {
@@ -63,6 +62,13 @@ describe('browseRecipes', () => {
     const kids = browseRecipes(recipes, ingredients, 'kid-friendly', '');
     expect(kids.length).toBeGreaterThan(5);
     expect(kids.every((r) => r.tags.includes('kid-friendly'))).toBe(true);
+  });
+
+  it('filters by the high-carb tag, which never overlaps the low-carb diet', () => {
+    const fuel = browseRecipes(recipes, ingredients, 'high-carb', '');
+    expect(ids(fuel)).toEqual(expect.arrayContaining(['pasta-e-ceci', 'chicken-burrito-bowls']));
+    expect(fuel.every((r) => r.tags.includes('high-carb'))).toBe(true);
+    expect(fuel.some((r) => r.diets.includes('low-carb'))).toBe(false);
   });
 
   it('filters to the user’s own recipes', () => {

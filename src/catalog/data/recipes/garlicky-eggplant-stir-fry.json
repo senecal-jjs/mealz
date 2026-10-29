@@ -1,0 +1,110 @@
+{
+  "id": "garlicky-eggplant-stir-fry",
+  "title": "Garlicky Eggplant Stir-Fry",
+  "description": "Silky eggplant in a sticky garlic-ginger sauce over rice.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["stir-fry", "meatless"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "eggplant",
+      "ingredient": "eggplant",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "cut into batons"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 5,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 1,
+      "unit": "tbsp",
+      "prep": "grated"
+    },
+    {
+      "id": "chili",
+      "ingredient": "red-chili",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "sliced",
+      "optional": true
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "sugar",
+      "ingredient": "brown-sugar",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "vinegar",
+      "ingredient": "rice-vinegar",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "cornstarch",
+      "ingredient": "cornstarch",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 3,
+      "unit": "whole",
+      "prep": "sliced"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Rinse the rice, then bring it to a boil with 2¼ cups water and a pinch of salt. Cover, turn the heat to low and cook until the water is absorbed, about 15 minutes. Let it stand off the heat, still covered, while you cook.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Heat the oil in a large skillet over medium-high heat. Add the eggplant and a splash of water, cover and cook, stirring now and then, until soft and browned, about 10 minutes.",
+      "uses": ["eggplant", "oil"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Add the garlic, ginger and chili and cook for 1 minute.",
+      "uses": ["garlic", "ginger", "chili"]
+    },
+    {
+      "text": "Whisk the soy sauce, brown sugar, vinegar and cornstarch with ⅓ cup water, pour it in and let it bubble until thick, about 1 minute.",
+      "uses": ["soy", "sugar", "vinegar", "cornstarch"]
+    },
+    {
+      "text": "Serve over rice, topped with green onions.",
+      "uses": ["scallions"]
+    }
+  ]
+}

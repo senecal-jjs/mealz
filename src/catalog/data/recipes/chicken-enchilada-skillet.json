@@ -1,0 +1,115 @@
+{
+  "id": "chicken-enchilada-skillet",
+  "title": "Chicken Enchilada Skillet",
+  "description": "The flavours of enchiladas (chicken, beans, corn tortillas and melted cheese) made in one skillet.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["one-pot", "kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "chicken",
+      "ingredient": "chicken-breast",
+      "quantity": 1,
+      "unit": "lb",
+      "prep": "diced"
+    },
+    {
+      "id": "chili",
+      "ingredient": "chili-powder",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "salsa",
+      "ingredient": "salsa",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "beans",
+      "ingredient": "black-beans",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz, drained and rinsed"
+    },
+    {
+      "id": "tortillas",
+      "ingredient": "corn-tortillas",
+      "quantity": 6,
+      "unit": "whole",
+      "prep": "torn into pieces"
+    },
+    {
+      "id": "cheddar",
+      "ingredient": "cheddar",
+      "quantity": 1.5,
+      "unit": "cup",
+      "prep": "shredded"
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "chopped"
+    },
+    {
+      "id": "sour",
+      "ingredient": "sour-cream",
+      "quantity": 0.5,
+      "unit": "cup",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oil in a large skillet over medium heat and cook the onion for 4 minutes.",
+      "uses": ["oil", "onion"],
+      "timerMinutes": 4
+    },
+    {
+      "text": "Add the chicken, chili powder, cumin and salt and cook until the chicken is no longer pink, about 6 minutes.",
+      "uses": ["chicken", "chili", "cumin", "salt"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Stir in the salsa, beans, tortillas and ½ cup water and simmer until thick, about 5 minutes.",
+      "uses": ["salsa", "beans", "tortillas"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Scatter over the cheddar, cover and cook until melted, about 2 minutes. Top with cilantro and sour cream.",
+      "uses": ["cheddar", "cilantro", "sour"],
+      "timerMinutes": 2
+    }
+  ]
+}

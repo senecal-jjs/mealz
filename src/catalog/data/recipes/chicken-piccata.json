@@ -1,0 +1,106 @@
+{
+  "id": "chicken-piccata",
+  "title": "Chicken Piccata",
+  "description": "Thin chicken cutlets in a buttery lemon and caper pan sauce, with green beans.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 15,
+  "difficulty": "medium",
+  "tags": ["quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "chicken",
+      "ingredient": "chicken-breast",
+      "quantity": 1.5,
+      "unit": "lb",
+      "prep": "halved horizontally into thin cutlets"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "beans",
+      "ingredient": "green-beans",
+      "quantity": 12,
+      "unit": "oz",
+      "prep": "trimmed"
+    },
+    {
+      "id": "butter",
+      "ingredient": "butter",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 2,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "broth",
+      "ingredient": "chicken-broth",
+      "quantity": 0.75,
+      "unit": "cup"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "capers",
+      "ingredient": "capers",
+      "quantity": 2,
+      "unit": "tbsp",
+      "prep": "drained"
+    },
+    {
+      "id": "parsley",
+      "ingredient": "parsley",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "chopped"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Season the cutlets with salt and pepper. Sear in the oil in a large skillet over medium-high heat until golden and cooked through, about 3 minutes per side. Set aside.",
+      "uses": ["chicken", "salt", "pepper", "oil"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Steam or microwave the green beans until crisp-tender, about 4 minutes.",
+      "uses": ["beans"],
+      "timerMinutes": 4
+    },
+    {
+      "text": "Lower the heat, melt 1 tablespoon of the butter in the skillet and cook the garlic for 30 seconds. Add the broth, the juice of the lemon and the capers and simmer until reduced by half, about 3 minutes.",
+      "uses": ["butter", "garlic", "broth", "lemon", "capers"],
+      "timerMinutes": 3
+    },
+    {
+      "text": "Off the heat, swirl in the rest of the butter. Return the chicken, spoon over the sauce and scatter with parsley.",
+      "uses": ["parsley"]
+    }
+  ]
+}

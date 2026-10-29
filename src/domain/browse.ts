@@ -5,7 +5,7 @@ export const QUICK_MINUTES = 30;
 const ONE_PAN_TAGS = ['one-pot', 'sheet-pan'];
 
 export type BrowseFilter =
-  'all' | 'mine' | 'favourites' | 'quick' | 'one-pan' | 'kid-friendly' | Diet;
+  'all' | 'mine' | 'favourites' | 'quick' | 'one-pan' | 'kid-friendly' | 'high-carb' | Diet;
 
 export const BROWSE_FILTERS: { id: BrowseFilter; label: string }[] = [
   { id: 'all', label: 'All' },
@@ -14,6 +14,9 @@ export const BROWSE_FILTERS: { id: BrowseFilter; label: string }[] = [
   { id: 'quick', label: `Under ${QUICK_MINUTES} min` },
   { id: 'one-pan', label: 'One pan' },
   { id: 'kid-friendly', label: 'Kid-friendly' },
+  // Fuel for endurance training: pasta, rice, potatoes and noodles. Tagged by hand,
+  // unlike the low-carb diet, which is worked out from the ingredients.
+  { id: 'high-carb', label: 'High-carb' },
   ...(Object.keys(DIET_LABELS) as Diet[]).map((d) => ({ id: d, label: DIET_LABELS[d] })),
 ];
 
@@ -24,6 +27,7 @@ function matchesFilter(recipe: Recipe, filter: BrowseFilter, favourites: Set<str
   if (filter === 'quick') return recipe.totalMinutes <= QUICK_MINUTES;
   if (filter === 'one-pan') return ONE_PAN_TAGS.some((t) => recipe.tags.includes(t));
   if (filter === 'kid-friendly') return recipe.tags.includes('kid-friendly');
+  if (filter === 'high-carb') return recipe.tags.includes('high-carb');
   return recipe.diets.includes(filter);
 }
 

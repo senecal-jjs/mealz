@@ -1,0 +1,85 @@
+{
+  "id": "pesto-salmon-tomatoes",
+  "title": "Pesto Salmon with Roasted Tomatoes",
+  "description": "Salmon fillets spread with pesto and roasted on a bed of cherry tomatoes, with a lemony spinach salad.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 5,
+  "cookMinutes": 17,
+  "difficulty": "easy",
+  "tags": ["sheet-pan", "quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 20,
+      "unit": "oz"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 2,
+      "unit": "clove",
+      "prep": "sliced"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "salmon",
+      "ingredient": "salmon-fillet",
+      "quantity": 4,
+      "unit": "whole"
+    },
+    {
+      "id": "pesto",
+      "ingredient": "basil-pesto",
+      "quantity": 0.33,
+      "unit": "cup"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "spinach",
+      "ingredient": "baby-spinach",
+      "quantity": 5,
+      "unit": "oz"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 425°F. Toss the tomatoes and garlic with 1 tablespoon of the oil and a pinch of salt on a sheet pan and roast for 5 minutes.",
+      "uses": ["tomatoes", "garlic", "oil", "salt"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Nestle the salmon among the tomatoes, season with pepper and spread the pesto over the tops. Roast until the salmon flakes, about 12 minutes.",
+      "uses": ["salmon", "pesto", "pepper"],
+      "timerMinutes": 12
+    },
+    {
+      "text": "Toss the spinach with the rest of the oil and the juice of the lemon and serve alongside.",
+      "uses": ["spinach", "lemon"]
+    }
+  ]
+}

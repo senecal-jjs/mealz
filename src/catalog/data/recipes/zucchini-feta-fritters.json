@@ -1,0 +1,104 @@
+{
+  "id": "zucchini-feta-fritters",
+  "title": "Zucchini Feta Fritters",
+  "description": "Golden zucchini fritters with feta and green onion, served with a lemony yogurt dip and arugula.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["meatless"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "zucchini",
+      "ingredient": "zucchini",
+      "quantity": 3,
+      "unit": "whole",
+      "prep": "coarsely grated"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "eggs",
+      "ingredient": "egg",
+      "quantity": 2,
+      "unit": "whole"
+    },
+    {
+      "id": "panko",
+      "ingredient": "panko",
+      "quantity": 0.75,
+      "unit": "cup"
+    },
+    {
+      "id": "feta",
+      "ingredient": "feta",
+      "quantity": 4,
+      "unit": "oz",
+      "prep": "crumbled"
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 3,
+      "unit": "whole",
+      "prep": "sliced"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 1,
+      "unit": "clove",
+      "prep": "grated"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "yogurt",
+      "ingredient": "greek-yogurt",
+      "quantity": 0.75,
+      "unit": "cup"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "arugula",
+      "ingredient": "arugula",
+      "quantity": 4,
+      "unit": "oz"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Toss the zucchini with ½ teaspoon salt and leave for 10 minutes. Squeeze out as much liquid as you can in a clean towel.",
+      "uses": ["zucchini", "salt"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Mix the zucchini with the eggs, panko, feta, green onions and garlic.",
+      "uses": ["eggs", "panko", "feta", "scallions", "garlic"]
+    },
+    {
+      "text": "Heat the oil in a large skillet over medium heat. Drop in heaped spoonfuls, flatten and fry until golden, about 3 minutes per side.",
+      "uses": ["oil"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Stir the yogurt with the zest and juice of half the lemon. Serve the fritters with the dip, arugula and lemon wedges.",
+      "uses": ["yogurt", "lemon", "arugula"]
+    }
+  ]
+}

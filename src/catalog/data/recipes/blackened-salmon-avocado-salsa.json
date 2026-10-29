@@ -1,0 +1,109 @@
+{
+  "id": "blackened-salmon-avocado-salsa",
+  "title": "Blackened Salmon with Avocado Salsa",
+  "description": "Spice-crusted salmon with a cool avocado, tomato and lime salsa.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 10,
+  "difficulty": "easy",
+  "tags": ["quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "avocado",
+      "ingredient": "avocado",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "quartered"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 0.25,
+      "unit": "whole",
+      "prep": "finely chopped"
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 2,
+      "unit": "whole"
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "chopped"
+    },
+    {
+      "id": "salmon",
+      "ingredient": "salmon-fillet",
+      "quantity": 4,
+      "unit": "whole"
+    },
+    {
+      "id": "paprika",
+      "ingredient": "smoked-paprika",
+      "quantity": 2,
+      "unit": "tsp"
+    },
+    {
+      "id": "chili",
+      "ingredient": "chili-powder",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "oregano",
+      "ingredient": "dried-oregano",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    }
+  ],
+  "steps": [
+    {
+      "text": "For the salsa, gently mix the avocado, tomatoes, onion, the juice of 1 lime, cilantro and a pinch of salt.",
+      "uses": ["avocado", "tomatoes", "onion", "lime", "cilantro"]
+    },
+    {
+      "text": "Pat the salmon dry and rub with the paprika, chili powder, cumin, oregano and salt.",
+      "uses": ["salmon", "paprika", "chili", "cumin", "oregano", "salt"]
+    },
+    {
+      "text": "Heat the oil in a skillet over medium-high heat. Cook the salmon, flesh side down, until dark and crusty, about 4 minutes, then flip and cook 3 minutes more.",
+      "uses": ["oil"],
+      "timerMinutes": 7
+    },
+    {
+      "text": "Serve with the salsa and the second lime cut into wedges.",
+      "uses": []
+    }
+  ]
+}

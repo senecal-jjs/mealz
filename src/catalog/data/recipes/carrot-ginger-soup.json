@@ -1,0 +1,118 @@
+{
+  "id": "carrot-ginger-soup",
+  "title": "Carrot Ginger Soup",
+  "description": "Velvety carrot soup with fresh ginger and coconut milk.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["one-pot", "meatless", "budget"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 2,
+      "unit": "tbsp",
+      "prep": "grated"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 2,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "curry",
+      "ingredient": "curry-powder",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "carrots",
+      "ingredient": "carrots",
+      "quantity": 2,
+      "unit": "lb",
+      "prep": "sliced"
+    },
+    {
+      "id": "broth",
+      "ingredient": "vegetable-broth",
+      "quantity": 4,
+      "unit": "cup"
+    },
+    {
+      "id": "coconut",
+      "ingredient": "coconut-milk",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "13.5 oz"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "optional": true
+    },
+    {
+      "id": "bread",
+      "ingredient": "crusty-bread",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "for serving",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oil in a large pot over medium heat and cook the onion until soft, about 5 minutes.",
+      "uses": ["oil", "onion"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Stir in the ginger, garlic and curry powder for 1 minute.",
+      "uses": ["ginger", "garlic", "curry"]
+    },
+    {
+      "text": "Add the carrots and broth, cover and simmer until the carrots are very tender, about 18 minutes.",
+      "uses": ["carrots", "broth"],
+      "timerMinutes": 18
+    },
+    {
+      "text": "Blend until smooth with most of the coconut milk. Season with salt and the juice of the lime.",
+      "uses": ["coconut", "salt", "lime"]
+    },
+    {
+      "text": "Serve with a swirl of the remaining coconut milk, cilantro and crusty bread.",
+      "uses": ["cilantro", "bread"]
+    }
+  ]
+}

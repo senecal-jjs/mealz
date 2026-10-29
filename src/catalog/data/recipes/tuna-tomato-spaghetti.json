@@ -1,0 +1,98 @@
+{
+  "id": "tuna-tomato-spaghetti",
+  "title": "Spaghetti with Tuna and Tomatoes",
+  "description": "A pantry pasta of canned tuna, burst cherry tomatoes, olives and lemon.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 5,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["quick", "budget", "high-carb"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "spaghetti",
+      "ingredient": "spaghetti",
+      "quantity": 1,
+      "unit": "lb"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "flakes",
+      "ingredient": "red-pepper-flakes",
+      "quantity": 0.25,
+      "unit": "tsp"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 20,
+      "unit": "oz"
+    },
+    {
+      "id": "tuna",
+      "ingredient": "canned-tuna",
+      "quantity": 2,
+      "unit": "can",
+      "prep": "5 oz each, drained"
+    },
+    {
+      "id": "olives",
+      "ingredient": "kalamata-olives",
+      "quantity": 0.33,
+      "unit": "cup",
+      "prep": "halved"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "parsley",
+      "ingredient": "parsley",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "chopped"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Cook the spaghetti in well-salted boiling water until al dente, about 10 minutes. Save 1 cup of the cooking water, then drain.",
+      "uses": ["spaghetti", "salt"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Meanwhile, warm the oil, garlic and pepper flakes in a large skillet over medium heat for 1 minute. Add the tomatoes and cook until they burst, about 6 minutes, pressing some with a spoon.",
+      "uses": ["oil", "garlic", "flakes", "tomatoes"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Stir in the tuna, olives and the zest and juice of the lemon.",
+      "uses": ["tuna", "olives", "lemon"]
+    },
+    {
+      "text": "Toss in the spaghetti with a splash of the cooking water until saucy. Finish with the parsley.",
+      "uses": ["parsley"]
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "id": "roasted-cauliflower-chickpeas",
+  "title": "Roasted Cauliflower and Chickpeas with Tahini",
+  "description": "Spiced roast cauliflower and crispy chickpeas drizzled with lemony tahini.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["sheet-pan", "meatless", "meal-prep"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "cauliflower",
+      "ingredient": "cauliflower",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "cut into florets"
+    },
+    {
+      "id": "chickpeas",
+      "ingredient": "chickpeas",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz, drained and patted dry"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "paprika",
+      "ingredient": "smoked-paprika",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "tahini",
+      "ingredient": "tahini",
+      "quantity": 0.25,
+      "unit": "cup"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 1,
+      "unit": "clove",
+      "prep": "grated"
+    },
+    {
+      "id": "parsley",
+      "ingredient": "parsley",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "chopped"
+    },
+    {
+      "id": "pita",
+      "ingredient": "pita-bread",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "warmed, for serving",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 450°F. Toss the cauliflower and chickpeas with the oil, cumin, paprika and salt on a sheet pan. Roast, stirring once, until browned and tender, about 25 minutes.",
+      "uses": ["cauliflower", "chickpeas", "oil", "cumin", "paprika", "salt"],
+      "timerMinutes": 25
+    },
+    {
+      "text": "Whisk the tahini with the juice of the lemon, the garlic, a pinch of salt and enough water to make it pourable.",
+      "uses": ["tahini", "lemon", "garlic"]
+    },
+    {
+      "text": "Drizzle the tahini over the vegetables, scatter with parsley and serve with warm pitas.",
+      "uses": ["parsley", "pita"]
+    }
+  ]
+}

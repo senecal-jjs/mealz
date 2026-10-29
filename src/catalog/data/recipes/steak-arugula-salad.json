@@ -1,0 +1,96 @@
+{
+  "id": "steak-arugula-salad",
+  "title": "Steak and Arugula Salad",
+  "description": "Seared sirloin sliced over peppery arugula with tomatoes, parmesan and balsamic.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 10,
+  "difficulty": "easy",
+  "tags": ["quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "steak",
+      "ingredient": "sirloin-steak",
+      "quantity": 1.25,
+      "unit": "lb"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "balsamic",
+      "ingredient": "balsamic-vinegar",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "mustard",
+      "ingredient": "dijon-mustard",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "arugula",
+      "ingredient": "arugula",
+      "quantity": 5,
+      "unit": "oz"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "halved"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 0.25,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "parmesan",
+      "ingredient": "parmesan",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "shaved"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Season the steak well with salt and pepper. Sear in 1 tablespoon of the oil in a hot skillet, about 4 minutes per side for medium-rare. Rest for 5 minutes, then slice thinly.",
+      "uses": ["steak", "salt", "pepper"],
+      "timerMinutes": 8
+    },
+    {
+      "text": "Whisk the rest of the oil with the balsamic and mustard.",
+      "uses": ["oil", "balsamic", "mustard"]
+    },
+    {
+      "text": "Toss the arugula, tomatoes and onion with the dressing.",
+      "uses": ["arugula", "tomatoes", "onion"]
+    },
+    {
+      "text": "Top with the steak and parmesan.",
+      "uses": ["parmesan"]
+    }
+  ]
+}

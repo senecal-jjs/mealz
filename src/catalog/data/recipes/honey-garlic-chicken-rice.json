@@ -1,0 +1,109 @@
+{
+  "id": "honey-garlic-chicken-rice",
+  "title": "Honey Garlic Chicken and Rice",
+  "description": "Sticky honey-garlic chicken thighs with steamed rice and green beans.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["kid-friendly", "high-carb"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "chicken",
+      "ingredient": "chicken-thighs",
+      "quantity": 1.5,
+      "unit": "lb"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 4,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "honey",
+      "ingredient": "honey",
+      "quantity": 0.33,
+      "unit": "cup"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 0.25,
+      "unit": "cup"
+    },
+    {
+      "id": "vinegar",
+      "ingredient": "rice-vinegar",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "beans",
+      "ingredient": "green-beans",
+      "quantity": 12,
+      "unit": "oz",
+      "prep": "trimmed"
+    },
+    {
+      "id": "sesame",
+      "ingredient": "sesame-seeds",
+      "quantity": 1,
+      "unit": "tsp",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Rinse the rice, then bring it to a boil with 2¼ cups water and a pinch of salt. Cover, turn the heat to low and cook until the water is absorbed, about 15 minutes. Let it stand off the heat, still covered, while you cook.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Season the chicken with salt and pepper. Sear in the oil in a large skillet over medium-high heat until browned and cooked through, about 5 minutes per side.",
+      "uses": ["chicken", "salt", "pepper", "oil"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Lower the heat, add the garlic for 30 seconds, then the honey, soy sauce and vinegar. Simmer, turning the chicken, until sticky, about 3 minutes.",
+      "uses": ["garlic", "honey", "soy", "vinegar"],
+      "timerMinutes": 3
+    },
+    {
+      "text": "Steam or microwave the green beans with a splash of water until crisp-tender, about 4 minutes.",
+      "uses": ["beans"],
+      "timerMinutes": 4
+    },
+    {
+      "text": "Serve the chicken and sauce over rice with the beans, sprinkled with sesame seeds.",
+      "uses": ["sesame"]
+    }
+  ]
+}

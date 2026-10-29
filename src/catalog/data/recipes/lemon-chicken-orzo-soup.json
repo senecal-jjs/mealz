@@ -1,0 +1,115 @@
+{
+  "id": "lemon-chicken-orzo-soup",
+  "title": "Lemon Chicken Orzo Soup",
+  "description": "A bright, brothy soup with shredded chicken, orzo, spinach and plenty of lemon.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["one-pot", "kid-friendly", "high-carb"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "carrots",
+      "ingredient": "carrots",
+      "quantity": 0.5,
+      "unit": "lb",
+      "prep": "diced"
+    },
+    {
+      "id": "celery",
+      "ingredient": "celery",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "broth",
+      "ingredient": "chicken-broth",
+      "quantity": 8,
+      "unit": "cup"
+    },
+    {
+      "id": "chicken",
+      "ingredient": "chicken-breast",
+      "quantity": 1,
+      "unit": "lb"
+    },
+    {
+      "id": "orzo",
+      "ingredient": "orzo",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "spinach",
+      "ingredient": "baby-spinach",
+      "quantity": 5,
+      "unit": "oz"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 2,
+      "unit": "whole"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oil in a large pot over medium heat. Cook the onion, carrots and celery until softened, about 6 minutes.",
+      "uses": ["oil", "onion", "carrots", "celery"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Add the garlic and cook for 1 minute.",
+      "uses": ["garlic"]
+    },
+    {
+      "text": "Add the broth and the whole chicken breasts. Simmer, covered, until the chicken is cooked through, about 12 minutes. Lift out the chicken and shred it with two forks.",
+      "uses": ["broth", "chicken"],
+      "timerMinutes": 12
+    },
+    {
+      "text": "Add the orzo to the pot and simmer until tender, about 8 minutes.",
+      "uses": ["orzo"],
+      "timerMinutes": 8
+    },
+    {
+      "text": "Return the chicken, stir in the spinach until wilted, then add the juice of the lemons. Season with salt and pepper.",
+      "uses": ["spinach", "lemon", "salt", "pepper"]
+    }
+  ]
+}

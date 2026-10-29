@@ -1,0 +1,126 @@
+{
+  "id": "shrimp-sausage-jambalaya",
+  "title": "Shrimp and Sausage Jambalaya",
+  "description": "A one-pot Creole-style rice dish with sausage, shrimp and the trio of onion, pepper and celery.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 30,
+  "difficulty": "medium",
+  "tags": ["one-pot", "high-carb"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "sausage",
+      "ingredient": "italian-sausage",
+      "quantity": 0.75,
+      "unit": "lb",
+      "prep": "sliced"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "bell-pepper",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "celery",
+      "ingredient": "celery",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "paprika",
+      "ingredient": "smoked-paprika",
+      "quantity": 2,
+      "unit": "tsp"
+    },
+    {
+      "id": "oregano",
+      "ingredient": "dried-oregano",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "diced-tomatoes",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz"
+    },
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "broth",
+      "ingredient": "chicken-broth",
+      "quantity": 3,
+      "unit": "cup"
+    },
+    {
+      "id": "shrimp",
+      "ingredient": "shrimp",
+      "quantity": 1,
+      "unit": "lb",
+      "prep": "peeled"
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 3,
+      "unit": "whole",
+      "prep": "sliced"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Brown the sausage in the oil in a large pot over medium-high heat, about 5 minutes.",
+      "uses": ["sausage", "oil"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Add the onion, pepper and celery and cook until soft, about 5 minutes.",
+      "uses": ["onion", "pepper", "celery"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Stir in the garlic, paprika and oregano for 1 minute.",
+      "uses": ["garlic", "paprika", "oregano"]
+    },
+    {
+      "text": "Add the rice, tomatoes and broth. Bring to a boil, then cover, turn the heat to low and cook for 18 minutes.",
+      "uses": ["rice", "tomatoes", "broth"],
+      "timerMinutes": 18
+    },
+    {
+      "text": "Tuck the shrimp into the rice, cover again and cook until pink, about 5 minutes. Scatter with green onions.",
+      "uses": ["shrimp", "scallions"],
+      "timerMinutes": 5
+    }
+  ]
+}

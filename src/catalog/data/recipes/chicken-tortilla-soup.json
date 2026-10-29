@@ -1,0 +1,135 @@
+{
+  "id": "chicken-tortilla-soup",
+  "title": "Chicken Tortilla Soup",
+  "description": "A spiced tomato and chicken soup with black beans and corn, topped with crispy tortilla strips.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["one-pot", "kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "tortillas",
+      "ingredient": "corn-tortillas",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "cut into strips"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 2,
+      "unit": "tsp"
+    },
+    {
+      "id": "chili",
+      "ingredient": "chili-powder",
+      "quantity": 2,
+      "unit": "tsp"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "diced-tomatoes",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz"
+    },
+    {
+      "id": "broth",
+      "ingredient": "chicken-broth",
+      "quantity": 6,
+      "unit": "cup"
+    },
+    {
+      "id": "chicken",
+      "ingredient": "chicken-breast",
+      "quantity": 1,
+      "unit": "lb"
+    },
+    {
+      "id": "beans",
+      "ingredient": "black-beans",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz, drained and rinsed"
+    },
+    {
+      "id": "corn",
+      "ingredient": "frozen-corn",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "avocado",
+      "ingredient": "avocado",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "chopped"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat 2 tablespoons of the oil in a large pot over medium-high heat. Fry the tortilla strips until crisp, about 4 minutes, and drain on paper towels.",
+      "uses": ["oil", "tortillas"],
+      "timerMinutes": 4
+    },
+    {
+      "text": "Add the remaining oil and the onion and cook until soft, about 5 minutes.",
+      "uses": ["onion"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Stir in the garlic, cumin and chili powder for 1 minute.",
+      "uses": ["garlic", "cumin", "chili"]
+    },
+    {
+      "text": "Add the tomatoes, broth and whole chicken breasts. Simmer, covered, until the chicken is cooked, about 15 minutes. Lift it out and shred it.",
+      "uses": ["tomatoes", "broth", "chicken"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Return the chicken with the beans and corn and simmer for 3 minutes. Add the juice of the lime.",
+      "uses": ["beans", "corn", "lime"],
+      "timerMinutes": 3
+    },
+    {
+      "text": "Serve topped with the tortilla strips, avocado and cilantro.",
+      "uses": ["avocado", "cilantro"]
+    }
+  ]
+}

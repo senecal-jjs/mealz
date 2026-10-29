@@ -1,0 +1,134 @@
+{
+  "id": "tuscan-white-bean-kale-soup",
+  "title": "Tuscan White Bean and Kale Soup",
+  "description": "A hearty vegetable soup of white beans, kale and tomatoes with a parmesan finish.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["one-pot", "meatless", "budget", "meal-prep"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "carrots",
+      "ingredient": "carrots",
+      "quantity": 0.5,
+      "unit": "lb",
+      "prep": "diced"
+    },
+    {
+      "id": "celery",
+      "ingredient": "celery",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "thyme",
+      "ingredient": "dried-thyme",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "diced-tomatoes",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz"
+    },
+    {
+      "id": "broth",
+      "ingredient": "vegetable-broth",
+      "quantity": 6,
+      "unit": "cup"
+    },
+    {
+      "id": "beans",
+      "ingredient": "cannellini-beans",
+      "quantity": 2,
+      "unit": "can",
+      "prep": "15 oz each, drained and rinsed"
+    },
+    {
+      "id": "kale",
+      "ingredient": "kale",
+      "quantity": 1,
+      "unit": "bunch",
+      "prep": "stems removed, chopped"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "parmesan",
+      "ingredient": "parmesan",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "grated",
+      "optional": true
+    },
+    {
+      "id": "bread",
+      "ingredient": "crusty-bread",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "for serving",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oil in a large pot over medium heat. Cook the onion, carrots and celery until soft, about 7 minutes.",
+      "uses": ["oil", "onion", "carrots", "celery"],
+      "timerMinutes": 7
+    },
+    {
+      "text": "Add the garlic and thyme and cook for 1 minute.",
+      "uses": ["garlic", "thyme"]
+    },
+    {
+      "text": "Add the tomatoes, broth and beans and simmer for 12 minutes. Mash some of the beans against the pot to thicken the soup.",
+      "uses": ["tomatoes", "broth", "beans"],
+      "timerMinutes": 12
+    },
+    {
+      "text": "Stir in the kale and simmer until tender, about 5 minutes. Season with salt and pepper.",
+      "uses": ["kale", "salt", "pepper"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Serve topped with parmesan, with crusty bread alongside.",
+      "uses": ["parmesan", "bread"]
+    }
+  ]
+}

@@ -86,6 +86,11 @@ function spaghettiPlate(k: Kit, toppings: string) {
 
 // ---- The recipes ----
 
+/** A slightly smaller bowl of soup, left of centre, so toppings sit in the broth. */
+function soupBowl(k: Kit, broth: string, edge: string, toppings: string) {
+  return k.bowl(226, 156, 124) + k.sauce(area(226, 156, 98, 98), broth, edge, 0.04) + toppings;
+}
+
 /** Dishes that spread past the plate on the right, where the fork would go. */
 export const NO_FORK = new Set(['tomato-soup-grilled-cheese']);
 
@@ -783,4 +788,668 @@ export const dishes: Record<string, Dish> = {
       k.wedge(160, 210, 150, 'lime')
     );
   },
+
+  // ---- Second batch ----
+
+  'aloo-gobi': (k) =>
+    k.bowl() +
+    k.sauce(area(CX, CY, 108, 108), '#E8B03E', '#D0922A', 0.04) +
+    k.potatoes(area(CX, CY, 84, 84), 8, 13) +
+    k.broccoli(area(CX, CY, 84, 84), 8, 13, ['#F3E3B0', '#E9C66A', '#F2D27C', '#F8E6A8']) +
+    k.dice(area(CX, CY, 84, 84), 8, { s: 7, colors: ['#D9472F'] }) +
+    k.herbs(area(CX, CY, 84, 84), 10) +
+    k.wedge(334, 96, -35, 'lemon'),
+
+  'baked-feta-pasta': (k) =>
+    k.bowl() +
+    k.blob(area(CX, CY, 96, 92), '#E8603E', { wobble: 0.07, k: 11 }) +
+    k.penne(area(CX, CY, 80, 76), 38) +
+    k.cherryTomatoes(area(CX, CY, 78, 74), 10, { r: 10 }) +
+    k.feta(area(CX, CY, 60, 56), 10) +
+    k.spinach(area(CX, CY, 74, 70), 4) +
+    k.leaves(area(CX, CY, 74, 70), 5),
+
+  'balsamic-caprese-chicken': (k) =>
+    k.plate() +
+    [
+      [196, 128, -15],
+      [286, 146, 10],
+      [232, 210, 5],
+    ]
+      .map(
+        ([x, y, r]) =>
+          k.chicken(x, y, r, { w: 96, h: 64, fill: '#E2B26A', edge: '#B98040' }) +
+          mozzarella(k, area(x, y, 20, 12), 2, 16),
+      )
+      .join('') +
+    k.cherryTomatoes(area(CX, CY, 84, 80), 8, { r: 9, halved: true }) +
+    k.leaves(area(CX, CY, 80, 76), 7) +
+    k.zigzag(area(CX, CY, 64, 30), '#4A2418', 2.5, 5),
+
+  'banana-oat-pancakes': (k) =>
+    k.plate() +
+    k.pancakes(CX - 4, CY + 2, 86) +
+    k.bananaSlices(area(CX + 4, CY - 4, 42, 34), 6) +
+    k.zigzag(area(CX, CY + 4, 44, 16), '#8E4A14', 4, 5),
+
+  'bbq-chicken-flatbreads': (k) => {
+    const top = (x: number, y: number) => () =>
+      k.chunks(area(x, y, 46, 46), 7, { w: 18, h: 14, fill: '#A2401F', hi: '#C8693F' }) +
+      k.redOnion(area(x, y, 46, 46), 6) +
+      k.shreds(area(x, y, 50, 50), 14, ['#FFFDF5', '#F7F0DE'], 10, 3) +
+      k.herbs(area(x, y, 46, 46), 5);
+    return (
+      k.board(70, 52, 340, 216) +
+      k.pizza(176, 148, 72, '#8E3A1E', top(176, 148)) +
+      k.pizza(304, 172, 72, '#8E3A1E', top(304, 172))
+    );
+  },
+
+  'bean-rice-burritos': (k) =>
+    k.board(108, 62, 264, 196) +
+    k.wrapHalf(206, 118, -8, ['#F3EFE6', '#2B2230', '#D9472F'], '#F3E1B8') +
+    k.wrapHalf(218, 204, 8, ['#F3EFE6', '#2B2230', '#D9472F'], '#F3E1B8') +
+    k.dip(332, 104, 24, '#D9472F', () =>
+      k.dice(area(332, 104, 10, 10), 6, { s: 5, colors: ['#F2614A', '#F7E3C0'] }),
+    ) +
+    k.wedge(330, 214, 30, 'lime'),
+
+  'beef-kofta-tzatziki': (k) =>
+    k.plate() +
+    k.tortillaStack(296, 214, 42) +
+    k.sausages(area(204, 140, 56, 46), 6, ['#6E3A22', '#9A5B3E', '#4E2614'], 62) +
+    k.herbs(area(204, 140, 56, 46), 8) +
+    k.dollop(300, 120, 22) +
+    k.dice(area(196, 216, 32, 22), 10, { s: 8, colors: ['#E2402F', '#DDEDC0', '#9C3D7A'] }),
+
+  'beef-rice-stuffed-peppers': (k) => {
+    const fill = () =>
+      k.crumbs(area(0, 0, 30, 24), 26, ['#7A3E26', '#F3EFE6', '#C8402B'], 5) +
+      k.blob(area(0, 0, 26, 20), '#F2B53A', { wobble: 0.25, k: 8, opacity: 0.9 });
+    return (
+      k.plate() +
+      k.pepperHalf(192, 120, -10, '#E2402F', fill) +
+      k.pepperHalf(290, 124, 12, '#F2B630', fill) +
+      k.pepperHalf(198, 210, 8, '#4E9A3A', fill) +
+      k.pepperHalf(290, 210, -6, '#E2402F', fill) +
+      k.herbs(area(CX, CY, 90, 86), 8)
+    );
+  },
+
+  'blackened-salmon-avocado-salsa': (k) =>
+    k.plate() +
+    k.fillet(222, 130, -10, 'glazed') +
+    k.specks(area(222, 130, 48, 22), 26, ['#5A2410', '#7A3418'], 2.6) +
+    k.avocadoDice(area(262, 214, 56, 30), 16) +
+    k.dice(area(262, 214, 56, 30), 12, { s: 8, colors: ['#E2402F', '#F2614A'] }) +
+    k.redOnion(area(262, 214, 50, 26), 5) +
+    k.herbs(area(262, 214, 54, 28), 8) +
+    k.wedge(170, 214, 160, 'lime'),
+
+  'broccoli-cheddar-frittata': (k) =>
+    k.skillet() +
+    k.frittata() +
+    k.broccoli(area(CX, CY, 80, 80), 9, 11) +
+    k.blob(area(CX, CY, 40, 30), '#F2B53A', { wobble: 0.3, opacity: 0.5 }) +
+    k.scallions(area(CX, CY, 84, 84), 12) +
+    k.blackPepper(area(CX, CY, 84, 84), 16),
+
+  'cajun-shrimp-corn-skillet': (k) =>
+    k.skillet() +
+    k.blob(area(CX, CY, 112, 112), '#B8642E', { wobble: 0.03, opacity: 0.35 }) +
+    k.dice(area(CX, CY, 96, 96), 40, { s: 6, colors: ['#F7D35C', '#EDBE3A', '#C98A2E'] }) +
+    k.dice(area(CX, CY, 92, 92), 12, { s: 8, colors: ['#E2402F', '#4E9A3A'] }) +
+    k.shrimps(area(CX, CY, 70, 70), 8, 0.9) +
+    k.herbs(area(CX, CY, 92, 92), 10) +
+    k.wedge(290, 230, -150, 'lemon'),
+
+  'carrot-ginger-soup': (k) =>
+    soupBowl(
+      k,
+      '#F08A3A',
+      '#D9702A',
+      k.drizzle(
+        [
+          [208, 150],
+          [232, 128],
+          [262, 140],
+          [258, 170],
+          [232, 176],
+          [226, 156],
+          [240, 152],
+        ],
+        '#FFF4E4',
+        5,
+      ) + k.herbs(area(226, 156, 60, 60), 8),
+    ),
+
+  'chicken-burrito-bowls': (k) =>
+    k.bowl() +
+    k.rice(area(CX, CY, 104, 104)) +
+    k.strips(zone(0, 5, { r: 30 }), 8, { len: 28, width: 10, colors: ['#C8752F', '#B5631F'] }) +
+    k.ovals(zone(1, 5, { r: 28 }), 14, {
+      rx: 6,
+      ry: 4,
+      colors: ['#2B2230', '#3A2E3E'],
+      hi: '#6A5A6E',
+    }) +
+    k.dice(zone(2, 5, { r: 28 }), 16, { s: 6, colors: ['#F7D35C', '#EDBE3A'] }) +
+    k.blob(zone(3, 5, { r: 24 }), '#D9472F', { wobble: 0.2 }) +
+    k.avocado(zone(4, 5).x, zone(4, 5).y, 30, 3) +
+    k.herbs(area(CX, CY, 88, 88), 8) +
+    k.wedge(334, 96, -35, 'lime'),
+
+  'chicken-enchilada-skillet': (k) =>
+    k.skillet() +
+    k.sauce(area(CX, CY, 112, 112), '#B8402A', '#932E1E', 0.04) +
+    k.dice(area(CX, CY, 92, 92), 10, { s: 18, colors: ['#E8C27A', '#DDB46A'] }) +
+    k.chunks(area(CX, CY, 86, 86), 7, { w: 20, h: 15, fill: '#E2B26A', hi: '#F2D3A0' }) +
+    k.ovals(area(CX, CY, 88, 88), 10, { rx: 6, ry: 4, colors: ['#2B2230'] }) +
+    [
+      [206, 128],
+      [276, 140],
+      [224, 196],
+      [290, 206],
+    ]
+      .map(([x, y]) => k.shreds(area(x, y, 30, 24), 14, ['#F2B53A', '#F7C85A'], 14, 4))
+      .join('') +
+    k.dollop(250, 162, 15) +
+    k.herbs(area(CX, CY, 92, 92), 10),
+
+  'chicken-piccata': (k) =>
+    k.plate() +
+    k.greenBeans(area(270, 220, 56, 24), 10, 44) +
+    k.chicken(204, 136, -15, { w: 96, h: 56, fill: '#E7B56A', edge: '#C08040' }) +
+    k.chicken(282, 128, 20, { w: 84, h: 50, fill: '#E7B56A', edge: '#C08040' }) +
+    k.blob(area(240, 140, 70, 30), '#F1D592', { opacity: 0.45 }) +
+    k.dots(area(240, 136, 66, 26), 14, { r: 3.2, colors: ['#5E6E2A', '#4E5E22'] }) +
+    k.citrusSlice(244, 108, 13) +
+    k.herbs(area(240, 136, 66, 26), 8),
+
+  'chicken-satay-rice': (k) =>
+    k.plate() +
+    k.rice(area(184, 156, 58, 66)) +
+    k.strips(area(286, 132, 50, 40), 14, { len: 38, width: 12, colors: ['#B8642E', '#9E4F22'] }) +
+    k.dip(296, 216, 24, '#C98A4A', () => k.specks(area(296, 216, 10, 10), 5, ['#8E5A2A'])) +
+    k.cucumbers(area(232, 230, 22, 14), 3, 9),
+
+  'chicken-souvlaki-pitas': (k) =>
+    k.board(108, 62, 264, 196) +
+    k.wrapHalf(206, 118, -8, ['#7FB548', '#C8752F', '#F4F1E6'], '#EFD9A8') +
+    k.wrapHalf(218, 204, 8, ['#7FB548', '#C8752F', '#F4F1E6'], '#EFD9A8') +
+    k.dip(332, 104, 26, '#F4F1E6', () => k.herbs(area(332, 104, 10, 10), 3, '#5E8E34')) +
+    k.cherryTomatoes(area(330, 212, 18, 22), 3, { r: 8, halved: true }),
+
+  'chicken-tortilla-soup': (k) =>
+    soupBowl(
+      k,
+      '#C8502E',
+      '#A63A20',
+      k.strips(area(226, 156, 66, 66), 10, { len: 22, width: 6, colors: ['#F2E4C6', '#E8D4A8'] }) +
+        k.ovals(area(226, 156, 70, 70), 8, { rx: 6, ry: 4, colors: ['#2B2230'] }) +
+        k.dice(area(226, 156, 70, 70), 10, { s: 6, colors: ['#F7D35C'] }) +
+        k.avocadoDice(area(226, 156, 50, 50), 6) +
+        k.strips(area(226, 140, 40, 26), 8, {
+          len: 26,
+          width: 6,
+          colors: ['#E9B54A', '#D99A2E'],
+          bend: 3,
+        }) +
+        k.herbs(area(226, 156, 70, 70), 8),
+    ),
+
+  'coconut-shrimp-curry': (k) =>
+    curryBowl(
+      k,
+      '#F0B455',
+      '#D99A3A',
+      (a) => k.shrimps(a, 6, 0.85) + k.spinach(a, 4) + k.herbs(a, 6),
+    ) + k.wedge(332, 96, -35, 'lime'),
+
+  'crispy-fish-tacos': (k) =>
+    tacoPlate(
+      k,
+      ['#C9E3A2', '#EDF5DC', '#B4D58A'],
+      () =>
+        k.chunks(area(0, -16, 34, 6), 3, { w: 22, h: 14, fill: '#D99A3E', hi: '#F2C676' }) +
+        k.zigzag(area(0, -18, 34, 4), '#FFFDF6', 3, 5) +
+        k.herbs(area(0, -22, 38, 6), 3),
+    ),
+
+  'egg-roll-in-a-bowl': (k) =>
+    k.bowl() +
+    k.blob(area(CX, CY, 104, 104), '#E9EFD2', { wobble: 0.04 }) +
+    k.shreds(area(CX, CY, 96, 96), 90, ['#D9E8B4', '#C6DC96', '#F2F5E2'], 18, 4) +
+    k.crumbs(area(CX, CY, 80, 80), 50, ['#B07A50', '#9A6640', '#C48E62'], 5) +
+    k.shreds(area(CX, CY, 84, 84), 20, ['#F08A3A', '#F49B4E'], 14, 3) +
+    k.scallions(area(CX, CY, 84, 84), 14) +
+    k.seeds(area(CX, CY, 84, 84), 24),
+
+  'garlic-ginger-tofu-broccoli': (k) =>
+    riceAndSauce(
+      k,
+      '#8E5A2E',
+      '#6A3E1C',
+      (a) =>
+        k.broccoli(a, 6, 12) +
+        k.chunks(a, 6, { w: 22, h: 22, fill: '#D9A653', hi: '#F5E2B0' }) +
+        k.seeds(a, 18),
+    ),
+
+  'garlic-shrimp-broccoli': (k) =>
+    k.bowl() +
+    k.blob(area(CX, CY, 104, 104), '#F2EBDD', { wobble: 0.04 }) +
+    k.crumbs(area(CX, CY, 96, 96), 120, ['#FFFFFF', '#F5F0E4', '#EDE3CF'], 3.6) +
+    k.blob(area(250, 150, 70, 64), '#9A6436', { wobble: 0.15, opacity: 0.35 }) +
+    k.broccoli(area(250, 150, 64, 58), 7, 12) +
+    k.shrimps(area(250, 150, 60, 54), 6, 0.85) +
+    k.scallions(area(250, 150, 66, 60), 10),
+
+  'garlic-shrimp-white-beans': (k) =>
+    soupBowl(
+      k,
+      '#EAD7AE',
+      '#D6BE8C',
+      k.ovals(area(226, 156, 76, 76), 16, { rx: 7, ry: 4.5, colors: ['#F7F0E2'], hi: '#FFFFFF' }) +
+        k.cherryTomatoes(area(226, 156, 70, 70), 5, { r: 8, halved: true }) +
+        k.spinach(area(226, 156, 70, 70), 5) +
+        k.shrimps(area(226, 156, 54, 54), 5, 0.8) +
+        k.herbs(area(226, 156, 70, 70), 8),
+    ),
+
+  'garlicky-eggplant-stir-fry': (k) =>
+    riceAndSauce(
+      k,
+      '#6E3A22',
+      '#4E2614',
+      (a) => k.batons(a, 12) + k.dots(a, 6, { r: 3, colors: ['#D9301E'] }) + k.scallions(a, 10),
+    ),
+
+  'greek-chicken-salad': (k) =>
+    k.bowl() +
+    k.lettuce(area(CX, CY, 100, 100)) +
+    k.strips(zone(0, 5, { r: 28 }), 6, { len: 30, width: 11, colors: ['#D9A562', '#C8904E'] }) +
+    k.cucumbers(zone(1, 5, { r: 26 }), 4, 9) +
+    k.cherryTomatoes(zone(2, 5, { r: 26 }), 4, { r: 9, halved: true }) +
+    k.olives(zone(3, 5, { r: 24 }), 5) +
+    k.redOnion(zone(4, 5, { r: 26 }), 6) +
+    k.feta(area(CX, CY, 22, 22), 7),
+
+  'honey-garlic-chicken-rice': (k) =>
+    k.plate() +
+    k.rice(area(184, 150, 58, 62)) +
+    k.chicken(286, 120, 15, { w: 92, h: 62, fill: '#B8642A', edge: '#8A4218' }) +
+    k.chicken(282, 190, -10, { w: 88, h: 60, fill: '#B8642A', edge: '#8A4218' }) +
+    k.seeds(area(284, 154, 36, 56), 18) +
+    k.greenBeans(area(214, 226, 46, 16), 8, 40),
+
+  'huevos-rancheros': (k) =>
+    k.plate() +
+    k.tortillaStack(206, 144, 56) +
+    k.tortillaStack(276, 182, 56) +
+    k.blob(area(206, 144, 40, 34), '#4A3A3E', { wobble: 0.2 }) +
+    k.blob(area(276, 182, 40, 34), '#4A3A3E', { wobble: 0.2 }) +
+    k.friedEgg(204, 140, 28) +
+    k.friedEgg(278, 178, 28) +
+    k.dice(area(CX, CY, 84, 80), 12, { s: 7, colors: ['#D9472F', '#F2614A'] }) +
+    k.avocadoDice(area(CX, CY, 84, 80), 6) +
+    k.herbs(area(CX, CY, 84, 80), 8),
+
+  'lemon-chicken-orzo-soup': (k) =>
+    soupBowl(
+      k,
+      '#F2D98A',
+      '#DCC06A',
+      k.rice(area(226, 156, 88, 88), {
+        base: '#F2D98A',
+        grain: '#F8EAB8',
+        edge: '#D9B86A',
+        size: 1.4,
+        count: 90,
+      }) +
+        k.strips(area(226, 156, 70, 70), 10, {
+          len: 22,
+          width: 6,
+          colors: ['#F2E4C6', '#E8D4A8'],
+        }) +
+        k.dice(area(226, 156, 70, 70), 10, { s: 6, colors: ['#F08A3A'] }) +
+        k.spinach(area(226, 156, 66, 66), 5) +
+        k.citrusSlice(262, 122, 13),
+    ),
+
+  'lemon-ricotta-pasta-peas': (k) =>
+    k.bowl() +
+    k.blob(area(CX, CY, 96, 92), '#F6EBD2', { wobble: 0.07, k: 11, stroke: '#E6D3AE' }) +
+    k.penne(area(CX, CY, 80, 76), 40) +
+    k.dots(area(CX, CY, 80, 76), 22, { r: 5, colors: ['#6DB04F', '#5E9E42'], hi: '#A7D47F' }) +
+    [
+      [222, 140],
+      [266, 176],
+      [216, 196],
+    ]
+      .map(([x, y]) => k.dollop(x, y, 14))
+      .join('') +
+    k.leaves(area(CX, CY, 74, 70), 4) +
+    k.parmesan(area(CX, CY, 80, 76), 18),
+
+  'moroccan-chickpea-stew': (k) =>
+    k.bowl() +
+    k.sauce(area(CX, CY, 108, 108), '#D9733E', '#B95A2A', 0.04) +
+    k.crumbs(area(198, 128, 42, 36), 70, ['#F2DFA0', '#E8CF84', '#F7EAC0'], 3) +
+    k.dots(area(262, 186, 58, 52), 14, {
+      r: 6,
+      colors: ['#E3B86A', '#D9A955'],
+      hi: '#F3D9A0',
+      gap: 10,
+    }) +
+    k.sweetPotatoCubes(area(262, 186, 58, 52), 8) +
+    k.herbs(area(CX, CY, 88, 88), 10) +
+    k.wedge(334, 96, -35, 'lemon'),
+
+  'one-pot-tomato-basil-spaghetti': (k) =>
+    k.plate() +
+    k.noodles(area(CX, CY + 2, 88, 84), { fill: '#EFB46A', edge: '#C9783A' }) +
+    k.cherryTomatoes(area(CX, CY, 70, 66), 9, { r: 10, halved: true }) +
+    k.leaves(area(CX, CY, 70, 66), 7) +
+    k.parmesan(area(CX, CY, 76, 72), 16),
+
+  'pasta-e-ceci': (k) =>
+    soupBowl(
+      k,
+      '#D99A5A',
+      '#BE7E42',
+      k.dots(area(226, 156, 80, 80), 26, {
+        r: 7,
+        colors: ['#F0CB80', '#E3B86A'],
+        hi: '#FBE7B8',
+        gap: 12,
+      }) +
+        k.ovals(area(226, 156, 80, 80), 26, {
+          rx: 6,
+          ry: 5,
+          colors: ['#F7DA90', '#F1C66B'],
+          hi: '#FFF1C8',
+        }) +
+        k.herbs(area(226, 156, 70, 70), 6) +
+        k.parmesan(area(226, 156, 70, 70), 20) +
+        k.drizzle(
+          [
+            [200, 170],
+            [226, 150],
+            [256, 166],
+          ],
+          '#9AA03A',
+          3,
+        ),
+    ),
+
+  'pea-parmesan-risotto': (k) =>
+    k.bowl() +
+    k.blob(area(CX, CY, 104, 104), '#F4E7C2', { wobble: 0.04 }) +
+    k.rice(area(CX, CY, 100, 100), {
+      base: '#F4E7C2',
+      grain: '#FBF3DC',
+      edge: '#DCC898',
+      size: 1.3,
+      count: 160,
+    }) +
+    k.dots(area(CX, CY, 86, 86), 30, { r: 5, colors: ['#6DB04F', '#5E9E42'], hi: '#A7D47F' }) +
+    k.parmesan(area(CX, CY, 84, 84), 28) +
+    k.blackPepper(area(CX, CY, 84, 84), 14) +
+    k.wedge(334, 96, -35, 'lemon'),
+
+  'pesto-salmon-tomatoes': (k) =>
+    k.plate() +
+    k.cherryTomatoes(area(CX, CY + 10, 92, 84), 12, { r: 10 }) +
+    k.fillet(226, 136, -10, 'salmon') +
+    k.blob(area(226, 136, 46, 18), '#5E8E2A', { wobble: 0.2, k: 8 }) +
+    k.specks(area(226, 136, 42, 16), 10, ['#3E6E22', '#8EB04E'], 2.4) +
+    k.spinach(area(286, 220, 34, 22), 6),
+
+  'pineapple-tofu-fried-rice': (k) =>
+    k.bowl() +
+    k.rice(area(CX, CY, 104, 104), { base: '#EBCB8A', grain: '#F5DFA6', edge: '#D9B46A' }) +
+    k.dots(area(CX, CY, 88, 88), 18, { r: 4, colors: ['#6DB04F', '#5E9E42'], hi: '#A7D47F' }) +
+    k.dice(area(CX, CY, 88, 88), 12, { s: 6, colors: ['#F08A3A'] }) +
+    k.dice(area(CX, CY, 80, 80), 12, { s: 13, colors: ['#F7D35C', '#F2C230'], gap: 14 }) +
+    k.chunks(area(CX, CY, 74, 74), 8, { w: 20, h: 20, fill: '#D9A653', hi: '#F5E2B0' }) +
+    k.ovals(area(CX, CY, 70, 70), 8, { rx: 5, ry: 3.5, colors: ['#D9A15F'] }) +
+    k.scallions(area(CX, CY, 86, 86), 12),
+
+  'pork-chops-apples': (k) =>
+    k.plate() +
+    k.chop(214, 136, -15) +
+    k.redOnion(area(272, 214, 60, 34), 12) +
+    k.appleSlices(area(266, 210, 62, 36), 11) +
+    k.herbs(area(214, 136, 40, 24), 5) +
+    k.specks(area(CX, CY, 80, 70), 20, ['#4E6B2E'], 1.8),
+
+  'potato-hash-fried-eggs': (k) =>
+    k.skillet() +
+    k.dice(area(CX, CY, 104, 104), 60, {
+      s: 15,
+      colors: ['#E2A84E', '#D99A3E', '#F0C46A'],
+      gap: 12,
+    }) +
+    k.dice(area(CX, CY, 100, 100), 16, { s: 9, colors: ['#E2402F', '#4E9A3A', '#9C3D7A'] }) +
+    [
+      [200, 126],
+      [284, 128],
+      [206, 202],
+      [286, 200],
+    ]
+      .map(([x, y]) => k.friedEgg(x, y, 26))
+      .join('') +
+    k.scallions(area(CX, CY, 96, 96), 12),
+
+  'red-lentil-bolognese': (k) =>
+    spaghettiPlate(
+      k,
+      k.blob(area(CX, CY - 6, 56, 50), '#C0482A', { wobble: 0.15, k: 10 }) +
+        k.dots(area(CX, CY - 6, 48, 42), 40, { r: 2.6, colors: ['#E06A3A', '#A83A22'] }) +
+        k.dice(area(CX, CY - 6, 44, 38), 8, { s: 5, colors: ['#F08A3A'] }) +
+        k.leaves(area(CX, CY - 6, 46, 40), 3),
+    ),
+
+  'roasted-cauliflower-chickpeas': (k) =>
+    k.pan() +
+    k.broccoli(area(240, 160, 130, 86), 18, 20, ['#E9D2A0', '#D9B270', '#E8C68A', '#F3E1B8']) +
+    k.dots(area(240, 160, 130, 86), 30, { r: 6, colors: ['#D99A4A', '#C8883A'], hi: '#F0C88A' }) +
+    k.zigzag(area(240, 160, 110, 50), '#F2E2C2', 4, 7) +
+    k.herbs(area(240, 160, 130, 86), 14),
+
+  'salmon-couscous-bowls': (k) =>
+    k.bowl() +
+    k.blob(area(CX, CY, 104, 104), '#F0DFA6', { wobble: 0.04 }) +
+    k.crumbs(area(CX, CY, 98, 98), 200, ['#F7EAC0', '#E8CF84', '#F2DFA0'], 2.8) +
+    k.chunks(zone(0, 3, { r: 34 }), 6, { w: 24, h: 20, fill: '#F08A5D', hi: '#FBD3BE' }) +
+    k.cucumbers(zone(1, 3, { r: 30 }), 4, 9) +
+    k.cherryTomatoes(zone(2, 3, { r: 30 }), 4, { r: 9, halved: true }) +
+    k.dollop(CX, CY, 20) +
+    k.herbs(area(CX, CY, 88, 88), 10),
+
+  'sesame-soba-noodles': (k) =>
+    k.bowl() +
+    k.noodles(area(CX, CY, 92, 90), { fill: '#9C8668', edge: '#7A6648', width: 3.5, loops: 40 }) +
+    k.ovals(zone(0, 3, { start: -60, r: 28 }), 10, {
+      rx: 6,
+      ry: 4,
+      colors: ['#7DB342', '#8BC34A'],
+      hi: '#C5E1A5',
+    }) +
+    k.shreds(zone(1, 3, { start: -60, r: 28 }), 12, ['#F08A3A', '#F49B4E']) +
+    k.shreds(zone(2, 3, { start: -60, r: 28 }), 10, ['#DDEDC0', '#4F8A3E'], 16, 4) +
+    k.scallions(area(CX, CY, 80, 80), 12) +
+    k.seeds(area(CX, CY, 80, 80), 30),
+
+  'sesame-tofu-snap-peas': (k) =>
+    k.plate() +
+    k.greenBeans(area(CX, CY, 80, 76), 12, 34, ['#5E9E3A', '#A6D27A'], 11) +
+    k.chunks(area(CX, CY, 74, 70), 10, { w: 24, h: 22, fill: '#B86A2A', hi: '#E09A55' }) +
+    k.seeds(area(CX, CY, 80, 76), 34) +
+    k.scallions(area(CX, CY, 80, 76), 8),
+
+  'sheet-pan-gnocchi-vegetables': (k) =>
+    k.pan() +
+    k.gnocchi(area(240, 160, 130, 88), 22) +
+    k.zucchini(area(240, 160, 130, 88), 7, { r: 11 }) +
+    k.peppers(area(240, 160, 130, 88), 10) +
+    k.redOnion(area(240, 160, 130, 88), 8) +
+    k.cherryTomatoes(area(240, 160, 130, 88), 8, { r: 9 }) +
+    mozzarella(k, area(240, 160, 110, 76), 6) +
+    k.leaves(area(240, 160, 120, 80), 6),
+
+  'shrimp-caesar-salad': (k) =>
+    k.bowl() +
+    k.lettuce(area(CX, CY, 100, 100)) +
+    k.zigzag(area(CX, CY, 70, 50), '#F6EDD2', 4, 7) +
+    k.shrimps(area(CX, CY, 66, 62), 6, 0.9) +
+    k.cherryTomatoes(area(CX, CY, 78, 74), 4, { r: 9, halved: true }) +
+    k.shreds(area(CX, CY, 74, 70), 14, ['#FFF3C9', '#FBE7A6'], 12, 3) +
+    k.wedge(334, 96, -35, 'lemon'),
+
+  'shrimp-sausage-jambalaya': (k) =>
+    k.bowl() +
+    k.rice(area(CX, CY, 104, 104), { base: '#E0864E', grain: '#F0A46A', edge: '#C8683A' }) +
+    k.dots(area(CX, CY, 84, 84), 9, {
+      r: 10,
+      colors: ['#8A4A2B', '#9E5A36'],
+      hi: '#B87A52',
+      gap: 16,
+    }) +
+    k.dice(area(CX, CY, 86, 86), 14, { s: 8, colors: ['#4E9A3A', '#E2402F', '#B7D98A'] }) +
+    k.shrimps(area(CX, CY, 66, 66), 6, 0.85) +
+    k.scallions(area(CX, CY, 86, 86), 14),
+
+  'smashed-chickpea-sandwiches': (k) =>
+    k.board(108, 62, 264, 196) +
+    k.sandwichHalf(196, 156, -10, '#E6CB86') +
+    k.sandwichHalf(284, 164, 170, '#E6CB86') +
+    k.specks(area(240, 160, 30, 30), 8, ['#5E8E34', '#3E7A2C'], 2.4),
+
+  'smoky-black-bean-soup': (k) =>
+    soupBowl(
+      k,
+      '#3E2E30',
+      '#2A1E20',
+      k.ovals(area(226, 156, 80, 80), 14, { rx: 6, ry: 4, colors: ['#4E3C40'], hi: '#7A6670' }) +
+        k.avocadoDice(area(240, 140, 30, 24), 6) +
+        k.dollop(206, 170, 18) +
+        k.herbs(area(226, 156, 70, 70), 10) +
+        k.wedge(268, 210, 20, 'lime'),
+    ),
+
+  'steak-arugula-salad': (k) =>
+    k.plate() +
+    k.leaves(area(CX, CY, 92, 88), 80, { len: 20, w: 8, fill: '#4E8A2E', rib: '#6EA84A' }) +
+    k.steak(236, 146, -20, 6, 1.1) +
+    k.cherryTomatoes(area(CX, CY, 84, 80), 5, { r: 9, halved: true }) +
+    k.shreds(area(CX, CY, 70, 60), 10, ['#FFF3C9', '#FBE7A6'], 14, 4) +
+    k.redOnion(area(CX, CY, 80, 76), 6),
+
+  'stovetop-mac-cheese': (k) =>
+    k.bowl() +
+    k.blob(area(CX, CY, 104, 104), '#F2B53A', { wobble: 0.04 }) +
+    k.elbows(area(CX, CY, 92, 92), 70) +
+    k.dots(area(CX, CY, 86, 86), 14, { r: 4.5, colors: ['#6DB04F', '#5E9E42'], hi: '#A7D47F' }) +
+    k.blackPepper(area(CX, CY, 86, 86), 12),
+
+  'teriyaki-chicken-udon': (k) =>
+    k.bowl() +
+    k.noodles(area(CX, CY, 92, 90), { fill: '#F3E3C2', edge: '#C9A46A', width: 7, loops: 26 }) +
+    k.chunks(area(CX, CY, 70, 66), 8, { w: 22, h: 18, fill: '#8A4218', hi: '#B8642A' }) +
+    k.broccoli(area(CX, CY, 72, 68), 6, 11) +
+    k.scallions(area(CX, CY, 80, 76), 12) +
+    k.seeds(area(CX, CY, 80, 76), 24),
+
+  'tofu-pad-thai': (k) =>
+    k.plate() +
+    k.noodles(area(CX, CY + 2, 88, 84), {
+      fill: '#E8C48A',
+      edge: '#C99A5A',
+      width: 3.5,
+      loops: 38,
+    }) +
+    k.chunks(area(CX, CY, 66, 62), 7, { w: 20, h: 20, fill: '#D9A653', hi: '#F5E2B0' }) +
+    scrambledEgg(k, area(CX, CY, 66, 62), 6) +
+    k.strips(area(CX, CY, 70, 66), 8, { len: 28, width: 4, colors: ['#5DA03A'] }) +
+    k.ovals(area(CX, CY, 60, 56), 14, { rx: 5, ry: 3.5, colors: ['#D9A15F', '#E2B070'] }) +
+    k.herbs(area(CX, CY, 70, 66), 6) +
+    k.wedge(322, 236, -140, 'lime'),
+
+  'tuna-melts': (k) =>
+    k.board(92, 50, 296, 220) +
+    k.toast(186, 112, -6) +
+    k.toast(290, 116, 5) +
+    k.toast(190, 208, 4) +
+    k.toast(294, 210, -5),
+
+  'tuna-tomato-spaghetti': (k) =>
+    spaghettiPlate(
+      k,
+      k.crumbs(area(CX, CY, 50, 46), 30, ['#C9A27E', '#B38A64', '#D9B894'], 6) +
+        k.cherryTomatoes(area(CX, CY, 72, 68), 8, { r: 10 }) +
+        k.olives(area(CX, CY, 70, 66), 6) +
+        k.herbs(area(CX, CY, 76, 72), 10) +
+        k.wedge(322, 238, -140, 'lemon'),
+    ),
+
+  'turkey-burgers-sweet-potato-wedges': (k) =>
+    k.plate() +
+    k.wedges(area(306, 214, 40, 30), 7) +
+    k.burger(214, 188, { patty: '#8E5A3A', layers: ['#9CCB63', '#F2B53A'] }),
+
+  'turkey-chili-baked-potatoes': (k) => {
+    const fill = () =>
+      k.crumbs(area(0, 0, 50, 20), 30, ['#7A3E26', '#8E4A2E', '#A85A36'], 5) +
+      k.ovals(area(0, 0, 46, 18), 6, { rx: 5, ry: 3.5, colors: ['#8E2A2A'] }) +
+      k.shreds(area(0, 0, 44, 16), 10, ['#F4A93A']) +
+      k.dollop(10, -2, 10) +
+      k.scallions(area(0, 0, 44, 16), 5);
+    return (
+      k.plate() +
+      k.sweetPotato(232, 114, -10, fill, ['#8A6A4A', '#F6EBC8']) +
+      k.sweetPotato(248, 206, -6, fill, ['#8A6A4A', '#F6EBC8'])
+    );
+  },
+
+  'tuscan-white-bean-kale-soup': (k) =>
+    soupBowl(
+      k,
+      '#D9874A',
+      '#BE6E36',
+      k.ovals(area(226, 156, 80, 80), 16, { rx: 7, ry: 4.5, colors: ['#F7F0E2'], hi: '#FFFFFF' }) +
+        k.leaves(area(226, 156, 74, 74), 8, { len: 30, w: 12, fill: '#2E5E2A', rib: '#4E7E44' }) +
+        k.dice(area(226, 156, 76, 76), 10, { s: 7, colors: ['#F08A3A'] }) +
+        k.parmesan(area(226, 156, 66, 66), 16),
+    ),
+
+  'vegetable-lo-mein': (k) =>
+    k.bowl() +
+    k.noodles(area(CX, CY, 92, 90), { fill: '#C9935A', edge: '#9A6A3A', width: 4.5, loops: 34 }) +
+    k.mushrooms(area(CX, CY, 74, 70), 7) +
+    k.shreds(area(CX, CY, 80, 76), 18, ['#D9E8B4', '#F2F5E2'], 16, 4) +
+    k.shreds(area(CX, CY, 80, 76), 12, ['#F08A3A']) +
+    k.greenBeans(area(CX, CY, 74, 70), 5, 26, ['#5E9E3A', '#A6D27A'], 9) +
+    k.scallions(area(CX, CY, 80, 76), 10),
+
+  'veggie-naan-pizzas': (k) => {
+    const top = () =>
+      k.shreds(area(0, 0, 56, 26), 18, ['#FFFDF5', '#F7F0DE'], 10, 3) +
+      k.peppers(area(0, 0, 50, 22), 6, ['#E2402F', '#4E9A3A']) +
+      k.mushrooms(area(0, 0, 48, 20), 3) +
+      k.olives(area(0, 0, 50, 22), 3);
+    return (
+      k.board(70, 40, 340, 240) +
+      k.naan(232, 108, -6, '#D9472F', top) +
+      k.naan(248, 214, 4, '#D9472F', top)
+    );
+  },
+
+  'zucchini-feta-fritters': (k) =>
+    k.plate() +
+    k.leaves(area(278, 214, 36, 24), 12, { len: 18, w: 7, fill: '#4E8A2E', rib: '#6EA84A' }) +
+    k.fritters(area(214, 146, 62, 56), 5, 30) +
+    k.dip(296, 120, 26, '#F4F1E6', () => k.herbs(area(296, 120, 10, 10), 3, '#5E8E34')) +
+    k.wedge(196, 230, 160, 'lemon'),
 };

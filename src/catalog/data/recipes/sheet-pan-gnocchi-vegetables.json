@@ -1,0 +1,94 @@
+{
+  "id": "sheet-pan-gnocchi-vegetables",
+  "title": "Sheet-Pan Gnocchi with Vegetables",
+  "description": "Shelf-stable gnocchi roasted crisp with zucchini, peppers and tomatoes, finished with melted mozzarella.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["sheet-pan", "meatless", "kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "gnocchi",
+      "ingredient": "gnocchi",
+      "quantity": 2,
+      "unit": "lb"
+    },
+    {
+      "id": "zucchini",
+      "ingredient": "zucchini",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "cut into chunks"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "bell-pepper",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "cut into chunks"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "cut into wedges"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 10,
+      "unit": "oz"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "oregano",
+      "ingredient": "dried-oregano",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "mozzarella",
+      "ingredient": "fresh-mozzarella",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "torn"
+    },
+    {
+      "id": "basil",
+      "ingredient": "basil",
+      "quantity": 0.5,
+      "unit": "bunch"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 450°F. Toss the gnocchi (straight from the package), zucchini, pepper, onion and tomatoes with the oil, oregano and salt on a large sheet pan. Roast, stirring once, until the gnocchi are golden, about 20 minutes.",
+      "uses": ["gnocchi", "zucchini", "pepper", "onion", "tomatoes", "oil", "oregano", "salt"],
+      "timerMinutes": 20
+    },
+    {
+      "text": "Scatter over the mozzarella and roast until melted, about 5 minutes.",
+      "uses": ["mozzarella"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Top with torn basil.",
+      "uses": ["basil"]
+    }
+  ]
+}

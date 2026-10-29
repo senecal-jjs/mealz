@@ -1,0 +1,97 @@
+{
+  "id": "turkey-burgers-sweet-potato-wedges",
+  "title": "Turkey Burgers with Sweet Potato Wedges",
+  "description": "Juicy seasoned turkey burgers with oven-roasted sweet potato wedges.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "potatoes",
+      "ingredient": "sweet-potato",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "cut into wedges"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "paprika",
+      "ingredient": "smoked-paprika",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "turkey",
+      "ingredient": "ground-turkey",
+      "quantity": 1.25,
+      "unit": "lb"
+    },
+    {
+      "id": "mustard",
+      "ingredient": "dijon-mustard",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "panko",
+      "ingredient": "panko",
+      "quantity": 0.25,
+      "unit": "cup"
+    },
+    {
+      "id": "cheddar",
+      "ingredient": "cheddar",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "shredded"
+    },
+    {
+      "id": "buns",
+      "ingredient": "hamburger-buns",
+      "quantity": 4,
+      "unit": "whole"
+    },
+    {
+      "id": "lettuce",
+      "ingredient": "butter-lettuce",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "leaves separated"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 425°F. Toss the sweet potato wedges with the oil, paprika and salt on a sheet pan and roast, turning once, until browned, about 25 minutes.",
+      "uses": ["potatoes", "oil", "paprika", "salt"],
+      "timerMinutes": 25
+    },
+    {
+      "text": "Mix the turkey with the mustard, panko and a pinch of salt and shape into 4 patties.",
+      "uses": ["turkey", "mustard", "panko"]
+    },
+    {
+      "text": "Cook the patties in a lightly oiled skillet over medium heat until cooked through, about 5 minutes per side, topping with cheddar for the last minute.",
+      "uses": ["cheddar"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Serve on the buns with lettuce and the wedges alongside.",
+      "uses": ["buns", "lettuce"]
+    }
+  ]
+}

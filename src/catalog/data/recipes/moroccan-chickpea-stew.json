@@ -1,0 +1,129 @@
+{
+  "id": "moroccan-chickpea-stew",
+  "title": "Moroccan Chickpea and Sweet Potato Stew",
+  "description": "Warm-spiced chickpeas, sweet potato and tomatoes, served over fluffy couscous.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["one-pot", "meatless", "meal-prep", "high-carb"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 2,
+      "unit": "tsp"
+    },
+    {
+      "id": "cinnamon",
+      "ingredient": "ground-cinnamon",
+      "quantity": 0.5,
+      "unit": "tsp"
+    },
+    {
+      "id": "paprika",
+      "ingredient": "smoked-paprika",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "potatoes",
+      "ingredient": "sweet-potato",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "cut into ¾-inch cubes"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "diced-tomatoes",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz"
+    },
+    {
+      "id": "chickpeas",
+      "ingredient": "chickpeas",
+      "quantity": 2,
+      "unit": "can",
+      "prep": "15 oz each, drained and rinsed"
+    },
+    {
+      "id": "broth",
+      "ingredient": "vegetable-broth",
+      "quantity": 3,
+      "unit": "cup"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "couscous",
+      "ingredient": "couscous",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "chopped"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oil in a large pot over medium heat and cook the onion until soft, about 5 minutes.",
+      "uses": ["oil", "onion"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Stir in the garlic, cumin, cinnamon and paprika for 1 minute.",
+      "uses": ["garlic", "cumin", "cinnamon", "paprika"]
+    },
+    {
+      "text": "Add the sweet potato, tomatoes, chickpeas, broth and salt. Simmer until the sweet potato is tender, about 18 minutes.",
+      "uses": ["potatoes", "tomatoes", "chickpeas", "broth", "salt"],
+      "timerMinutes": 18
+    },
+    {
+      "text": "Pour 1½ cups boiling water over the couscous with a pinch of salt, cover and leave for 5 minutes, then fluff.",
+      "uses": ["couscous"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Finish the stew with the juice of the lemon and serve over the couscous, scattered with cilantro.",
+      "uses": ["lemon", "cilantro"]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "id": "potato-hash-fried-eggs",
+  "title": "Potato Hash with Fried Eggs",
+  "description": "Crispy diced potatoes with peppers and onion, topped with runny eggs.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["one-pot", "meatless", "high-carb"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "potatoes",
+      "ingredient": "russet-potatoes",
+      "quantity": 3,
+      "unit": "whole",
+      "prep": "about 1½ lb, diced"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "bell-pepper",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "paprika",
+      "ingredient": "smoked-paprika",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "blackpepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "eggs",
+      "ingredient": "egg",
+      "quantity": 4,
+      "unit": "whole"
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "sliced"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Microwave the potatoes in a covered bowl with a splash of water until just tender, about 5 minutes. Drain well.",
+      "uses": ["potatoes"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Heat the oil in a large skillet over medium-high heat. Spread out the potatoes and cook, turning only now and then, until browned, about 10 minutes.",
+      "uses": ["oil"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Add the onion, bell pepper, paprika, salt and pepper and cook until soft, about 5 minutes.",
+      "uses": ["onion", "pepper", "paprika", "salt", "blackpepper"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Make 4 wells in the hash and crack an egg into each. Cover and cook until the whites are set, about 4 minutes. Top with green onions.",
+      "uses": ["eggs", "scallions"],
+      "timerMinutes": 4
+    }
+  ]
+}

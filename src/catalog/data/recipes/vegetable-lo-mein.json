@@ -1,0 +1,106 @@
+{
+  "id": "vegetable-lo-mein",
+  "title": "Vegetable Lo Mein",
+  "description": "Saucy noodles with mushrooms, cabbage, carrots and snap peas, faster than takeout.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["stir-fry", "meatless", "kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "spaghetti",
+      "ingredient": "spaghetti",
+      "quantity": 12,
+      "unit": "oz"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "mushrooms",
+      "ingredient": "cremini-mushrooms",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "sliced"
+    },
+    {
+      "id": "cabbage",
+      "ingredient": "green-cabbage",
+      "quantity": 0.25,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "carrots",
+      "ingredient": "carrots",
+      "quantity": 0.25,
+      "unit": "lb",
+      "prep": "cut into matchsticks"
+    },
+    {
+      "id": "snap",
+      "ingredient": "snap-peas",
+      "quantity": 6,
+      "unit": "oz"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 0.25,
+      "unit": "cup"
+    },
+    {
+      "id": "sugar",
+      "ingredient": "brown-sugar",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "sesameoil",
+      "ingredient": "sesame-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "cut into lengths"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Cook the spaghetti in boiling water until al dente, about 9 minutes. Drain and rinse briefly.",
+      "uses": ["spaghetti"],
+      "timerMinutes": 9
+    },
+    {
+      "text": "Heat the oil in a wok or large skillet over high heat. Stir-fry the mushrooms until browned, about 4 minutes.",
+      "uses": ["oil", "mushrooms"],
+      "timerMinutes": 4
+    },
+    {
+      "text": "Add the cabbage, carrots, snap peas and garlic and stir-fry for 3 minutes.",
+      "uses": ["cabbage", "carrots", "snap", "garlic"],
+      "timerMinutes": 3
+    },
+    {
+      "text": "Add the noodles, soy sauce, brown sugar and sesame oil and toss until coated, about 2 minutes. Toss in the green onions.",
+      "uses": ["soy", "sugar", "sesameoil", "scallions"]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "id": "lemon-ricotta-pasta-peas",
+  "title": "Lemon Ricotta Pasta with Peas",
+  "description": "Pasta tossed in a no-cook lemon ricotta sauce with sweet peas and parmesan.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 5,
+  "cookMinutes": 12,
+  "difficulty": "easy",
+  "tags": ["meatless", "quick", "kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "pasta",
+      "ingredient": "short-pasta",
+      "quantity": 1,
+      "unit": "lb"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "peas",
+      "ingredient": "frozen-peas",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "ricotta",
+      "ingredient": "ricotta",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "parmesan",
+      "ingredient": "parmesan",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "grated"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "basil",
+      "ingredient": "basil",
+      "quantity": 0.5,
+      "unit": "bunch"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Cook the pasta in salted boiling water until al dente, adding the peas for the last 2 minutes. Save 1 cup of the cooking water, then drain.",
+      "uses": ["pasta", "salt", "peas"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "In the pot, stir together the ricotta, parmesan, the zest and juice of the lemon, the oil and plenty of pepper.",
+      "uses": ["ricotta", "parmesan", "lemon", "oil", "pepper"]
+    },
+    {
+      "text": "Toss in the pasta and peas with enough cooking water to make it creamy. Tear over the basil.",
+      "uses": ["basil"]
+    }
+  ]
+}

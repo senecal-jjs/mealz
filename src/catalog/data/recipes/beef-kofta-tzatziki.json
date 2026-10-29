@@ -1,0 +1,125 @@
+{
+  "id": "beef-kofta-tzatziki",
+  "title": "Beef Kofta with Tzatziki",
+  "description": "Cumin and coriander-spiced beef kofta with warm pita, a tomato-cucumber salad and garlicky yogurt.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 12,
+  "difficulty": "easy",
+  "tags": ["kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "beef",
+      "ingredient": "ground-beef",
+      "quantity": 1.25,
+      "unit": "lb"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "finely chopped"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 2,
+      "unit": "clove",
+      "prep": "grated"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "coriander",
+      "ingredient": "ground-coriander",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "cinnamon",
+      "ingredient": "ground-cinnamon",
+      "quantity": 0.25,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "parsley",
+      "ingredient": "parsley",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "chopped"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "yogurt",
+      "ingredient": "greek-yogurt",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "cucumber",
+      "ingredient": "cucumber",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 10,
+      "unit": "oz",
+      "prep": "quartered"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "pita",
+      "ingredient": "pita-bread",
+      "quantity": 4,
+      "unit": "whole"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Mix the beef with half the onion, half the garlic, the cumin, coriander, cinnamon, salt and half the parsley. Shape into 12 small logs.",
+      "uses": ["beef", "onion", "garlic", "cumin", "coriander", "cinnamon", "salt", "parsley"]
+    },
+    {
+      "text": "Cook the kofta in the oil in a large skillet over medium-high heat, turning, until browned and cooked through, about 10 minutes.",
+      "uses": ["oil"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Grate half the cucumber, squeeze it dry and stir it into the yogurt with the rest of the garlic and a pinch of salt.",
+      "uses": ["yogurt", "cucumber"]
+    },
+    {
+      "text": "Chop the rest of the cucumber and toss with the tomatoes, the rest of the onion and parsley, and the juice of the lemon.",
+      "uses": ["tomatoes", "lemon"]
+    },
+    {
+      "text": "Warm the pitas and serve with the kofta, salad and tzatziki.",
+      "uses": ["pita"]
+    }
+  ]
+}

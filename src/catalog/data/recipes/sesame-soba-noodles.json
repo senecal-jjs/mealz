@@ -1,0 +1,109 @@
+{
+  "id": "sesame-soba-noodles",
+  "title": "Sesame Soba with Edamame",
+  "description": "Cold buckwheat noodles in a nutty sesame-soy dressing with edamame, cucumber and carrot.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 10,
+  "difficulty": "easy",
+  "tags": ["meatless", "quick", "meal-prep", "high-carb"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "soba",
+      "ingredient": "soba-noodles",
+      "quantity": 12,
+      "unit": "oz"
+    },
+    {
+      "id": "edamame",
+      "ingredient": "edamame",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "tahini",
+      "ingredient": "tahini",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "vinegar",
+      "ingredient": "rice-vinegar",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "maple",
+      "ingredient": "maple-syrup",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "sesameoil",
+      "ingredient": "sesame-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 1,
+      "unit": "tsp",
+      "prep": "grated"
+    },
+    {
+      "id": "cucumber",
+      "ingredient": "cucumber",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "cut into matchsticks"
+    },
+    {
+      "id": "carrots",
+      "ingredient": "carrots",
+      "quantity": 0.25,
+      "unit": "lb",
+      "prep": "cut into matchsticks"
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 3,
+      "unit": "whole",
+      "prep": "sliced"
+    },
+    {
+      "id": "seeds",
+      "ingredient": "sesame-seeds",
+      "quantity": 1,
+      "unit": "tbsp"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Cook the soba in boiling water for about 4 minutes, adding the edamame for the last minute. Drain and rinse under cold water until cool.",
+      "uses": ["soba", "edamame"],
+      "timerMinutes": 4
+    },
+    {
+      "text": "Whisk the tahini, soy sauce, vinegar, maple syrup, sesame oil and ginger with 2 tablespoons water until smooth.",
+      "uses": ["tahini", "soy", "vinegar", "maple", "sesameoil", "ginger"]
+    },
+    {
+      "text": "Toss the noodles and edamame with the dressing, cucumber and carrots.",
+      "uses": ["cucumber", "carrots"]
+    },
+    {
+      "text": "Top with green onions and sesame seeds. Serve cold or at room temperature.",
+      "uses": ["scallions", "seeds"]
+    }
+  ]
+}

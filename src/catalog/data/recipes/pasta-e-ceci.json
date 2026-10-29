@@ -1,0 +1,111 @@
+{
+  "id": "pasta-e-ceci",
+  "title": "Pasta e Ceci",
+  "description": "A thick, peppery Roman soup of chickpeas and small pasta in a garlicky tomato broth.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 5,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["one-pot", "meatless", "budget", "high-carb"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "finely chopped"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "flakes",
+      "ingredient": "red-pepper-flakes",
+      "quantity": 0.25,
+      "unit": "tsp"
+    },
+    {
+      "id": "paste",
+      "ingredient": "tomato-paste",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "chickpeas",
+      "ingredient": "chickpeas",
+      "quantity": 2,
+      "unit": "can",
+      "prep": "15 oz each, drained and rinsed"
+    },
+    {
+      "id": "broth",
+      "ingredient": "vegetable-broth",
+      "quantity": 4,
+      "unit": "cup"
+    },
+    {
+      "id": "pasta",
+      "ingredient": "short-pasta",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "small shapes like ditalini"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "parmesan",
+      "ingredient": "parmesan",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "grated",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat 2 tablespoons of the oil in a large pot over medium heat. Cook the onion until soft, about 6 minutes.",
+      "uses": ["oil", "onion"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Stir in the garlic, pepper flakes and tomato paste and cook for 1 minute.",
+      "uses": ["garlic", "flakes", "paste"]
+    },
+    {
+      "text": "Add the chickpeas and broth and simmer for 10 minutes. Mash about a third of the chickpeas against the side of the pot to thicken the soup.",
+      "uses": ["chickpeas", "broth"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Add the pasta and 1 cup water. Simmer, stirring often, until the pasta is tender and the soup is thick, about 10 minutes. Add a splash more water if it gets too thick, and season well with salt and pepper.",
+      "uses": ["pasta", "salt", "pepper"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Serve with the parmesan and a drizzle of the remaining oil.",
+      "uses": ["parmesan"]
+    }
+  ]
+}

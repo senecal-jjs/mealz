@@ -1,0 +1,102 @@
+{
+  "id": "pea-parmesan-risotto",
+  "title": "Pea and Parmesan Risotto",
+  "description": "Creamy stirred risotto with sweet peas, lemon and parmesan.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 5,
+  "cookMinutes": 30,
+  "difficulty": "medium",
+  "tags": ["meatless", "high-carb"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "broth",
+      "ingredient": "vegetable-broth",
+      "quantity": 6,
+      "unit": "cup"
+    },
+    {
+      "id": "butter",
+      "ingredient": "butter",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "finely chopped"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 2,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "rice",
+      "ingredient": "arborio-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "peas",
+      "ingredient": "frozen-peas",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "parmesan",
+      "ingredient": "parmesan",
+      "quantity": 0.75,
+      "unit": "cup",
+      "prep": "grated"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    }
+  ],
+  "steps": [
+    {
+      "text": "Warm the broth in a small pot over low heat.",
+      "uses": ["broth"]
+    },
+    {
+      "text": "Melt 2 tablespoons of the butter in a wide pot over medium heat and cook the onion until soft, about 4 minutes.",
+      "uses": ["butter", "onion"],
+      "timerMinutes": 4
+    },
+    {
+      "text": "Add the garlic and rice and stir for 2 minutes, until the rice edges look translucent.",
+      "uses": ["garlic", "rice"],
+      "timerMinutes": 2
+    },
+    {
+      "text": "Add the broth a ladle at a time, stirring often and letting each addition be absorbed before the next, until the rice is creamy and just tender, about 20 minutes.",
+      "uses": [],
+      "timerMinutes": 20
+    },
+    {
+      "text": "Stir in the peas for 2 minutes. Off the heat, beat in the rest of the butter, the parmesan, and the zest and juice of the lemon. Season with salt and pepper.",
+      "uses": ["peas", "parmesan", "lemon", "salt", "pepper"]
+    }
+  ]
+}

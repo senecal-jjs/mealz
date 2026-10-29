@@ -1,0 +1,92 @@
+{
+  "id": "baked-feta-pasta",
+  "title": "Baked Feta Pasta",
+  "description": "A block of feta roasted with cherry tomatoes and garlic, then stirred into pasta with spinach.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 5,
+  "cookMinutes": 30,
+  "difficulty": "easy",
+  "tags": ["meatless", "kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 20,
+      "unit": "oz"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 4,
+      "unit": "clove",
+      "prep": "smashed"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 0.33,
+      "unit": "cup"
+    },
+    {
+      "id": "flakes",
+      "ingredient": "red-pepper-flakes",
+      "quantity": 0.25,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "feta",
+      "ingredient": "feta",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "block"
+    },
+    {
+      "id": "pasta",
+      "ingredient": "short-pasta",
+      "quantity": 12,
+      "unit": "oz"
+    },
+    {
+      "id": "spinach",
+      "ingredient": "baby-spinach",
+      "quantity": 3,
+      "unit": "oz"
+    },
+    {
+      "id": "basil",
+      "ingredient": "basil",
+      "quantity": 0.5,
+      "unit": "bunch"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 400°F. Toss the tomatoes and garlic with the oil, pepper flakes, salt and pepper in a baking dish. Set the feta in the middle and roast until the tomatoes burst, about 30 minutes.",
+      "uses": ["tomatoes", "garlic", "oil", "flakes", "salt", "pepper", "feta"],
+      "timerMinutes": 30
+    },
+    {
+      "text": "Meanwhile, cook the pasta in salted boiling water until al dente, about 10 minutes. Save ½ cup of the water and drain.",
+      "uses": ["pasta"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Mash the feta and tomatoes together, then stir in the pasta, spinach and a splash of the cooking water until the spinach wilts. Tear over the basil.",
+      "uses": ["spinach", "basil"]
+    }
+  ]
+}

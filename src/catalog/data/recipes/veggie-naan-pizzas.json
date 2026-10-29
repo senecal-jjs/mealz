@@ -1,0 +1,97 @@
+{
+  "id": "veggie-naan-pizzas",
+  "title": "Veggie Naan Pizzas",
+  "description": "Crisp naan topped with marinara, mozzarella, peppers, mushrooms and olives.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 10,
+  "difficulty": "easy",
+  "tags": ["meatless", "kid-friendly", "quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "naan",
+      "ingredient": "naan",
+      "quantity": 4,
+      "unit": "whole"
+    },
+    {
+      "id": "marinara",
+      "ingredient": "marinara-sauce",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "mozzarella",
+      "ingredient": "shredded-mozzarella",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "bell-pepper",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "mushrooms",
+      "ingredient": "cremini-mushrooms",
+      "quantity": 4,
+      "unit": "oz",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 0.5,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "olives",
+      "ingredient": "kalamata-olives",
+      "quantity": 0.25,
+      "unit": "cup",
+      "prep": "halved"
+    },
+    {
+      "id": "oregano",
+      "ingredient": "dried-oregano",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "basil",
+      "ingredient": "basil",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 450°F. Spread the naan with marinara and top with mozzarella, pepper, mushrooms, onion, olives and oregano.",
+      "uses": [
+        "naan",
+        "marinara",
+        "mozzarella",
+        "pepper",
+        "mushrooms",
+        "onion",
+        "olives",
+        "oregano"
+      ]
+    },
+    {
+      "text": "Bake on a sheet pan until bubbling and crisp at the edges, 8 to 10 minutes.",
+      "uses": [],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Top with torn basil and slice.",
+      "uses": ["basil"]
+    }
+  ]
+}

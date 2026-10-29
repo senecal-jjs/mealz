@@ -1,0 +1,114 @@
+{
+  "id": "turkey-chili-baked-potatoes",
+  "title": "Turkey Chili Baked Potatoes",
+  "description": "Fluffy microwave-baked potatoes loaded with a quick turkey and bean chili.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["kid-friendly", "high-carb"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "potatoes",
+      "ingredient": "russet-potatoes",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "scrubbed"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "turkey",
+      "ingredient": "ground-turkey",
+      "quantity": 1,
+      "unit": "lb"
+    },
+    {
+      "id": "chili",
+      "ingredient": "chili-powder",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "diced-tomatoes",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz"
+    },
+    {
+      "id": "beans",
+      "ingredient": "kidney-beans",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz, drained and rinsed"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "cheddar",
+      "ingredient": "cheddar",
+      "quantity": 1,
+      "unit": "cup",
+      "prep": "shredded"
+    },
+    {
+      "id": "sour",
+      "ingredient": "sour-cream",
+      "quantity": 0.5,
+      "unit": "cup",
+      "optional": true
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "sliced"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Prick the potatoes all over with a fork. Microwave on high until tender, turning them halfway, 12 to 15 minutes.",
+      "uses": ["potatoes"],
+      "timerMinutes": 14
+    },
+    {
+      "text": "Meanwhile, heat the oil in a pot over medium heat and cook the onion for 4 minutes. Add the turkey and brown it, breaking it up, about 6 minutes.",
+      "uses": ["oil", "onion", "turkey"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Stir in the chili powder, cumin, tomatoes, beans and a good pinch of salt. Simmer until thick, about 8 minutes.",
+      "uses": ["chili", "cumin", "tomatoes", "beans", "salt"],
+      "timerMinutes": 8
+    },
+    {
+      "text": "Split the potatoes, fluff the insides with a fork and spoon over the chili. Top with cheddar, sour cream and green onions.",
+      "uses": ["cheddar", "sour", "scallions"]
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "id": "bbq-chicken-flatbreads",
+  "title": "BBQ Chicken Flatbreads",
+  "description": "Pita flatbreads with smoky barbecue chicken, red onion, mozzarella and cilantro.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "chicken",
+      "ingredient": "chicken-breast",
+      "quantity": 1,
+      "unit": "lb"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "bbq",
+      "ingredient": "bbq-sauce",
+      "quantity": 0.5,
+      "unit": "cup"
+    },
+    {
+      "id": "pita",
+      "ingredient": "pita-bread",
+      "quantity": 4,
+      "unit": "whole"
+    },
+    {
+      "id": "mozzarella",
+      "ingredient": "shredded-mozzarella",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 0.5,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "chopped"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 450°F. Season the chicken with salt and cook in the oil in a skillet until cooked through, about 6 minutes per side. Chop and toss with half the barbecue sauce.",
+      "uses": ["chicken", "salt", "oil"],
+      "timerMinutes": 12
+    },
+    {
+      "text": "Spread the pitas with the rest of the barbecue sauce and top with the chicken, mozzarella and onion.",
+      "uses": ["bbq", "pita", "mozzarella", "onion"]
+    },
+    {
+      "text": "Bake until the cheese bubbles, about 8 minutes. Scatter with cilantro.",
+      "uses": ["cilantro"],
+      "timerMinutes": 8
+    }
+  ]
+}

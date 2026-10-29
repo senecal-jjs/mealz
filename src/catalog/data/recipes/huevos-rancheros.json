@@ -1,0 +1,100 @@
+{
+  "id": "huevos-rancheros",
+  "title": "Huevos Rancheros",
+  "description": "Fried eggs on crisp corn tortillas with warm mashed beans, salsa and avocado.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 5,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["meatless", "quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "beans",
+      "ingredient": "black-beans",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz, drained and rinsed"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 0.5,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "tortillas",
+      "ingredient": "corn-tortillas",
+      "quantity": 8,
+      "unit": "whole"
+    },
+    {
+      "id": "eggs",
+      "ingredient": "egg",
+      "quantity": 8,
+      "unit": "whole"
+    },
+    {
+      "id": "salsa",
+      "ingredient": "salsa",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "avocado",
+      "ingredient": "avocado",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "sliced"
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "chopped"
+    },
+    {
+      "id": "feta",
+      "ingredient": "feta",
+      "quantity": 2,
+      "unit": "oz",
+      "prep": "crumbled",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Warm the beans with the cumin, salt and a splash of water in a small pan, mashing them roughly, about 5 minutes.",
+      "uses": ["beans", "cumin", "salt"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Heat a little of the oil in a large skillet and crisp the tortillas, about 1 minute per side. Keep them warm.",
+      "uses": ["oil", "tortillas"],
+      "timerMinutes": 2
+    },
+    {
+      "text": "Fry the eggs in the same skillet until the whites are set, about 3 minutes.",
+      "uses": ["eggs"],
+      "timerMinutes": 3
+    },
+    {
+      "text": "Top two tortillas per plate with beans, two eggs, salsa, avocado, cilantro and feta.",
+      "uses": ["salsa", "avocado", "cilantro", "feta"]
+    }
+  ]
+}

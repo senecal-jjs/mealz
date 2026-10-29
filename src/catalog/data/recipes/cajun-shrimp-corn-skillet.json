@@ -1,0 +1,110 @@
+{
+  "id": "cajun-shrimp-corn-skillet",
+  "title": "Cajun Shrimp and Corn Skillet",
+  "description": "Smoky spiced shrimp with charred corn and peppers, done in one pan.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 12,
+  "difficulty": "easy",
+  "tags": ["one-pot", "quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "shrimp",
+      "ingredient": "shrimp",
+      "quantity": 1.25,
+      "unit": "lb",
+      "prep": "peeled"
+    },
+    {
+      "id": "paprika",
+      "ingredient": "smoked-paprika",
+      "quantity": 2,
+      "unit": "tsp"
+    },
+    {
+      "id": "oregano",
+      "ingredient": "dried-oregano",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "chili",
+      "ingredient": "chili-powder",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "butter",
+      "ingredient": "butter",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "corn",
+      "ingredient": "frozen-corn",
+      "quantity": 2,
+      "unit": "cup"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "bell-pepper",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "parsley",
+      "ingredient": "parsley",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "chopped"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Toss the shrimp with the paprika, oregano, chili powder and salt.",
+      "uses": ["shrimp", "paprika", "oregano", "chili", "salt"]
+    },
+    {
+      "text": "Heat the oil in a large skillet over high heat. Cook the corn and pepper, stirring only now and then, until charred in spots, about 5 minutes.",
+      "uses": ["oil", "corn", "pepper"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Push the vegetables aside, add the butter, garlic and shrimp and cook, turning once, until the shrimp are pink, about 3 minutes.",
+      "uses": ["butter", "garlic"],
+      "timerMinutes": 3
+    },
+    {
+      "text": "Stir everything together and finish with lemon juice and parsley.",
+      "uses": ["lemon", "parsley"]
+    }
+  ]
+}

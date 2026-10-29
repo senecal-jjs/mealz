@@ -1,0 +1,111 @@
+{
+  "id": "red-lentil-bolognese",
+  "title": "Red Lentil Bolognese",
+  "description": "A rich, meat-free bolognese where red lentils cook down into the tomato sauce.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["meatless", "budget", "meal-prep", "high-carb"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "finely chopped"
+    },
+    {
+      "id": "carrots",
+      "ingredient": "carrots",
+      "quantity": 0.25,
+      "unit": "lb",
+      "prep": "finely chopped"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "paste",
+      "ingredient": "tomato-paste",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "lentils",
+      "ingredient": "red-lentils",
+      "quantity": 1,
+      "unit": "cup",
+      "prep": "rinsed"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "crushed-tomatoes",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "28 oz"
+    },
+    {
+      "id": "oregano",
+      "ingredient": "dried-oregano",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "spaghetti",
+      "ingredient": "spaghetti",
+      "quantity": 1,
+      "unit": "lb"
+    },
+    {
+      "id": "basil",
+      "ingredient": "basil",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oil in a large pot over medium heat. Cook the onion and carrots until soft, about 6 minutes.",
+      "uses": ["oil", "onion", "carrots"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Stir in the garlic and tomato paste for 1 minute.",
+      "uses": ["garlic", "paste"]
+    },
+    {
+      "text": "Add the lentils, tomatoes, oregano, 2 cups water and a good pinch of salt. Simmer, stirring often, until the lentils are soft and the sauce is thick, about 20 minutes.",
+      "uses": ["lentils", "tomatoes", "oregano", "salt"],
+      "timerMinutes": 20
+    },
+    {
+      "text": "Meanwhile, cook the spaghetti in salted boiling water until al dente, about 10 minutes, and drain.",
+      "uses": ["spaghetti"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Toss the spaghetti with the sauce and top with torn basil.",
+      "uses": ["basil"]
+    }
+  ]
+}

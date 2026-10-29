@@ -1,0 +1,109 @@
+{
+  "id": "chicken-satay-rice",
+  "title": "Chicken Satay with Cucumber Salad",
+  "description": "Curry-spiced chicken with a quick peanut sauce, rice and a sharp cucumber salad.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["kid-friendly"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "chicken",
+      "ingredient": "chicken-thighs",
+      "quantity": 1.5,
+      "unit": "lb",
+      "prep": "cut into strips"
+    },
+    {
+      "id": "curry",
+      "ingredient": "curry-powder",
+      "quantity": 2,
+      "unit": "tsp"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "pb",
+      "ingredient": "peanut-butter",
+      "quantity": 0.33,
+      "unit": "cup"
+    },
+    {
+      "id": "coconut",
+      "ingredient": "coconut-milk",
+      "quantity": 0.5,
+      "unit": "can"
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "cucumber",
+      "ingredient": "cucumber",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "vinegar",
+      "ingredient": "rice-vinegar",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "chili",
+      "ingredient": "red-chili",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "thinly sliced",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Rinse the rice, then bring it to a boil with 2¼ cups water and a pinch of salt. Cover, turn the heat to low and cook until the water is absorbed, about 15 minutes. Let it stand off the heat, still covered, while you cook.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Toss the chicken with the curry powder and 1 tablespoon of the soy sauce.",
+      "uses": ["chicken", "curry"]
+    },
+    {
+      "text": "Cook in the oil in a large skillet over medium-high heat until charred and cooked through, about 8 minutes.",
+      "uses": ["oil"],
+      "timerMinutes": 8
+    },
+    {
+      "text": "Warm the peanut butter, coconut milk, remaining soy sauce and the juice of the lime in a small pan, whisking until smooth.",
+      "uses": ["pb", "coconut", "soy", "lime"],
+      "timerMinutes": 2
+    },
+    {
+      "text": "Toss the cucumber with the vinegar and chili. Serve the chicken over rice with the peanut sauce and cucumber salad.",
+      "uses": ["cucumber", "vinegar", "chili"]
+    }
+  ]
+}

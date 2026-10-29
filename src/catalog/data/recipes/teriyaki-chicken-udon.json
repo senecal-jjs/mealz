@@ -1,0 +1,111 @@
+{
+  "id": "teriyaki-chicken-udon",
+  "title": "Teriyaki Chicken Udon",
+  "description": "Thick, chewy udon tossed with chicken, broccoli and a glossy homemade teriyaki sauce.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["stir-fry", "kid-friendly", "high-carb"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "udon",
+      "ingredient": "udon-noodles",
+      "quantity": 1.5,
+      "unit": "lb"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 0.33,
+      "unit": "cup"
+    },
+    {
+      "id": "honey",
+      "ingredient": "honey",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 1,
+      "unit": "tbsp",
+      "prep": "grated"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 2,
+      "unit": "clove",
+      "prep": "grated"
+    },
+    {
+      "id": "cornstarch",
+      "ingredient": "cornstarch",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "chicken",
+      "ingredient": "chicken-thighs",
+      "quantity": 1.25,
+      "unit": "lb",
+      "prep": "cut into bite-size pieces"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "broccoli",
+      "ingredient": "broccoli",
+      "quantity": 0.75,
+      "unit": "lb",
+      "prep": "cut into small florets"
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 3,
+      "unit": "whole",
+      "prep": "sliced"
+    },
+    {
+      "id": "sesame",
+      "ingredient": "sesame-seeds",
+      "quantity": 1,
+      "unit": "tbsp",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Cook the udon in boiling water as the package directs, usually about 3 minutes. Drain and rinse briefly.",
+      "uses": ["udon"],
+      "timerMinutes": 3
+    },
+    {
+      "text": "Whisk the soy sauce, honey, ginger, garlic and cornstarch with 2 tablespoons water.",
+      "uses": ["soy", "honey", "ginger", "garlic", "cornstarch"]
+    },
+    {
+      "text": "Heat the oil in a large skillet or wok over medium-high heat. Brown the chicken until cooked through, about 6 minutes.",
+      "uses": ["chicken", "oil"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Add the broccoli and a splash of water, cover and steam until bright green, about 3 minutes.",
+      "uses": ["broccoli"],
+      "timerMinutes": 3
+    },
+    {
+      "text": "Add the sauce and noodles and toss until glossy, 1 to 2 minutes. Top with green onions and sesame seeds.",
+      "uses": ["scallions", "sesame"]
+    }
+  ]
+}

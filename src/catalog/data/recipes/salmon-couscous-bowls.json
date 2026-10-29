@@ -1,0 +1,110 @@
+{
+  "id": "salmon-couscous-bowls",
+  "title": "Salmon Couscous Bowls",
+  "description": "Lemony couscous with flaked roast salmon, cucumber, tomatoes and a garlicky yogurt sauce.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["quick", "high-carb"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "salmon",
+      "ingredient": "salmon-fillet",
+      "quantity": 4,
+      "unit": "whole"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "paprika",
+      "ingredient": "smoked-paprika",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "couscous",
+      "ingredient": "couscous",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "broth",
+      "ingredient": "vegetable-broth",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "cucumber",
+      "ingredient": "cucumber",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 10,
+      "unit": "oz",
+      "prep": "halved"
+    },
+    {
+      "id": "yogurt",
+      "ingredient": "greek-yogurt",
+      "quantity": 0.75,
+      "unit": "cup"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 1,
+      "unit": "clove",
+      "prep": "grated"
+    },
+    {
+      "id": "parsley",
+      "ingredient": "parsley",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "chopped"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 425°F. Rub the salmon with the oil, paprika and salt and roast on a lined sheet until it flakes, about 12 minutes.",
+      "uses": ["salmon", "oil", "paprika", "salt"],
+      "timerMinutes": 12
+    },
+    {
+      "text": "Bring the broth to a boil, pour it over the couscous in a bowl, cover and leave for 5 minutes. Fluff with a fork and the juice of half the lemon.",
+      "uses": ["broth", "couscous", "lemon"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Stir the yogurt with the garlic, a squeeze of lemon and a pinch of salt.",
+      "uses": ["yogurt", "garlic"]
+    },
+    {
+      "text": "Divide the couscous between bowls with the cucumber, tomatoes and flaked salmon. Spoon over the yogurt sauce and scatter with parsley.",
+      "uses": ["cucumber", "tomatoes", "parsley"]
+    }
+  ]
+}

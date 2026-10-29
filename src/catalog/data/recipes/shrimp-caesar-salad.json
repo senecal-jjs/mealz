@@ -1,0 +1,95 @@
+{
+  "id": "shrimp-caesar-salad",
+  "title": "Shrimp Caesar Salad",
+  "description": "Crisp romaine, garlicky seared shrimp, parmesan and creamy Caesar dressing.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 6,
+  "difficulty": "easy",
+  "tags": ["quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "shrimp",
+      "ingredient": "shrimp",
+      "quantity": 1.25,
+      "unit": "lb",
+      "prep": "peeled"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 2,
+      "unit": "clove",
+      "prep": "grated"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "romaine",
+      "ingredient": "romaine-lettuce",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "dressing",
+      "ingredient": "caesar-dressing",
+      "quantity": 0.5,
+      "unit": "cup"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "parmesan",
+      "ingredient": "parmesan",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "shaved"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "halved",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Toss the shrimp with the garlic, salt and pepper. Cook in the oil in a hot skillet until pink, about 2 minutes per side.",
+      "uses": ["shrimp", "garlic", "salt", "pepper", "oil"],
+      "timerMinutes": 4
+    },
+    {
+      "text": "Toss the romaine with the dressing and the juice of half the lemon.",
+      "uses": ["romaine", "dressing", "lemon"]
+    },
+    {
+      "text": "Top with the shrimp, parmesan and tomatoes, with the rest of the lemon in wedges.",
+      "uses": ["parmesan", "tomatoes"]
+    }
+  ]
+}

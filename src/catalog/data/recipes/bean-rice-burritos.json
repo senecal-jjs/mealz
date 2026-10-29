@@ -1,0 +1,109 @@
+{
+  "id": "bean-rice-burritos",
+  "title": "Bean and Rice Burritos",
+  "description": "Big, cheesy burritos stuffed with seasoned beans, rice and salsa. They also freeze well for grab-and-go fuel.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["meatless", "kid-friendly", "meal-prep", "budget", "high-carb"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "beans",
+      "ingredient": "black-beans",
+      "quantity": 2,
+      "unit": "can",
+      "prep": "15 oz each, drained and rinsed"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "chili",
+      "ingredient": "chili-powder",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "tortillas",
+      "ingredient": "flour-tortillas",
+      "quantity": 6,
+      "unit": "whole",
+      "prep": "large"
+    },
+    {
+      "id": "salsa",
+      "ingredient": "salsa",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "cheddar",
+      "ingredient": "cheddar",
+      "quantity": 1.5,
+      "unit": "cup",
+      "prep": "shredded"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Rinse the rice, then bring it to a boil with 1½ cups water and a pinch of salt. Cover, turn the heat to low and cook until the water is absorbed, about 15 minutes. Let it stand off the heat, still covered, while you cook.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Heat the oil in a skillet over medium heat and cook the onion until soft, about 5 minutes. Add the beans, cumin, chili powder, salt and a splash of water. Cook for 4 minutes, mashing about half the beans.",
+      "uses": ["oil", "onion", "beans", "cumin", "chili", "salt"],
+      "timerMinutes": 4
+    },
+    {
+      "text": "Stir the juice of the lime into the rice.",
+      "uses": ["lime"]
+    },
+    {
+      "text": "Fill each tortilla with rice, beans, salsa and cheddar. Fold in the sides and roll up tightly.",
+      "uses": ["tortillas", "salsa", "cheddar"]
+    },
+    {
+      "text": "Toast the burritos seam side down in a dry skillet over medium heat until golden, about 2 minutes per side.",
+      "uses": [],
+      "timerMinutes": 4
+    }
+  ]
+}

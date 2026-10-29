@@ -1,0 +1,104 @@
+{
+  "id": "sesame-tofu-snap-peas",
+  "title": "Sesame Tofu with Snap Peas",
+  "description": "Crispy tofu and snap peas in a sweet-salty sesame glaze.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["stir-fry", "meatless"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "tofu",
+      "ingredient": "extra-firm-tofu",
+      "quantity": 14,
+      "unit": "oz",
+      "prep": "patted dry and cubed"
+    },
+    {
+      "id": "cornstarch",
+      "ingredient": "cornstarch",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "snap",
+      "ingredient": "snap-peas",
+      "quantity": 12,
+      "unit": "oz",
+      "prep": "trimmed"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 2,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 2,
+      "unit": "tsp",
+      "prep": "grated"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "maple",
+      "ingredient": "maple-syrup",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "vinegar",
+      "ingredient": "rice-vinegar",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "sesameoil",
+      "ingredient": "sesame-oil",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "seeds",
+      "ingredient": "sesame-seeds",
+      "quantity": 1,
+      "unit": "tbsp"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Toss the tofu with the cornstarch. Fry in the oil in a large nonstick skillet over medium-high heat, turning, until crisp on all sides, about 10 minutes.",
+      "uses": ["tofu", "cornstarch", "oil"],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Add the snap peas and stir-fry until bright green, about 2 minutes.",
+      "uses": ["snap"],
+      "timerMinutes": 2
+    },
+    {
+      "text": "Add the garlic and ginger for 30 seconds.",
+      "uses": ["garlic", "ginger"]
+    },
+    {
+      "text": "Pour in the soy sauce, maple syrup, vinegar and sesame oil and toss until glossy, about 1 minute. Sprinkle with sesame seeds.",
+      "uses": ["soy", "maple", "vinegar", "sesameoil", "seeds"]
+    }
+  ]
+}

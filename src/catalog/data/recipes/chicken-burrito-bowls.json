@@ -1,0 +1,115 @@
+{
+  "id": "chicken-burrito-bowls",
+  "title": "Chicken Burrito Bowls",
+  "description": "Cumin-spiced chicken over lime rice with black beans, corn and salsa: a big, carb-rich bowl for training days.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["meal-prep", "kid-friendly", "high-carb"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "chicken",
+      "ingredient": "chicken-thighs",
+      "quantity": 1.5,
+      "unit": "lb"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "chili",
+      "ingredient": "chili-powder",
+      "quantity": 2,
+      "unit": "tsp"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "beans",
+      "ingredient": "black-beans",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz, drained and rinsed"
+    },
+    {
+      "id": "corn",
+      "ingredient": "frozen-corn",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 2,
+      "unit": "whole"
+    },
+    {
+      "id": "salsa",
+      "ingredient": "salsa",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "chopped"
+    },
+    {
+      "id": "avocado",
+      "ingredient": "avocado",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "sliced",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Rinse the rice, then bring it to a boil with 2¼ cups water and a pinch of salt. Cover, turn the heat to low and cook until the water is absorbed, about 15 minutes. Let it stand off the heat, still covered, while you cook.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Season the chicken with the chili powder, cumin and salt. Cook in the oil in a large skillet over medium-high heat until cooked through, about 6 minutes per side. Rest for a few minutes, then slice.",
+      "uses": ["chicken", "oil", "chili", "cumin", "salt"],
+      "timerMinutes": 12
+    },
+    {
+      "text": "In the same skillet, warm the beans and corn with a pinch of salt for about 3 minutes.",
+      "uses": ["beans", "corn"],
+      "timerMinutes": 3
+    },
+    {
+      "text": "Fluff the rice with the juice of 1 lime and half the cilantro. Cut the other lime into wedges.",
+      "uses": ["lime", "cilantro"]
+    },
+    {
+      "text": "Build bowls of rice, beans and corn, and chicken. Top with salsa, avocado, the rest of the cilantro and lime wedges.",
+      "uses": ["salsa", "avocado"]
+    }
+  ]
+}

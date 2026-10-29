@@ -1,0 +1,107 @@
+{
+  "id": "chicken-souvlaki-pitas",
+  "title": "Chicken Souvlaki Pitas",
+  "description": "Lemon-oregano chicken in warm pitas with a quick cucumber tzatziki.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 10,
+  "difficulty": "easy",
+  "tags": ["kid-friendly", "quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "chicken",
+      "ingredient": "chicken-breast",
+      "quantity": 1.5,
+      "unit": "lb",
+      "prep": "cut into 1-inch pieces"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "oregano",
+      "ingredient": "dried-oregano",
+      "quantity": 2,
+      "unit": "tsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 2,
+      "unit": "clove",
+      "prep": "grated"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "yogurt",
+      "ingredient": "greek-yogurt",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "cucumber",
+      "ingredient": "cucumber",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "pita",
+      "ingredient": "pita-bread",
+      "quantity": 4,
+      "unit": "whole"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 10,
+      "unit": "oz",
+      "prep": "halved"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 0.5,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Toss the chicken with the oil, the juice of half the lemon, the oregano, half the garlic and salt.",
+      "uses": ["chicken", "oil", "lemon", "oregano", "garlic", "salt"]
+    },
+    {
+      "text": "Cook in a very hot skillet, turning, until charred and cooked through, about 8 minutes.",
+      "uses": [],
+      "timerMinutes": 8
+    },
+    {
+      "text": "For the tzatziki, grate the cucumber, squeeze out its water, and stir it into the yogurt with the rest of the garlic, a squeeze of lemon and a pinch of salt.",
+      "uses": ["yogurt", "cucumber"]
+    },
+    {
+      "text": "Warm the pitas in the skillet or oven.",
+      "uses": ["pita"]
+    },
+    {
+      "text": "Fill the pitas with chicken, tzatziki, tomatoes and onion.",
+      "uses": ["tomatoes", "onion"]
+    }
+  ]
+}

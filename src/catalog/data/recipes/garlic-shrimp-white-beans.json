@@ -1,0 +1,113 @@
+{
+  "id": "garlic-shrimp-white-beans",
+  "title": "Garlic Shrimp with White Beans",
+  "description": "Shrimp, creamy white beans and spinach in a lemony garlic broth. Good with crusty bread.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 12,
+  "difficulty": "easy",
+  "tags": ["one-pot", "quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 5,
+      "unit": "clove",
+      "prep": "sliced"
+    },
+    {
+      "id": "flakes",
+      "ingredient": "red-pepper-flakes",
+      "quantity": 0.25,
+      "unit": "tsp"
+    },
+    {
+      "id": "shrimp",
+      "ingredient": "shrimp",
+      "quantity": 1.25,
+      "unit": "lb",
+      "prep": "peeled"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "halved"
+    },
+    {
+      "id": "beans",
+      "ingredient": "cannellini-beans",
+      "quantity": 2,
+      "unit": "can",
+      "prep": "15 oz each, drained and rinsed"
+    },
+    {
+      "id": "broth",
+      "ingredient": "vegetable-broth",
+      "quantity": 0.5,
+      "unit": "cup"
+    },
+    {
+      "id": "spinach",
+      "ingredient": "baby-spinach",
+      "quantity": 5,
+      "unit": "oz"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "parsley",
+      "ingredient": "parsley",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "chopped"
+    },
+    {
+      "id": "bread",
+      "ingredient": "crusty-bread",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "for serving",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Warm the oil, garlic and pepper flakes in a large skillet over medium heat until the garlic is fragrant, about 1 minute.",
+      "uses": ["oil", "garlic", "flakes"]
+    },
+    {
+      "text": "Add the shrimp with a pinch of salt and cook until pink, about 3 minutes. Lift them out.",
+      "uses": ["shrimp", "salt"],
+      "timerMinutes": 3
+    },
+    {
+      "text": "Add the tomatoes, beans and broth and simmer for 4 minutes.",
+      "uses": ["tomatoes", "beans", "broth"],
+      "timerMinutes": 4
+    },
+    {
+      "text": "Stir in the spinach until wilted, return the shrimp and add the juice of the lemon and the parsley. Serve with crusty bread.",
+      "uses": ["spinach", "lemon", "parsley", "bread"]
+    }
+  ]
+}

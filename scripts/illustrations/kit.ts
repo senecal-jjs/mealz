@@ -441,17 +441,24 @@ export function makeKit(rand: () => number) {
       });
     },
 
-    broccoli(a: Area, count: number, r = 12) {
+    /** Florets; cauliflower passes its own colours. */
+    broccoli(
+      a: Area,
+      count: number,
+      r = 12,
+      colors = ['#9CC46A', '#3E8A3A', '#4C9C45', '#6DB35C'],
+    ) {
+      const [stem, dark, mid, light] = colors;
       return each(spots(a, count, r * 1.6), (x, y) =>
         g(
           x,
           y,
           angle(),
-          `<path d="M-3 4L-3 ${n(r + 4)}Q0 ${n(r + 7)} 3 ${n(r + 4)}L3 4Z" fill="#9CC46A"/>` +
-            `<circle cx="${n(-r * 0.45)}" cy="0" r="${n(r * 0.6)}" fill="#3E8A3A"/>` +
-            `<circle cx="${n(r * 0.45)}" cy="0" r="${n(r * 0.6)}" fill="#3E8A3A"/>` +
-            `<circle cx="0" cy="${n(-r * 0.45)}" r="${n(r * 0.62)}" fill="#4C9C45"/>` +
-            `<circle cx="${n(-r * 0.15)}" cy="${n(-r * 0.6)}" r="${n(r * 0.25)}" fill="#6DB35C"/>`,
+          `<path d="M-3 4L-3 ${n(r + 4)}Q0 ${n(r + 7)} 3 ${n(r + 4)}L3 4Z" fill="${stem}"/>` +
+            `<circle cx="${n(-r * 0.45)}" cy="0" r="${n(r * 0.6)}" fill="${dark}"/>` +
+            `<circle cx="${n(r * 0.45)}" cy="0" r="${n(r * 0.6)}" fill="${dark}"/>` +
+            `<circle cx="0" cy="${n(-r * 0.45)}" r="${n(r * 0.62)}" fill="${mid}"/>` +
+            `<circle cx="${n(-r * 0.15)}" cy="${n(-r * 0.6)}" r="${n(r * 0.25)}" fill="${light}"/>`,
         ),
       );
     },
@@ -738,15 +745,18 @@ export function makeKit(rand: () => number) {
       return g(x, y, rot, s);
     },
 
-    sausages(a: Area, count: number) {
+    /** Sausage links; kofta pass their own colours and length. */
+    sausages(a: Area, count: number, colors = ['#8A4A2B', '#B06A42', '#6E3820'], len = 60) {
+      const [fill, hi, line] = colors;
+      const h = len / 2;
       return each(spots(a, count, 40), (x, y) =>
         g(
           x,
           y,
           angle(),
-          `<rect x="-30" y="-10" width="60" height="20" rx="10" fill="#8A4A2B"/>` +
-            `<rect x="-26" y="-7" width="48" height="6" rx="3" fill="#B06A42"/>` +
-            `<path d="M-14 -9L-10 9M4 -9L8 9" stroke="#6E3820" stroke-width="2.5" opacity="0.6"/>`,
+          `<rect x="${-h}" y="-10" width="${len}" height="20" rx="10" fill="${fill}"/>` +
+            `<rect x="${-h + 4}" y="-7" width="${len - 12}" height="6" rx="3" fill="${hi}"/>` +
+            `<path d="M-14 -9L-10 9M4 -9L8 9" stroke="${line}" stroke-width="2.5" opacity="0.6"/>`,
         ),
       );
     },
@@ -791,14 +801,15 @@ export function makeKit(rand: () => number) {
 
     // ---- Vegetables ----
 
-    greenBeans(a: Area, count: number, len = 50) {
+    /** Green beans; snap peas pass their own colours. */
+    greenBeans(a: Area, count: number, len = 50, colors = ['#3F8A35', '#6DB04F'], width = 7) {
       return each(spots(a, count), (x, y) =>
         g(
           x,
           y,
           angle(),
-          `<path d="M${n(-len / 2)} 0Q0 ${n(between(-5, 5))} ${n(len / 2)} 0" fill="none" stroke="#3F8A35" stroke-width="7" stroke-linecap="round"/>` +
-            `<path d="M${n(-len / 2 + 4)} -1Q0 ${n(between(-4, 3))} ${n(len / 2 - 4)} -1" fill="none" stroke="#6DB04F" stroke-width="2.5" stroke-linecap="round"/>`,
+          `<path d="M${n(-len / 2)} 0Q0 ${n(between(-5, 5))} ${n(len / 2)} 0" fill="none" stroke="${colors[0]}" stroke-width="${width}" stroke-linecap="round"/>` +
+            `<path d="M${n(-len / 2 + 4)} -1Q0 ${n(between(-4, 3))} ${n(len / 2 - 4)} -1" fill="none" stroke="${colors[1]}" stroke-width="2.5" stroke-linecap="round"/>`,
         ),
       );
     },
@@ -957,13 +968,20 @@ export function makeKit(rand: () => number) {
     },
 
     /** A halved baked sweet potato with its filling. */
-    sweetPotato(x: number, y: number, rot: number, fill: () => string) {
+    /** A halved baked potato; russets pass their own skin and flesh colours. */
+    sweetPotato(
+      x: number,
+      y: number,
+      rot: number,
+      fill: () => string,
+      colors = ['#8A4B3A', '#F08A3C'],
+    ) {
       return g(
         x,
         y,
         rot,
-        `<path d="M-70 0Q-64 -34 0 -36Q64 -34 70 0Q64 34 0 36Q-64 34 -70 0Z" fill="#8A4B3A"/>` +
-          `<path d="M-62 0Q-56 -27 0 -29Q56 -27 62 0Q56 27 0 29Q-56 27 -62 0Z" fill="#F08A3C"/>` +
+        `<path d="M-70 0Q-64 -34 0 -36Q64 -34 70 0Q64 34 0 36Q-64 34 -70 0Z" fill="${colors[0]}"/>` +
+          `<path d="M-62 0Q-56 -27 0 -29Q56 -27 62 0Q56 27 0 29Q-56 27 -62 0Z" fill="${colors[1]}"/>` +
           fill(),
       );
     },
@@ -1025,6 +1043,160 @@ export function makeKit(rand: () => number) {
         `<circle cx="${n(x + 4)}" cy="${n(y + 4)}" r="${r}" fill="#E3C78F"/>` +
         `<circle cx="${n(x)}" cy="${n(y)}" r="${r}" fill="#F6E9C9" stroke="#E3C78F" stroke-width="2"/>` +
         `<circle cx="${n(x - 10)}" cy="${n(y - 6)}" r="5" fill="#E6CB92" opacity="0.7"/><circle cx="${n(x + 12)}" cy="${n(y + 8)}" r="4" fill="#E6CB92" opacity="0.7"/>`
+      );
+    },
+
+    // ---- Added for the second batch of recipes ----
+
+    /** A stack of pancakes from above, with syrup. */
+    pancakes(x: number, y: number, r = 66) {
+      let s = '';
+      [
+        [8, 10],
+        [4, 5],
+        [0, 0],
+      ].forEach(([dx, dy]) => {
+        s += `<circle cx="${n(x + dx)}" cy="${n(y + dy)}" r="${r}" fill="#B9773A"/>`;
+        s += `<circle cx="${n(x + dx - 2)}" cy="${n(y + dy - 2)}" r="${r - 5}" fill="#E0A458"/>`;
+      });
+      s += `<circle cx="${n(x - 2)}" cy="${n(y - 2)}" r="${r - 16}" fill="#D38E44" opacity="0.6"/>`;
+      s += blob(area(x + 4, y - 2, r * 0.5, r * 0.42), '#9A5A1E', {
+        wobble: 0.25,
+        k: 8,
+        opacity: 0.75,
+      });
+      s += `<rect x="${n(x - 12)}" y="${n(y - 16)}" width="22" height="16" rx="3" fill="#FFF3D6"/>`;
+      return s;
+    },
+
+    bananaSlices(a: Area, count: number) {
+      return each(
+        spots(a, count, 18),
+        (x, y) =>
+          `<circle cx="${n(x)}" cy="${n(y)}" r="10" fill="#F3E3A2" stroke="#E2C66A" stroke-width="1.5"/>` +
+          `<circle cx="${n(x)}" cy="${n(y)}" r="3" fill="#E2C66A" opacity="0.7"/>`,
+      );
+    },
+
+    /** A frittata filling a skillet. */
+    frittata(r = 110) {
+      return (
+        `<circle cx="${CX}" cy="${CY}" r="${r}" fill="#D9A52E"/>` +
+        blob(area(CX, CY, r - 8, r - 8), '#F4CC50', { wobble: 0.03, k: 12 }) +
+        each(spots(area(CX, CY, r - 30, r - 30), 7), (x, y) =>
+          blob(area(x, y, 14, 9), '#E9B83A', { wobble: 0.3, k: 6, opacity: 0.7 }),
+        )
+      );
+    },
+
+    /** A bell pepper half, cut side up, with its filling. */
+    pepperHalf(x: number, y: number, rot: number, color: string, fill: () => string) {
+      return g(
+        x,
+        y,
+        rot,
+        `<path d="M-46 0Q-46 -36 -10 -40Q0 -48 10 -40Q46 -36 46 0Q44 38 0 40Q-44 38 -46 0Z" fill="${color}"/>` +
+          `<path d="M-38 0Q-38 -28 0 -32Q38 -28 38 0Q36 30 0 32Q-36 30 -38 0Z" fill="#000000" opacity="0.18"/>` +
+          `<path d="M-8 -42Q0 -56 6 -50" fill="none" stroke="#4E7A2C" stroke-width="6" stroke-linecap="round"/>` +
+          fill(),
+      );
+    },
+
+    fritters(a: Area, count: number, r = 24) {
+      return each(
+        spots(a, count, r * 1.9),
+        (x, y) =>
+          blob(area(x, y, r, r * 0.9), '#B9782E', { wobble: 0.12, k: 8 }) +
+          blob(area(x - 1, y - 1, r - 4, r * 0.9 - 4), '#E2A84E', { wobble: 0.12, k: 8 }) +
+          kit.specks(area(x, y, r - 8, r - 8), 9, ['#5E8E34', '#3E7A2C', '#F7F0DE'], 2.6),
+      );
+    },
+
+    /** A sandwich half cut on the diagonal, showing its filling. */
+    sandwichHalf(x: number, y: number, rot: number, filling: string, extra = '#7FB548') {
+      return g(
+        x,
+        y,
+        rot,
+        `<path d="M-50 -48L50 -48L-50 52Z" fill="#C9935A"/>` +
+          `<path d="M-44 -42L38 -42L-44 40Z" fill="#F3DEB0"/>` +
+          `<path d="M58 -42L-46 62L-36 64L64 -34Z" fill="${extra}"/>` +
+          `<path d="M50 -48L-50 52L-42 60L58 -40Z" fill="${filling}"/>`,
+      );
+    },
+
+    /** An open-faced toast with melted cheese. */
+    toast(x: number, y: number, rot: number, cheese = '#F2B53A') {
+      return g(
+        x,
+        y,
+        rot,
+        `<rect x="-42" y="-40" width="84" height="80" rx="16" fill="#B9783E"/>` +
+          `<rect x="-36" y="-34" width="72" height="68" rx="12" fill="#EDCB8A"/>` +
+          blob(area(0, 0, 36, 34), cheese, { wobble: 0.14, k: 9 }) +
+          `<ellipse cx="-10" cy="-8" rx="8" ry="4" fill="#C9781E" opacity="0.5"/><ellipse cx="12" cy="10" rx="6" ry="3" fill="#C9781E" opacity="0.5"/>`,
+      );
+    },
+
+    /** A teardrop naan or flatbread, with toppings drawn in its own frame. */
+    naan(x: number, y: number, rot: number, base: string, toppings: () => string) {
+      return g(
+        x,
+        y,
+        rot,
+        `<path d="M-80 0Q-74 -44 0 -46Q70 -40 84 0Q70 40 0 46Q-74 44 -80 0Z" fill="#C98A3E"/>` +
+          `<path d="M-72 0Q-66 -36 0 -38Q62 -32 74 0Q62 32 0 38Q-66 36 -72 0Z" fill="#EBC27E"/>` +
+          blob(area(0, 0, 62, 30), base, { wobble: 0.08 }) +
+          toppings(),
+      );
+    },
+
+    /** Macaroni elbows. */
+    elbows(a: Area, count: number, fill = '#F4C64E', edge = '#D9A52E') {
+      return each(spots(a, count, 12), (x, y) =>
+        g(
+          x,
+          y,
+          angle(),
+          `<path d="M-9 -6Q-9 8 6 8" fill="none" stroke="${edge}" stroke-width="9" stroke-linecap="round"/>` +
+            `<path d="M-9 -6Q-9 8 6 8" fill="none" stroke="${fill}" stroke-width="6" stroke-linecap="round"/>`,
+        ),
+      );
+    },
+
+    /** Roasted potato wedges. */
+    wedges(a: Area, count: number, colors = ['#8A4B3A', '#F08A3C']) {
+      return each(spots(a, count, 16), (x, y) =>
+        g(
+          x,
+          y,
+          angle(),
+          `<path d="M-30 4Q0 -18 30 4Q0 10 -30 4Z" fill="${colors[0]}"/>` +
+            `<path d="M-26 3Q0 -13 26 3Q0 7 -26 3Z" fill="${colors[1]}"/>`,
+        ),
+      );
+    },
+
+    appleSlices(a: Area, count: number) {
+      return each(spots(a, count, 14), (x, y) =>
+        g(
+          x,
+          y,
+          angle(),
+          `<path d="M-18 4Q0 -16 18 4Q0 9 -18 4Z" fill="#C0392B"/><path d="M-15 4Q0 -11 15 4Q0 7 -15 4Z" fill="#F4E3B5"/>`,
+        ),
+      );
+    },
+
+    /** Eggplant (or similar) batons: skin on one side. */
+    batons(a: Area, count: number, colors = ['#4B2A4E', '#E7D7A8']) {
+      return each(spots(a, count, 12), (x, y) =>
+        g(
+          x,
+          y,
+          angle(),
+          `<rect x="-18" y="-6" width="36" height="12" rx="4" fill="${colors[0]}"/><rect x="-16" y="-3" width="32" height="8" rx="3" fill="${colors[1]}"/>`,
+        ),
       );
     },
   };

@@ -1,0 +1,112 @@
+{
+  "id": "beef-rice-stuffed-peppers",
+  "title": "Beef and Rice Stuffed Peppers",
+  "description": "Bell peppers filled with seasoned beef, rice and marinara, baked under melted cheddar.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 30,
+  "difficulty": "medium",
+  "tags": ["kid-friendly", "meal-prep"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 0.75,
+      "unit": "cup"
+    },
+    {
+      "id": "peppers",
+      "ingredient": "bell-pepper",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "halved and seeded"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "beef",
+      "ingredient": "ground-beef",
+      "quantity": 1,
+      "unit": "lb"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 2,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "oregano",
+      "ingredient": "dried-oregano",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "marinara",
+      "ingredient": "marinara-sauce",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "cheddar",
+      "ingredient": "cheddar",
+      "quantity": 1,
+      "unit": "cup",
+      "prep": "shredded"
+    },
+    {
+      "id": "parsley",
+      "ingredient": "parsley",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "chopped",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 400°F. Cook the rice in 1¼ cups water with a pinch of salt, covered on low heat, about 15 minutes.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Microwave the pepper halves in a covered dish with a splash of water until slightly soft, about 4 minutes.",
+      "uses": ["peppers"],
+      "timerMinutes": 4
+    },
+    {
+      "text": "Heat the oil in a skillet and brown the onion, beef, garlic, oregano and salt, about 8 minutes.",
+      "uses": ["oil", "onion", "beef", "garlic", "oregano", "salt"],
+      "timerMinutes": 8
+    },
+    {
+      "text": "Stir in the rice and 1 cup of the marinara.",
+      "uses": ["marinara"]
+    },
+    {
+      "text": "Fill the peppers, spoon over the rest of the marinara, top with cheddar and bake until bubbling, about 15 minutes. Scatter with parsley.",
+      "uses": ["cheddar", "parsley"],
+      "timerMinutes": 15
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "id": "aloo-gobi",
+  "title": "Aloo Gobi",
+  "description": "Turmeric-spiced potatoes and cauliflower cooked until tender and golden.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "difficulty": "easy",
+  "tags": ["one-pot", "meatless", "budget"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 1,
+      "unit": "tbsp",
+      "prep": "grated"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "turmeric",
+      "ingredient": "ground-turmeric",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "garam",
+      "ingredient": "garam-masala",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "potatoes",
+      "ingredient": "baby-potatoes",
+      "quantity": 1,
+      "unit": "lb",
+      "prep": "quartered"
+    },
+    {
+      "id": "cauliflower",
+      "ingredient": "cauliflower",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "cut into florets"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "diced-tomatoes",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.5,
+      "unit": "bunch",
+      "prep": "chopped"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oil in a large lidded skillet over medium heat and cook the onion until golden, about 5 minutes.",
+      "uses": ["oil", "onion"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Add the garlic, ginger, cumin, turmeric and garam masala and stir for 1 minute.",
+      "uses": ["garlic", "ginger", "cumin", "turmeric", "garam"]
+    },
+    {
+      "text": "Add the potatoes, cauliflower, tomatoes, salt and ½ cup water. Cover and cook, stirring now and then, until the potatoes are tender, about 20 minutes.",
+      "uses": ["potatoes", "cauliflower", "tomatoes", "salt"],
+      "timerMinutes": 20
+    },
+    {
+      "text": "Finish with the juice of the lemon and the cilantro.",
+      "uses": ["lemon", "cilantro"]
+    }
+  ]
+}

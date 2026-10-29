@@ -1,0 +1,123 @@
+{
+  "id": "smoky-black-bean-soup",
+  "title": "Smoky Black Bean Soup",
+  "description": "A thick, smoky black bean soup topped with avocado, lime and cilantro.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["one-pot", "meatless", "budget", "meal-prep"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "bell-pepper",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "cumin",
+      "ingredient": "ground-cumin",
+      "quantity": 2,
+      "unit": "tsp"
+    },
+    {
+      "id": "paprika",
+      "ingredient": "smoked-paprika",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "beans",
+      "ingredient": "black-beans",
+      "quantity": 3,
+      "unit": "can",
+      "prep": "15 oz each, drained and rinsed"
+    },
+    {
+      "id": "broth",
+      "ingredient": "vegetable-broth",
+      "quantity": 4,
+      "unit": "cup"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "avocado",
+      "ingredient": "avocado",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "diced"
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "chopped"
+    },
+    {
+      "id": "sour",
+      "ingredient": "sour-cream",
+      "quantity": 0.33,
+      "unit": "cup",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oil in a large pot over medium heat. Cook the onion and pepper until soft, about 6 minutes.",
+      "uses": ["oil", "onion", "pepper"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Add the garlic, cumin and paprika and cook for 1 minute.",
+      "uses": ["garlic", "cumin", "paprika"]
+    },
+    {
+      "text": "Add the beans and broth and simmer for 12 minutes. Blend about half the soup (or use a stick blender briefly) so it's thick but still chunky.",
+      "uses": ["beans", "broth"],
+      "timerMinutes": 12
+    },
+    {
+      "text": "Season with salt and the juice of the lime.",
+      "uses": ["salt", "lime"]
+    },
+    {
+      "text": "Serve topped with avocado, cilantro and sour cream.",
+      "uses": ["avocado", "cilantro", "sour"]
+    }
+  ]
+}

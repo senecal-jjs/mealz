@@ -1,0 +1,92 @@
+{
+  "id": "stovetop-mac-cheese",
+  "title": "Stovetop Mac and Cheese",
+  "description": "Creamy, cheesy macaroni made on the stove in about 20 minutes, with peas tucked in.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 5,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["meatless", "kid-friendly", "quick", "high-carb"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "pasta",
+      "ingredient": "short-pasta",
+      "quantity": 1,
+      "unit": "lb",
+      "prep": "elbows"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "peas",
+      "ingredient": "frozen-peas",
+      "quantity": 1,
+      "unit": "cup",
+      "optional": true
+    },
+    {
+      "id": "butter",
+      "ingredient": "butter",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "milk",
+      "ingredient": "milk",
+      "quantity": 2,
+      "unit": "cup"
+    },
+    {
+      "id": "mustard",
+      "ingredient": "dijon-mustard",
+      "quantity": 1,
+      "unit": "tsp"
+    },
+    {
+      "id": "cheddar",
+      "ingredient": "cheddar",
+      "quantity": 2,
+      "unit": "cup",
+      "prep": "shredded"
+    },
+    {
+      "id": "parmesan",
+      "ingredient": "parmesan",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "grated"
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    }
+  ],
+  "steps": [
+    {
+      "text": "Cook the pasta in salted boiling water until just al dente, adding the peas for the last 2 minutes. Drain.",
+      "uses": ["pasta", "salt", "peas"],
+      "timerMinutes": 8
+    },
+    {
+      "text": "In the same pot, melt the butter, then add the milk and mustard and heat until steaming.",
+      "uses": ["butter", "milk", "mustard"],
+      "timerMinutes": 3
+    },
+    {
+      "text": "Take the pot off the heat and stir in the cheddar and parmesan until smooth.",
+      "uses": ["cheddar", "parmesan"]
+    },
+    {
+      "text": "Fold in the pasta and peas and season with pepper.",
+      "uses": ["pepper"]
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "id": "coconut-shrimp-curry",
+  "title": "Coconut Shrimp Curry",
+  "description": "Shrimp simmered in a mild coconut curry with spinach, served over rice.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["one-pot", "quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "rice",
+      "ingredient": "jasmine-rice",
+      "quantity": 1.5,
+      "unit": "cup"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "chopped"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 1,
+      "unit": "tbsp",
+      "prep": "grated"
+    },
+    {
+      "id": "curry",
+      "ingredient": "curry-powder",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "diced-tomatoes",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "15 oz"
+    },
+    {
+      "id": "coconut",
+      "ingredient": "coconut-milk",
+      "quantity": 1,
+      "unit": "can",
+      "prep": "13.5 oz"
+    },
+    {
+      "id": "shrimp",
+      "ingredient": "shrimp",
+      "quantity": 1.25,
+      "unit": "lb",
+      "prep": "peeled"
+    },
+    {
+      "id": "spinach",
+      "ingredient": "baby-spinach",
+      "quantity": 5,
+      "unit": "oz"
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "chopped"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Rinse the rice, then bring it to a boil with 2¼ cups water and a pinch of salt. Cover, turn the heat to low and cook until the water is absorbed, about 15 minutes. Let it stand off the heat, still covered, while you cook.",
+      "uses": ["rice"],
+      "timerMinutes": 15
+    },
+    {
+      "text": "Heat the oil in a large skillet over medium heat and cook the onion until soft, about 5 minutes.",
+      "uses": ["oil", "onion"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Stir in the garlic, ginger and curry powder for 1 minute.",
+      "uses": ["garlic", "ginger", "curry"]
+    },
+    {
+      "text": "Add the tomatoes and coconut milk and simmer for 6 minutes.",
+      "uses": ["tomatoes", "coconut"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Add the shrimp and cook until pink, about 3 minutes. Stir in the spinach until wilted and add the juice of the lime.",
+      "uses": ["shrimp", "spinach", "lime"],
+      "timerMinutes": 3
+    },
+    {
+      "text": "Serve over rice with cilantro.",
+      "uses": ["cilantro"]
+    }
+  ]
+}

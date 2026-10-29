@@ -1,0 +1,104 @@
+{
+  "id": "one-pot-tomato-basil-spaghetti",
+  "title": "One-Pot Tomato Basil Spaghetti",
+  "description": "Spaghetti cooked right in its sauce, so the starch makes it silky. One pot, no draining.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 5,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["one-pot", "meatless", "quick", "budget", "high-carb"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "spaghetti",
+      "ingredient": "spaghetti",
+      "quantity": 1,
+      "unit": "lb"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 20,
+      "unit": "oz",
+      "prep": "halved"
+    },
+    {
+      "id": "onion",
+      "ingredient": "yellow-onion",
+      "quantity": 1,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 4,
+      "unit": "clove",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "basil",
+      "ingredient": "basil",
+      "quantity": 1,
+      "unit": "bunch"
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "flakes",
+      "ingredient": "red-pepper-flakes",
+      "quantity": 0.25,
+      "unit": "tsp"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "broth",
+      "ingredient": "vegetable-broth",
+      "quantity": 4.5,
+      "unit": "cup"
+    },
+    {
+      "id": "parmesan",
+      "ingredient": "parmesan",
+      "quantity": 0.5,
+      "unit": "cup",
+      "prep": "grated",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Put the spaghetti, tomatoes, onion, garlic, half the basil leaves, the oil, pepper flakes, a good pinch of salt and the broth in a wide pot or deep skillet.",
+      "uses": [
+        "spaghetti",
+        "tomatoes",
+        "onion",
+        "garlic",
+        "basil",
+        "oil",
+        "flakes",
+        "salt",
+        "broth"
+      ]
+    },
+    {
+      "text": "Bring to a boil and cook, stirring and turning the pasta often, until it is al dente and the liquid has almost all gone, about 10 minutes.",
+      "uses": [],
+      "timerMinutes": 10
+    },
+    {
+      "text": "Season, tear in the rest of the basil and serve with parmesan.",
+      "uses": ["parmesan"]
+    }
+  ]
+}

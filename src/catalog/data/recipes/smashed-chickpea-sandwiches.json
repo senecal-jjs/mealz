@@ -1,0 +1,104 @@
+{
+  "id": "smashed-chickpea-sandwiches",
+  "title": "Smashed Chickpea Salad Sandwiches",
+  "description": "A creamy, lemony smashed chickpea filling with crunchy celery, piled onto toasted bread.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 3,
+  "difficulty": "easy",
+  "tags": ["meatless", "quick", "budget", "meal-prep"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "chickpeas",
+      "ingredient": "chickpeas",
+      "quantity": 2,
+      "unit": "can",
+      "prep": "15 oz each, drained and rinsed"
+    },
+    {
+      "id": "yogurt",
+      "ingredient": "greek-yogurt",
+      "quantity": 0.33,
+      "unit": "cup"
+    },
+    {
+      "id": "mustard",
+      "ingredient": "dijon-mustard",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "lemon",
+      "ingredient": "lemon",
+      "quantity": 1,
+      "unit": "whole"
+    },
+    {
+      "id": "celery",
+      "ingredient": "celery",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "finely chopped"
+    },
+    {
+      "id": "onion",
+      "ingredient": "red-onion",
+      "quantity": 0.25,
+      "unit": "whole",
+      "prep": "finely chopped"
+    },
+    {
+      "id": "parsley",
+      "ingredient": "parsley",
+      "quantity": 0.25,
+      "unit": "bunch",
+      "prep": "chopped"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "bread",
+      "ingredient": "sliced-bread",
+      "quantity": 8,
+      "unit": "slice"
+    },
+    {
+      "id": "lettuce",
+      "ingredient": "romaine-lettuce",
+      "quantity": 0.5,
+      "unit": "whole",
+      "prep": "leaves separated"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Mash the chickpeas with a fork or potato masher, leaving some chunks.",
+      "uses": ["chickpeas"]
+    },
+    {
+      "text": "Stir in the yogurt, mustard, the juice of the lemon, celery, onion, parsley, salt and pepper.",
+      "uses": ["yogurt", "mustard", "lemon", "celery", "onion", "parsley", "salt", "pepper"]
+    },
+    {
+      "text": "Toast the bread.",
+      "uses": ["bread"],
+      "timerMinutes": 3
+    },
+    {
+      "text": "Layer lettuce on half the slices, pile on the chickpea salad and top with the remaining bread.",
+      "uses": ["lettuce"]
+    }
+  ]
+}

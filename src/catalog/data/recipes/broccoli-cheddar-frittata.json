@@ -1,0 +1,93 @@
+{
+  "id": "broccoli-cheddar-frittata",
+  "title": "Broccoli Cheddar Frittata",
+  "description": "A puffy oven frittata packed with broccoli and sharp cheddar.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "easy",
+  "tags": ["one-pot", "meatless", "quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "eggs",
+      "ingredient": "egg",
+      "quantity": 10,
+      "unit": "whole"
+    },
+    {
+      "id": "milk",
+      "ingredient": "milk",
+      "quantity": 0.25,
+      "unit": "cup"
+    },
+    {
+      "id": "salt",
+      "ingredient": "salt",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "pepper",
+      "ingredient": "black-pepper",
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "id": "oil",
+      "ingredient": "olive-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "broccoli",
+      "ingredient": "broccoli",
+      "quantity": 0.75,
+      "unit": "lb",
+      "prep": "small florets"
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 3,
+      "unit": "whole",
+      "prep": "sliced"
+    },
+    {
+      "id": "cheddar",
+      "ingredient": "cheddar",
+      "quantity": 1,
+      "unit": "cup",
+      "prep": "shredded"
+    },
+    {
+      "id": "tomatoes",
+      "ingredient": "cherry-tomatoes",
+      "quantity": 8,
+      "unit": "oz",
+      "prep": "halved, for serving"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oven to 400°F. Whisk the eggs with the milk, salt and pepper.",
+      "uses": ["eggs", "milk", "salt", "pepper"]
+    },
+    {
+      "text": "Heat the oil in a 10-inch ovenproof skillet over medium heat. Cook the broccoli and green onions with a splash of water until bright green, about 4 minutes.",
+      "uses": ["oil", "broccoli", "scallions"],
+      "timerMinutes": 4
+    },
+    {
+      "text": "Pour in the eggs, scatter over the cheddar and cook without stirring until the edges set, about 2 minutes.",
+      "uses": ["cheddar"],
+      "timerMinutes": 2
+    },
+    {
+      "text": "Bake until puffed and just set in the middle, about 12 minutes. Cut into wedges and serve with the tomatoes.",
+      "uses": ["tomatoes"],
+      "timerMinutes": 12
+    }
+  ]
+}

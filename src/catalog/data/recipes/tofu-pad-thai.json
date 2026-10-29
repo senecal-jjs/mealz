@@ -1,0 +1,121 @@
+{
+  "id": "tofu-pad-thai",
+  "title": "Tofu Pad Thai",
+  "description": "Rice noodles stir-fried with crispy tofu and egg in a tangy lime and brown sugar sauce, topped with peanuts.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 15,
+  "difficulty": "easy",
+  "tags": ["stir-fry", "meatless", "high-carb"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "noodles",
+      "ingredient": "rice-noodles",
+      "quantity": 8,
+      "unit": "oz"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "sugar",
+      "ingredient": "brown-sugar",
+      "quantity": 2,
+      "unit": "tbsp"
+    },
+    {
+      "id": "lime",
+      "ingredient": "lime",
+      "quantity": 2,
+      "unit": "whole"
+    },
+    {
+      "id": "tofu",
+      "ingredient": "extra-firm-tofu",
+      "quantity": 14,
+      "unit": "oz",
+      "prep": "patted dry and cubed"
+    },
+    {
+      "id": "oil",
+      "ingredient": "vegetable-oil",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "eggs",
+      "ingredient": "egg",
+      "quantity": 2,
+      "unit": "whole",
+      "prep": "beaten"
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "cut into lengths"
+    },
+    {
+      "id": "peanuts",
+      "ingredient": "roasted-peanuts",
+      "quantity": 0.33,
+      "unit": "cup",
+      "prep": "chopped"
+    },
+    {
+      "id": "cilantro",
+      "ingredient": "cilantro",
+      "quantity": 0.25,
+      "unit": "bunch"
+    },
+    {
+      "id": "flakes",
+      "ingredient": "red-pepper-flakes",
+      "quantity": 0.25,
+      "unit": "tsp",
+      "optional": true
+    }
+  ],
+  "steps": [
+    {
+      "text": "Soak the noodles in very hot water until pliable, about 8 minutes, then drain.",
+      "uses": ["noodles"],
+      "timerMinutes": 8
+    },
+    {
+      "text": "Stir together the soy sauce, brown sugar and the juice of 1 lime.",
+      "uses": ["soy", "sugar", "lime"]
+    },
+    {
+      "text": "Fry the tofu in 2 tablespoons of the oil in a wok or large skillet over high heat until golden, about 6 minutes.",
+      "uses": ["tofu", "oil"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Push the tofu aside, add the remaining oil, the garlic and eggs and scramble until just set.",
+      "uses": ["garlic", "eggs"]
+    },
+    {
+      "text": "Add the noodles and sauce and toss until the noodles are tender and coated, about 2 minutes. Toss in the green onions.",
+      "uses": ["scallions"],
+      "timerMinutes": 2
+    },
+    {
+      "text": "Top with peanuts, cilantro and pepper flakes, with lime wedges to squeeze.",
+      "uses": ["peanuts", "cilantro", "flakes"]
+    }
+  ]
+}

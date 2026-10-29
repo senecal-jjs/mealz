@@ -1,0 +1,99 @@
+{
+  "id": "egg-roll-in-a-bowl",
+  "title": "Egg Roll in a Bowl",
+  "description": "All the gingery pork and cabbage filling of an egg roll, stir-fried in one pan.",
+  "image": null,
+  "baseServings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 12,
+  "difficulty": "easy",
+  "tags": ["stir-fry", "one-pot", "quick"],
+  "reviewed": false,
+  "ingredients": [
+    {
+      "id": "sesameoil",
+      "ingredient": "sesame-oil",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "pork",
+      "ingredient": "ground-pork",
+      "quantity": 1,
+      "unit": "lb"
+    },
+    {
+      "id": "garlic",
+      "ingredient": "garlic",
+      "quantity": 3,
+      "unit": "clove",
+      "prep": "minced"
+    },
+    {
+      "id": "ginger",
+      "ingredient": "ginger",
+      "quantity": 1,
+      "unit": "tbsp",
+      "prep": "grated"
+    },
+    {
+      "id": "cabbage",
+      "ingredient": "green-cabbage",
+      "quantity": 0.5,
+      "unit": "whole",
+      "prep": "thinly sliced"
+    },
+    {
+      "id": "carrots",
+      "ingredient": "carrots",
+      "quantity": 0.25,
+      "unit": "lb",
+      "prep": "shredded"
+    },
+    {
+      "id": "soy",
+      "ingredient": "soy-sauce",
+      "quantity": 3,
+      "unit": "tbsp"
+    },
+    {
+      "id": "vinegar",
+      "ingredient": "rice-vinegar",
+      "quantity": 1,
+      "unit": "tbsp"
+    },
+    {
+      "id": "scallions",
+      "ingredient": "green-onion",
+      "quantity": 4,
+      "unit": "whole",
+      "prep": "sliced"
+    },
+    {
+      "id": "seeds",
+      "ingredient": "sesame-seeds",
+      "quantity": 1,
+      "unit": "tsp"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the sesame oil in a large skillet over medium-high heat. Brown the pork, breaking it up, about 6 minutes.",
+      "uses": ["sesameoil", "pork"],
+      "timerMinutes": 6
+    },
+    {
+      "text": "Add the garlic and ginger and cook for 1 minute.",
+      "uses": ["garlic", "ginger"]
+    },
+    {
+      "text": "Add the cabbage, carrots, soy sauce and vinegar. Stir-fry until the cabbage has just wilted, about 5 minutes.",
+      "uses": ["cabbage", "carrots", "soy", "vinegar"],
+      "timerMinutes": 5
+    },
+    {
+      "text": "Top with green onions and sesame seeds.",
+      "uses": ["scallions", "seeds"]
+    }
+  ]
+}
