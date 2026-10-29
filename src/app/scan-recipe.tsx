@@ -46,7 +46,7 @@ function privacyNote(prefs: Preferences): string {
     return 'The text is read on your iPhone. Photos are never uploaded.';
   }
   return prefs.cloudScan === 'allowed'
-    ? 'Photos are read by Claude on the Mealz server and aren’t stored.'
+    ? 'Photos are read on the Mealz server and aren’t stored.'
     : 'You’ll be asked before any photo leaves your iPhone.';
 }
 
@@ -54,8 +54,8 @@ function privacyNote(prefs: Preferences): string {
 function askCloudConsent(): Promise<'allowed' | 'declined'> {
   return new Promise((resolve) =>
     Alert.alert(
-      'Read recipes with Claude?',
-      'For the best results, Mealz can send the photos of this recipe to its server, where Anthropic’s Claude reads them. Photos and recipes aren’t stored. You can change this in Profile.',
+      'Read recipes with the Mealz server?',
+      'For the best results, Mealz can send the photos of this recipe to its server, where a computer vision algorithm reads them. Photos and recipes aren’t stored. You can change this in Profile.',
       [
         { text: 'Keep on My Phone', style: 'cancel', onPress: () => resolve('declined') },
         { text: 'Allow', onPress: () => resolve('allowed') },
@@ -174,7 +174,7 @@ export default function ScanRecipeScreen() {
                 {!organizing
                   ? 'Reading the recipe…'
                   : cloudAllowed
-                    ? 'Claude is reading the recipe…'
+                    ? 'Mealz is reading the recipe…'
                     : 'Organizing the recipe…'}
               </ThemedText>
             </>

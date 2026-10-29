@@ -115,9 +115,9 @@ export default function ProfileScreen() {
       </SettingsGroup>
 
       {isCloudScanConfigured() && (
-        <SettingsGroup footer="When on, photos of recipes you scan are sent to the Mealz server and read by Anthropic’s Claude, for better results. Nothing is stored. When off, scans are read on this phone.">
+        <SettingsGroup footer="When on, photos of recipes you scan are sent to the Mealz server and read by a computer vision algorithm, for better results. Nothing is stored. When off, scans are read on this phone.">
           <SettingsRow
-            label="Read scans with Claude"
+            label="Read scans with the Mealz server"
             accessory={
               <Switch
                 value={prefs.cloudScan === 'allowed'}
