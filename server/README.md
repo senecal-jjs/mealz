@@ -35,10 +35,12 @@ simulator reaches the Mac at localhost).
 | `FLY_OIDC_AUDIENCE`            | `https://api.anthropic.com` | Must equal the rule's audience                                           |
 | `MODEL`                        | `claude-opus-5-5`           | Any Claude model ID, e.g. `claude-sonnet-5-5` or `claude-haiku-5-5`      |
 | `EFFORT`                       | `low`                       | `low`, `medium` or `high`                                                |
-| `DAILY_LIMIT_PER_INSTALL`      | `30`                        | Scans per app install per UTC day                                        |
+| `DAILY_LIMIT_PER_INSTALL`      | `30`                        | Scans per app install (per attested key with App Attest) per UTC day     |
 | `DAILY_LIMIT_TOTAL`            | `2000`                      | Scans across all installs per UTC day                                    |
 | `SCAN_ENABLED`                 | `true`                      | Kill switch: `false` returns 503 and every app uses its on-device reader |
-| `DB_PATH`                      | `./scans.db`                | SQLite file for the daily counts                                         |
+| `DB_PATH`                      | `./scans.db`                | SQLite file for the daily counts, challenges and attested keys           |
+| `APPLE_APP_ID`                 | –                           | `<Team ID>.com.bitcli.mealz`; turns on App Attest                        |
+| `ATTEST_REQUIRED`              | `true`                      | With App Attest on, `false` still serves unsigned scans (the simulator)  |
 
 ## Credentials: workload identity federation
 
@@ -94,8 +96,26 @@ Turn scanning off without an app update: `fly secrets set SCAN_ENABLED=false`
 (machines restart in a few seconds). `fly secrets unset SCAN_ENABLED` turns it
 back on.
 
-## Not done yet
+## App Attest
 
-App Attest. Today any client that knows the URL can call the API, bounded by
-the daily limits and the Console spend limit. `@expo/app-integrity` provides
-the app side; the server needs to verify Apple's attestation and assertions.
+Only genuine copies of Mealz on real iPhones can use the server. Each install
+makes a key in the Secure Enclave, and the server checks Apple's attestation
+of it once; every scan then signs a fresh one-time challenge with that key.
+
+- `POST /v1/attest/challenge` → `{ challenge }`, single use, valid 5 minutes
+- `POST /v1/attest` with `{ keyId, challenge, attestation }` checks the
+  certificate chain up to Apple's App Attest root, the nonce, the app ID, the
+  key ID and the counter, then stores the key's public key
+- `POST /v1/scan` takes `attest: { keyId, challenge, assertion }`: the
+  signature and a rising counter are checked, and the daily limit counts by
+  key. An unknown key gets `401 unknown_key`, and the app attests a new one.
+
+Rollout: set `APPLE_APP_ID` (your Team ID is on the Apple Developer
+Membership page) and deploy with `ATTEST_REQUIRED=false`. Scan from a
+development build on a real iPhone: the logs should show `attest 200 ok`, then
+signed scans. Then set `ATTEST_REQUIRED = "true"` in `fly.toml` and deploy. The
+simulator can't attest, so with it required, simulator scans fall back to the
+phone (run a local server without `APPLE_APP_ID` for simulator work).
+
+Someone with a real iPhone can still script the genuine app; the per-key
+daily limit and the workspace spend limit cover that.

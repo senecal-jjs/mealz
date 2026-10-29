@@ -70,6 +70,7 @@ describe('readWithCloud', () => {
     [429, 'limit'],
     [503, 'disabled'],
     [502, 'unreadable'],
+    [401, 'attestation'],
     [500, 'server'],
   ])('reports HTTP %p as %p', async (status, reason) => {
     await expect(
@@ -91,6 +92,49 @@ describe('readWithCloud', () => {
     await expect(readWithCloud(pages, 'i', { url: null, prepare })).rejects.toMatchObject({
       reason: 'disabled',
     });
+  });
+});
+
+describe('readWithCloud with App Attest', () => {
+  const signature = (n: number) => ({ keyId: 'key', challenge: `c${n}`, assertion: `a${n}` });
+
+  it('signs each scan', async () => {
+    const fetchFn = respond(200, { recipe: serverRecipe });
+    const attest = { sign: jest.fn(async () => signature(1)), forget: jest.fn() };
+    await readWithCloud(pages, 'i', { url: 'https://scan.test', fetchFn, prepare, attest });
+    const body = JSON.parse(
+      (fetchFn.mock.calls[0] as unknown as [string, RequestInit])[1].body as string,
+    );
+    expect(body.attest).toEqual(signature(1));
+  });
+
+  it('attests a new key once when the server no longer knows the old one', async () => {
+    const replies = [
+      new Response(JSON.stringify({ error: 'unknown_key' }), { status: 401 }),
+      new Response(JSON.stringify({ recipe: serverRecipe }), { status: 200 }),
+    ];
+    const fetchFn = jest.fn(async () => replies.shift()!);
+    let n = 0;
+    const attest = { sign: jest.fn(async () => signature(++n)), forget: jest.fn(async () => {}) };
+    const result = await readWithCloud(pages, 'i', {
+      url: 'https://scan.test',
+      fetchFn,
+      prepare,
+      attest,
+    });
+    expect(result.recipe.title).toBe('Toast');
+    expect(attest.forget).toHaveBeenCalledTimes(1);
+    expect(fetchFn).toHaveBeenCalledTimes(2);
+  });
+
+  it('does not retry a rejected signature', async () => {
+    const fetchFn = respond(401, { error: 'attestation' });
+    const attest = { sign: jest.fn(async () => signature(1)), forget: jest.fn() };
+    await expect(
+      readWithCloud(pages, 'i', { url: 'https://scan.test', fetchFn, prepare, attest }),
+    ).rejects.toMatchObject({ reason: 'attestation' });
+    expect(fetchFn).toHaveBeenCalledTimes(1);
+    expect(attest.forget).not.toHaveBeenCalled();
   });
 });
 

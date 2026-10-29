@@ -29,6 +29,7 @@ export const DEFAULT_PREFERENCES: Preferences = {
   onboardedAt: null,
   cloudScan: null,
   installId: null,
+  attestKeyId: null,
 };
 
 export function preferencesQuery(db: Db) {

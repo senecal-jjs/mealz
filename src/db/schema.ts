@@ -25,6 +25,8 @@ export const preferences = sqliteTable('preferences', {
   cloudScan: text('cloud_scan').$type<'allowed' | 'declined'>(),
   /** A random ID for this install, sent with cloud scans for the daily limit. */
   installId: text('install_id'),
+  /** This install's App Attest key, once the server has accepted Apple's attestation of it. */
+  attestKeyId: text('attest_key_id'),
 });
 
 export const planItems = sqliteTable('plan_items', {

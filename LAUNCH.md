@@ -23,7 +23,7 @@ What's ready in the repo, what only you can do, and the commands to ship.
 4. **Review recipes and add photos.** Only recipes with `"reviewed": true` (and an `image`) appear in App Store builds. For each one: sanity-check or test-cook it, add a photo you have rights to, set `reviewed: true`, and fill in its row in `src/catalog/SOURCES.md`. At least 20 are needed to build for production.
 5. **Host the privacy policy and a support page.** Replace `CONTACT_EMAIL` in `docs/privacy-policy.html`, then host it anywhere public (GitHub Pages on this repo works once it has a remote). Put both URLs in App Store Connect.
 6. **Copyright line** for App Store Connect, e.g. "2026 Your Name".
-7. **Deploy the scan server.** Set up workload identity federation in the Claude Console (a workspace with a monthly spend limit, a service account, a Fly issuer and a rule; no API key), then follow `server/README.md` to deploy to Fly.io. Put the server URL in `eas.json` as `EXPO_PUBLIC_SCAN_SERVER_URL` for the `preview` and `production` profiles. Without it, builds simply read scans on the phone.
+7. **Deploy the scan server.** Set up workload identity federation in the Claude Console (a workspace with a monthly spend limit, a service account, a Fly issuer and a rule; no API key), then follow `server/README.md` to deploy to Fly.io. Put the server URL in `eas.json` as `EXPO_PUBLIC_SCAN_SERVER_URL` for the `preview` and `production` profiles. Without it, builds simply read scans on the phone. Then turn on App Attest: enable the App Attest capability for the bundle ID, set `APPLE_APP_ID` on the server, check a signed scan from a real iPhone, and set `ATTEST_REQUIRED` to `"true"` (see `server/README.md`).
 
 ## Ship it
 

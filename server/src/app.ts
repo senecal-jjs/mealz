@@ -7,6 +7,7 @@ import { Hono } from 'hono';
 import { bodyLimit } from 'hono/body-limit';
 import { z } from 'zod';
 
+import { AttestError, verifyAssertion, verifyAttestation, type AttestStore } from './attest.ts';
 import type { Limits, ScanCounter } from './limits.ts';
 import { UnreadableError, type ReadResult, type ScanInput } from './recipe.ts';
 
@@ -26,6 +27,20 @@ const ScanRequest = z.object({
     .min(1)
     .max(MAX_PAGES),
   text: z.string().max(20_000),
+  /** App Attest: the scan's challenge, signed with the install's attested key. */
+  attest: z
+    .object({
+      keyId: z.base64().length(44),
+      challenge: z.string().max(100),
+      assertion: z.base64().max(4_000),
+    })
+    .optional(),
+});
+
+const AttestRequest = z.object({
+  keyId: z.base64().length(44),
+  challenge: z.string().max(100),
+  attestation: z.base64().max(20_000),
 });
 
 export type Deps = {
@@ -34,6 +49,15 @@ export type Deps = {
   limits: Limits;
   /** The kill switch: false sends every app to its on-device reader. */
   enabled: () => boolean;
+  /** App Attest; null turns it off (local development). */
+  attest?: {
+    store: AttestStore;
+    /** `<Team ID>.<bundle ID>` */
+    appId: string;
+    /** When false, unsigned scans are still served (for the simulator). */
+    required: boolean;
+    roots?: string[];
+  } | null;
   log?: (entry: Record<string, unknown>) => void;
 };
 
@@ -44,6 +68,46 @@ export function createApp(deps: Deps) {
   const app = new Hono();
 
   app.get('/health', (c) => c.json({ ok: true }));
+
+  const attest = deps.attest ?? null;
+  if (attest) {
+    app.post('/v1/attest/challenge', (c) => {
+      const challenge = attest.store.newChallenge();
+      if (!challenge) {
+        log({ route: 'challenge', status: 429, outcome: 'too_many' });
+        return c.json({ error: 'limit' }, 429);
+      }
+      return c.json({ challenge });
+    });
+
+    app.post(
+      '/v1/attest',
+      bodyLimit({ maxSize: 64 * 1024, onError: (c) => c.json({ error: 'too_large' }, 413) }),
+      async (c) => {
+        const done = (status: number, outcome: string, extra: Record<string, unknown> = {}) =>
+          log({ route: 'attest', status, outcome, ...extra });
+        const body = AttestRequest.safeParse(await c.req.json().catch(() => null));
+        if (!body.success) {
+          done(400, 'bad_request');
+          return c.json({ error: 'bad_request' }, 400);
+        }
+        const { keyId, challenge, attestation } = body.data;
+        if (!attest.store.takeChallenge(challenge)) {
+          done(401, 'challenge');
+          return c.json({ error: 'attestation' }, 401);
+        }
+        try {
+          const key = verifyAttestation(attestation, keyId, challenge, attest);
+          attest.store.saveKey(keyId, key);
+          done(200, 'ok', { environment: key.environment });
+          return c.json({ ok: true });
+        } catch (e) {
+          done(401, e instanceof AttestError ? e.message : 'error');
+          return c.json({ error: 'attestation' }, 401);
+        }
+      },
+    );
+  }
 
   app.post(
     '/v1/scan',
@@ -64,7 +128,32 @@ export function createApp(deps: Deps) {
       }
       const { installId, pages, text } = body.data;
 
-      const allowed = deps.counter.take(installId, deps.limits);
+      // With App Attest, limits count by attested key: an install ID can be made up.
+      let counted = installId;
+      if (attest && body.data.attest) {
+        const { keyId, challenge, assertion } = body.data.attest;
+        const key = attest.store.getKey(keyId);
+        if (!key) {
+          done(401, 'unknown_key');
+          return c.json({ error: 'unknown_key' }, 401);
+        }
+        if (!attest.store.takeChallenge(challenge)) {
+          done(401, 'challenge');
+          return c.json({ error: 'attestation' }, 401);
+        }
+        try {
+          attest.store.setCounter(keyId, verifyAssertion(assertion, challenge, key, attest.appId));
+        } catch (e) {
+          done(401, e instanceof AttestError ? e.message : 'error');
+          return c.json({ error: 'attestation' }, 401);
+        }
+        counted = `key:${keyId}`;
+      } else if (attest?.required) {
+        done(401, 'unsigned');
+        return c.json({ error: 'attestation' }, 401);
+      }
+
+      const allowed = deps.counter.take(counted, deps.limits);
       if (allowed !== 'ok') {
         done(429, `limit_${allowed}`);
         return c.json({ error: 'limit' }, 429);
@@ -72,7 +161,7 @@ export function createApp(deps: Deps) {
 
       try {
         const { recipe, usage } = await deps.read({ pages, text });
-        done(200, 'ok', { pages: pages.length, ...usage });
+        done(200, 'ok', { pages: pages.length, signed: counted !== installId, ...usage });
         return c.json({ recipe });
       } catch (e) {
         const reason = e instanceof UnreadableError ? e.message : 'model_error';

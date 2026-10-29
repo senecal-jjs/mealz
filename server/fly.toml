@@ -11,6 +11,9 @@ primary_region = "iad"
   DAILY_LIMIT_TOTAL = "2000"
   # Claude API credentials come from workload identity federation; the IDs are
   # Fly secrets (see README.md). FLY_OIDC_AUDIENCE defaults to https://api.anthropic.com.
+  # App Attest is on when APPLE_APP_ID ("<Team ID>.com.bitcli.mealz") is set.
+  # Only signed scans are served; "false" also serves unsigned ones.
+  ATTEST_REQUIRED = "true"
 
 [http_service]
   internal_port = 8080

@@ -1,0 +1,1 @@
+ALTER TABLE `preferences` ADD `attest_key_id` text;

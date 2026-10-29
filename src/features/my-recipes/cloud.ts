@@ -7,6 +7,7 @@
 import type { ParsedRecipeText, TextLine } from '@/domain/recipe-text';
 
 import { encodeJpeg } from '../../../modules/text-recognition';
+import type { AppAttest } from './app-attest';
 
 export type ScannedPage = { uri: string; lines: TextLine[] };
 
@@ -21,7 +22,7 @@ const TIMEOUT_MS = 45_000;
 const MAX_EDGE = 1568;
 
 export type CloudScanFailure =
-  'offline' | 'timeout' | 'limit' | 'disabled' | 'unreadable' | 'server';
+  'offline' | 'timeout' | 'limit' | 'disabled' | 'unreadable' | 'attestation' | 'server';
 
 export class CloudScanError extends Error {
   constructor(readonly reason: CloudScanFailure) {
@@ -79,19 +80,22 @@ const FAILURE_BY_STATUS: Record<number, CloudScanFailure> = {
   429: 'limit',
   503: 'disabled',
   502: 'unreadable',
+  401: 'attestation',
 };
 
 type Options = {
   url?: string | null;
   fetchFn?: typeof fetch;
   prepare?: typeof preparePage;
+  /** Signs each scan with App Attest; null sends it unsigned. */
+  attest?: AppAttest | null;
 };
 
 /** Reads the pages with the scan server. Throws `CloudScanError` on any failure. */
 export async function readWithCloud(
   pages: ScannedPage[],
   installId: string,
-  { url = SCAN_SERVER_URL, fetchFn = fetch, prepare = preparePage }: Options = {},
+  { url = SCAN_SERVER_URL, fetchFn = fetch, prepare = preparePage, attest = null }: Options = {},
 ): Promise<CloudRecipe> {
   if (!url) throw new CloudScanError('disabled');
   const images = await Promise.all(pages.map((p) => prepare(p.uri)));
@@ -99,20 +103,32 @@ export async function readWithCloud(
     .map((p) => p.lines.map((l) => l.text).join('\n'))
     .join('\n\n--- next page ---\n\n');
 
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
-  let response: Response;
-  try {
-    response = await fetchFn(`${url}/v1/scan`, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ installId, pages: images, text }),
-      signal: controller.signal,
-    });
-  } catch {
-    throw new CloudScanError(controller.signal.aborted ? 'timeout' : 'offline');
-  } finally {
-    clearTimeout(timer);
+  const send = async () => {
+    const signature = attest ? await attest.sign() : null;
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+    try {
+      return await fetchFn(`${url}/v1/scan`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ installId, pages: images, text, attest: signature ?? undefined }),
+        signal: controller.signal,
+      });
+    } catch {
+      throw new CloudScanError(controller.signal.aborted ? 'timeout' : 'offline');
+    } finally {
+      clearTimeout(timer);
+    }
+  };
+
+  let response = await send();
+  if (response.status === 401 && attest) {
+    const { error } = ((await response.json().catch(() => null)) ?? {}) as { error?: string };
+    if (error === 'unknown_key') {
+      // The server lost this install's key: attest a new one and try once more.
+      await attest.forget();
+      response = await send();
+    }
   }
   if (!response.ok) throw new CloudScanError(FAILURE_BY_STATUS[response.status] ?? 'server');
   return toCloudRecipe(await response.json().catch(() => null));

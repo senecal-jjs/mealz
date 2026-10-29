@@ -2,6 +2,7 @@ import Anthropic from '@anthropic-ai/sdk';
 import { serve } from '@hono/node-server';
 
 import { createApp } from './app.ts';
+import { AttestStore } from './attest.ts';
 import { authFromEnv } from './auth.ts';
 import { ScanCounter } from './limits.ts';
 import { readRecipe, type ModelConfig } from './recipe.ts';
@@ -23,9 +24,18 @@ const config: ModelConfig = {
   effort: (env.EFFORT as ModelConfig['effort']) ?? 'low',
 };
 const client = new Anthropic({ ...auth.options, timeout: 90_000, maxRetries: 1 });
-const counter = new ScanCounter(env.DB_PATH ?? './scans.db');
+const dbPath = env.DB_PATH ?? './scans.db';
+const counter = new ScanCounter(dbPath);
 counter.prune();
 setInterval(() => counter.prune(), 86_400_000).unref();
+
+// App Attest is on when the app ID is set; ATTEST_REQUIRED=false still serves
+// unsigned scans (the simulator can't attest).
+const appId = env.APPLE_APP_ID;
+const attest = appId
+  ? { store: new AttestStore(dbPath), appId, required: env.ATTEST_REQUIRED !== 'false' }
+  : null;
+if (attest) setInterval(() => attest.store.prune(), 600_000).unref();
 
 const app = createApp({
   read: (input) => readRecipe(client, input, config),
@@ -35,6 +45,7 @@ const app = createApp({
     total: number(env.DAILY_LIMIT_TOTAL, 2000),
   },
   enabled: () => env.SCAN_ENABLED !== 'false',
+  attest,
 });
 
 const port = number(env.PORT, 8080);
@@ -44,6 +55,7 @@ serve({ fetch: app.fetch, port, hostname: '0.0.0.0' }, () =>
       started: true,
       port,
       auth: auth.method,
+      attest: attest ? (attest.required ? 'required' : 'optional') : 'off',
       model: config.model,
       effort: config.effort,
     }),

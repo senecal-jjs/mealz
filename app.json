@@ -11,6 +11,9 @@
       "icon": "./assets/mealz.icon",
       "bundleIdentifier": "com.bitcli.mealz",
       "supportsTablet": false,
+      "entitlements": {
+        "com.apple.developer.devicecheck.appattest-environment": "production"
+      },
       "config": {
         "usesNonExemptEncryption": false
       },

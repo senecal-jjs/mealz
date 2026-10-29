@@ -8,10 +8,12 @@ import { Button } from '@/components/button';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { parsedToDraft } from '@/domain/recipe-text';
+import { createAppAttest } from '@/features/my-recipes/app-attest';
 import {
   isCloudScanConfigured,
   newInstallId,
   readWithCloud,
+  SCAN_SERVER_URL,
   type ScannedPage,
 } from '@/features/my-recipes/cloud';
 import { usePendingDraft } from '@/features/my-recipes/draft-store';
@@ -65,7 +67,7 @@ function askCloudConsent(): Promise<'allowed' | 'declined'> {
 
 /** The cloud reader to use, asking for consent the first time. Null keeps the scan on the phone. */
 async function cloudReaderFor(prefs: Preferences): Promise<CloudReader> {
-  if (!isCloudScanConfigured()) return null;
+  if (!SCAN_SERVER_URL) return null;
   let { cloudScan, installId } = prefs;
   if (!cloudScan) {
     cloudScan = await askCloudConsent();
@@ -75,7 +77,20 @@ async function cloudReaderFor(prefs: Preferences): Promise<CloudReader> {
   if (cloudScan !== 'allowed') return null;
   const id = installId ?? newInstallId();
   if (!installId) await preferenceActions.save({ installId: id });
-  return (pages) => readWithCloud(pages, id);
+
+  let attestKeyId = prefs.attestKeyId;
+  const attest = createAppAttest(
+    SCAN_SERVER_URL,
+    {
+      get: () => attestKeyId,
+      set: async (keyId) => {
+        attestKeyId = keyId;
+        await preferenceActions.save({ attestKeyId: keyId });
+      },
+    },
+    { log: __DEV__ ? console.log : undefined },
+  );
+  return (pages) => readWithCloud(pages, id, { attest });
 }
 
 /**
