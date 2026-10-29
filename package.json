@@ -64,6 +64,7 @@
     "catalog:validate": "tsx scripts/validate-catalog.ts",
     "db:generate": "drizzle-kit generate",
     "catalog:release-check": "tsx scripts/validate-catalog.ts --release",
+    "catalog:illustrations": "tsx scripts/draw-illustrations.ts",
     "eas-build-pre-install": "if [ \"$EAS_BUILD_PROFILE\" = production ]; then npm run catalog:release-check; fi"
   },
   "private": true,

@@ -37,7 +37,28 @@ for (const file of fs.readdirSync(recipesDir).filter((f) => f.endsWith('.json'))
   if (!index.includes(`'./recipes/${file}'`)) errors.push(`${file}: not imported in data/index.ts`);
 }
 
-const result = validateCatalog(ingredients, recipes);
+// Illustrations (drawn by `npm run catalog:illustrations`): each must belong to a
+// recipe, be listed in their index, and stay simple enough for iOS to draw.
+const illustrationsDir = path.join(dataDir, 'illustrations');
+const MAX_ILLUSTRATION_BYTES = 100_000;
+const illustrationIndex = fs.readFileSync(path.join(illustrationsDir, 'index.ts'), 'utf8');
+const recipeIds = new Set(recipes.map((r) => r.id));
+const illustrated = new Set<string>();
+for (const file of fs.readdirSync(illustrationsDir).filter((f) => f.endsWith('.svg'))) {
+  const svg = fs.readFileSync(path.join(illustrationsDir, file), 'utf8');
+  const where = `illustrations/${file}`;
+  illustrated.add(file.replace(/\.svg$/, ''));
+  if (!recipeIds.has(file.replace(/\.svg$/, ''))) errors.push(`${where}: no recipe with this id`);
+  if (!illustrationIndex.includes(`'./${file}'`))
+    errors.push(`${where}: not listed in illustrations/index.ts`);
+  if (!/<svg[^>]*\sviewBox="/.test(svg)) errors.push(`${where}: missing viewBox`);
+  if (svg.length > MAX_ILLUSTRATION_BYTES)
+    errors.push(`${where}: larger than ${MAX_ILLUSTRATION_BYTES / 1000} KB`);
+  // iOS's SVG renderer can misdraw arc commands, so drawings use curves instead.
+  if (/\sd="[^"]*[Aa]/.test(svg)) errors.push(`${where}: path uses an arc command`);
+}
+
+const result = validateCatalog(ingredients, recipes, illustrated);
 errors.push(...result.errors);
 
 for (const w of result.warnings) console.warn(`warning: ${w}`);
@@ -47,7 +68,7 @@ const reviewed = recipes.filter((r) => r.reviewed).length;
 if (release && reviewed < MIN_RELEASE_RECIPES) {
   errors.push(
     `only ${reviewed} recipes are reviewed; App Store builds need at least ${MIN_RELEASE_RECIPES} ` +
-      `(mark them "reviewed": true once checked and given a photo)`,
+      `(mark them "reviewed": true once checked)`,
   );
   console.error(`error: ${errors[errors.length - 1]}`);
 }

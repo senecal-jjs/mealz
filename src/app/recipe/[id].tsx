@@ -72,7 +72,12 @@ export default function RecipeScreen() {
             ),
           }}
         />
-        <RecipeImage recipe={recipe} style={styles.hero} iconSize={64} />
+        <RecipeImage
+          recipe={recipe}
+          style={styles.hero}
+          iconSize={64}
+          illustrationInset={insets.top}
+        />
         <View style={styles.body}>
           <Overview recipe={recipe} />
           <Ingredients recipe={recipe} servings={servings} onServingsChange={setServings} />

@@ -2,14 +2,33 @@ import { Image } from 'expo-image';
 import { SymbolView } from 'expo-symbols';
 import { StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 
+import { illustrations } from '@/catalog/data/illustrations';
 import type { Recipe } from '@/catalog/types';
 import { photoUri } from '@/features/my-recipes/photos';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
-// Soft placeholder colors until real photos exist (PLAN.md §9).
+// Soft background colours: behind illustrations, and the placeholder for recipes with no picture.
 const PLACEHOLDERS = {
   light: ['#F6E7D8', '#E3F0E1', '#E2ECF5', '#F4E1E4', '#EFE8D2', '#E6E2F3'],
   dark: ['#3A2E24', '#24342A', '#22303D', '#3A2629', '#36321F', '#2C2840'],
+};
+
+/** The theme colours an illustration's CSS variables take; `--bg` comes from PLACEHOLDERS. */
+const ILLUSTRATION_COLORS = {
+  light: {
+    '--plate': '#FFFFFF',
+    '--plate-well': '#F4F0EA',
+    '--napkin': '#FFFFFF',
+    '--accent': '#E07A5F',
+    '--cutlery': '#B8BEC4',
+  },
+  dark: {
+    '--plate': '#D9D3CA',
+    '--plate-well': '#CCC5BA',
+    '--napkin': '#57504A',
+    '--accent': '#C0664F',
+    '--cutlery': '#8B9299',
+  },
 };
 
 function hash(text: string): number {
@@ -22,9 +41,11 @@ type Props = {
   recipe: Pick<Recipe, 'id' | 'image'>;
   style?: StyleProp<ViewStyle>;
   iconSize?: number;
+  /** Space kept clear above an illustration, e.g. for the status bar under a transparent header. */
+  illustrationInset?: number;
 };
 
-export function RecipeImage({ recipe, style, iconSize = 40 }: Props) {
+export function RecipeImage({ recipe, style, iconSize = 40, illustrationInset = 0 }: Props) {
   const scheme = useColorScheme() === 'dark' ? 'dark' : 'light';
 
   if (recipe.image) {
@@ -37,6 +58,19 @@ export function RecipeImage({ recipe, style, iconSize = 40 }: Props) {
 
   const colors = PLACEHOLDERS[scheme];
   const background = colors[hash(recipe.id) % colors.length];
+  const illustration = illustrations[recipe.id];
+  if (illustration) {
+    return (
+      <View style={[styles.fill, { backgroundColor: background }, style]}>
+        <Image
+          source={illustration}
+          svgVariables={{ ...ILLUSTRATION_COLORS[scheme], '--bg': background }}
+          style={[StyleSheet.absoluteFill, { top: illustrationInset }]}
+          contentFit="cover"
+        />
+      </View>
+    );
+  }
   return (
     <View style={[styles.fill, styles.placeholder, { backgroundColor: background }, style]}>
       <SymbolView

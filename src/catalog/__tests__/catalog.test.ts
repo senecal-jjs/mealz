@@ -1,5 +1,6 @@
 import { buildCatalog } from '@/catalog';
 import { ingredientSources, recipeSources } from '@/catalog/data';
+import { illustrations } from '@/catalog/data/illustrations';
 import { deriveRecipe } from '@/catalog/derive';
 import type { Ingredient, RecipeSource } from '@/catalog/types';
 import { validateCatalog } from '@/catalog/validate';
@@ -88,9 +89,16 @@ describe('validateCatalog', () => {
     );
   });
 
-  it('requires an image on reviewed recipes', () => {
-    const { errors } = validateCatalog(ingredients, [recipe([['spinach']], { reviewed: true })]);
-    expect(errors).toEqual([expect.stringContaining('need an image')]);
+  it('requires a photo or an illustration on reviewed recipes', () => {
+    const reviewed = recipe([['spinach']], { reviewed: true });
+    expect(validateCatalog(ingredients, [reviewed]).errors).toEqual([
+      expect.stringContaining('need a photo or an illustration'),
+    ]);
+    expect(validateCatalog(ingredients, [reviewed], new Set([reviewed.id])).errors).toEqual([]);
+  });
+
+  it('has an illustration for every bundled recipe', () => {
+    expect(Object.keys(illustrations).sort()).toEqual(recipeSources.map((r) => r.id).sort());
   });
 
   it('passes for the shipped catalog', () => {

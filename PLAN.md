@@ -292,7 +292,7 @@ We write the recipes ourselves, using common dishes found online as reference.
 - Each recipe is a blend of several references, adjusted to fit our format (4 base servings, about 30 minutes, short ingredient lists), not a copy of a single source.
 - Record the reference dishes in `src/catalog/SOURCES.md` for our own tracking. This file is not shipped in the app.
 
-**Images:** our own photos, AI-generated images reviewed for accuracy, or stock photos under a licence that allows app use (e.g. Unsplash). Record the licence or source for each image. Use plain placeholder images until real ones exist.
+**Images:** every bundled recipe has a flat, top-down drawing generated from code (`scripts/illustrations/`, `npm run catalog:illustrations`), with theme colours that follow light and dark mode. They're our own work, so there's nothing to license, and they count as the recipe's image for review. A photo can still replace one later: our own, or stock under a licence that allows app use (record its source here).
 
 **Catalog shape (about 60 recipes at launch)**
 

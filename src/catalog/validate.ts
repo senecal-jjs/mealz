@@ -12,11 +12,14 @@ export type ValidationResult = { errors: string[]; warnings: string[] };
 /**
  * Checks the authored catalog for mistakes that would break the app: broken
  * references, bad units, ingredients no step uses. Shared by the
- * `catalog:validate` script and the unit tests.
+ * `catalog:validate` script and the unit tests. `illustrated` lists the
+ * recipes with a drawing (src/catalog/data/illustrations), which stands in
+ * for a photo.
  */
 export function validateCatalog(
   ingredients: Ingredient[],
   recipes: RecipeSource[],
+  illustrated: ReadonlySet<string> = new Set(),
 ): ValidationResult {
   const errors: string[] = [];
   const warnings: string[] = [];
@@ -46,7 +49,9 @@ export function validateCatalog(
     if (!(recipe.baseServings > 0)) errors.push(`${where}: baseServings must be positive`);
     if (recipe.ingredients.length === 0) errors.push(`${where}: no ingredients`);
     if (recipe.steps.length === 0) errors.push(`${where}: no steps`);
-    if (recipe.reviewed && !recipe.image) errors.push(`${where}: reviewed recipes need an image`);
+    if (recipe.reviewed && !recipe.image && !illustrated.has(recipe.id)) {
+      errors.push(`${where}: reviewed recipes need a photo or an illustration`);
+    }
 
     const localIds = new Set<string>();
     for (const item of recipe.ingredients) {
