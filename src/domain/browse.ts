@@ -20,7 +20,11 @@ export const BROWSE_FILTERS: { id: BrowseFilter; label: string }[] = [
   ...(Object.keys(DIET_LABELS) as Diet[]).map((d) => ({ id: d, label: DIET_LABELS[d] })),
 ];
 
-function matchesFilter(recipe: Recipe, filter: BrowseFilter, favourites: Set<string>): boolean {
+export function matchesFilter(
+  recipe: Recipe,
+  filter: BrowseFilter,
+  favourites: Set<string>,
+): boolean {
   if (filter === 'all') return true;
   if (filter === 'mine') return recipe.mine;
   if (filter === 'favourites') return favourites.has(recipe.id);
@@ -55,4 +59,32 @@ export function browseRecipes(
   return recipes.filter(
     (r) => matchesFilter(r, filter, favourites) && matchesQuery(r, query, ingredients),
   );
+}
+
+/** Today as "2026-10-30", in the phone's time zone. */
+export function localDay(now = new Date()): string {
+  const pad = (n: number) => String(n).padStart(2, '0');
+  return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+}
+
+/** FNV-1a: a small, fast hash, so each recipe gets a stable spot for the day. */
+function hash(text: string): number {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < text.length; i++) {
+    h ^= text.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return h >>> 0;
+}
+
+/**
+ * The recipes in a shuffled order that stays the same all day and changes the
+ * next, so browsing turns up different recipes without the list jumping around
+ * between visits.
+ */
+export function dailyOrder<T extends { id: string }>(recipes: T[], day: string): T[] {
+  return recipes
+    .map((recipe) => ({ recipe, key: hash(`${day}:${recipe.id}`) }))
+    .sort((a, b) => a.key - b.key || a.recipe.id.localeCompare(b.recipe.id))
+    .map(({ recipe }) => recipe);
 }

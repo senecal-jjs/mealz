@@ -45,7 +45,7 @@ simulator reaches the Mac at localhost).
 | `ATTEST_REQUIRED`              | `true`                      | With App Attest on, `false` still serves unsigned scans (the simulator)  |
 | `APP_STORE_URL`                | –                           | Linked from the share page once Mealz is on the App Store                |
 | `SCAN_PRICE_CENTS`             | `0`                         | Price of a scan in US cents once the free scans are used; `0` = all free |
-| `FREE_SCANS_PER_MONTH`         | `3`                         | Free scans per install (per attested key) per UTC month                  |
+| `FREE_SCANS_PER_MONTH`         | `3`                         | Free scans per UTC month, counted per install and per wallet             |
 | `APPLE_APP_STORE_ID`           | –                           | The app's numeric Apple ID; needed to accept production purchases        |
 | `BUCKET_NAME` and `AWS_*`      | –                           | Tigris bucket for Litestream backups (set by `fly storage create`)       |
 
@@ -145,7 +145,10 @@ app's `src/features/sharing/share-link.ts`). Browsers never send the part after
 ## Scan credit
 
 With `SCAN_PRICE_CENTS` above 0, each scan the server reads costs that much
-after `FREE_SCANS_PER_MONTH` free ones. People buy credit packs in the app
+after `FREE_SCANS_PER_MONTH` free ones. Free scans are counted both per
+install (attested key) and per wallet, and a scan is free only while both
+have some left: a reinstall makes a new key but gets the same wallet back
+from iCloud, so it doesn't reset the count. People buy credit packs in the app
 (consumable in-app purchases; the product IDs are in `src/credit.ts`).
 
 - Balances belong to a **wallet**: a random UUID the app keeps in the

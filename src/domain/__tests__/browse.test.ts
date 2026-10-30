@@ -1,5 +1,5 @@
 import { catalog } from '@/catalog';
-import { browseRecipes } from '@/domain/browse';
+import { browseRecipes, dailyOrder, localDay } from '@/domain/browse';
 
 const { recipes, ingredients } = catalog;
 const ids = (list: { id: string }[]) => list.map((r) => r.id);
@@ -74,5 +74,31 @@ describe('browseRecipes', () => {
   it('filters to the user’s own recipes', () => {
     const mine = { ...recipes[0], id: 'my-1', title: 'Mine', mine: true };
     expect(ids(browseRecipes([...recipes, mine], ingredients, 'mine', ''))).toEqual(['my-1']);
+  });
+});
+
+describe('dailyOrder', () => {
+  it('keeps every recipe and the same order all day', () => {
+    const today = dailyOrder(recipes, '2026-10-30');
+    expect(today).toHaveLength(recipes.length);
+    expect(new Set(ids(today))).toEqual(new Set(ids(recipes)));
+    expect(ids(dailyOrder(recipes, '2026-10-30'))).toEqual(ids(today));
+  });
+
+  it('changes from one day to the next, and isn’t alphabetical', () => {
+    const today = ids(dailyOrder(recipes, '2026-10-30'));
+    expect(ids(dailyOrder(recipes, '2026-10-31'))).not.toEqual(today);
+    expect(today).not.toEqual(ids(recipes));
+    // Different recipes come first on different days.
+    const firsts = new Set(
+      ['2026-11-01', '2026-11-02', '2026-11-03', '2026-11-04'].map(
+        (d) => dailyOrder(recipes, d)[0].id,
+      ),
+    );
+    expect(firsts.size).toBeGreaterThan(1);
+  });
+
+  it('names the day in local time', () => {
+    expect(localDay(new Date(2026, 0, 5, 23, 30))).toBe('2026-01-05');
   });
 });

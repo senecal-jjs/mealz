@@ -21,8 +21,8 @@ import {
   buildGrocerySections,
   IN_CART,
   shareText,
-  type GroceryRow as Row,
   type GrocerySection,
+  type GroceryRow as Row,
 } from '@/features/grocery/sections';
 import { useGroceryList } from '@/features/grocery/use-grocery-list';
 import { useTheme } from '@/hooks/use-theme';
@@ -199,7 +199,12 @@ export default function GroceriesScreen() {
 
 const styles = StyleSheet.create({
   content: { paddingBottom: Spacing.six },
-  headerButtons: { flexDirection: 'row', alignItems: 'center', gap: Spacing.four },
+  headerButtons: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.four,
+    marginHorizontal: 10,
+  },
   summary: { paddingHorizontal: Spacing.three },
   sectionHeader: {
     paddingHorizontal: Spacing.three,

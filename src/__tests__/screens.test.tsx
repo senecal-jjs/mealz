@@ -31,6 +31,9 @@ jest.mock('@/features/preferences/hooks');
 jest.mock('@/features/favourites/hooks');
 jest.mock('@/catalog/live');
 jest.mock('@/features/my-recipes/hooks');
+jest.mock('@/features/backup/restore', () => ({ restoreFromProfile: jest.fn() }));
+// The recipes list is shuffled daily; a fixed day keeps these tests the same every day.
+jest.mock('@/hooks/use-local-day', () => ({ useLocalDay: () => '2026-10-30' }));
 jest.mock('@/features/my-recipes/photos', () => ({
   savePhoto: jest.fn(async () => 'recipe-photos/test.jpg'),
   photoUri: (image: string) => image,

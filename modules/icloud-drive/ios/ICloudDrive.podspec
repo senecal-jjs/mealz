@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
-  s.name           = 'RecipeModel'
+  s.name           = 'ICloudDrive'
   s.version        = '1.0.0'
-  s.summary        = 'On-device recipe structuring with Apple Foundation Models'
-  s.description    = 'Structures scanned recipe text with the on-device model on iOS 26+, for Mealz.'
+  s.summary        = 'Files in the app’s iCloud Drive container'
+  s.description    = 'Backs up the recipes people add in Mealz to their own iCloud Drive.'
   s.author         = ''
   s.homepage       = 'https://docs.expo.dev/modules/'
   s.platforms      = { :ios => '16.4' }
@@ -10,8 +10,6 @@ Pod::Spec.new do |s|
   s.static_framework = true
 
   s.dependency 'ExpoModulesCore'
-  # Weak link so the app still launches on iOS versions without the framework.
-  s.weak_frameworks = 'FoundationModels'
 
   s.pod_target_xcconfig = {
     'DEFINES_MODULE' => 'YES',

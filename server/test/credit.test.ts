@@ -30,8 +30,8 @@ test('free scans come first, then the wallet pays', () => {
   assert.equal(ledger.balance(WALLET), 5);
   assert.equal(ledger.charge('key:a', WALLET, pricing), 'no_credit');
   assert.equal(ledger.charge('key:a', null, pricing), 'no_credit');
-  // Free scans are counted per install, so another install gets its own.
-  assert.equal(ledger.freeScansLeft('key:b', pricing), 2);
+  // Another install with another wallet gets its own free scans.
+  assert.equal(ledger.freeScansLeft('key:b', OTHER, pricing), 2);
 });
 
 test('free scans reset each month', () => {
@@ -40,7 +40,20 @@ test('free scans reset each month', () => {
   ledger.charge('key:a', null, pricing, october);
   ledger.charge('key:a', null, pricing, october);
   assert.equal(ledger.charge('key:a', null, pricing, october), 'no_credit');
-  assert.equal(ledger.freeScansLeft('key:a', pricing, new Date('2026-11-01T00:00:00Z')), 2);
+  assert.equal(ledger.freeScansLeft('key:a', null, pricing, new Date('2026-11-01T00:00:00Z')), 2);
+});
+
+test('reinstalling doesn’t reset free scans: the wallet comes back from iCloud', () => {
+  const ledger = new Ledger(':memory:');
+  ledger.charge('key:first-install', WALLET, pricing);
+  ledger.charge('key:first-install', WALLET, pricing);
+  // A reinstall has a new attested key but the same wallet.
+  assert.equal(ledger.freeScansLeft('key:reinstall', WALLET, pricing), 0);
+  assert.equal(ledger.charge('key:reinstall', WALLET, pricing), 'no_credit');
+  // A brand-new wallet on the same install doesn't reset them either.
+  assert.equal(ledger.freeScansLeft('key:first-install', OTHER, pricing), 0);
+  // A genuinely different person (new install, new wallet) still gets theirs.
+  assert.equal(ledger.freeScansLeft('key:someone-else', OTHER, pricing), 2);
 });
 
 test('a failed scan gives its charge back', () => {
@@ -49,7 +62,7 @@ test('a failed scan gives its charge back', () => {
   const free = ledger.charge('key:a', WALLET, pricing);
   assert.notEqual(free, 'no_credit');
   if (free !== 'no_credit') ledger.release(free);
-  assert.equal(ledger.freeScansLeft('key:a', pricing), 2);
+  assert.equal(ledger.freeScansLeft('key:a', WALLET, pricing), 2);
 
   const zero = { ...pricing, freePerMonth: 0 };
   const paid = ledger.charge('key:a', WALLET, zero);
@@ -161,7 +174,7 @@ test('a scan that fails costs nothing', async () => {
   });
   ledger.add(WALLET, 10, 'grant', 'test');
   for (let i = 0; i < 4; i++) assert.equal((await post('/v1/scan', scan())).status, 502);
-  assert.equal(ledger.freeScansLeft('install-0123456789abcdef', pricing), 2);
+  assert.equal(ledger.freeScansLeft('install-0123456789abcdef', null, pricing), 2);
 });
 
 test('with no price set, scans are free and answers are unchanged', async () => {

@@ -61,16 +61,16 @@
         Mealz is a meal-planning app. This policy explains what happens to your information when you
         use it. The short version:
         <strong
-          >Mealz has no accounts, analytics, ads or tracking. The only thing that ever leaves your
-          phone is a recipe you scan, and only if you allow it.</strong
+          >Mealz has no accounts, analytics, ads or tracking. The only things that leave your phone
+          are the photos of recipes you scan and the record of your scan credit.</strong
         >
       </p>
 
       <h2>What we collect</h2>
       <p>
         Mealz has no accounts, no analytics, no advertising and no tracking. The only information it
-        sends anywhere is the photos of a recipe you scan, if you allow cloud scanning (see below).
-        Nothing else leaves your phone.
+        sends anywhere is the photos of recipes you scan and, if you buy scan credit, a record of
+        your credit (see below). Nothing else leaves your phone.
       </p>
 
       <h2>What stays on your phone</h2>
@@ -91,12 +91,13 @@
         own storage, on your phone; dish photos are never uploaded.
       </p>
 
-      <h2>Cloud scanning</h2>
+      <h2>Scanning recipes</h2>
       <p>
-        The first time you scan a recipe, Mealz asks whether it may read the recipe in the cloud. If
-        you allow it, the photos of that recipe's pages and the text read from them are sent over an
-        encrypted connection to the Mealz scan server, which passes them to Anthropic's Claude to
-        turn them into a recipe. The result comes straight back to your phone.
+        Recipes you scan are read by Anthropic's Claude, and Mealz tells you so before your first
+        scan. The photos of the recipe's pages and the text your phone reads from them are sent over
+        an encrypted connection to the Mealz scan server, which passes them to Claude to turn them
+        into a recipe. The result comes straight back to your phone. If you'd rather not, you can
+        type recipes in instead; nothing is sent then.
       </p>
       <p>
         The Mealz server does not store the photos or the recipe and does not log their contents. It
@@ -110,17 +111,22 @@
       <p>
         After a few free scans a month, reading a scan on the Mealz server uses scan credit, which
         you buy in the app through Apple. Mealz has no accounts: your credit belongs to a random
-        wallet ID created on your phone and kept in its keychain, shown as your recovery code. The
-        Mealz server records each credit purchase (Apple's transaction ID and the amount) and each
-        paid scan against that ID, and keeps these records to show your balance and handle refunds.
-        They are not linked to your name, Apple ID or anything else about you. Payment is handled
+        wallet ID created on your phone and kept in its keychain, shown as your recovery code. If
+        you're signed in to iCloud, the ID is also saved in your own iCloud (Apple's key-value
+        storage), so your credit comes back on a new iPhone; Mealz can't read your iCloud. The Mealz
+        server records each credit purchase (Apple's transaction ID and the amount) and each paid
+        scan against that ID, and keeps these records to show your balance and handle refunds. They
+        are not linked to your name, Apple ID or anything else about you. Payment is handled
         entirely by Apple; Mealz never sees your payment details. The server's database is backed up
         to cloud storage (Tigris) so your credit isn't lost.
       </p>
+
+      <h2>iCloud backup</h2>
       <p>
-        If you choose "Keep on My Phone", or turn off "Read scans with Claude" in Profile, recipes
-        are read entirely on your phone, with Apple's on-device language model on iPhones with Apple
-        Intelligence. Scans are also read on your phone when you're offline.
+        If you're signed in to iCloud with iCloud Drive on, recipes you add to Mealz (and their
+        photos) are backed up to a hidden Mealz folder in your own iCloud Drive, so they come back
+        on a new iPhone. Only your devices can read it; nothing goes to the Mealz server. You can
+        remove it in Settings → your name → iCloud → Manage Storage → Mealz.
       </p>
 
       <h2>Notifications</h2>

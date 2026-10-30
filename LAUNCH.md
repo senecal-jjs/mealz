@@ -6,7 +6,7 @@ What's ready in the repo, what only you can do, and the commands to ship.
 
 - [x] App icon (`assets/mealz.icon`) and splash
 - [x] `ITSAppUsesNonExemptEncryption: false` (no export compliance questions)
-- [x] Privacy manifest: no tracking; declares Photos and Other User Content for cloud scanning, not linked to the user (matches the label in `docs/app-store/listing.md`)
+- [x] Privacy manifest: no tracking; declares Photos, Other User Content and Purchase History for scanning and scan credit, not linked to the user (matches the label in `docs/app-store/listing.md`)
 - [x] iPhone only (`supportsTablet: false`), portrait
 - [x] EAS profiles (`eas.json`): `preview` for TestFlight (includes draft recipes), `production` for the App Store (reviewed recipes only)
 - [x] A production build stops early unless at least 20 recipes are reviewed (`npm run catalog:release-check`, run automatically by `eas-build-pre-install`)
@@ -24,7 +24,7 @@ What's ready in the repo, what only you can do, and the commands to ship.
 5. **Host the privacy policy and a support page.** Replace `CONTACT_EMAIL` in `docs/privacy-policy.html`, then host it anywhere public (GitHub Pages on this repo works once it has a remote). Put both URLs in App Store Connect.
 6. **Copyright line** for App Store Connect, e.g. "2026 Your Name".
 7. **Deploy the scan server.** Set up workload identity federation in the Claude Console (a workspace with a monthly spend limit, a service account, a Fly issuer and a rule; no API key), then follow `server/README.md` to deploy to Fly.io. Put the server URL in `eas.json` as `EXPO_PUBLIC_SCAN_SERVER_URL` for the `preview` and `production` profiles. Without it, builds simply read scans on the phone. Then turn on App Attest: enable the App Attest capability for the bundle ID, set `APPLE_APP_ID` on the server, check a signed scan from a real iPhone, and set `ATTEST_REQUIRED` to `"true"` (see `server/README.md`). The same server hosts recipe share links: enable the Associated Domains capability for the bundle ID too (EAS usually does this when it builds), and set `APP_STORE_URL` on the server once the app is live so the share page links to it.
-8. **Backups and scan credit.** Run `fly storage create` so Litestream backs the server's database up to Tigris, and test a restore (`server/README.md`, "Backups"). For paid scans: sign the Paid Apps agreement (banking and tax), create the three consumables listed in `docs/app-store/listing.md`, set the App Store Server Notifications URL, set `APPLE_APP_STORE_ID`, and choose `SCAN_PRICE_CENTS` from the token counts in the server logs (`server/README.md`, "Scan credit"). Until then scans stay free.
+8. **Backups and scan credit.** Run `fly storage create` so Litestream backs the server's database up to Tigris, and test a restore (`server/README.md`, "Backups"). Enable **iCloud** for the bundle ID in the Apple Developer portal: create the container `iCloud.com.bitcli.mealz` (Identifiers → iCloud Containers), then edit the App ID → iCloud → Configure and assign it. EAS may not sync this capability itself. Without it the recovery code isn't saved to iCloud and recipes aren't backed up; nothing else changes. For paid scans: sign the Paid Apps agreement (banking and tax), create the three consumables listed in `docs/app-store/listing.md`, set the App Store Server Notifications URL, set `APPLE_APP_STORE_ID`, and choose `SCAN_PRICE_CENTS` from the token counts in the server logs (`server/README.md`, "Scan credit"). Until then scans stay free.
 
 ## Ship it
 

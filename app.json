@@ -16,7 +16,11 @@
         "applinks:mealz-scan.fly.dev?mode=developer"
       ],
       "entitlements": {
-        "com.apple.developer.devicecheck.appattest-environment": "production"
+        "com.apple.developer.devicecheck.appattest-environment": "production",
+        "com.apple.developer.ubiquity-kvstore-identifier": "$(TeamIdentifierPrefix)$(CFBundleIdentifier)",
+        "com.apple.developer.icloud-container-identifiers": ["iCloud.com.bitcli.mealz"],
+        "com.apple.developer.ubiquity-container-identifiers": ["iCloud.com.bitcli.mealz"],
+        "com.apple.developer.icloud-services": ["CloudDocuments"]
       },
       "config": {
         "usesNonExemptEncryption": false

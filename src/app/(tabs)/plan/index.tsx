@@ -1,11 +1,13 @@
 import { FlashList } from '@shopify/flash-list';
 import * as Haptics from 'expo-haptics';
 import { router, Stack } from 'expo-router';
+import { SymbolView } from 'expo-symbols';
 import { Alert, Pressable, StyleSheet, View } from 'react-native';
 
 import { useCatalog } from '@/catalog/live';
 import { Button } from '@/components/button';
 import { EmptyState } from '@/components/empty-state';
+import { HeaderTextButton } from '@/components/header-text-button';
 import { PlanRow } from '@/components/plan-row';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
@@ -36,8 +38,9 @@ export default function PlanScreen() {
         <EmptyState
           icon="fork.knife"
           title="Your plan is empty"
-          message="Add recipes from the Recipes tab and they’ll show up here, ready to shop and cook."
-          action={{ label: 'Browse recipes', onPress: () => router.navigate('/') }}
+          message="Build a plan from recipes that fit your preferences, or add recipes from the Recipes tab. They’ll show up here, ready to shop and cook."
+          action={{ label: 'Build Me a Plan', onPress: () => router.push('/build-plan') }}
+          secondaryAction={{ label: 'Browse recipes', onPress: () => router.navigate('/') }}
         />
       </>
     );
@@ -50,9 +53,17 @@ export default function PlanScreen() {
       <Stack.Screen
         options={{
           headerRight: () => (
-            <Pressable accessibilityRole="button" hitSlop={8} onPress={confirmClear}>
-              <ThemedText style={{ color: theme.tint }}>Clear</ThemedText>
-            </Pressable>
+            <View style={styles.headerButtons}>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Build me a plan"
+                hitSlop={8}
+                onPress={() => router.push('/build-plan')}
+                style={styles.headerIcon}>
+                <SymbolView name="sparkles" size={20} tintColor={theme.tint} />
+              </Pressable>
+              <HeaderTextButton label="Clear" onPress={confirmClear} />
+            </View>
           ),
         }}
       />
@@ -100,4 +111,6 @@ const styles = StyleSheet.create({
   summary: { paddingHorizontal: Spacing.three, paddingBottom: Spacing.two },
   separator: { height: StyleSheet.hairlineWidth, marginLeft: 64 + Spacing.three * 2 },
   cta: { marginHorizontal: Spacing.three, marginTop: Spacing.four },
+  headerButtons: { flexDirection: 'row', alignItems: 'center' },
+  headerIcon: { paddingHorizontal: Spacing.two },
 });

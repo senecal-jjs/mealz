@@ -7,6 +7,7 @@ import { useCatalog } from '@/catalog/live';
 import { Button } from '@/components/button';
 import { IngredientRow } from '@/components/editor/ingredient-row';
 import { StepRow } from '@/components/editor/step-row';
+import { HeaderTextButton } from '@/components/header-text-button';
 import { RecipeImage } from '@/components/recipe-image';
 import { ServingsStepper } from '@/components/servings-stepper';
 import { ThemedText } from '@/components/themed-text';
@@ -27,21 +28,11 @@ import { choosePhotoSource, pickPhoto } from '@/features/my-recipes/pick-photo';
 import { usePreferences } from '@/features/preferences/hooks';
 import { useTheme } from '@/hooks/use-theme';
 
-const READER_LABELS: Record<string, string> = {
-  cloud: 'Claude (scan server)',
-  model: 'Apple Intelligence',
-  rules: 'rule-based parser',
-};
-
 /** True for a photo that was just picked and isn't saved into app storage yet. */
 const isUnsavedPhoto = (image: string | null) => !!image && /^[a-z]+:/i.test(image);
 
 export default function RecipeEditorScreen() {
-  const { id, source, reader } = useLocalSearchParams<{
-    id?: string;
-    source?: string;
-    reader?: string;
-  }>();
+  const { id, source } = useLocalSearchParams<{ id?: string; source?: string }>();
   const theme = useTheme();
   const catalog = useCatalog();
   const { defaultServings } = usePreferences().prefs;
@@ -161,17 +152,14 @@ export default function RecipeEditorScreen() {
         options={{
           title: existing ? 'Edit Recipe' : 'New Recipe',
           gestureEnabled: !dirty,
-          headerLeft: () => (
-            <Pressable accessibilityRole="button" hitSlop={8} onPress={cancel}>
-              <ThemedText style={{ color: theme.tint }}>Cancel</ThemedText>
-            </Pressable>
-          ),
+          headerLeft: () => <HeaderTextButton label="Cancel" onPress={cancel} />,
           headerRight: () => (
-            <Pressable accessibilityRole="button" hitSlop={8} onPress={save} disabled={saving}>
-              <ThemedText type="smallBold" style={[styles.save, { color: theme.tint }]}>
-                {saving ? 'Saving…' : 'Save'}
-              </ThemedText>
-            </Pressable>
+            <HeaderTextButton
+              label={saving ? 'Saving…' : 'Save'}
+              onPress={save}
+              disabled={saving}
+              bold
+            />
           ),
         }}
       />
@@ -180,11 +168,6 @@ export default function RecipeEditorScreen() {
         contentContainerStyle={styles.content}
         keyboardShouldPersistTaps="handled"
         automaticallyAdjustKeyboardInsets>
-        {__DEV__ && source === 'scan' && reader && (
-          <ThemedText type="small" themeColor="textSecondary">
-            Dev: organized with {READER_LABELS[reader] ?? reader}
-          </ThemedText>
-        )}
         {scanNotes.length > 0 && (
           <View style={[styles.notes, { backgroundColor: theme.backgroundElement }]}>
             <View style={styles.notesTitle}>
@@ -324,7 +307,6 @@ export default function RecipeEditorScreen() {
 
 const styles = StyleSheet.create({
   content: { padding: Spacing.three, gap: Spacing.two, paddingBottom: Spacing.six * 2 },
-  save: { fontSize: 17 },
   photo: { height: 180, borderRadius: 16, overflow: 'hidden', borderCurve: 'continuous' },
   photoImage: { height: 180 },
   notes: { borderRadius: 12, borderCurve: 'continuous', padding: Spacing.three, gap: Spacing.one },

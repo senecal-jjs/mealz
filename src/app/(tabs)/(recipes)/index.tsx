@@ -2,27 +2,20 @@ import { FlashList } from '@shopify/flash-list';
 import { Link, router, Stack } from 'expo-router';
 import { SymbolView } from 'expo-symbols';
 import { useMemo, useState } from 'react';
-import { Alert, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { useCatalog } from '@/catalog/live';
 import { Chip } from '@/components/chip';
 import { RecipeCard } from '@/components/recipe-card';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
-import { BROWSE_FILTERS, browseRecipes, type BrowseFilter } from '@/domain/browse';
+import { BROWSE_FILTERS, browseRecipes, dailyOrder, type BrowseFilter } from '@/domain/browse';
 import { fitsPreferences } from '@/domain/preferences';
 import { useFavourites } from '@/features/favourites/hooks';
 import { planActions, usePlannedServings } from '@/features/plan/hooks';
 import { usePreferences } from '@/features/preferences/hooks';
+import { useLocalDay } from '@/hooks/use-local-day';
 import { useTheme } from '@/hooks/use-theme';
-
-function addRecipe() {
-  Alert.alert('Add a recipe', undefined, [
-    { text: 'Scan a Photo', onPress: () => router.push('/scan-recipe') },
-    { text: 'Type It In', onPress: () => router.push('/recipe-editor') },
-    { text: 'Cancel', style: 'cancel' },
-  ]);
-}
 
 export default function RecipesScreen() {
   const theme = useTheme();
@@ -42,10 +35,12 @@ export default function RecipesScreen() {
   const hasMine = catalog.recipes.some((r) => r.mine);
   const filters = BROWSE_FILTERS.filter((f) => f.id !== 'mine' || hasMine);
   const hidden = catalog.recipes.length - allowed.length;
-  const recipes = useMemo(
-    () => browseRecipes(allowed, catalog.ingredients, filter, query, new Set(favouriteIds)),
-    [allowed, catalog.ingredients, filter, query, favouriteIds],
-  );
+  // A new order each day helps people find recipes; search results stay alphabetical.
+  const day = useLocalDay();
+  const recipes = useMemo(() => {
+    const found = browseRecipes(allowed, catalog.ingredients, filter, query, new Set(favouriteIds));
+    return query.trim() ? found : dailyOrder(found, day);
+  }, [allowed, catalog.ingredients, filter, query, favouriteIds, day]);
 
   return (
     <>
@@ -56,7 +51,7 @@ export default function RecipesScreen() {
               accessibilityRole="button"
               accessibilityLabel="Add a recipe"
               hitSlop={8}
-              onPress={addRecipe}>
+              onPress={() => router.push('/add-recipe')}>
               <SymbolView name="plus" size={22} tintColor={theme.tint} />
             </Pressable>
           ),

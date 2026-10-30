@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { Alert, Pressable, ScrollView, StyleSheet, Switch, View } from 'react-native';
+import { Alert, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { useCatalog } from '@/catalog/live';
 import { ALLERGEN_LABELS, DIET_LABELS } from '@/catalog/types';
@@ -9,11 +8,8 @@ import { SettingsGroup, SettingsRow } from '@/components/settings-row';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { fitsPreferences } from '@/domain/preferences';
-import { formatCents } from '@/features/credit/credit';
-import { refreshCredit } from '@/features/credit/refresh';
-import { useCredit } from '@/features/credit/store';
+import { restoreFromProfile } from '@/features/backup/restore';
 import { useFavourites } from '@/features/favourites/hooks';
-import { isCloudScanConfigured, newInstallId } from '@/features/my-recipes/cloud';
 import { useHistory } from '@/features/plan/hooks';
 import { preferenceActions, usePreferences } from '@/features/preferences/hooks';
 import { useTheme } from '@/hooks/use-theme';
@@ -23,7 +19,9 @@ const DELETE_RED = '#E5484D';
 function confirmReset() {
   Alert.alert(
     'Reset all data?',
-    'This deletes your plan, grocery list, history and preferences from this phone. It can’t be undone.',
+    Platform.OS === 'ios'
+      ? 'This deletes your plan, grocery list, history, preferences and recipes from this phone. It can’t be undone, but recipes you added stay in your iCloud backup.'
+      : 'This deletes your plan, grocery list, history, preferences and recipes from this phone. It can’t be undone.',
     [
       { text: 'Cancel', style: 'cancel' },
       { text: 'Reset', style: 'destructive', onPress: () => preferenceActions.resetAll() },
@@ -46,17 +44,6 @@ export default function ProfileScreen() {
   const cookedCount = useHistory().length;
   const matching = catalog.recipes.filter((r) => fitsPreferences(r, prefs)).length;
   const separator = <View style={[styles.separator, { backgroundColor: theme.border }]} />;
-  const cloudAllowed = isCloudScanConfigured() && prefs.cloudScan === 'allowed';
-  const credit = useCredit((s) => s.summary);
-  const showCredit =
-    cloudAllowed && !!credit && (credit.priceCents > 0 || credit.balanceCents !== 0);
-
-  // Only asks the server once the user has allowed cloud scanning.
-  useEffect(() => {
-    if (cloudAllowed) refreshCredit(prefs).catch(() => {});
-    // Once per visit with scanning allowed, not on every preference change.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cloudAllowed]);
 
   return (
     <ScrollView
@@ -129,39 +116,21 @@ export default function ProfileScreen() {
         />
       </SettingsGroup>
 
-      {isCloudScanConfigured() && (
-        <SettingsGroup footer="When on, photos of recipes you scan are sent to the Mealz server and read by a computer vision algorithm, for better results. Nothing is stored. When off, scans are read on this phone.">
-          <SettingsRow
-            label="Read scans with the Mealz server"
-            accessory={
-              <Switch
-                value={prefs.cloudScan === 'allowed'}
-                onValueChange={(on) =>
-                  preferenceActions.save({
-                    cloudScan: on ? 'allowed' : 'declined',
-                    installId: prefs.installId ?? newInstallId(),
-                  })
-                }
-              />
-            }
-          />
-          {showCredit && (
-            <>
-              {separator}
-              <SettingsRow
-                label="Scan credit"
-                value={formatCents(credit.balanceCents)}
-                href="/scan-credit"
-              />
-            </>
-          )}
+      {Platform.OS === 'ios' && (
+        <SettingsGroup footer="Recipes you add are backed up to your iCloud Drive, so they come back on a new iPhone.">
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => void restoreFromProfile()}
+            style={styles.reset}>
+            <ThemedText style={{ color: theme.tint }}>Restore from iCloud</ThemedText>
+          </Pressable>
         </SettingsGroup>
       )}
 
       <SettingsGroup
         footer={
-          showCredit
-            ? 'Mealz has no accounts. Everything lives only on this phone, except your scan credit, which the Mealz server keeps against your recovery code. Resetting doesn’t remove it.'
+          Platform.OS === 'ios'
+            ? 'Mealz has no accounts. Everything lives on this phone, and recipes you add are also in your iCloud.'
             : 'Mealz has no accounts. Everything lives only on this phone.'
         }>
         <Pressable accessibilityRole="button" onPress={confirmReset} style={styles.reset}>
