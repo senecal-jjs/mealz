@@ -59,7 +59,7 @@ Answer **None** to every content question. The result is **4+**.
 
 ## App privacy ("nutrition label")
 
-- Data collection: **Yes, we collect data from this app** (only cloud scanning, which is optional and asks first; scans are processed by Anthropic, which may retain API data for a limited time).
+- Data collection: **Yes, we collect data from this app** (only scanning, which shows a notice before the first scan, and scan credit; scans are processed by Anthropic, which may retain API data for a limited time).
 - Data types: **Photos or Videos** and **Other User Content** (the scanned recipe text), and **Purchase History** (scan credit: the server records each credit pack bought and each paid scan against a random wallet ID made on the phone).
   - Use: **App Functionality** only.
   - Linked to the user's identity: **No.**

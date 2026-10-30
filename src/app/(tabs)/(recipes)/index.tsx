@@ -2,7 +2,7 @@ import { FlashList } from '@shopify/flash-list';
 import { Link, router, Stack } from 'expo-router';
 import { SymbolView } from 'expo-symbols';
 import { useMemo, useState } from 'react';
-import { Alert, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { useCatalog } from '@/catalog/live';
 import { Chip } from '@/components/chip';
@@ -15,14 +15,6 @@ import { useFavourites } from '@/features/favourites/hooks';
 import { planActions, usePlannedServings } from '@/features/plan/hooks';
 import { usePreferences } from '@/features/preferences/hooks';
 import { useTheme } from '@/hooks/use-theme';
-
-function addRecipe() {
-  Alert.alert('Add a recipe', undefined, [
-    { text: 'Scan a Photo', onPress: () => router.push('/scan-recipe') },
-    { text: 'Type It In', onPress: () => router.push('/recipe-editor') },
-    { text: 'Cancel', style: 'cancel' },
-  ]);
-}
 
 export default function RecipesScreen() {
   const theme = useTheme();
@@ -56,7 +48,7 @@ export default function RecipesScreen() {
               accessibilityRole="button"
               accessibilityLabel="Add a recipe"
               hitSlop={8}
-              onPress={addRecipe}>
+              onPress={() => router.push('/add-recipe')}>
               <SymbolView name="plus" size={22} tintColor={theme.tint} />
             </Pressable>
           ),

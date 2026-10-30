@@ -6,7 +6,7 @@ What's ready in the repo, what only you can do, and the commands to ship.
 
 - [x] App icon (`assets/mealz.icon`) and splash
 - [x] `ITSAppUsesNonExemptEncryption: false` (no export compliance questions)
-- [x] Privacy manifest: no tracking; declares Photos and Other User Content for cloud scanning, not linked to the user (matches the label in `docs/app-store/listing.md`)
+- [x] Privacy manifest: no tracking; declares Photos, Other User Content and Purchase History for scanning and scan credit, not linked to the user (matches the label in `docs/app-store/listing.md`)
 - [x] iPhone only (`supportsTablet: false`), portrait
 - [x] EAS profiles (`eas.json`): `preview` for TestFlight (includes draft recipes), `production` for the App Store (reviewed recipes only)
 - [x] A production build stops early unless at least 20 recipes are reviewed (`npm run catalog:release-check`, run automatically by `eas-build-pre-install`)

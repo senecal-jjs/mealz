@@ -45,8 +45,7 @@ function AppNavigator() {
   const colorScheme = useColorScheme();
   const { prefs, loaded } = usePreferences();
   const onboarded = prefs.onboardedAt !== null;
-  // Credit packs can only be bought with cloud scanning on, but a purchase the
-  // server hasn't added yet must still be added if it's since been turned off.
+  // Purchases StoreKit is still holding (e.g. bought offline) are added on launch.
   usePurchaseListener(isCloudScanConfigured() && Platform.OS === 'ios');
 
   // Keep the splash up until we know whether to show onboarding.
@@ -63,9 +62,11 @@ function AppNavigator() {
           <Stack.Protected guard={onboarded}>
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen name="recipe-editor" options={{ presentation: 'modal' }} />
-            <Stack.Screen name="scan-recipe" options={{ presentation: 'modal' }} />
+            <Stack.Screen
+              name="add-recipe"
+              options={{ presentation: 'modal', headerShown: false }}
+            />
             <Stack.Screen name="import-recipe" options={{ presentation: 'modal' }} />
-            <Stack.Screen name="scan-credit" options={{ presentation: 'modal' }} />
             <Stack.Screen
               name="cook/[id]"
               options={{ presentation: 'fullScreenModal', headerShown: false }}

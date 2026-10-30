@@ -1,11 +1,12 @@
 import { FlashList } from '@shopify/flash-list';
 import * as Haptics from 'expo-haptics';
 import { router, Stack } from 'expo-router';
-import { Alert, Pressable, StyleSheet, View } from 'react-native';
+import { Alert, StyleSheet, View } from 'react-native';
 
 import { useCatalog } from '@/catalog/live';
 import { Button } from '@/components/button';
 import { EmptyState } from '@/components/empty-state';
+import { HeaderTextButton } from '@/components/header-text-button';
 import { PlanRow } from '@/components/plan-row';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
@@ -49,11 +50,7 @@ export default function PlanScreen() {
     <>
       <Stack.Screen
         options={{
-          headerRight: () => (
-            <Pressable accessibilityRole="button" hitSlop={8} onPress={confirmClear}>
-              <ThemedText style={{ color: theme.tint }}>Clear</ThemedText>
-            </Pressable>
-          ),
+          headerRight: () => <HeaderTextButton label="Clear" onPress={confirmClear} />,
         }}
       />
       <FlashList
