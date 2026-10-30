@@ -1,0 +1,8 @@
+# Used with the repo root as the build context: send only the site and the two app files it reads.
+*
+!site
+site/node_modules
+site/dist
+site/.astro
+!assets/images/icon.png
+!docs/privacy-policy.html

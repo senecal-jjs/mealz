@@ -5,6 +5,7 @@
  * on-device reader. The server keeps nothing.
  */
 import type { ParsedRecipeText, TextLine } from '@/domain/recipe-text';
+import { isCreditSummary, type CreditSummary } from '@/features/credit/credit';
 
 import { encodeJpeg } from '../../../modules/text-recognition';
 import type { AppAttest } from './app-attest';
@@ -22,15 +23,31 @@ const TIMEOUT_MS = 45_000;
 const MAX_EDGE = 1568;
 
 export type CloudScanFailure =
-  'offline' | 'timeout' | 'limit' | 'disabled' | 'unreadable' | 'attestation' | 'server';
+  | 'offline'
+  | 'timeout'
+  | 'limit'
+  | 'disabled'
+  | 'unreadable'
+  | 'attestation'
+  | 'no_credit'
+  | 'server';
 
 export class CloudScanError extends Error {
-  constructor(readonly reason: CloudScanFailure) {
+  constructor(
+    readonly reason: CloudScanFailure,
+    /** The scan credit the server reported, when it did. */
+    readonly credit: CreditSummary | null = null,
+  ) {
     super(`Cloud scan failed: ${reason}`);
   }
 }
 
-export type CloudRecipe = { recipe: ParsedRecipeText; notes: string[] };
+export type CloudRecipe = {
+  recipe: ParsedRecipeText;
+  notes: string[];
+  /** Scan credit after this scan; null when the server doesn't charge for scans. */
+  credit: CreditSummary | null;
+};
 
 /** A random ID for this install; the server counts scans by it for the daily limit. */
 export function newInstallId(): string {
@@ -51,7 +68,8 @@ const positiveOrNull = (v: unknown) =>
 
 /** Checks the server's answer and turns it into the app's parsed-recipe shape. */
 export function toCloudRecipe(json: unknown): CloudRecipe {
-  const r = (json as { recipe?: Record<string, unknown> } | null)?.recipe;
+  const answer = json as { recipe?: Record<string, unknown>; credit?: unknown } | null;
+  const r = answer?.recipe;
   if (
     !r ||
     typeof r.title !== 'string' ||
@@ -73,10 +91,12 @@ export function toCloudRecipe(json: unknown): CloudRecipe {
       steps: r.steps.map((s) => s.trim()).filter(Boolean),
     },
     notes: isStrings(r.notes) ? r.notes : [],
+    credit: isCreditSummary(answer?.credit) ? answer.credit : null,
   };
 }
 
 const FAILURE_BY_STATUS: Record<number, CloudScanFailure> = {
+  402: 'no_credit',
   429: 'limit',
   503: 'disabled',
   502: 'unreadable',
@@ -89,13 +109,21 @@ type Options = {
   prepare?: typeof preparePage;
   /** Signs each scan with App Attest; null sends it unsigned. */
   attest?: AppAttest | null;
+  /** Pays for the scan once the month's free scans are used. */
+  wallet?: string | null;
 };
 
 /** Reads the pages with the scan server. Throws `CloudScanError` on any failure. */
 export async function readWithCloud(
   pages: ScannedPage[],
   installId: string,
-  { url = SCAN_SERVER_URL, fetchFn = fetch, prepare = preparePage, attest = null }: Options = {},
+  {
+    url = SCAN_SERVER_URL,
+    fetchFn = fetch,
+    prepare = preparePage,
+    attest = null,
+    wallet = null,
+  }: Options = {},
 ): Promise<CloudRecipe> {
   if (!url) throw new CloudScanError('disabled');
   const images = await Promise.all(pages.map((p) => prepare(p.uri)));
@@ -111,7 +139,13 @@ export async function readWithCloud(
       return await fetchFn(`${url}/v1/scan`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ installId, pages: images, text, attest: signature ?? undefined }),
+        body: JSON.stringify({
+          installId,
+          wallet: wallet ?? undefined,
+          pages: images,
+          text,
+          attest: signature ?? undefined,
+        }),
         signal: controller.signal,
       });
     } catch {
@@ -130,6 +164,12 @@ export async function readWithCloud(
       response = await send();
     }
   }
-  if (!response.ok) throw new CloudScanError(FAILURE_BY_STATUS[response.status] ?? 'server');
+  if (!response.ok) {
+    const { credit } = ((await response.json().catch(() => null)) ?? {}) as { credit?: unknown };
+    throw new CloudScanError(
+      FAILURE_BY_STATUS[response.status] ?? 'server',
+      isCreditSummary(credit) ? credit : null,
+    );
+  }
   return toCloudRecipe(await response.json().catch(() => null));
 }

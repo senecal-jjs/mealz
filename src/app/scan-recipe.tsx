@@ -1,6 +1,6 @@
 import { router, Stack } from 'expo-router';
 import { SymbolView } from 'expo-symbols';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ActivityIndicator, Alert, Pressable, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -8,8 +8,13 @@ import { Button } from '@/components/button';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { parsedToDraft } from '@/domain/recipe-text';
+import { canAffordScan, scanCostNote } from '@/features/credit/credit';
+import { refreshCredit } from '@/features/credit/refresh';
+import { useCredit } from '@/features/credit/store';
+import { getWallet } from '@/features/credit/wallet';
 import { createAppAttest } from '@/features/my-recipes/app-attest';
 import {
+  CloudScanError,
   isCloudScanConfigured,
   newInstallId,
   readWithCloud,
@@ -90,7 +95,33 @@ async function cloudReaderFor(prefs: Preferences): Promise<CloudReader> {
     },
     { log: __DEV__ ? console.log : undefined },
   );
-  return (pages) => readWithCloud(pages, id, { attest });
+  const wallet = await getWallet();
+  // Keeps the credit shown up to date with what the server charged.
+  return async (pages) => {
+    try {
+      const result = await readWithCloud(pages, id, { attest, wallet });
+      if (result.credit) useCredit.getState().setSummary(result.credit);
+      return result;
+    } catch (e) {
+      if (e instanceof CloudScanError && e.credit) useCredit.getState().setSummary(e.credit);
+      throw e;
+    }
+  };
+}
+
+/** Out of credit: buy some, or read this scan on the phone for free. */
+function askOutOfCredit(): Promise<'buy' | 'phone' | 'cancel'> {
+  return new Promise((resolve) =>
+    Alert.alert(
+      'Out of scan credit',
+      'Add credit to have Mealz read this recipe, or read it on your iPhone for free.',
+      [
+        { text: 'Add Credit', onPress: () => resolve('buy') },
+        { text: 'Read on iPhone', onPress: () => resolve('phone') },
+        { text: 'Cancel', style: 'cancel', onPress: () => resolve('cancel') },
+      ],
+    ),
+  );
 }
 
 /**
@@ -110,6 +141,14 @@ export default function ScanRecipeScreen() {
   const [organizing, setOrganizing] = useState(false);
   const [availability] = useState(getModelAvailability);
   const note = cloudAllowed ? null : modelNote(availability);
+  const credit = useCredit((s) => s.summary);
+  const costNote = cloudAllowed && credit ? scanCostNote(credit) : null;
+
+  // What the scan will cost, asked when the screen opens.
+  useEffect(() => {
+    if (cloudAllowed) refreshCredit(prefs).catch(() => {});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cloudAllowed]);
 
   const addPage = async (source: PhotoSource) => {
     const uri = await pickPhoto(source);
@@ -133,7 +172,17 @@ export default function ScanRecipeScreen() {
   };
 
   const review = async () => {
-    const cloud = await cloudReaderFor(prefs);
+    let cloud = await cloudReaderFor(prefs);
+    const summary = useCredit.getState().summary;
+    if (cloud && summary && !canAffordScan(summary)) {
+      const choice = await askOutOfCredit();
+      if (choice === 'cancel') return;
+      if (choice === 'buy') {
+        router.push('/scan-credit');
+        return;
+      }
+      cloud = null;
+    }
     setOrganizing(true);
     const { recipe, source, notes } = await structureScan(pages, cloud);
     if (__DEV__)
@@ -207,6 +256,12 @@ export default function ScanRecipeScreen() {
             {privacyNote(prefs)}
           </ThemedText>
         </View>
+
+        {costNote && (
+          <ThemedText type="small" themeColor="textSecondary" style={styles.note}>
+            {costNote}
+          </ThemedText>
+        )}
 
         {note && isTextRecognitionAvailable() && (
           <ThemedText type="small" themeColor="textSecondary" style={styles.note}>

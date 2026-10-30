@@ -1,6 +1,10 @@
 # Deploy with `fly deploy` from this folder. See README.md for first-time setup.
 app = "mealz-scan"
 primary_region = "iad"
+# Litestream passes the stop signal on to the server, then sends its last
+# changes to the backup bucket before exiting; give it time to do both.
+kill_signal = "SIGINT"
+kill_timeout = "30s"
 
 [env]
   PORT = "8080"
@@ -14,6 +18,11 @@ primary_region = "iad"
   # App Attest is on when APPLE_APP_ID ("<Team ID>.com.bitcli.mealz") is set.
   # Only signed scans are served; "false" also serves unsigned ones.
   ATTEST_REQUIRED = "true"
+  # Scan credit (see README.md). 0 turns it off and every scan is free.
+  SCAN_PRICE_CENTS = "10"
+  FREE_SCANS_PER_MONTH = "3"
+  # APPLE_APP_STORE_ID: the app's numeric ID in App Store Connect, needed to
+  # check production purchases. Sandbox and TestFlight purchases work without it.
 
 [http_service]
   internal_port = 8080
@@ -34,11 +43,18 @@ primary_region = "iad"
     path = "/health"
     timeout = "5s"
 
-# The daily scan counts live in SQLite on this volume, so run a single machine.
+# Scan counts, attested keys and the credit ledger live in SQLite on this
+# volume, so run a single machine. Litestream backs the file up to Tigris.
 [mounts]
   source = "scan_data"
   destination = "/data"
 
+# Litestream's metrics, for Fly's managed Grafana (replication lag, errors).
+[metrics]
+  port = 9090
+  path = "/metrics"
+
 [[vm]]
   size = "shared-cpu-1x"
-  memory = "256mb"
+  # Room for Litestream and several 10 MB scans at once.
+  memory = "512mb"

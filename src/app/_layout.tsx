@@ -2,13 +2,15 @@ import { useMigrations } from 'drizzle-orm/expo-sqlite/migrator';
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
-import { StyleSheet, useColorScheme, View } from 'react-native';
+import { Platform, StyleSheet, useColorScheme, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { CatalogProvider } from '@/catalog/live';
 import { ThemedText } from '@/components/themed-text';
 import { headerBlur } from '@/constants/navigation';
 import { db } from '@/db/client';
+import { usePurchaseListener } from '@/features/credit/purchases';
+import { isCloudScanConfigured } from '@/features/my-recipes/cloud';
 import { PreferencesProvider, usePreferences } from '@/features/preferences/hooks';
 import migrations from '../../drizzle/migrations';
 
@@ -43,6 +45,9 @@ function AppNavigator() {
   const colorScheme = useColorScheme();
   const { prefs, loaded } = usePreferences();
   const onboarded = prefs.onboardedAt !== null;
+  // Credit packs can only be bought with cloud scanning on, but a purchase the
+  // server hasn't added yet must still be added if it's since been turned off.
+  usePurchaseListener(isCloudScanConfigured() && Platform.OS === 'ios');
 
   // Keep the splash up until we know whether to show onboarding.
   useEffect(() => {
@@ -60,6 +65,7 @@ function AppNavigator() {
             <Stack.Screen name="recipe-editor" options={{ presentation: 'modal' }} />
             <Stack.Screen name="scan-recipe" options={{ presentation: 'modal' }} />
             <Stack.Screen name="import-recipe" options={{ presentation: 'modal' }} />
+            <Stack.Screen name="scan-credit" options={{ presentation: 'modal' }} />
             <Stack.Screen
               name="cook/[id]"
               options={{ presentation: 'fullScreenModal', headerShown: false }}

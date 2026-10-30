@@ -2,7 +2,9 @@
  * Daily scan limits, per install and in total, counted in SQLite. One machine
  * is enough at this scale; with several, move the counts to shared storage.
  */
-import { DatabaseSync } from 'node:sqlite';
+import type { DatabaseSync } from 'node:sqlite';
+
+import { openDb } from './db.ts';
 
 export type Limits = { perInstall: number; total: number };
 
@@ -10,7 +12,7 @@ export class ScanCounter {
   private db: DatabaseSync;
 
   constructor(path: string) {
-    this.db = new DatabaseSync(path);
+    this.db = openDb(path);
     this.db.exec(`
       CREATE TABLE IF NOT EXISTS scans (
         day TEXT NOT NULL,

@@ -1,0 +1,436 @@
+---
+import Base from '../layouts/Base.astro';
+import PhoneShot from '../components/PhoneShot.astro';
+import ScanDemo from '../components/ScanDemo.astro';
+import StoreLinks from '../components/StoreLinks.astro';
+import { RECIPE_COUNT } from '../config';
+import cookShot from '../assets/screens/cook.png';
+import groceriesShot from '../assets/screens/groceries.png';
+import planShot from '../assets/screens/plan.png';
+import recipeShot from '../assets/screens/recipe.png';
+import recipesShot from '../assets/screens/recipes.png';
+
+const filters = [
+  'Vegetarian',
+  'Vegan',
+  'Pescatarian',
+  'Low-carb',
+  'Quick',
+  'One pan',
+  'Kid-friendly',
+  'High-carb',
+  'Favourites',
+];
+
+const features = [
+  {
+    id: 'plan',
+    title: 'Plan the week in a few taps',
+    shot: planShot,
+    alt: 'My Plan screen with three recipes, servings for each and a View Grocery List button.',
+    body: [
+      `Browse ${RECIPE_COUNT} quick, weeknight-friendly recipes and tap + to add them to your plan. Each recipe scales to your household, in US or metric amounts.`,
+      'Mealz only shows recipes that fit your diet, skips anything with your allergens and leaves out ingredients you don’t like.',
+    ],
+    chips: true,
+  },
+  {
+    id: 'shop',
+    title: 'One grocery list, sorted by aisle',
+    shot: groceriesShot,
+    alt: 'Groceries screen listing produce such as 1 bunch cilantro and 4 cloves garlic, each with the recipes that use it.',
+    body: [
+      'Your list builds itself from the plan. Ingredients from every recipe are merged and rounded up to what you can actually buy (“3 limes”, “1 bunch cilantro”), then grouped by aisle so you shop in one pass.',
+      'Check things off as you go, add your own items, and share the list with anyone in your household.',
+    ],
+  },
+  {
+    id: 'cook',
+    title: 'Cook one step at a time',
+    shot: cookShot,
+    alt: 'Cook mode showing step 1 of 5 in large type, a Start 15 min timer button and the ingredients for that step.',
+    body: [
+      'Cook mode shows each step in big, readable type with exactly the ingredients that step needs, and keeps the screen awake.',
+      'Tap a timer and Mealz lets you know when it’s done, even if you leave the app.',
+    ],
+  },
+  {
+    id: 'share',
+    title: 'Share a recipe with a link',
+    shot: recipeShot,
+    alt: 'A recipe page with share and favourite buttons, prep and cook times, diet tags and a servings control.',
+    body: [
+      'Send any recipe as a link. The whole recipe travels inside the link itself, so no server stores it.',
+      'Friends with Mealz open it straight in the app and can save their own copy. Anyone else sees the recipe in their browser.',
+    ],
+  },
+];
+---
+
+<Base
+  title="Mealz: plan meals, shop one list"
+  description="A meal planner for your phone. Pick a few quick dinners, get one grocery list sorted by aisle, then cook step by step with timers. No account, no ads.">
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Meal planner for your phone</p>
+        <h1>Plan meals. <span>Shop one list.</span></h1>
+        <p class="lede">
+          Pick a few quick dinners, get one grocery list sorted by aisle, then cook step by step
+          with built-in timers. No account, no ads, and your plan stays on your phone.
+        </p>
+        <div class="cta-row">
+          <StoreLinks />
+          <a class="cta-secondary" href="#features">See what it does</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <PhoneShot
+          class="hero-back"
+          src={groceriesShot}
+          alt="The grocery list, grouped by aisle."
+          eager
+        />
+        <PhoneShot
+          class="hero-front"
+          src={recipesShot}
+          alt="The Recipes screen with search, filter chips such as Kid-friendly and High-carb, and recipe cards."
+          eager
+        />
+      </div>
+    </div>
+  </section>
+
+  <section id="scan" class="scan" aria-labelledby="scan-title">
+    <div class="wrap scan-inner">
+      <div class="scan-copy">
+        <p class="eyebrow">Scan a recipe</p>
+        <h2 id="scan-title">Your cookbooks, in your meal plan</h2>
+        <p class="scan-lede">
+          Snap a photo of a cookbook page or a magazine clipping. Mealz turns it into a proper
+          recipe, ready to plan, shop for and cook.
+        </p>
+        <ul class="scan-points">
+          <li>
+            <strong>Ingredients matched for you.</strong> Each line becomes an amount and an
+            ingredient, so it lands on your grocery list in the right aisle.
+          </li>
+          <li>
+            <strong>Steps with timers.</strong> Times in the method (“simmer for 10 minutes”) become
+            timers in cook mode.
+          </li>
+          <li>
+            <strong>Long recipes and two-column pages.</strong> Add a photo per page; columns are
+            read in the right order.
+          </li>
+          <li>
+            <strong>You stay in charge.</strong> The text is read on your phone first. If you
+            allow it, Claude tidies it into a recipe; if not, it’s organized on your phone. Either
+            way you check it before saving.
+          </li>
+        </ul>
+        <p class="note">Rather type? “Type It In” opens the same editor.</p>
+      </div>
+      <ScanDemo />
+    </div>
+  </section>
+
+  <section id="features" class="features" aria-labelledby="features-title">
+    <div class="wrap">
+      <h2 id="features-title" class="section-title">Everything for dinner, in one app</h2>
+      <div class="feature-list">
+        {
+          features.map((f) => (
+            <article class="feature" id={f.id}>
+              <PhoneShot
+                class="feature-shot"
+                src={f.shot}
+                alt={f.alt}
+                sizes="(min-width: 1100px) 380px, (min-width: 760px) 320px, 300px"
+              />
+              <div class="feature-copy">
+                <h3>{f.title}</h3>
+                {f.body.map((p) => <p>{p}</p>)}
+                {f.chips && (
+                  <>
+                    <ul class="chips" aria-label="Recipe filters">
+                      {filters.map((c) => <li>{c}</li>)}
+                    </ul>
+                    <p class="note">
+                      Training for a race? The High-carb filter finds pasta, rice, noodle and potato
+                      dinners for endurance training.
+                    </p>
+                  </>
+                )}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="privacy" aria-labelledby="privacy-title">
+    <div class="wrap">
+      <div class="privacy-card">
+        <h2 id="privacy-title">Private by design</h2>
+        <ul class="privacy-points">
+          <li>
+            <strong>No accounts.</strong> Open the app and start planning. There’s nothing to sign up
+            for.
+          </li>
+          <li>
+            <strong>Your data stays on your phone.</strong> Your plan, list, recipes and preferences
+            are stored only on your device.
+          </li>
+          <li>
+            <strong>No ads, analytics or tracking.</strong>
+          </li>
+          <li>
+            <strong>Scans leave only with your OK.</strong> A recipe you scan is sent to be read in the
+            cloud only if you allow it, and you can switch that off any time.
+          </li>
+        </ul>
+        <p><a href="privacy/">Read the privacy policy</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="wrap closing-inner">
+      <h2>What’s for dinner? Sorted.</h2>
+      <div class="cta-row closing-ctas">
+        <StoreLinks />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    background: var(--surface-warm);
+    overflow: hidden;
+  }
+  .hero-inner {
+    display: grid;
+    gap: 32px;
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+  .eyebrow {
+    margin: 0 0 8px;
+    color: var(--green-strong);
+    font-weight: 600;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  h1 {
+    font-size: clamp(40px, 10vw, 64px);
+    margin: 0 0 16px;
+  }
+  h1 span {
+    color: var(--green-strong);
+    display: block;
+  }
+  .lede {
+    font-size: 19px;
+    color: var(--muted);
+    margin: 0 0 24px;
+    max-width: 36em;
+  }
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 20px;
+  }
+  .cta-secondary {
+    font-weight: 600;
+    padding: 12px 4px;
+  }
+  .hero-art {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 440px;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 8px;
+  }
+  .hero-art :global(.phone-shot) {
+    grid-row: 1;
+    width: 120%;
+    max-width: none;
+  }
+  .hero-art :global(.hero-back) {
+    grid-column: 1;
+    margin-top: 48px;
+    transform: rotate(-4deg);
+  }
+  .hero-art :global(.hero-front) {
+    grid-column: 2;
+    margin-left: -20%;
+    transform: rotate(3deg);
+    z-index: 1;
+  }
+  @media (min-width: 880px) {
+    .hero-inner {
+      grid-template-columns: 1.05fr 1fr;
+      align-items: center;
+      padding-top: 72px;
+      padding-bottom: 80px;
+    }
+  }
+
+  .scan {
+    padding: 8px 0 24px;
+  }
+  .scan-inner {
+    display: grid;
+    gap: 32px;
+    padding-top: 56px;
+  }
+  .scan h2 {
+    font-size: clamp(30px, 7vw, 46px);
+    margin: 0 0 12px;
+  }
+  .scan-lede {
+    font-size: 19px;
+    color: var(--muted);
+    margin: 0 0 20px;
+  }
+  .scan-points {
+    padding: 0;
+    margin: 0 0 16px;
+    list-style: none;
+    display: grid;
+    gap: 12px;
+  }
+  .scan-points li {
+    padding-left: 16px;
+    border-left: 3px solid var(--green);
+  }
+  @media (min-width: 880px) {
+    .scan-inner {
+      grid-template-columns: 1.1fr 1fr;
+      align-items: center;
+      gap: 56px;
+    }
+  }
+
+  .section-title {
+    font-size: clamp(28px, 6vw, 40px);
+    margin: 56px 0 8px;
+  }
+  .feature-list {
+    display: grid;
+    gap: 56px;
+    margin-top: 32px;
+  }
+  .feature {
+    display: grid;
+    gap: 24px;
+  }
+  .feature :global(.feature-shot) {
+    justify-self: center;
+    max-width: 300px;
+  }
+  .feature h3 {
+    font-size: clamp(24px, 3vw, 30px);
+    margin: 0 0 10px;
+  }
+  .feature p {
+    margin: 0 0 12px;
+  }
+  @media (min-width: 760px) {
+    .feature-list {
+      gap: 72px;
+    }
+    .feature {
+      grid-template-columns: 320px minmax(0, 460px);
+      justify-content: center;
+      align-items: center;
+      gap: 56px;
+    }
+    .feature :global(.feature-shot) {
+      max-width: none;
+    }
+    .feature:nth-child(even) {
+      grid-template-columns: minmax(0, 460px) 320px;
+    }
+    .feature:nth-child(even) :global(.feature-shot) {
+      order: 2;
+    }
+  }
+  @media (min-width: 1100px) {
+    .feature {
+      grid-template-columns: 380px minmax(0, 480px);
+      gap: 80px;
+    }
+    .feature:nth-child(even) {
+      grid-template-columns: minmax(0, 480px) 380px;
+    }
+  }
+  .chips {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chips li {
+    background: var(--green-soft);
+    color: var(--green-strong);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
+  .note {
+    color: var(--muted);
+    font-size: 16px;
+  }
+
+  .privacy-card {
+    margin-top: 64px;
+    padding: 28px 20px;
+    border-radius: var(--radius);
+    background: var(--green-soft);
+  }
+  @media (min-width: 640px) {
+    .privacy-card {
+      padding: 40px;
+    }
+  }
+  .privacy-card h2 {
+    font-size: clamp(28px, 6vw, 40px);
+    margin: 0 0 16px;
+  }
+  .privacy-points {
+    padding: 0;
+    margin: 0 0 16px;
+    list-style: none;
+    display: grid;
+    gap: 12px;
+  }
+  @media (min-width: 760px) {
+    .privacy-points {
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 32px;
+    }
+  }
+
+  .closing-inner {
+    text-align: center;
+    padding-top: 56px;
+  }
+  .closing-ctas {
+    justify-content: center;
+  }
+  .closing h2 {
+    font-size: clamp(28px, 6vw, 40px);
+    margin: 0 0 20px;
+  }
+</style>

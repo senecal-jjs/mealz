@@ -7,7 +7,9 @@
  * See https://developer.apple.com/documentation/devicecheck/validating-apps-that-connect-to-your-server
  */
 import { createHash, randomBytes, verify, X509Certificate } from 'node:crypto';
-import { DatabaseSync } from 'node:sqlite';
+import type { DatabaseSync } from 'node:sqlite';
+
+import { openDb } from './db.ts';
 
 /** https://www.apple.com/certificateauthority/Apple_App_Attestation_Root_CA.pem */
 export const APPLE_APP_ATTEST_ROOT = `-----BEGIN CERTIFICATE-----
@@ -224,7 +226,7 @@ export class AttestStore {
   private db: DatabaseSync;
 
   constructor(path: string) {
-    this.db = new DatabaseSync(path);
+    this.db = openDb(path);
     this.db.exec(`
       CREATE TABLE IF NOT EXISTS challenges (
         challenge TEXT PRIMARY KEY,

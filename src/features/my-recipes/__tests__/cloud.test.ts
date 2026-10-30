@@ -63,7 +63,36 @@ describe('readWithCloud', () => {
         steps: ['Toast the bread.'],
       },
       notes: ['Step 2 is cut off.'],
+      credit: null,
     });
+  });
+
+  it('pays with the wallet and returns the credit left', async () => {
+    const credit = { priceCents: 10, freeScansLeft: 0, balanceCents: 489 };
+    const fetchFn = respond(200, { recipe: serverRecipe, credit });
+    const result = await readWithCloud(pages, 'install-1', {
+      url: 'https://scan.test',
+      fetchFn,
+      prepare,
+      wallet: '0f8fad5b-d9cb-469f-a165-70867728950e',
+    });
+    const body = JSON.parse(
+      (fetchFn.mock.calls[0] as unknown as [string, RequestInit])[1].body as string,
+    );
+    expect(body.wallet).toBe('0f8fad5b-d9cb-469f-a165-70867728950e');
+    expect(result.credit).toEqual(credit);
+  });
+
+  it('reports running out of credit, with the balance', async () => {
+    const credit = { priceCents: 10, freeScansLeft: 0, balanceCents: 4 };
+    const fetchFn = respond(402, { error: 'no_credit', credit });
+    const error = await readWithCloud(pages, 'install-1', {
+      url: 'https://scan.test',
+      fetchFn,
+      prepare,
+    }).catch((e: unknown) => e);
+    expect(error).toBeInstanceOf(CloudScanError);
+    expect(error).toMatchObject({ reason: 'no_credit', credit });
   });
 
   it.each([

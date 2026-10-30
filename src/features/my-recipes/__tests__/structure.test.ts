@@ -93,13 +93,18 @@ describe('structureScan', () => {
       steps: ['Whisk and fry.'],
     },
     notes: ['The last step is cut off.'],
+    credit: null,
   };
 
   it('uses the cloud reader when allowed', async () => {
     const cloud = jest.fn(async () => cloudRecipe);
     const result = await structureScan(pages, cloud, unavailable);
     expect(cloud).toHaveBeenCalledWith(pages);
-    expect(result).toEqual({ ...cloudRecipe, source: 'cloud' });
+    expect(result).toEqual({
+      recipe: cloudRecipe.recipe,
+      notes: cloudRecipe.notes,
+      source: 'cloud',
+    });
   });
 
   it('reads on the device when the cloud fails or is not allowed', async () => {

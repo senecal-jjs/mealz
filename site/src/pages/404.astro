@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Page not found · Mealz" description="This page doesn’t exist.">
+  <div class="wrap missing">
+    <h1>Page not found</h1>
+    <p>There’s nothing at this address.</p>
+    <p><a href={import.meta.env.BASE_URL}>Go to the Mealz home page</a></p>
+  </div>
+</Base>
+
+<style>
+  .missing {
+    padding-top: 64px;
+    min-height: 50vh;
+  }
+  h1 {
+    font-size: clamp(32px, 8vw, 44px);
+    margin: 0 0 8px;
+  }
+</style>

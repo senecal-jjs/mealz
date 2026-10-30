@@ -5,3 +5,6 @@ android
 .expo
 package-lock.json
 src/catalog/data/ingredients.json
+site/dist
+site/.astro
+site/package-lock.json

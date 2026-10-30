@@ -1,0 +1,27 @@
+# The Mealz website: static files served by nginx. Deploy with `npm run deploy` from this
+# folder, which runs `fly deploy` from the repo root. See README.md for first-time setup.
+app = "mealz-site"
+primary_region = "iad"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [http_service.concurrency]
+    type = "requests"
+    soft_limit = 200
+    hard_limit = 250
+
+  [[http_service.checks]]
+    grace_period = "5s"
+    interval = "30s"
+    method = "GET"
+    path = "/"
+    timeout = "5s"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"

@@ -1,9 +1,11 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { serve } from '@hono/node-server';
 
+import { appleStore } from './apple.ts';
 import { createApp } from './app.ts';
 import { AttestStore } from './attest.ts';
 import { authFromEnv } from './auth.ts';
+import { Ledger } from './credit.ts';
 import { ScanCounter } from './limits.ts';
 import { readRecipe, type ModelConfig } from './recipe.ts';
 
@@ -37,6 +39,24 @@ const attest = appId
   : null;
 if (attest) setInterval(() => attest.store.prune(), 600_000).unref();
 
+// Scan credit is on when SCAN_PRICE_CENTS is above 0. Purchases are checked
+// for the app's bundle ID (from APPLE_APP_ID); production ones also need its
+// numeric App Store ID.
+const ledger = new Ledger(dbPath);
+ledger.prune();
+setInterval(() => ledger.prune(), 86_400_000).unref();
+const bundleId = appId?.slice(appId.indexOf('.') + 1);
+const credit = {
+  pricing: {
+    priceCents: number(env.SCAN_PRICE_CENTS, 0),
+    freePerMonth: number(env.FREE_SCANS_PER_MONTH, 3),
+  },
+  ledger,
+  apple: bundleId
+    ? appleStore({ bundleId, appAppleId: number(env.APPLE_APP_STORE_ID, 0) || undefined })
+    : null,
+};
+
 const app = createApp({
   read: (input) => readRecipe(client, input, config),
   counter,
@@ -46,6 +66,7 @@ const app = createApp({
   },
   enabled: () => env.SCAN_ENABLED !== 'false',
   attest,
+  credit,
   share: { appId, appStoreUrl: env.APP_STORE_URL },
 });
 
@@ -57,6 +78,7 @@ serve({ fetch: app.fetch, port, hostname: '0.0.0.0' }, () =>
       port,
       auth: auth.method,
       attest: attest ? (attest.required ? 'required' : 'optional') : 'off',
+      priceCents: credit.pricing.priceCents,
       model: config.model,
       effort: config.effort,
     }),

@@ -1,0 +1,14 @@
+# Litestream copies every change to the SQLite file to Tigris (Fly's object
+# storage), about once a second. The bucket settings are the secrets that
+# `fly storage create` sets on the app. See README.md, "Backups".
+dbs:
+  - path: ${DB_PATH}
+    replica:
+      type: s3
+      bucket: ${BUCKET_NAME}
+      path: scans.db
+      endpoint: ${AWS_ENDPOINT_URL_S3}
+      region: auto
+
+# Prometheus metrics for Fly's dashboards (see [metrics] in fly.toml).
+addr: ':9090'

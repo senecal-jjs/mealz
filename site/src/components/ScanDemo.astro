@@ -1,0 +1,543 @@
+---
+// The scan section: a screen recording when one is set in config.ts, otherwise a drawn
+// animation of the same flow (page photo → reading → recipe editor). Both can be paused,
+// and neither moves for people who ask for reduced motion.
+import { SCAN_VIDEO } from '../config';
+
+const ingredients = [
+  ['1 lb', 'short pasta'],
+  ['1½ cups', 'frozen peas'],
+  ['1 cup', 'ricotta'],
+  ['½ cup', 'parmesan, grated'],
+  ['1', 'lemon'],
+  ['2 tbsp', 'olive oil'],
+  ['½ bunch', 'basil'],
+];
+const steps = [
+  'Snap a photo of the page',
+  'Mealz reads it into a recipe',
+  'Check it over and save',
+];
+---
+
+<div class="scan-demo" data-scan-demo>
+  <ol class="scan-steps">
+    {
+      steps.map((s, i) => (
+        <li class={`scan-step scan-step-${i}`}>
+          <span class="num" aria-hidden="true">
+            {i + 1}
+          </span>
+          {s}
+        </li>
+      ))
+    }
+  </ol>
+
+  <figure class="phone-wrap">
+    <div class="phone">
+      {
+        SCAN_VIDEO ? (
+          <video
+            class="screen"
+            src={SCAN_VIDEO.src}
+            poster={SCAN_VIDEO.poster}
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-label="Screen recording: scanning a cookbook page into a recipe in Mealz"
+          />
+        ) : (
+          <div class="screen anim" aria-hidden="true">
+            <div class="stage stage-page">
+              <div class="paper">
+                <p class="paper-title">Lemon Ricotta Pasta with Peas</p>
+                <p class="paper-meta">Serves 4 · Ready in 17 minutes</p>
+                <div class="paper-cols">
+                  <ul>
+                    {ingredients.map(([q, n]) => (
+                      <li>
+                        {q} {n}
+                      </li>
+                    ))}
+                  </ul>
+                  <div class="paper-method">
+                    <p>Cook the pasta in salted boiling water, adding the peas for the last 2 minutes.</p>
+                    <p>Stir together the ricotta, parmesan, lemon, oil and pepper.</p>
+                    <p>Toss in the pasta with a splash of cooking water.</p>
+                    <p>Tear over the basil and serve.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="viewfinder" />
+              <div class="flash" />
+              <div class="scanline" />
+              <p class="pill">Reading the recipe…</p>
+            </div>
+            <div class="stage stage-editor">
+              <p class="ed-label">Title</p>
+              <p class="ed-title">Lemon Ricotta Pasta with Peas</p>
+              <p class="ed-meta">4 servings · 5 min prep · 12 min cook</p>
+              <p class="ed-label">Ingredients</p>
+              <ul class="ed-list">
+                {ingredients.map(([q, n], i) => (
+                  <li style={`--i:${i}`}>
+                    <span class="q">{q}</span> {n}
+                    <span class="check">✓</span>
+                  </li>
+                ))}
+              </ul>
+              <p class="ed-label">Steps</p>
+              <p class="ed-step">
+                Cook the pasta in salted boiling water… <span class="timer">⏱ 10 min</span>
+              </p>
+              <p class="ed-save">Save Recipe</p>
+            </div>
+          </div>
+        )
+      }
+    </div>
+    <figcaption class="visually-hidden">
+      {
+        SCAN_VIDEO
+          ? 'A screen recording of scanning a cookbook page in Mealz.'
+          : 'An animation: a photo of a cookbook page for Lemon Ricotta Pasta with Peas is read by Mealz and turns into an editable recipe with matched ingredients and a 10-minute timer on the first step.'
+      }
+    </figcaption>
+    <button class="pause" type="button" data-pause>Pause</button>
+  </figure>
+</div>
+
+<script>
+  for (const root of document.querySelectorAll<HTMLElement>('[data-scan-demo]')) {
+    const button = root.querySelector<HTMLButtonElement>('[data-pause]')!;
+    const video = root.querySelector('video');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const setPaused = (paused: boolean) => {
+      root.toggleAttribute('data-paused', paused);
+      button.textContent = paused ? 'Play' : 'Pause';
+      if (video) (paused ? video.pause() : video.play().catch(() => setPaused(true)));
+    };
+
+    if (reduce) {
+      // The drawn version shows its finished recipe; a video waits for Play.
+      if (video) setPaused(true);
+      else button.hidden = true;
+    } else if (video) {
+      setPaused(false);
+    }
+    button.addEventListener('click', () => setPaused(!root.hasAttribute('data-paused')));
+  }
+</script>
+
+<style>
+  .scan-demo {
+    --loop: 10s;
+    display: grid;
+    gap: 20px;
+    justify-items: center;
+  }
+  .phone-wrap {
+    order: -1;
+    width: 100%;
+  }
+  .scan-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 6px;
+    width: min(340px, 100%);
+  }
+  .scan-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-weight: 600;
+    animation-duration: var(--loop);
+    animation-iteration-count: infinite;
+  }
+  .num {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--green);
+    color: #fff;
+    font-size: 15px;
+  }
+  .scan-step-0 {
+    animation-name: step-0;
+  }
+  .scan-step-1 {
+    animation-name: step-1;
+  }
+  .scan-step-2 {
+    animation-name: step-2;
+  }
+  @keyframes step-0 {
+    0%,
+    16% {
+      background: var(--surface);
+    }
+    18%,
+    100% {
+      background: transparent;
+    }
+  }
+  @keyframes step-1 {
+    0%,
+    16% {
+      background: transparent;
+    }
+    18%,
+    48% {
+      background: var(--surface);
+    }
+    50%,
+    100% {
+      background: transparent;
+    }
+  }
+  @keyframes step-2 {
+    0%,
+    48% {
+      background: transparent;
+    }
+    50%,
+    100% {
+      background: var(--surface);
+    }
+  }
+
+  .phone-wrap {
+    margin: 0;
+    display: grid;
+    justify-items: center;
+    gap: 12px;
+  }
+  .phone {
+    width: 270px;
+    max-width: 100%;
+    aspect-ratio: 9 / 19.5;
+    padding: 10px;
+    border-radius: 44px;
+    background: #1a1d1b;
+    box-shadow: 0 20px 48px rgb(0 0 0 / 0.22);
+  }
+  .screen {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 34px;
+    overflow: hidden;
+    background: #fff;
+    object-fit: cover;
+  }
+  .anim {
+    position: relative;
+    color: #1d2420;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+  .stage {
+    position: absolute;
+    inset: 0;
+    padding: 44px 16px 20px;
+  }
+
+  /* Stage 1: the cookbook page, photographed and read */
+  .stage-page {
+    background: #3a3f3c;
+    animation: page-stage var(--loop) infinite;
+  }
+  .paper {
+    background: #fbf6ec;
+    border-radius: 6px;
+    padding: 16px 12px;
+    min-height: 330px;
+    transform: rotate(-2deg);
+    box-shadow: 0 6px 16px rgb(0 0 0 / 0.3);
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #3b3328;
+  }
+  .paper-title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 6px;
+  }
+  .paper-meta {
+    font-style: italic;
+    margin: 0 0 10px;
+    color: #7a6b58;
+  }
+  .paper-cols {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 10px;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+  .paper-cols ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .paper-cols li {
+    margin-bottom: 5px;
+  }
+  .paper-method p {
+    margin: 0 0 8px;
+  }
+  .viewfinder {
+    position: absolute;
+    inset: 34px 8px 96px;
+    border: 2px solid rgb(255 255 255 / 0.85);
+    border-radius: 12px;
+    animation: viewfinder var(--loop) infinite;
+  }
+  .flash {
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    opacity: 0;
+    animation: flash var(--loop) infinite;
+  }
+  .scanline {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    top: 40px;
+    height: 3px;
+    border-radius: 2px;
+    background: #3dba84;
+    box-shadow: 0 0 14px 4px rgb(61 186 132 / 0.6);
+    opacity: 0;
+    animation: scan var(--loop) infinite;
+  }
+  .pill {
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+    margin: 0;
+    white-space: nowrap;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: #fff;
+    font-weight: 600;
+    font-size: 12px;
+    opacity: 0;
+    animation: pill var(--loop) infinite;
+  }
+
+  /* Stage 2: the recipe editor */
+  .stage-editor {
+    background: #fff;
+    opacity: 0;
+    animation: editor-stage var(--loop) infinite;
+  }
+  .ed-label {
+    margin: 10px 0 2px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6b746e;
+  }
+  .ed-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .ed-meta {
+    margin: 2px 0 0;
+    color: #6b746e;
+  }
+  .ed-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .ed-list li {
+    display: flex;
+    gap: 4px;
+    padding: 4px 0;
+    border-bottom: 1px solid #eef0ee;
+    animation: row-in var(--loop) infinite;
+    animation-delay: calc(var(--i) * 0.12s);
+  }
+  .q {
+    font-weight: 600;
+  }
+  .check {
+    margin-left: auto;
+    color: #2f9e6e;
+    font-weight: 700;
+  }
+  .ed-step {
+    margin: 0;
+  }
+  .timer {
+    display: inline-block;
+    margin-top: 4px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #e3f3eb;
+    color: #23805a;
+    font-weight: 600;
+  }
+  .ed-save {
+    margin: 14px 0 0;
+    padding: 10px;
+    border-radius: 999px;
+    background: #2f9e6e;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    font-size: 13px;
+  }
+
+  @keyframes page-stage {
+    0%,
+    46% {
+      opacity: 1;
+    }
+    50%,
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes viewfinder {
+    0%,
+    13% {
+      opacity: 1;
+    }
+    15%,
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes flash {
+    0%,
+    13% {
+      opacity: 0;
+    }
+    14% {
+      opacity: 0.9;
+    }
+    18%,
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes scan {
+    0%,
+    18% {
+      opacity: 0;
+      transform: translateY(0);
+    }
+    20% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    42% {
+      opacity: 1;
+      transform: translateY(330px);
+    }
+    44%,
+    100% {
+      opacity: 0;
+      transform: translateY(330px);
+    }
+  }
+  @keyframes pill {
+    0%,
+    18% {
+      opacity: 0;
+    }
+    20%,
+    46% {
+      opacity: 1;
+    }
+    48%,
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes editor-stage {
+    0%,
+    48% {
+      opacity: 0;
+    }
+    52%,
+    95% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes row-in {
+    0%,
+    54% {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    58%,
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .scan-demo[data-paused] *,
+  .scan-demo[data-paused] {
+    animation-play-state: paused !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scan-demo *,
+    .scan-demo {
+      animation: none !important;
+    }
+    .anim .stage-page {
+      opacity: 0;
+    }
+    .anim .stage-editor {
+      opacity: 1;
+    }
+    .scan-step-2 {
+      background: var(--surface);
+    }
+  }
+
+  .pause {
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--green-strong);
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 8px 18px;
+    min-height: 44px;
+    cursor: pointer;
+  }
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+</style>

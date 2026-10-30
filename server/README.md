@@ -40,10 +40,14 @@ simulator reaches the Mac at localhost).
 | `DAILY_LIMIT_PER_INSTALL`      | `30`                        | Scans per app install (per attested key with App Attest) per UTC day     |
 | `DAILY_LIMIT_TOTAL`            | `2000`                      | Scans across all installs per UTC day                                    |
 | `SCAN_ENABLED`                 | `true`                      | Kill switch: `false` returns 503 and every app uses its on-device reader |
-| `DB_PATH`                      | `./scans.db`                | SQLite file for the daily counts, challenges and attested keys           |
+| `DB_PATH`                      | `./scans.db`                | SQLite file: daily counts, challenges, attested keys and credit ledger   |
 | `APPLE_APP_ID`                 | –                           | `<Team ID>.com.bitcli.mealz`; turns on App Attest                        |
 | `ATTEST_REQUIRED`              | `true`                      | With App Attest on, `false` still serves unsigned scans (the simulator)  |
 | `APP_STORE_URL`                | –                           | Linked from the share page once Mealz is on the App Store                |
+| `SCAN_PRICE_CENTS`             | `0`                         | Price of a scan in US cents once the free scans are used; `0` = all free |
+| `FREE_SCANS_PER_MONTH`         | `3`                         | Free scans per install (per attested key) per UTC month                  |
+| `APPLE_APP_STORE_ID`           | –                           | The app's numeric Apple ID; needed to accept production purchases        |
+| `BUCKET_NAME` and `AWS_*`      | –                           | Tigris bucket for Litestream backups (set by `fly storage create`)       |
 
 ## Credentials: workload identity federation
 
@@ -137,3 +141,93 @@ app's `src/features/sharing/share-link.ts`). Browsers never send the part after
   tells iOS that `/r` links open Mealz. The app lists this host in
   `ios.associatedDomains` in `app.json`. iOS fetches this file when the app is
   installed, so moving share links to another domain needs an app update.
+
+## Scan credit
+
+With `SCAN_PRICE_CENTS` above 0, each scan the server reads costs that much
+after `FREE_SCANS_PER_MONTH` free ones. People buy credit packs in the app
+(consumable in-app purchases; the product IDs are in `src/credit.ts`).
+
+- Balances belong to a **wallet**: a random UUID the app keeps in the
+  keychain and passes to Apple as each purchase's `appAccountToken`. There
+  are no accounts; the app shows the wallet ID as a recovery code.
+- Money only moves by appending to the `ledger` table (`purchase`, `scan`,
+  `release`, `refund`, `grant`); a balance is the sum. Each entry's `ref` is
+  unique, so a purchase can't be added twice.
+- `POST /v1/credit` with `{ installId, keyId?, wallet? }` →
+  `{ priceCents, freeScansLeft, balanceCents }`.
+- `POST /v1/scan` takes `wallet`. A scan is charged before Claude reads it
+  and given back if the read fails. With no free scans and too little
+  credit it answers `402 { error: "no_credit", credit }`. Successful answers
+  include `credit`.
+- `POST /v1/credit/apple` with `{ transaction }` (StoreKit 2's signed
+  transaction): verified with Apple's library against Apple Root CA G3, for
+  this bundle ID, then added to the wallet in its `appAccountToken`. The app
+  only finishes the transaction with StoreKit after this succeeds, so a
+  purchase made offline is added on a later launch.
+- `POST /v1/store/apple/notifications`: App Store Server Notifications V2. A
+  `REFUND` takes the pack's credit back, even below zero.
+
+Purchases from TestFlight, App Review and sandbox accounts are signed for
+Apple's sandbox and are accepted too. Production purchases need
+`APPLE_APP_STORE_ID`.
+
+To give someone credit by hand (`fly ssh console`):
+
+```bash
+sqlite3 /data/scans.db "INSERT INTO ledger (wallet, cents, kind, ref, at) VALUES ('<recovery code>', 500, 'grant', 'grant:<why>', datetime('now'))"
+```
+
+(`sqlite3` isn't in the image; `apt-get update && apt-get install -y sqlite3` first.)
+
+Turning it on:
+
+1. In App Store Connect, sign the Paid Apps agreement and add banking and
+   tax details, then create the three consumables (see
+   `docs/app-store/listing.md`).
+2. Under App Information → App Store Server Notifications, set both the
+   production and sandbox URLs to
+   `https://<app-name>.fly.dev/v1/store/apple/notifications`, version 2.
+3. Set backups up (below) before taking anyone's money.
+4. `fly secrets set APPLE_APP_STORE_ID=<numeric Apple ID>`, then set
+   `SCAN_PRICE_CENTS` in `fly.toml` and deploy. Older app builds keep
+   working: they get the free scans, and after that read scans on the phone.
+
+## Backups (Litestream → Tigris)
+
+The volume lives on one physical host and Fly only snapshots it daily, so
+the database is also streamed to Tigris (Fly's object storage) by
+[Litestream](https://litestream.io), about once a second. `start.sh` runs
+the server under Litestream whenever `BUCKET_NAME` is set; on start it first
+restores the database from the bucket if the volume has none.
+
+Set up once:
+
+```bash
+fly storage create --name mealz-scan-backups   # sets BUCKET_NAME and AWS_* secrets on the app
+fly deploy
+curl https://<app-name>.fly.dev/health          # wake the machine (it auto-stops), then:
+fly logs                                        # look for Litestream's "snapshot complete"
+# No Litestream lines? The machine may have stale secrets (BUCKET_NAME unset,
+# so start.sh runs node alone): fly secrets sync && fly secrets deploy
+fly volumes list                                # then raise snapshot retention as a second net:
+fly volumes update <volume-id> --snapshot-retention 60
+```
+
+Check a restore works (do this once before launch, and after changing any
+of the above):
+
+```bash
+BUCKET_NAME=mealz-scan-backups AWS_ENDPOINT_URL_S3=https://fly.storage.tigris.dev \
+AWS_ACCESS_KEY_ID=... AWS_SECRET_ACCESS_KEY=... DB_PATH=/tmp/restored.db \
+litestream restore -config litestream.yml /tmp/restored.db
+sqlite3 /tmp/restored.db "SELECT kind, COUNT(*), SUM(cents) FROM ledger GROUP BY kind"
+```
+
+If the volume or host is lost: `fly volumes create scan_data --size 1`, then
+`fly deploy`; the new machine restores from the bucket before starting.
+
+Litestream's metrics are on port 9090 (`[metrics]` in `fly.toml`), so they
+show in Fly's managed Grafana. Add an alert on
+`litestream_sync_error_count` rising (or `litestream_disk_full` at 1). Only one machine may ever
+write to the bucket: never run two machines against it.

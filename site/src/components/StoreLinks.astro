@@ -1,0 +1,39 @@
+---
+// Download buttons for each store in config.ts, or "Coming soon" while there are none.
+import { STORE_LINKS } from '../config';
+---
+
+{
+  STORE_LINKS.length > 0 ? (
+    STORE_LINKS.map((s) => (
+      <a class="cta" href={s.url}>
+        {s.text}
+      </a>
+    ))
+  ) : (
+    <p class="cta cta-soon">Coming soon</p>
+  )
+}
+
+<style>
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 52px;
+    padding: 0 24px;
+    margin: 0;
+    border-radius: 999px;
+    background: var(--green);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  @media (prefers-color-scheme: dark) {
+    .cta {
+      color: #08130d;
+    }
+  }
+  .cta-soon {
+    cursor: default;
+  }
+</style>

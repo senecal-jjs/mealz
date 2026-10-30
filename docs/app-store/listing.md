@@ -60,12 +60,24 @@ Answer **None** to every content question. The result is **4+**.
 ## App privacy ("nutrition label")
 
 - Data collection: **Yes, we collect data from this app** (only cloud scanning, which is optional and asks first; scans are processed by Anthropic, which may retain API data for a limited time).
-- Data types: **Photos or Videos** and **Other User Content** (the scanned recipe text).
+- Data types: **Photos or Videos** and **Other User Content** (the scanned recipe text), and **Purchase History** (scan credit: the server records each credit pack bought and each paid scan against a random wallet ID made on the phone).
   - Use: **App Functionality** only.
   - Linked to the user's identity: **No.**
   - Used for tracking: **No.**
-- The resulting label is **Data Not Linked to You: Photos or Videos, Other User Content**.
-- This matches the privacy manifest in `app.json` (`NSPrivacyTracking: false`, the same two data types, not linked, app functionality).
+- The resulting label is **Data Not Linked to You: Purchases, Photos or Videos, Other User Content**.
+- This matches the privacy manifest in `app.json` (`NSPrivacyTracking: false`, the same three data types, not linked, app functionality).
+
+## In-app purchases
+
+Three consumables in App Store Connect → Monetization → In-App Purchases. The product IDs must match `PACKS` in `server/src/credit.ts` and `src/features/credit/credit.ts`.
+
+| Product ID                    | Reference name    | Price | Display name      | Description                         |
+| ----------------------------- | ----------------- | ----- | ----------------- | ----------------------------------- |
+| `com.bitcli.mealz.credit.199` | Scan credit $1.99 | $1.99 | $1.99 Scan Credit | Credit for reading scanned recipes. |
+| `com.bitcli.mealz.credit.499` | Scan credit $4.99 | $4.99 | $4.99 Scan Credit | Credit for reading scanned recipes. |
+| `com.bitcli.mealz.credit.999` | Scan credit $9.99 | $9.99 | $9.99 Scan Credit | Credit for reading scanned recipes. |
+
+Each needs a review screenshot of the Scan Credit screen (Profile → Scan credit).
 
 ## URLs (needed before submitting)
 
