@@ -9,11 +9,12 @@ import { Chip } from '@/components/chip';
 import { RecipeCard } from '@/components/recipe-card';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
-import { BROWSE_FILTERS, browseRecipes, type BrowseFilter } from '@/domain/browse';
+import { BROWSE_FILTERS, browseRecipes, dailyOrder, type BrowseFilter } from '@/domain/browse';
 import { fitsPreferences } from '@/domain/preferences';
 import { useFavourites } from '@/features/favourites/hooks';
 import { planActions, usePlannedServings } from '@/features/plan/hooks';
 import { usePreferences } from '@/features/preferences/hooks';
+import { useLocalDay } from '@/hooks/use-local-day';
 import { useTheme } from '@/hooks/use-theme';
 
 export default function RecipesScreen() {
@@ -34,10 +35,12 @@ export default function RecipesScreen() {
   const hasMine = catalog.recipes.some((r) => r.mine);
   const filters = BROWSE_FILTERS.filter((f) => f.id !== 'mine' || hasMine);
   const hidden = catalog.recipes.length - allowed.length;
-  const recipes = useMemo(
-    () => browseRecipes(allowed, catalog.ingredients, filter, query, new Set(favouriteIds)),
-    [allowed, catalog.ingredients, filter, query, favouriteIds],
-  );
+  // A new order each day helps people find recipes; search results stay alphabetical.
+  const day = useLocalDay();
+  const recipes = useMemo(() => {
+    const found = browseRecipes(allowed, catalog.ingredients, filter, query, new Set(favouriteIds));
+    return query.trim() ? found : dailyOrder(found, day);
+  }, [allowed, catalog.ingredients, filter, query, favouriteIds, day]);
 
   return (
     <>

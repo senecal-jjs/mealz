@@ -3,6 +3,7 @@ import {
   fetchCredit,
   formatCents,
   parseRecoveryCode,
+  walletsFromICloud,
   redeemPurchase,
   RedeemError,
   scanCostNote,
@@ -43,6 +44,18 @@ describe('scan credit', () => {
     expect(parseRecoveryCode(`  ${WALLET.toUpperCase()}\n`)).toBe(WALLET);
     expect(parseRecoveryCode('not a code')).toBeNull();
     expect(parseRecoveryCode(WALLET.slice(1))).toBeNull();
+  });
+
+  it('lists the wallets saved in iCloud, oldest first', () => {
+    const other = '7c9e6679-7425-40de-944b-e07fc1f90ae7';
+    expect(
+      walletsFromICloud({
+        [`mealz.wallet.${other}`]: '2026-10-30T10:00:00.000Z',
+        [`mealz.wallet.${WALLET}`]: '2026-09-01T08:00:00.000Z',
+        'mealz.wallet.not-a-wallet': '2026-01-01T00:00:00.000Z',
+      }),
+    ).toEqual([WALLET, other]);
+    expect(walletsFromICloud({})).toEqual([]);
   });
 
   it('fetches the summary for this install and wallet', async () => {

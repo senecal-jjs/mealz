@@ -9,6 +9,7 @@ import { CatalogProvider } from '@/catalog/live';
 import { ThemedText } from '@/components/themed-text';
 import { headerBlur } from '@/constants/navigation';
 import { db } from '@/db/client';
+import { useBackupSync } from '@/features/backup/restore';
 import { usePurchaseListener } from '@/features/credit/purchases';
 import { isCloudScanConfigured } from '@/features/my-recipes/cloud';
 import { PreferencesProvider, usePreferences } from '@/features/preferences/hooks';
@@ -47,6 +48,8 @@ function AppNavigator() {
   const onboarded = prefs.onboardedAt !== null;
   // Purchases StoreKit is still holding (e.g. bought offline) are added on launch.
   usePurchaseListener(isCloudScanConfigured() && Platform.OS === 'ios');
+  // After onboarding, so a new install's restore offer doesn't land on the welcome screen.
+  useBackupSync(loaded && onboarded);
 
   // Keep the splash up until we know whether to show onboarding.
   useEffect(() => {
@@ -67,6 +70,7 @@ function AppNavigator() {
               options={{ presentation: 'modal', headerShown: false }}
             />
             <Stack.Screen name="import-recipe" options={{ presentation: 'modal' }} />
+            <Stack.Screen name="build-plan" options={{ presentation: 'modal' }} />
             <Stack.Screen
               name="cook/[id]"
               options={{ presentation: 'fullScreenModal', headerShown: false }}

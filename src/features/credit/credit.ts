@@ -28,6 +28,24 @@ export function parseRecoveryCode(text: string): string | null {
   return UUID.test(code) ? code : null;
 }
 
+/** iCloud keys for wallets: one per wallet, so devices never overwrite each other's. */
+export const ICLOUD_WALLET_PREFIX = 'mealz.wallet.';
+
+/**
+ * The wallets saved in iCloud, oldest first, from key-value entries
+ * (`mealz.wallet.<id>` → when it was saved). Anything malformed is skipped.
+ */
+export function walletsFromICloud(entries: Record<string, string>): string[] {
+  return Object.entries(entries)
+    .map(([key, savedAt]) => ({
+      wallet: parseRecoveryCode(key.slice(ICLOUD_WALLET_PREFIX.length)),
+      savedAt,
+    }))
+    .filter((e): e is { wallet: string; savedAt: string } => !!e.wallet)
+    .sort((a, b) => a.savedAt.localeCompare(b.savedAt))
+    .map((e) => e.wallet);
+}
+
 export function isCreditSummary(v: unknown): v is CreditSummary {
   const s = v as CreditSummary | null;
   return (

@@ -11,9 +11,11 @@ type Props = {
   title: string;
   message: string;
   action?: { label: string; onPress: () => void };
+  /** A second, quieter choice under the main one. */
+  secondaryAction?: { label: string; onPress: () => void };
 };
 
-export function EmptyState({ icon, title, message, action }: Props) {
+export function EmptyState({ icon, title, message, action, secondaryAction }: Props) {
   const theme = useTheme();
   return (
     <ScrollView
@@ -28,6 +30,13 @@ export function EmptyState({ icon, title, message, action }: Props) {
         {message}
       </ThemedText>
       {action && <Button label={action.label} onPress={action.onPress} style={styles.action} />}
+      {secondaryAction && (
+        <Button
+          variant="secondary"
+          label={secondaryAction.label}
+          onPress={secondaryAction.onPress}
+        />
+      )}
     </ScrollView>
   );
 }

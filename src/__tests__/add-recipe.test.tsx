@@ -35,6 +35,7 @@ jest.mock('@/features/credit/refresh', () => ({
 jest.mock('@/features/credit/wallet', () => ({
   getWallet: async () => '0f8fad5b-d9cb-469f-a165-70867728950e',
   setWallet: async () => {},
+  isWalletInICloud: () => true,
 }));
 jest.mock('@/features/credit/purchases', () => {
   const { create } = jest.requireActual('zustand');
@@ -99,7 +100,7 @@ describe('Add a Recipe', () => {
     expect(await screen.findByText('0f8fad5b-d9cb-469f-a165-70867728950e')).toBeTruthy();
 
     await fireEvent.press(screen.getByText('Scan a Recipe'));
-    expect(jest.mocked(Alert.alert).mock.calls[0][0]).toBe('Recipes are read by Claude');
+    expect(jest.mocked(Alert.alert).mock.calls[0][0]).toBe('Recipes are read by computer vision');
     await answerAlert('Continue');
     expect(preferenceActions.save).toHaveBeenCalledWith({ cloudScan: 'allowed' });
     expect(await screen.findByText('Snap a recipe')).toBeTruthy();

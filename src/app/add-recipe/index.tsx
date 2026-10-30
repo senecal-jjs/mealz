@@ -20,8 +20,8 @@ import { useTheme } from '@/hooks/use-theme';
 function askToScan(): Promise<boolean> {
   return new Promise((resolve) =>
     Alert.alert(
-      'Recipes are read by Claude',
-      'Mealz sends the photos of each recipe you scan to its server, where Anthropic’s Claude reads them. Photos and recipes aren’t stored.',
+      'Recipes are read by computer vision',
+      'Mealz sends the photos of each recipe you scan to its server, where a computer vision model reads them. Photos and recipes aren’t stored.',
       [
         { text: 'Cancel', style: 'cancel', onPress: () => resolve(false) },
         { text: 'Continue', onPress: () => resolve(true) },
@@ -106,8 +106,8 @@ export default function AddRecipeScreen() {
           />
           {canScan && (
             <ThemedText type="small" themeColor="textSecondary" style={styles.center}>
-              Scanning reads a cookbook page, recipe card or screenshot with Claude. You review the
-              recipe before it’s saved.
+              Scanning reads a cookbook page, recipe card or screenshot with computer vision. You
+              review the recipe before it’s saved.
             </ThemedText>
           )}
         </View>

@@ -8,8 +8,12 @@
  *
  * Money moves only by appending to the ledger; a wallet's balance is the sum
  * of its entries. Each entry's `ref` is unique, so a purchase can't be
- * credited twice however often the app sends it. Free scans are counted per
- * install (by attested key), since wallets cost nothing to make.
+ * credited twice however often the app sends it.
+ *
+ * Free scans are counted twice, per install (by attested key) and per wallet,
+ * and a scan is free only while both have some left. A reinstall makes a new
+ * key but brings the wallet back from iCloud, so it doesn't reset the count;
+ * and wallets cost nothing to make, so a new one alone doesn't either.
  */
 import { randomUUID } from 'node:crypto';
 import type { DatabaseSync } from 'node:sqlite';
@@ -30,7 +34,8 @@ export type Pricing = { priceCents: number; freePerMonth: number };
 
 /** A scan's charge, kept so it can be given back if the scan fails. */
 export type Charge =
-  { kind: 'free'; payer: string; month: string } | { kind: 'paid'; wallet: string; ref: string };
+  | { kind: 'free'; counters: string[]; month: string }
+  | { kind: 'paid'; wallet: string; ref: string };
 
 /** What the app shows: the price, free scans left, and the wallet's balance. */
 export type CreditSummary = { priceCents: number; freeScansLeft: number; balanceCents: number };
@@ -38,6 +43,10 @@ export type CreditSummary = { priceCents: number; freeScansLeft: number; balance
 type Kind = 'purchase' | 'scan' | 'release' | 'refund' | 'grant';
 
 const month = (now: Date) => now.toISOString().slice(0, 7);
+
+/** The free-scan counters a scan uses: the install's, and the wallet's when it sends one. */
+const countersFor = (payer: string, wallet: string | null) =>
+  wallet ? [payer, `wallet:${wallet}`] : [payer];
 
 export class Ledger {
   private db: DatabaseSync;
@@ -54,6 +63,7 @@ export class Ledger {
         at TEXT NOT NULL
       );
       CREATE INDEX IF NOT EXISTS ledger_wallet ON ledger (wallet);
+      -- payer: an install ("key:<attested key>", or its install ID) or "wallet:<id>"
       CREATE TABLE IF NOT EXISTS free_scans (
         month TEXT NOT NULL,
         payer TEXT NOT NULL,
@@ -69,17 +79,21 @@ export class Ledger {
     return row.cents;
   }
 
-  freeScansLeft(payer: string, pricing: Pricing, now = new Date()): number {
-    const row = this.db
-      .prepare('SELECT count FROM free_scans WHERE month = ? AND payer = ?')
-      .get(month(now), payer) as { count: number } | undefined;
-    return Math.max(0, pricing.freePerMonth - (row?.count ?? 0));
+  /** Free scans left this month: the fewer of the install's and the wallet's. */
+  freeScansLeft(payer: string, wallet: string | null, pricing: Pricing, now = new Date()): number {
+    const used = countersFor(payer, wallet).map((counter) => {
+      const row = this.db
+        .prepare('SELECT count FROM free_scans WHERE month = ? AND payer = ?')
+        .get(month(now), counter) as { count: number } | undefined;
+      return row?.count ?? 0;
+    });
+    return Math.max(0, pricing.freePerMonth - Math.max(...used));
   }
 
   summary(payer: string, wallet: string | null, pricing: Pricing, now = new Date()): CreditSummary {
     return {
       priceCents: pricing.priceCents,
-      freeScansLeft: this.freeScansLeft(payer, pricing, now),
+      freeScansLeft: this.freeScansLeft(payer, wallet, pricing, now),
       balanceCents: wallet ? this.balance(wallet) : 0,
     };
   }
@@ -99,9 +113,9 @@ export class Ledger {
   }
 
   /**
-   * Charges one scan: a free scan while the payer has some left this month,
-   * otherwise the price from the wallet. Node runs this synchronously, so two
-   * scans can't both spend the same credit.
+   * Charges one scan: a free scan while the install and wallet both have some
+   * left this month, otherwise the price from the wallet. Node runs this
+   * synchronously, so two scans can't both spend the same credit.
    */
   charge(
     payer: string,
@@ -109,14 +123,14 @@ export class Ledger {
     pricing: Pricing,
     now = new Date(),
   ): Charge | 'no_credit' {
-    if (this.freeScansLeft(payer, pricing, now) > 0) {
-      this.db
-        .prepare(
-          `INSERT INTO free_scans (month, payer, count) VALUES (?, ?, 1)
-           ON CONFLICT (month, payer) DO UPDATE SET count = count + 1`,
-        )
-        .run(month(now), payer);
-      return { kind: 'free', payer, month: month(now) };
+    if (this.freeScansLeft(payer, wallet, pricing, now) > 0) {
+      const counters = countersFor(payer, wallet);
+      const count = this.db.prepare(
+        `INSERT INTO free_scans (month, payer, count) VALUES (?, ?, 1)
+         ON CONFLICT (month, payer) DO UPDATE SET count = count + 1`,
+      );
+      for (const counter of counters) count.run(month(now), counter);
+      return { kind: 'free', counters, month: month(now) };
     }
     if (!wallet || this.balance(wallet) < pricing.priceCents) return 'no_credit';
     const ref = `scan:${randomUUID()}`;
@@ -127,11 +141,10 @@ export class Ledger {
   /** Gives a failed scan's charge back. */
   release(charge: Charge, now = new Date()) {
     if (charge.kind === 'free') {
-      this.db
-        .prepare(
-          'UPDATE free_scans SET count = count - 1 WHERE month = ? AND payer = ? AND count > 0',
-        )
-        .run(charge.month, charge.payer);
+      const uncount = this.db.prepare(
+        'UPDATE free_scans SET count = count - 1 WHERE month = ? AND payer = ? AND count > 0',
+      );
+      for (const counter of charge.counters) uncount.run(charge.month, counter);
       return;
     }
     const row = this.db.prepare('SELECT cents FROM ledger WHERE ref = ?').get(charge.ref) as

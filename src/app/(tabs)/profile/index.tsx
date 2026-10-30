@@ -1,4 +1,4 @@
-import { Alert, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { useCatalog } from '@/catalog/live';
 import { ALLERGEN_LABELS, DIET_LABELS } from '@/catalog/types';
@@ -8,6 +8,7 @@ import { SettingsGroup, SettingsRow } from '@/components/settings-row';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { fitsPreferences } from '@/domain/preferences';
+import { restoreFromProfile } from '@/features/backup/restore';
 import { useFavourites } from '@/features/favourites/hooks';
 import { useHistory } from '@/features/plan/hooks';
 import { preferenceActions, usePreferences } from '@/features/preferences/hooks';
@@ -18,7 +19,9 @@ const DELETE_RED = '#E5484D';
 function confirmReset() {
   Alert.alert(
     'Reset all data?',
-    'This deletes your plan, grocery list, history and preferences from this phone. It can’t be undone.',
+    Platform.OS === 'ios'
+      ? 'This deletes your plan, grocery list, history, preferences and recipes from this phone. It can’t be undone, but recipes you added stay in your iCloud backup.'
+      : 'This deletes your plan, grocery list, history, preferences and recipes from this phone. It can’t be undone.',
     [
       { text: 'Cancel', style: 'cancel' },
       { text: 'Reset', style: 'destructive', onPress: () => preferenceActions.resetAll() },
@@ -113,7 +116,23 @@ export default function ProfileScreen() {
         />
       </SettingsGroup>
 
-      <SettingsGroup footer="Mealz has no accounts. Everything lives only on this phone.">
+      {Platform.OS === 'ios' && (
+        <SettingsGroup footer="Recipes you add are backed up to your iCloud Drive, so they come back on a new iPhone.">
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => void restoreFromProfile()}
+            style={styles.reset}>
+            <ThemedText style={{ color: theme.tint }}>Restore from iCloud</ThemedText>
+          </Pressable>
+        </SettingsGroup>
+      )}
+
+      <SettingsGroup
+        footer={
+          Platform.OS === 'ios'
+            ? 'Mealz has no accounts. Everything lives on this phone, and recipes you add are also in your iCloud.'
+            : 'Mealz has no accounts. Everything lives only on this phone.'
+        }>
         <Pressable accessibilityRole="button" onPress={confirmReset} style={styles.reset}>
           <ThemedText style={{ color: DELETE_RED }}>Reset all data</ThemedText>
         </Pressable>

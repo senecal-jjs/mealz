@@ -6,7 +6,8 @@ import { SettingsGroup } from '@/components/settings-row';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { parseRecoveryCode } from '@/features/credit/credit';
-import { getWallet, setWallet } from '@/features/credit/wallet';
+import { useCredit } from '@/features/credit/store';
+import { getWallet, isWalletInICloud, setWallet } from '@/features/credit/wallet';
 
 /** Asks for a recovery code (iOS only has a text prompt), resolving with what was typed. */
 function askForCode(): Promise<string | null> {
@@ -29,10 +30,13 @@ function askForCode(): Promise<string | null> {
  */
 export function RecoveryCode({ onChange }: { onChange: () => void }) {
   const [wallet, setWalletState] = useState<string | null>(null);
+  // Read again whenever the credit changes: checking it can switch to a wallet from iCloud.
+  const summary = useCredit((s) => s.summary);
+  const inICloud = isWalletInICloud();
 
   useEffect(() => {
     void getWallet().then(setWalletState);
-  }, []);
+  }, [summary]);
 
   const enterCode = async () => {
     const text = await askForCode();
@@ -51,7 +55,11 @@ export function RecoveryCode({ onChange }: { onChange: () => void }) {
   return (
     <SettingsGroup
       title="Recovery code"
-      footer="Mealz has no accounts. Your credit belongs to this code: keep it somewhere safe to use your credit on a new iPhone, and don’t share it, since anyone with it can spend the credit.">
+      footer={
+        inICloud
+          ? 'Mealz has no accounts. Your credit belongs to this code, which is saved in your iCloud, so it comes back on a new iPhone signed in to the same Apple ID. Don’t share it: anyone with it can spend the credit.'
+          : 'Mealz has no accounts. Your credit belongs to this code: keep it somewhere safe to use your credit on a new iPhone (signing in to iCloud saves it for you), and don’t share it, since anyone with it can spend the credit.'
+      }>
       <ThemedText selectable style={styles.code}>
         {wallet}
       </ThemedText>
