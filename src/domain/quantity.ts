@@ -70,9 +70,17 @@ export function singularName(ingredient: Ingredient): string {
   return name.slice(0, -1);
 }
 
+/**
+ * The name for a count above one. An explicit plural wins; otherwise English's
+ * regular rules, since names the user adds (typed or scanned) have no plural.
+ */
 export function pluralName(ingredient: Ingredient): string {
-  if (ingredient.plural) return ingredient.plural;
-  return ingredient.name.endsWith('s') ? ingredient.name : `${ingredient.name}s`;
+  const { name, plural } = ingredient;
+  if (plural) return plural;
+  if (name.endsWith('s')) return name;
+  if (/(potato|tomato|ch|sh|x)$/.test(name)) return `${name}es`;
+  if (/[^aeiou]y$/.test(name)) return `${name.slice(0, -1)}ies`;
+  return `${name}s`;
 }
 
 export type FormattedAmount = {

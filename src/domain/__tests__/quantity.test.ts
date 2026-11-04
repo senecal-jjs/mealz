@@ -1,5 +1,5 @@
 import type { Ingredient } from '@/catalog/types';
-import { formatFraction, formatIngredient, scaleFactor } from '@/domain/quantity';
+import { formatFraction, formatIngredient, pluralName, scaleFactor } from '@/domain/quantity';
 
 const lime: Ingredient = { id: 'lime', name: 'lime', aisle: 'produce', kind: 'plant' };
 const garlic: Ingredient = {
@@ -78,5 +78,25 @@ describe('formatIngredient', () => {
       amount: '',
       name: 'salt',
     });
+  });
+});
+
+describe('pluralName', () => {
+  const named = (name: string, plural?: string) => ({ name, plural }) as Ingredient;
+
+  it('follows English for names with no explicit plural', () => {
+    expect(pluralName(named('lime'))).toBe('limes');
+    expect(pluralName(named('avocado'))).toBe('avocados');
+    expect(pluralName(named('tomato'))).toBe('tomatoes');
+    expect(pluralName(named('russet potato'))).toBe('russet potatoes');
+    expect(pluralName(named('peach'))).toBe('peaches');
+    expect(pluralName(named('radish'))).toBe('radishes');
+    expect(pluralName(named('cherry'))).toBe('cherries');
+    expect(pluralName(named('turkey'))).toBe('turkeys');
+  });
+
+  it('leaves plural names alone and prefers an explicit plural', () => {
+    expect(pluralName(named('carrots'))).toBe('carrots');
+    expect(pluralName(named('mango', 'mangoes'))).toBe('mangoes');
   });
 });

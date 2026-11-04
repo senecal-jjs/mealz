@@ -33,7 +33,7 @@
   { "id": "red-chili", "name": "fresh red chili", "plural": "fresh red chilies", "aisle": "produce", "kind": "plant" },
   { "id": "red-onion", "name": "red onion", "aisle": "produce", "kind": "plant" },
   { "id": "romaine-lettuce", "name": "head romaine lettuce", "plural": "heads romaine lettuce", "aisle": "produce", "kind": "plant" },
-  { "id": "russet-potatoes", "name": "russet potato", "aisle": "produce", "kind": "plant", "highCarb": true },
+  { "id": "russet-potatoes", "name": "russet potato", "plural": "russet potatoes", "aisle": "produce", "kind": "plant", "highCarb": true },
   { "id": "shallot", "name": "shallot", "aisle": "produce", "kind": "plant" },
   { "id": "snap-peas", "name": "sugar snap peas", "plural": "sugar snap peas", "aisle": "produce", "kind": "plant" },
   { "id": "sweet-potato", "name": "sweet potato", "plural": "sweet potatoes", "aisle": "produce", "kind": "plant", "highCarb": true },

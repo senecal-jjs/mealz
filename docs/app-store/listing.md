@@ -89,12 +89,15 @@ Each needs a review screenshot of the Scan Credit screen (Profile → Scan credi
 
 6.9" iPhone (1320 × 2868), in `docs/app-store/screenshots/`. Upload in this order:
 
-1. `1-recipes.png`: browse recipes that fit your diet
-2. `2-recipe.png`: a recipe with servings scaling
-3. `3-plan.png`: the week's plan
-4. `4-groceries.png`: one grocery list by aisle
-5. `5-cook.png`: cook mode step with a timer
-6. `6-onboarding.png`: diet and allergy setup
+1. `1-recipes.png`: "Dinner, decided." Browse recipes that fit your diet
+2. `2-build-plan.png`: "A plan for the week, built for you." Build Me a Plan's picks
+3. `3-groceries.png`: "One list, sorted by aisle."
+4. `4-cook.png`: "Cook step by step." A cook mode step with a timer running
+5. `5-scan.png`: "Snap a recipe, make it yours." Add a Recipe, with scan credit and packs
+6. `6-recipe.png`: "Sized for your table." A recipe with servings scaling
+7. `7-diet.png`: "Made for how you eat." Diet setup
+
+To change the wording, edit `docs/app-store/screenshots/source/compose.mjs` and run it (the simulator captures are in `source/raw/`). `5-scan.png` shows the scan price, so recapture it if `SCAN_PRICE_CENTS` changes.
 
 Apple scales 6.9" screenshots down for smaller iPhones, so this one set is enough. iPad screenshots aren't needed because `supportsTablet` is false.
 
