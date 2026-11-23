@@ -53,8 +53,7 @@
             ]
           }
         ]
-      },
-      "buildNumber": "1"
+      }
     },
     "android": {
       "adaptiveIcon": {
