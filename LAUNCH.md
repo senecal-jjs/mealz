@@ -41,6 +41,12 @@ npx eas-cli@latest init
 ### TestFlight beta (drafts included)
 
 ```bash
+npx testflight --profile preview
+```
+
+That builds with the `preview` profile and submits to TestFlight in one go. Plain `npx testflight` uses the `production` profile, which leaves out unreviewed recipes and stops until 20 are reviewed. The same in two steps:
+
+```bash
 npx eas-cli@latest build --platform ios --profile preview
 ```
 
