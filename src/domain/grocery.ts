@@ -25,6 +25,15 @@ export type GroceryLine = {
   recipeTitles: string[];
 };
 
+/**
+ * What a line asks for: its amount and the recipes it's for. A check-off holds
+ * only while this stays the same, so a line from a new plan, or one that grew
+ * because another recipe now needs it, comes back unchecked.
+ */
+export function lineSignature(line: Pick<GroceryLine, 'amount' | 'recipeTitles'>): string {
+  return `${line.amount}|${line.recipeTitles.join('|')}`;
+}
+
 const GRAMS: Partial<Record<Unit, number>> = { g: 1, kg: 1000, oz: 28.3495, lb: 453.592 };
 const MILLILITRES: Partial<Record<Unit, number>> = {
   ml: 1,

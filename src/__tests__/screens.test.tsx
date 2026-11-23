@@ -181,7 +181,10 @@ describe('Groceries tab', () => {
     await renderRouter({ index: GroceriesScreen }, { initialUrl: '/' });
 
     await fireEvent.press(screen.getByLabelText('2 limes'));
-    expect(groceryActions.setLineChecked).toHaveBeenCalledWith('lime', true);
+    expect(groceryActions.setLineChecked).toHaveBeenCalledWith(
+      expect.objectContaining({ key: 'lime' }),
+      true,
+    );
     expect(screen.getByText('In cart (1)')).toBeTruthy();
 
     // Still on screen, checked, and listed after every unchecked item.
@@ -192,7 +195,10 @@ describe('Groceries tab', () => {
 
     // Tapping again puts it back.
     await fireEvent.press(limes);
-    expect(groceryActions.setLineChecked).toHaveBeenLastCalledWith('lime', false);
+    expect(groceryActions.setLineChecked).toHaveBeenLastCalledWith(
+      expect.objectContaining({ key: 'lime' }),
+      false,
+    );
     expect(screen.queryByText(/In cart/)).toBeNull();
     expect(screen.getByLabelText('2 limes').props.accessibilityState.checked).toBe(false);
   });

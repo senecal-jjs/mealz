@@ -5,10 +5,11 @@
  */
 import { useSyncExternalStore } from 'react';
 
+import { lineSignature, type GroceryLine } from '@/domain/grocery';
 import type { CustomItem } from '@/features/grocery/grocery';
 import type { GroceryState } from '@/features/grocery/hooks';
 
-let state: GroceryState = { checkedKeys: new Set(), customItems: [] };
+let state: GroceryState = { checkedLines: new Map(), customItems: [] };
 const listeners = new Set<() => void>();
 
 function set(next: Partial<GroceryState>) {
@@ -17,7 +18,7 @@ function set(next: Partial<GroceryState>) {
 }
 
 export function resetMockGrocery() {
-  set({ checkedKeys: new Set(), customItems: [] });
+  set({ checkedLines: new Map(), customItems: [] });
 }
 
 export function useGroceryState(): GroceryState {
@@ -33,11 +34,11 @@ export function useGroceryState(): GroceryState {
 let nextId = 0;
 
 export const groceryActions = {
-  setLineChecked: jest.fn(async (ingredientId: string, checked: boolean) => {
-    const keys = new Set(state.checkedKeys);
-    if (checked) keys.add(ingredientId);
-    else keys.delete(ingredientId);
-    set({ checkedKeys: keys });
+  setLineChecked: jest.fn(async (line: GroceryLine, checked: boolean) => {
+    const lines = new Map(state.checkedLines);
+    if (checked) lines.set(line.key, lineSignature(line));
+    else lines.delete(line.key);
+    set({ checkedLines: lines });
   }),
   addCustom: jest.fn(async (name: string) => {
     const item: CustomItem = {
@@ -47,6 +48,7 @@ export const groceryActions = {
       quantity: null,
       unit: null,
       checked: false,
+      checkedFor: null,
       source: 'custom',
       createdAt: new Date(),
     };

@@ -1,5 +1,5 @@
 import { AISLE_LABELS } from '@/catalog/types';
-import { describeLine, type GroceryLine } from '@/domain/grocery';
+import { describeLine, lineSignature, type GroceryLine } from '@/domain/grocery';
 
 type Custom = { id: string; customName: string | null; checked: boolean };
 
@@ -24,7 +24,7 @@ export const IN_CART = 'in-cart';
  */
 export function buildGrocerySections(
   lines: GroceryLine[],
-  checkedKeys: Set<string>,
+  checkedLines: Map<string, string>,
   customItems: Custom[],
 ): GrocerySection[] {
   const sections: GrocerySection[] = [];
@@ -37,7 +37,8 @@ export function buildGrocerySections(
       kind: 'line',
       key: line.key,
       line,
-      checked: checkedKeys.has(line.key),
+      // Only while the line asks for what it did when checked off.
+      checked: checkedLines.get(line.key) === lineSignature(line),
     };
     if (row.checked) inCart.push(row);
     else if (line.staple) staples.push(row);

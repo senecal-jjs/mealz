@@ -1,4 +1,4 @@
-import type { GroceryLine } from '@/domain/grocery';
+import { lineSignature, type GroceryLine } from '@/domain/grocery';
 import { buildGrocerySections, shareText } from '@/features/grocery/sections';
 
 function line(key: string, aisle: GroceryLine['aisle'], amount: string, staple = false) {
@@ -23,12 +23,16 @@ const lines = [
   line('salt', 'spices', '', true),
 ];
 
+/** Checked lines as the list stores them: each checked for what it asks for now. */
+const checks = (...keys: string[]) =>
+  new Map(keys.flatMap((k) => lines.filter((l) => l.key === k).map((l) => [k, lineSignature(l)])));
+
 const summary = (sections: ReturnType<typeof buildGrocerySections>) =>
   sections.map((s) => [s.title, s.data.map((r) => r.key)]);
 
 describe('buildGrocerySections', () => {
   it('groups by aisle and moves staples to their own section', () => {
-    expect(summary(buildGrocerySections(lines, new Set(), []))).toEqual([
+    expect(summary(buildGrocerySections(lines, new Map(), []))).toEqual([
       ['Produce', ['limes', 'onion']],
       ['Meat & Seafood', ['chicken']],
       ['Pantry', ['rice']],
@@ -41,7 +45,7 @@ describe('buildGrocerySections', () => {
       { id: 'c1', customName: 'coffee', checked: false },
       { id: 'c2', customName: 'foil', checked: true },
     ];
-    expect(summary(buildGrocerySections(lines, new Set(['chicken', 'salt']), custom))).toEqual([
+    expect(summary(buildGrocerySections(lines, checks('chicken', 'salt'), custom))).toEqual([
       ['Produce', ['limes', 'onion']],
       ['Pantry', ['rice']],
       ['Your items', ['c1']],
@@ -51,17 +55,32 @@ describe('buildGrocerySections', () => {
   });
 
   it('ignores checks for ingredients no longer on the list', () => {
-    expect(buildGrocerySections([lines[0]], new Set(['gone']), [])).toHaveLength(1);
+    expect(buildGrocerySections([lines[0]], new Map([['gone', 'x']]), [])).toHaveLength(1);
+  });
+
+  it('unchecks a line once it asks for more, or for another recipe, than when checked', () => {
+    // Garlic checked off for last week's plan...
+    const lastWeek = { ...lines[1], key: 'garlic', amount: '2 cloves', recipeTitles: ['Tacos'] };
+    const checked = new Map([['garlic', lineSignature(lastWeek)]]);
+    const inCart = (l: GroceryLine) =>
+      buildGrocerySections([l], checked, []).some((s) => s.key === 'in-cart');
+    expect(inCart(lastWeek)).toBe(true);
+    // ...isn't in the cart for this week's, which needs it again.
+    expect(inCart({ ...lastWeek, recipeTitles: ['Shakshuka'] })).toBe(false);
+    // Nor once another recipe adds to it.
+    expect(inCart({ ...lastWeek, amount: '5 cloves', recipeTitles: ['Tacos', 'Curry'] })).toBe(
+      false,
+    );
   });
 
   it('is empty when there is nothing to buy', () => {
-    expect(buildGrocerySections([], new Set(), [])).toEqual([]);
+    expect(buildGrocerySections([], new Map(), [])).toEqual([]);
   });
 });
 
 describe('shareText', () => {
   it('lists what is left to buy, by section', () => {
-    const sections = buildGrocerySections(lines.slice(0, 3), new Set(['onion']), [
+    const sections = buildGrocerySections(lines.slice(0, 3), checks('onion'), [
       { id: 'c1', customName: 'coffee', checked: false },
     ]);
     expect(shareText(sections)).toBe(

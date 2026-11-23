@@ -46,6 +46,8 @@ export const groceryItems = sqliteTable('grocery_items', {
   quantity: real('quantity'),
   unit: text('unit').$type<Unit>(),
   checked: integer('checked', { mode: 'boolean' }).notNull().default(false),
+  /** For a checked generated line: what it asked for when checked (see `lineSignature`). */
+  checkedFor: text('checked_for'),
   source: text('source').$type<'generated' | 'custom'>().notNull(),
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
 });

@@ -9,7 +9,7 @@ import {
   setCustomChecked,
   setLineChecked,
 } from '@/features/grocery/grocery';
-import { addToPlan, clearPlan } from '@/features/plan/plan';
+import { addToPlan, clearPlan, markCooked, removeFromPlan } from '@/features/plan/plan';
 import { createTestDb } from '@/test-utils/test-db';
 
 describe('grocery storage', () => {
@@ -23,12 +23,12 @@ describe('grocery storage', () => {
     (await customItemsQuery(db)).map((r) => ({ name: r.customName, checked: r.checked }));
 
   it('checks and unchecks generated lines by ingredient', async () => {
-    await setLineChecked(db, 'lime', true);
-    await setLineChecked(db, 'garlic', true);
-    await setLineChecked(db, 'lime', true); // no duplicate rows
+    await setLineChecked(db, 'lime', '3|Tacos');
+    await setLineChecked(db, 'garlic', '2 cloves|Tacos');
+    await setLineChecked(db, 'lime', '3|Tacos'); // no duplicate rows
     expect(await checked()).toEqual(['garlic', 'lime']);
 
-    await setLineChecked(db, 'lime', false);
+    await setLineChecked(db, 'lime', null);
     expect(await checked()).toEqual(['garlic']);
   });
 
@@ -49,18 +49,41 @@ describe('grocery storage', () => {
 
   it('keeps custom items separate from generated checks', async () => {
     await addCustomItem(db, 'coffee');
-    await setLineChecked(db, 'lime', true);
+    await setLineChecked(db, 'lime', '3|Tacos');
     expect(await checked()).toEqual(['lime']);
     expect(await custom()).toHaveLength(1);
   });
 
-  it('clearing the plan unchecks generated lines but keeps custom items', async () => {
-    await addToPlan(db, 'shakshuka');
-    await setLineChecked(db, 'egg', true);
-    await addCustomItem(db, 'coffee');
+  it('remembers what each checked line asked for', async () => {
+    await setLineChecked(db, 'lime', '3|Tacos');
+    expect((await checkedLinesQuery(db))[0].checkedFor).toBe('3|Tacos');
+  });
 
-    await clearPlan(db);
-    expect(await checked()).toEqual([]);
-    expect(await custom()).toEqual([{ name: 'coffee', checked: false }]);
+  it('ending a plan unchecks lines and drops bought custom items, keeping ones still to buy', async () => {
+    const reset = async (end: () => Promise<void>) => {
+      await addToPlan(db, 'shakshuka');
+      await setLineChecked(db, 'egg', '4|Shakshuka');
+      await addCustomItem(db, 'coffee');
+      await addCustomItem(db, 'foil');
+      const foil = (await customItemsQuery(db)).find((i) => i.customName === 'foil')!;
+      await setCustomChecked(db, foil.id, true);
+
+      await end();
+      expect(await checked()).toEqual([]);
+      expect((await custom()).filter((i) => i.name === 'foil')).toEqual([]);
+      expect(await custom()).toContainEqual({ name: 'coffee', checked: false });
+    };
+    await reset(() => clearPlan(db));
+    await reset(() => removeFromPlan(db, 'shakshuka'));
+    await reset(() => markCooked(db, 'shakshuka', 5));
+  });
+
+  it('keeps checks while the plan still has recipes', async () => {
+    await addToPlan(db, 'shakshuka');
+    await addToPlan(db, 'peanut-noodles');
+    await setLineChecked(db, 'egg', '4|Shakshuka');
+    await markCooked(db, 'peanut-noodles');
+    await removeFromPlan(db, 'not-planned');
+    expect(await checked()).toEqual(['egg']);
   });
 });
