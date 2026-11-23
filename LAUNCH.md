@@ -9,7 +9,7 @@ What's ready in the repo, what only you can do, and the commands to ship.
 - [x] Privacy manifest: no tracking; declares Photos, Other User Content and Purchase History for scanning and scan credit, not linked to the user (matches the label in `docs/app-store/listing.md`)
 - [x] iPhone only (`supportsTablet: false`), portrait
 - [x] EAS profiles (`eas.json`): `preview` for TestFlight (includes draft recipes), `production` for the App Store (reviewed recipes only)
-- [x] A production build stops early unless at least 20 recipes are reviewed (`npm run catalog:release-check`, run automatically by `eas-build-pre-install`)
+- [x] A production build stops early unless at least 20 recipes are reviewed (`npm run catalog:release-check`, run automatically by `eas-build-post-install`, once packages are installed)
 - [x] Listing copy, keywords, category, age rating and privacy answers: `docs/app-store/listing.md`
 - [x] Notes for App Review: `docs/app-store/review-notes.md`
 - [x] Privacy policy page: `docs/privacy-policy.html` (needs your contact email and hosting)
