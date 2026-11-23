@@ -3,10 +3,13 @@
  * checked off, and the user's own custom items.
  *
  * Generated lines themselves are never stored; they are rebuilt from the plan
- * on every render (`compileGroceryList`). A check is saved per ingredient id,
- * so it survives the plan changing, and is cleared with the plan.
+ * on every render (`compileGroceryList`). A check is saved per ingredient id
+ * along with what the line asked for at the time (`lineSignature`); it only
+ * counts while the line still asks for exactly that, so a new plan never
+ * inherits the last one's checks. Checks, and bought custom items, are cleared
+ * when a plan ends (`endShoppingTrip`).
  */
-import { and, asc, eq } from 'drizzle-orm';
+import { and, asc, eq, isNull } from 'drizzle-orm';
 
 import { newId } from '@/db/ids';
 import { groceryItems } from '@/db/schema';
@@ -29,22 +32,31 @@ export function customItemsQuery(db: Db) {
   return db.select().from(groceryItems).where(isCustom).orderBy(asc(groceryItems.createdAt));
 }
 
-export async function setLineChecked(db: Db, ingredientId: string, checked: boolean) {
+/** Checks a line off for what it asks for now (`lineSignature`), or unchecks it with null. */
+export async function setLineChecked(db: Db, ingredientId: string, checkedFor: string | null) {
   await db
     .delete(groceryItems)
     .where(and(isGenerated, eq(groceryItems.ingredientId, ingredientId)));
-  if (!checked) return;
+  if (checkedFor === null) return;
   await db.insert(groceryItems).values({
     id: newId(),
     ingredientId,
     checked: true,
+    checkedFor,
     source: 'generated',
     createdAt: new Date(),
   });
 }
 
-export async function clearCheckedLines(db: Db) {
+/**
+ * Resets the list for the next plan: unchecks every line and drops custom
+ * items already bought. Custom items still to buy stay.
+ */
+export async function endShoppingTrip(db: Db) {
   await db.delete(groceryItems).where(isGenerated);
+  await db
+    .delete(groceryItems)
+    .where(and(isCustom, eq(groceryItems.checked, true), isNull(groceryItems.ingredientId)));
 }
 
 export async function addCustomItem(db: Db, name: string) {

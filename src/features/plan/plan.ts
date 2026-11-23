@@ -11,7 +11,7 @@ import { newId } from '@/db/ids';
 import { planItems } from '@/db/schema';
 import type { Db } from '@/db/types';
 import { MAX_SERVINGS, MIN_SERVINGS } from '@/domain/quantity';
-import { clearCheckedLines } from '@/features/grocery/grocery';
+import { endShoppingTrip } from '@/features/grocery/grocery';
 
 export type { Db };
 
@@ -57,6 +57,13 @@ export async function addToPlan(db: Db, recipeId: string, servings = DEFAULT_SER
 
 export async function removeFromPlan(db: Db, recipeId: string) {
   await db.delete(planItems).where(and(eq(planItems.recipeId, recipeId), isActive));
+  await endTripIfPlanEmpty(db);
+}
+
+/** A plan that's been emptied (cooked or removed) is over; the next one starts a fresh list. */
+async function endTripIfPlanEmpty(db: Db) {
+  const left = await db.select({ id: planItems.id }).from(planItems).where(isActive).limit(1);
+  if (left.length === 0) await endShoppingTrip(db);
 }
 
 export async function setPlanServings(db: Db, recipeId: string, servings: number) {
@@ -76,10 +83,11 @@ export async function markCooked(db: Db, recipeId: string, rating?: number) {
     .update(planItems)
     .set({ cookedAt: new Date(), rating: stars })
     .where(and(eq(planItems.recipeId, recipeId), isActive));
+  await endTripIfPlanEmpty(db);
 }
 
-/** Starts a fresh plan, which also unchecks the grocery list it produced. */
+/** Starts a fresh plan, which also resets the grocery list it produced. */
 export async function clearPlan(db: Db) {
   await db.delete(planItems).where(isActive);
-  await clearCheckedLines(db);
+  await endShoppingTrip(db);
 }

@@ -1,0 +1,1 @@
+ALTER TABLE `grocery_items` ADD `checked_for` text;

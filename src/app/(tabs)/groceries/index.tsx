@@ -65,11 +65,11 @@ function HeaderButton({
 
 export default function GroceriesScreen() {
   const theme = useTheme();
-  const { lines, checkedKeys, customItems } = useGroceryList();
+  const { lines, checkedLines, customItems } = useGroceryList();
 
   const sections = useMemo(
-    () => buildGrocerySections(lines, checkedKeys, customItems),
-    [lines, checkedKeys, customItems],
+    () => buildGrocerySections(lines, checkedLines, customItems),
+    [lines, checkedLines, customItems],
   );
   const total = lines.length + customItems.length;
   const inCart = sections.find((s) => s.key === IN_CART)?.data.length ?? 0;
@@ -116,7 +116,7 @@ export default function GroceriesScreen() {
           detail={row.line.recipeTitles.join(', ')}
           checked={row.checked}
           onToggle={() =>
-            toggleWithAnimation(() => groceryActions.setLineChecked(row.line.key, !row.checked))
+            toggleWithAnimation(() => groceryActions.setLineChecked(row.line, !row.checked))
           }
         />
       );
